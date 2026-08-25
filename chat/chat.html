@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Telegram Dark Chat</title>
+
+
+<link rel="stylesheet" href="chat.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+
+
+<body class="public-chat-page">
+
+
+
+<div class="app" id="chatApp">
+
+
+
+
+
+<!-- ===============================
+        بخش چت اصلی
+================================ -->
+
+
+<section class="conversation" id="conversation">
+
+
+
+
+
+<!-- Header -->
+
+
+<header class="chat-header" id="chatHeader">
+
+<button 
+class="mobile-back-btn" 
+id="mobileBackBtn"
+type="button">
+
+<i data-lucide="arrow-right"></i>
+
+</button>
+
+<div class="contact" id="currentContact">
+
+<div class="avatar-box" id="headerAvatar">
+
+<i data-lucide="bot"></i>
+
+<span class="online"></span>
+
+</div>
+<!-- 
+<div>
+
+
+<h3 id="contactName">
+
+
+امیرحسین
+
+
+<span class="verified">
+✓
+</span>
+
+
+</h3>
+
+
+<p id="contactStatus">
+آنلاین
+</p>
+
+
+
+</div>
+ -->
+
+
+</div>
+
+
+
+
+
+<!-- 
+
+<div class="header-icons">
+
+
+<button id="searchBtn">
+
+<i data-lucide="search"></i>
+
+</button>
+
+
+
+<button id="callBtn">
+
+<i data-lucide="phone"></i>
+
+</button>
+
+
+
+<button id="videoBtn">
+
+<i data-lucide="video"></i>
+
+</button>
+
+
+
+<button id="menuBtn">
+
+<i data-lucide="ellipsis-vertical"></i>
+
+</button>
+
+
+
+</div> -->
+
+
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+        پیام ها
+================================ -->
+
+
+<div 
+class="messages"
+id="messagesContainer">
+
+
+
+
+<!-- 
+<div class="today">
+امروز
+</div> -->
+
+
+
+
+
+
+<!-- پیام دریافتی -->
+
+
+
+
+
+
+
+
+<!-- پیام خودم -->
+
+
+
+
+<!-- 
+
+
+
+<div class="file-card">
+
+
+
+<div class="file-icon">
+
+
+<i data-lucide="file"></i>
+
+
+</div>
+
+
+
+
+
+
+<div>
+
+
+<strong>
+Project_Final.zip
+</strong>
+
+
+
+<p>
+24.5 MB
+</p>
+
+
+
+</div>
+
+
+
+
+
+<i data-lucide="ellipsis-vertical"></i>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div 
+class="bubble outgoing"
+data-message-id="4">
+
+
+مرسی الان نگاه میکنم
+
+
+
+<span>
+10:33 ✓✓
+</span>
+
+
+</div>
+
+
+
+
+
+<div class="reaction">
+
+❤️
+
+</div>
+
+
+
+ -->
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+        ارسال پیام
+================================ -->
+
+
+<footer 
+class="message-box"
+id="messageBox">
+
+
+
+
+
+<div class="selected-file" id="selectedFile">
+
+    <div class="selected-file-icon" id="selectedFileIcon">
+        <i data-lucide="file"></i>
+    </div>
+
+    <div class="selected-file-info">
+
+        <strong id="selectedFileName">
+            نام فایل
+        </strong>
+
+        <span id="selectedFileSize">
+            0 KB
+        </span>
+
+    </div>
+
+    <button
+        type="button"
+        class="remove-file"
+        id="removeFile"
+    >
+        <i data-lucide="x"></i>
+    </button>
+
+</div>
+
+
+
+
+
+
+
+<div class="input-area">
+
+
+
+
+
+
+<button 
+class="send-icon"
+id="sendBtn">
+
+
+
+<img 
+src="../01/d23f70af-6a30-4f7b-993d-1cfac3346844.png"
+alt="send">
+
+
+</button>
+
+
+
+
+
+<span class="divider"></span>
+
+
+
+
+
+<button
+    class="emoji-btn"
+    id="emojiBtn">
+
+    <i data-lucide="smile"></i>
+
+</button>
+
+<div
+    class="emoji-picker"
+    id="emojiPicker">
+
+    <button type="button">😀</button>
+    <button type="button">😂</button>
+    <button type="button">😍</button>
+    <button type="button">🥰</button>
+    <button type="button">😎</button>
+    <button type="button">😭</button>
+    <button type="button">😡</button>
+    <button type="button">👍</button>
+    <button type="button">👎</button>
+    <button type="button">❤️</button>
+    <button type="button">🔥</button>
+    <button type="button">✨</button>
+    <button type="button">🎉</button>
+    <button type="button">😂</button>
+    <button type="button">🤍</button>
+    <button type="button">💀</button>
+    <button type="button">👏</button>
+    <button type="button">🙏</button>
+
+</div>
+
+
+
+<input
+
+id="messageInput"
+
+type="text"
+
+placeholder="پیام خود را بنویسید...">
+
+
+ 
+
+
+
+
+<button
+    class="attach"
+    id="attachBtn">
+
+    <i data-lucide="paperclip"></i>
+
+</button>
+
+
+
+<input
+    type="file"
+    id="fileInput"
+    hidden>
+
+
+
+
+
+</footer>
+
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ===============================
+        لیست گفتگوها
+================================ -->
+
+
+
+<section 
+class="chat-panel"
+id="chatPanel">
+
+
+
+
+
+<div class="chat-title">
+
+
+<h1>
+کنکوری
+</h1>
+
+
+
+<button id="chatMenuBtn">
+
+<i data-lucide="ellipsis-vertical"></i>
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="search-box">
+
+
+
+<i data-lucide="search"></i>
+
+
+
+<input
+
+id="chatSearch"
+
+placeholder="جستجو در گفتگوها">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="filters">
+
+
+<button class="active">
+همه
+</button>
+
+
+<button>
+
+خوانده نشده
+
+<span class="badge">
+3
+</span>
+
+
+</button>
+
+
+
+<button>
+گروه‌ها
+</button>
+
+
+
+<button>
+کانال‌ها
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- لیست چت ها -->
+
+
+<div 
+class="chat-list"
+id="chatList">
+
+
+
+<!-- مخاطب -->
+
+<div 
+class="chat-item active"
+data-chat-id="ai">
+
+
+    <div class="ai-avatar">
+
+        <i data-lucide="bot"></i>
+
+    </div>
+
+
+
+    <div class="chat-info">
+
+
+        <div class="chat-name">
+
+
+            <strong>
+
+                هوش مصنوعی
+
+                <span class="verified">
+                    ✓
+                </span>
+
+            </strong>
+
+
+
+            <time>
+                آنلاین
+            </time>
+
+
+        </div>
+
+
+
+
+        <p>
+
+            سلام 👋 آماده کمک به برنامه کنکور شما هستم
+
+        </p>
+
+
+    </div>
+
+
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ===============================
+        دکمه شناور ساخت
+================================ -->
+
+<!-- <button 
+class="floating-add-btn" 
+id="createChatBtn">
+
+    <i data-lucide="plus"></i>
+
+</button> -->
+
+<!-- پنل افزودن -->
+<!-- 
+<div class="create-panel" id="createPanel">
+
+
+    <button class="create-option">
+        <i data-lucide="users"></i>
+        <span>ساخت گروه</span>
+    </button>
+
+
+    <button class="create-option">
+        <i data-lucide="megaphone"></i>
+        <span>ساخت کانال</span>
+    </button>
+
+
+    <button class="create-option">
+        <i data-lucide="message-circle-plus"></i>
+        <span>گفتگوی جدید</span>
+    </button>
+
+
+</div> -->
+
+
+
+<!-- ===============================
+      CREATE MODAL
+================================ -->
+<!-- 
+<div class="create-modal" id="createModal">
+
+
+    <div class="modal-box">
+
+
+        <button class="close-modal" id="closeModal">
+            <i data-lucide="x"></i>
+        </button>
+
+
+
+        <div id="modalContent">
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div> -->
+
+<script src="../config.js"></script>
+
+<script>
+
+
+lucide.createIcons();
+
+</script>
+
+
+<script src="chat.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

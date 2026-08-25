@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> دانش اموز بخش تست‌ها</title>
+
+    <link rel="stylesheet" href="./tests.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/lucide-static@latest/font/lucide.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER HERE -->
+    <!-- هدر قبلی سایت را اینجا قرار بده -->
+        <!-- Header -->
+<header class="header page-animate">
+
+
+    <!-- سمت راست: منو -->
+     <nav class="header-right">
+
+
+        <!-- <a href="#" class="menu-item active">
+
+            <i data-lucide="house"></i>
+
+            <span>خانه</span>
+
+        </a>
+
+
+
+        <a href="#" class="menu-item">
+
+            <i data-lucide="calendar-days"></i>
+
+            <span>برنامه هفتگی</span>
+
+        </a>
+ -->
+
+
+        <!-- <a href="#" class="menu-item">
+
+            <i data-lucide="chart-column"></i>
+
+            <span>گزارش‌ها</span>
+
+        </a> -->
+
+<!-- 
+
+        <a href="perfo.html" class="header-link-new">
+
+            <i data-lucide="chart-no-axes-column"></i>
+
+            <span>
+                عملکرد
+            </span>
+
+        </a> -->
+
+
+
+        <!-- <a href="#" class="menu-item">
+
+            <i data-lucide="notebook"></i>
+
+            <span>یادداشت‌ها</span>
+
+        </a> -->
+
+
+    </nav>
+
+
+    <!-- لوگو وسط -->
+    <div class="logo">
+
+
+        <i data-lucide="graduation-cap"></i>
+
+
+        <span>
+            برنامه کنکور
+        </span>
+
+
+    </div>
+
+
+
+
+
+
+    <!-- سمت چپ -->
+     <!-- <div class="header-left">
+
+        <a href="./login/login.html" class="menu-item">
+
+             <i data-lucide="chart-column"></i> -->
+<!-- 
+            <span>ثبت نام/ورود</span>
+
+        </a> 
+
+        <button class="icon-btn">
+
+            <i data-lucide="settings"></i>
+
+        </button>
+
+
+
+
+        <button class="icon-btn">
+
+            <i data-lucide="moon"></i>
+
+        </button>
+
+
+    </div>   -->
+
+
+
+</header>
+<div class="ah-test-page">
+
+
+    <!-- اطلاعات آزمون -->
+
+    <section class="ah-test-info">
+
+
+        <div class="ah-test-info-item">
+
+            <i data-lucide="book-open"></i>
+
+            <div>
+                <span>درس</span>
+                <strong id="testSubject">
+                    -
+                </strong>
+            </div>
+
+        </div>
+
+
+
+        <div class="ah-test-info-item">
+
+            <i data-lucide="file-question"></i>
+
+            <div>
+                <span>تعداد تست</span>
+                <strong id="testCount">
+-
+</strong>
+            </div>
+
+        </div>
+
+
+
+        <div class="ah-test-info-item">
+
+            <i data-lucide="clock"></i>
+
+            <div>
+                <span>زمان</span>
+                <strong id="testDuration">
+-
+</strong>
+            </div>
+
+        </div>
+
+
+
+        <div class="ah-test-timer">
+
+            <i data-lucide="timer"></i>
+
+<span id="timer">
+00:00
+</span>
+
+        </div>
+
+
+
+        <!-- <button class="ah-test-start-btn">
+
+            <i data-lucide="play"></i>
+
+            شروع آزمون
+
+        </button> -->
+
+
+
+    </section>
+
+
+
+<section class="ah-test-layout">
+
+
+    
+
+    <!-- =========================
+         ANSWER PANEL
+    ========================== -->
+<aside class="answer-panel">
+
+    <button class="answer-panel-toggle">
+
+        <i data-lucide="chevron-left"></i>
+
+    </button>
+
+
+    <div class="answer-panel-title">
+
+        <i data-lucide="list-checks"></i>
+
+        <h3>
+            پاسخ نامه
+        </h3>
+
+    </div>
+
+
+
+    <div 
+    class="answer-sheet-container" 
+    id="answerSheet">
+
+
+        <!-- سوالات با JavaScript ساخته می‌شوند -->
+
+
+    </div>
+
+
+</aside>
+
+
+
+
+
+
+
+    <!-- =========================
+         QUESTIONS
+    ========================== -->
+
+<main class="ah-test-question-box" id="questionsContainer">
+
+    <!-- =========================
+         QUESTIONS CONTENT
+    ========================== -->
+
+    <div 
+    class="ah-test-content"
+    id="questionsContent">
+
+
+        <!-- حالت خالی اولیه -->
+
+        <div class="no-test-message">
+
+            <i data-lucide="file-question"></i>
+
+            <h3>
+                چیزی برای نمایش وجود ندارد
+            </h3>
+
+            <p>
+                ابتدا یک آزمون از لیست آزمون‌های فعال انتخاب کنید
+            </p>
+
+        </div>
+
+
+
+        <!--
+            سوالات آزمون
+            توسط JavaScript ساخته می‌شوند
+        -->
+
+
+
+    </div>
+
+
+
+
+
+    <!-- =========================
+         TEST LOADER
+    ========================== -->
+
+    <div 
+    class="test-loader"
+    id="testLoader">
+
+
+        <!-- <div class="spinner"></div> -->
+
+        <div class="loading">
+            <div class="d1"></div>
+            <div class="d2"></div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <!-- =========================
+         TEST ADVICE LOCK
+    ========================== -->
+
+    <div class="test-lock-overlay hidden">
+
+
+
+        <div 
+        class="test-advice-content">
+
+
+
+            <div class="advice-icon">
+
+                <i data-lucide="lightbulb"></i>
+
+            </div>
+
+
+
+
+
+            <h3>
+                توصیه‌های آزمون
+            </h3>
+
+
+
+
+
+            <p id="testAdvice">
+
+                توصیه آزمون اینجا نمایش داده می‌شود
+
+            </p>
+
+
+
+
+
+
+
+            <button
+                class="start-test-overlay-btn"
+                id="startTestBtn"
+                type="button">
+
+
+                <i data-lucide="play"></i>
+
+
+                شروع آزمون
+
+
+            </button>
+
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+</main>
+
+<!-- =========================
+     ACTIVE TESTS PANEL
+========================= -->
+<aside class="ah-active-tests-panel">
+
+
+    <!-- دکمه باز و بسته شدن پنل -->
+    <button class="active-panel-toggle">
+
+        <i data-lucide="chevron-right"></i>
+
+    </button>
+
+
+
+    <!-- عنوان پنل -->
+    <div class="active-panel-title">
+
+        <i data-lucide="files"></i>
+
+        <h3>
+            آزمون‌های فعال
+        </h3>
+
+    </div>
+
+
+
+
+    <!-- لیست آزمون ها -->
+
+    <div 
+    class="active-tests-list" 
+    id="activeTestsList">
+
+
+        <!--
+            آزمون‌ها با JS ساخته می‌شوند
+
+            نمونه:
+
+            <article class="active-test-card">
+
+                <div class="active-test-card-header">
+
+                    <div class="active-test-logo">
+
+                        <i data-lucide="file-question"></i>
+
+                    </div>
+
+
+                    <div class="active-test-info">
+
+                        <h4>
+                            آزمون زیست فصل اول
+                        </h4>
+
+                        <span>
+                            زیست شناسی
+                        </span>
+
+                    </div>
+
+
+                    <time>
+                        1405/08/18
+                    </time>
+
+
+                </div>
+
+
+
+                <button class="active-test-start">
+
+                    شروع آزمون
+
+                    <i data-lucide="arrow-left"></i>
+
+                </button>
+
+
+            </article>
+
+        -->
+
+
+    </div>
+
+
+
+
+</aside>
+
+</section>
+
+</div>
+
+<script src="../config.js"></script>
+
+
+
+<script>
+
+console.log("TEST PAGE LOADED");
+
+
+let selectedTest = null;
+
+
+// =====================================
+// LOADER
+// =====================================
+
+
+function showTestLoader(){
+
+    const loader =
+    document.getElementById("testLoader");
+
+
+    if(loader){
+
+        loader.classList.add("active");
+
+    }
+
+}
+
+
+
+function hideTestLoader(){
+
+    const loader =
+    document.getElementById("testLoader");
+
+
+    if(loader){
+
+        loader.classList.remove("active");
+
+    }
+
+}
+
+
+
+// =====================================
+// ADVICE
+// =====================================
+function showTestAdvice(){
+
+    const overlay =
+    document.querySelector(
+        ".test-lock-overlay"
+    );
+
+
+    if(overlay){
+
+        overlay.classList.remove(
+            "hidden"
+        );
+
+        overlay.style.display =
+        "flex";
+
+    }
+
+}
+
+
+
+function hideTestAdvice(){
+
+    const overlay =
+    document.querySelector(
+        ".test-lock-overlay"
+    );
+
+
+    if(overlay){
+
+        overlay.classList.remove("show");
+
+    }
+
+}
+
+
+
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+
+// =====================================
+// ELEMENTS
+// =====================================
+
+
+const activeTestsList =
+document.getElementById(
+"activeTestsList"
+);
+
+
+
+const testSubject =
+document.getElementById(
+"testSubject"
+);
+
+
+
+const testCount =
+document.getElementById(
+"testCount"
+);
+
+
+
+const testDuration =
+document.getElementById(
+"testDuration"
+);
+
+
+
+const testAdvice =
+document.getElementById(
+"testAdvice"
+);
+
+
+
+
+// شروع صفحه
+
+
+
+
+
+
+// =====================================
+// LOAD ONE TEST
+// =====================================
+
+async function loadTestData(id){
+
+
+try{
+
+
+showTestLoader();
+
+
+
+const response =
+await fetch(
+    `${API_URL}/tests/${id}`
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"آزمون پیدا نشد"
+);
+
+}
+
+
+
+
+const result =
+await response.json();
+
+
+
+console.log(
+"API RESULT:",
+result
+);
+
+
+
+
+// گرفتن خود آزمون
+
+const test =
+result.test;
+
+
+
+if(!test){
+
+throw new Error(
+"داده آزمون وجود ندارد"
+);
+
+}
+
+
+
+selectedTest = test;
+
+showTestLoader();
+
+
+setTimeout(()=>{
+
+    hideTestLoader();
+
+    renderAnswerSheet();
+
+},1500);
+
+console.log(
+"REAL TEST:",
+selectedTest
+);
+
+
+// ==============================
+// حذف پیام "چیزی برای نمایش وجود ندارد"
+// ==============================
+
+const emptyMessage =
+document.querySelector(
+    ".no-test-message"
+);
+
+
+if(emptyMessage){
+
+    emptyMessage.style.display =
+    "none";
+
+}
+
+
+
+// ==============================
+// پر کردن اطلاعات بالا
+// ==============================
+
+
+document.getElementById(
+"testSubject"
+).textContent =
+test.subject || "-";
+
+
+
+document.getElementById(
+"testCount"
+).textContent =
+test.questionCount ||
+(test.questions?.length || 0);
+
+
+
+document.getElementById(
+"testDuration"
+).textContent =
+(test.duration || 0)
++
+" دقیقه";
+
+
+
+
+
+
+
+// ==============================
+// توصیه آزمون
+// ==============================
+
+
+const advice =
+document.getElementById(
+"testAdvice"
+);
+
+
+
+if(advice){
+
+advice.textContent =
+test.advice ||
+"با تمرکز و آرامش آزمون را شروع کنید";
+
+}
+
+
+
+
+
+// ==============================
+// لودر
+// ==============================
+
+
+setTimeout(()=>{
+
+
+hideTestLoader();
+
+
+showTestAdvice();
+
+
+},1500);
+
+
+
+
+}
+
+catch(error){
+
+
+console.log(
+"LOAD TEST ERROR:",
+error
+);
+
+
+
+hideTestLoader();
+
+
+}
+
+
+
+}
+
+
+
+
+
+// =====================================
+// LOAD ACTIVE TESTS
+// =====================================
+
+
+async function loadActiveTests(){
+
+
+
+try{
+
+
+
+const response =
+await fetch(
+    `${API_URL}/tests`
+);
+
+const tests =
+await response.json();
+
+
+
+console.log(
+"ACTIVE TESTS:",
+tests
+);
+
+
+
+
+
+if(!tests.length){
+
+
+activeTestsList.innerHTML = `
+
+
+<div class="no-test-box">
+
+
+<h2>
+آزمونی وجود ندارد
+</h2>
+
+
+<p>
+آزمون فعالی منتشر نشده است
+</p>
+
+
+</div>
+
+
+`;
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+activeTestsList.innerHTML = "";
+
+
+
+
+
+tests.forEach(test=>{
+
+
+
+activeTestsList.innerHTML += `
+
+
+
+<article class="active-test-card">
+
+
+
+<div class="active-test-card-header">
+
+
+<div class="active-test-logo">
+
+<i data-lucide="file-question"></i>
+
+</div>
+
+
+
+
+<div class="active-test-info">
+
+
+<h4>
+
+${test.title}
+
+</h4>
+
+
+
+<span>
+
+${test.questionCount}
+سوال -
+${test.duration}
+دقیقه
+
+</span>
+
+
+
+</div>
+
+
+
+
+<time>
+
+${
+test.createdAt
+
+?
+
+new Date(test.createdAt)
+.toLocaleDateString("fa-IR")
+
+:
+
+"امروز"
+
+}
+
+</time>
+
+
+
+</div>
+
+
+
+
+
+
+<button
+
+class="active-test-start"
+
+data-id="${test._id}"
+
+>
+
+
+شروع آزمون
+
+
+<i data-lucide="arrow-left"></i>
+
+
+</button>
+
+
+
+
+</article>
+
+
+
+`;
+
+
+
+});
+
+
+
+
+
+if(window.lucide){
+
+lucide.createIcons();
+
+}
+
+
+
+
+
+// =====================================
+// BUTTON EVENTS
+// =====================================
+
+
+document
+.querySelectorAll(
+".active-test-start"
+)
+.forEach(btn=>{
+
+
+
+btn.onclick = ()=>{
+
+
+const id =
+btn.dataset.id;
+
+
+
+console.log(
+"CLICK TEST:",
+id
+);
+
+
+
+loadTestData(id);
+
+
+
+};
+
+
+
+});
+
+
+
+
+
+}
+catch(error){
+
+
+console.log(
+"ACTIVE TEST ERROR:",
+error
+);
+
+
+
+}
+
+
+
+
+}
+
+
+
+
+
+loadActiveTests();
+
+
+
+
+
+
+
+// =====================================
+// ANSWER PANEL TOGGLE
+// =====================================
+
+
+const answerPanel =
+document.querySelector(
+".ah-test-question-panel"
+);
+
+
+
+const answerToggle =
+document.querySelector(
+".ah-panel-toggle"
+);
+
+
+
+if(
+answerPanel &&
+answerToggle
+){
+
+
+answerToggle.onclick = ()=>{
+
+
+answerPanel.classList.toggle(
+"collapsed"
+);
+
+
+};
+
+
+}
+
+
+
+
+
+
+
+
+// =====================================
+// ACTIVE TEST PANEL TOGGLE
+// =====================================
+
+
+const activePanel =
+document.querySelector(
+".ah-active-tests-panel"
+);
+
+
+
+const activeToggle =
+document.querySelector(
+".active-panel-toggle"
+);
+
+
+
+if(
+activePanel &&
+activeToggle
+){
+
+
+activeToggle.onclick = ()=>{
+
+
+activePanel.classList.toggle(
+"collapsed"
+);
+
+
+};
+
+
+}
+
+
+
+
+
+});
+
+</script>ّّّ
+
+<script>
+
+
+// ==============================
+// RENDER QUESTIONS
+// ==============================
+
+
+function renderQuestions(){
+
+
+    const container =
+    document.getElementById(
+        "questionsContent"
+    );
+
+
+    if(!container || !selectedTest){
+        return;
+    }
+
+
+
+    container.innerHTML = "";
+
+
+
+    selectedTest.questions.forEach(
+    (q,index)=>{
+
+
+        container.innerHTML += `
+
+
+        <div class="question-item">
+
+
+            <h3>
+                ${index + 1} -
+            </h3>
+
+
+            <p class="question-text">
+                ${q.question}
+            </p>
+
+
+
+            <div class="options">
+
+
+${ 
+q.options.map( 
+(option,i)=>`
+
+<label class="option-item">
+
+    <input 
+type="radio"
+class="input"
+name="question-${index}"
+value="${i}"
+    >
+
+    <span class="custom-checkbox"></span>
+
+    <span class="option-text">
+        ${option}
+    </span>
+
+</label>
+
+`).join("")
+}
+
+            </div>
+
+
+        </div>
+
+
+        `;
+
+
+    });
+
+
+}
+
+
+
+
+
+
+// ==============================
+// START TEST BUTTON
+// ==============================
+
+
+const startBtn =
+document.getElementById(
+    "startTestBtn"
+);
+
+
+
+if(startBtn){
+
+
+    startBtn.onclick = ()=>{
+
+
+        // اجرای لودر
+
+        showTestLoader();
+
+
+
+        setTimeout(()=>{
+
+
+            // بستن لودر
+
+            hideTestLoader();
+
+
+
+
+            // مخفی کردن توصیه ها
+
+
+            const overlay =
+            document.querySelector(
+                ".test-lock-overlay"
+            );
+
+
+            if(overlay){
+
+                overlay.classList.add(
+                    "hidden"
+                );
+
+            }
+
+
+
+
+
+
+
+            // حذف تاری
+
+
+            const questionsBox =
+            document.getElementById(
+                "questionsContainer"
+            );
+
+
+            if(questionsBox){
+
+                questionsBox.classList.remove(
+                    "locked"
+                );
+
+            }
+
+
+
+
+
+
+
+            // حذف پیام خالی
+
+
+            const emptyMessage =
+            document.querySelector(
+                ".no-test-message"
+            );
+
+
+            if(emptyMessage){
+
+                emptyMessage.style.display =
+                "none";
+
+            }
+
+
+
+
+
+
+
+            // نمایش سوالات
+
+
+            renderQuestions();
+
+
+
+renderAnswerSheet();
+
+            // شروع تایمر
+
+
+            startTimer();
+
+
+
+
+        },1500);
+
+
+
+    };
+
+
+}
+
+
+
+
+if(window.lucide){
+
+    lucide.createIcons();
+
+}
+
+
+</script>
+
+<script>
+    // =====================================
+// RENDER ANSWER SHEET
+// =====================================
+
+function renderAnswerSheet(){
+
+
+    const sheet =
+    document.getElementById(
+        "answerSheet"
+    );
+
+
+    if(!sheet || !selectedTest){
+        return;
+    }
+
+
+
+    sheet.innerHTML = "";
+
+
+
+    selectedTest.questions.forEach(
+    (q,index)=>{
+
+
+        sheet.innerHTML += `
+
+
+        <button 
+        class="answer-number"
+        data-question="${index}">
+
+            ${index + 1}
+
+        </button>
+
+
+        `;
+
+
+    });
+
+
+
+
+
+    document
+    .querySelectorAll(
+        ".answer-number"
+    )
+    .forEach(btn=>{
+
+
+        btn.onclick = ()=>{
+
+
+            const index =
+            btn.dataset.question;
+
+
+
+            const question =
+            document.querySelectorAll(
+                ".question-item"
+            )[index];
+
+
+
+            if(question){
+
+                question.scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+
+            }
+
+
+        };
+
+
+    });
+
+
+
+}
+</script>
+
+</body>
+
+</html>

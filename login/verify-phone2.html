@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ثبت نام | کدماتیک</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="OTP.css">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        type="image/png"
+        href="./2.2.6.png">
+
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!--==========================
+            BACKGROUND
+    ==========================-->
+
+    <div class="background-glow"></div>
+
+    <div class="background-grid"></div>
+
+    <!--==========================
+            CARD
+    ==========================-->
+
+    <section class="login-card">
+
+        <!--==========================
+                RIGHT
+        ==========================-->
+
+        <div class="login-right">
+
+            <div class="login-panel">
+
+                <!--==========================
+                        HEADER
+                ==========================-->
+
+                <div class="panel-header">
+
+                    <div class="panel-logo">
+
+                        <img src="./لوگو1.png"
+                            alt="Codematic">
+
+                        <div class="logo-glow"></div>
+
+                    </div>
+
+                    <h3 id="typing-text"></h3>
+
+                </div>
+
+                <!--==========================
+                        FORM
+                ==========================-->
+
+                <!-- OTP FORM -->
+
+                    <form
+                    id="otpForm"
+                    class="login-form">
+
+
+                    <!-- PHONE -->
+
+                    <div class="form-field">
+
+                        <div
+                        class="input-group"
+                        id="phoneGroup">
+
+
+                            <i class="fa-solid fa-phone"></i>
+
+
+                            <input
+                            id="phoneNumber"
+                            type="tel"
+                            placeholder="شماره تلفن">
+
+
+                        </div>
+
+
+                    </div>
+
+<div class="form-field">
+
+    <div 
+    class="input-group" 
+    id="chatIdGroup">
+
+
+        <i class="fa-solid fa-robot"></i>
+
+
+        <input 
+        id="chatId"
+        type="text"
+        placeholder="شناسه چت روبیکا">
+
+
+    </div>
+
+</div>
+
+                    <!-- SEND BUTTON -->
+
+                   <div class="phone-actions">
+
+
+                        <button
+                        id="sendCodeBtn"
+                        class="login-btn"
+                        type="button">
+
+
+                            <span>
+                                ارسال کد تایید
+                            </span>
+
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+
+                        </button>
+
+
+
+                        <button
+                        id="editPhoneBtn"
+                        class="edit-phone"
+                        type="button">
+
+
+                            <i class="fa-solid fa-pen"></i>
+
+                            ویرایش شماره
+
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- OTP TEXT -->
+
+                    <div class="otp-text">
+
+
+                        کد ارسال شده را وارد کنید
+
+
+                    </div>
+
+
+
+
+                    <!-- OTP BOXES -->
+
+                    <div
+                    class="otp-container">
+
+
+                        <input
+                        class="otp-box"
+                        maxlength="1">
+
+
+                        <input
+                        class="otp-box"
+                        maxlength="1">
+
+
+                        <input
+                        class="otp-box"
+                        maxlength="1">
+
+
+                        <input
+                        class="otp-box"
+                        maxlength="1">
+
+
+                    </div>
+
+
+
+                    <!-- LOGIN -->
+
+                    <button
+                    id="verifyBtn"
+                    class="login-btn"
+                    type="submit">
+
+
+                    <span>
+                        تایید و ایجاد حساب
+                    </span>
+
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+
+                    </button>
+
+
+
+                    </form>
+                                
+                <!--==========================
+                        FOOTER
+                ==========================-->
+
+                <div class="panel-footer">
+
+                    <p>
+
+                        قبلاً ثبت نام کرده‌اید؟
+
+                        <a href="login.html">
+
+                            ورود
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--==========================
+                LEFT SIDE
+        ==========================-->
+
+        <div class="login-left1">
+<!-- 
+            <img src="./ChatGPT Image ۸ مرداد ۱۴۰۵، ۲۳_۲۰_۵۵.png" alt=""> -->
+
+            <!-- <div class="loader">
+
+                <svg viewBox="0 0 100 100">
+
+                    <defs>
+
+                        <filter id="shadow">
+
+                            <feDropShadow
+                                flood-color="#000"
+                                stdDeviation="1.5"
+                                dx="0"
+                                dy="0">
+
+                            </feDropShadow>
+
+                        </filter>
+
+                    </defs>
+
+                    <circle
+
+                        id="spinner"
+
+                        cx="50"
+
+                        cy="50"
+
+                        r="45"
+
+                        style="
+
+                            fill:transparent;
+
+                            stroke:#00b4d8;
+
+                            stroke-width:7px;
+
+                            stroke-linecap:round;
+
+                            filter:url(#shadow);
+
+                        ">
+
+                    </circle>
+
+                </svg>
+
+            </div>
+
+            <div class="CC">
+
+                <div class="loader5"></div>
+
+                <div class="loader6"></div>
+
+            </div>
+
+        </div> -->
+
+    </section>
+
+</div>
+
+<!--==========================
+        REGISTER JS
+===========================-->
+<script src="../config.js"></script>
+
+    <script>
+
+
+const texts = [
+
+"ایجاد حساب کاربری",
+
+"برای شروع یادگیری، حساب جدید خود را ایجاد کنید.",
+
+"ریاضی کد مسیر یادگیری شما",
+
+"آینده از اینجا شروع می‌شود."
+
+];
+
+const typing = document.getElementById("typing-text");
+
+let textIndex = 0;
+
+let charIndex = 0;
+
+let deleting = false;
+
+function typeEffect(){
+
+const current = texts[textIndex];
+
+if(!deleting){
+
+    typing.textContent = current.substring(0,charIndex++);
+
+    if(charIndex > current.length){
+
+        deleting = true;
+
+        setTimeout(typeEffect,1500);
+
+        return;
+
+    }
+
+}else{
+
+    typing.textContent = current.substring(0,charIndex--);
+
+    if(charIndex < 0){
+
+        deleting = false;
+
+        textIndex++;
+
+        if(textIndex >= texts.length){
+
+            textIndex = 0;
+
+        }
+
+    }
+
+}
+
+setTimeout(typeEffect,deleting?40:80);
+
+
+}
+
+typeEffect();
+
+// ==============================================================
+
+
+
+</script>
+
+<script src="OTP.js"></script>
+
+</body>
+
+</html>

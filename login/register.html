@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ثبت نام | کدماتیک</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="register.css">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        type="image/png"
+        href="./2.2.6.png">
+
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!--==========================
+            BACKGROUND
+    ==========================-->
+
+    <div class="background-glow"></div>
+
+    <div class="background-grid"></div>
+
+    <!--==========================
+            CARD
+    ==========================-->
+
+    <section class="login-card">
+
+        <!--==========================
+                RIGHT
+        ==========================-->
+
+        <div class="login-right">
+
+            <div class="login-panel">
+
+                <!--==========================
+                        HEADER
+                ==========================-->
+
+                <div class="panel-header">
+
+                    <div class="panel-logo">
+
+                        <img src="./لوگو1.png"
+                            alt="Codematic">
+
+                        <div class="logo-glow"></div>
+
+                    </div>
+
+                    <h3 id="typing-text"></h3>
+
+                </div>
+
+                <!--==========================
+                        FORM
+                ==========================-->
+
+                <form
+                    id="registerForm"
+                    class="login-form"
+                    novalidate>
+
+                <!--==========================
+                        نام
+                ==========================-->
+
+                <div class="form-field">
+
+                    <div
+                        class="input-group"
+                        id="fullnameGroup">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <input
+                            id="fullname"
+                            name="fullname"
+                            type="text"
+                            autocomplete="name"
+                            placeholder="نام و نام خانوادگی">
+
+                            <div class="field-status">
+
+                                <svg class="status-icon" viewBox="0 0 52 52">
+
+                                    <circle
+                                        class="status-circle"
+                                        cx="26"
+                                        cy="26"
+                                        r="22"/>
+
+                                    <!-- تیک -->
+
+                                    <path
+                                        class="status-check"
+                                        d="M16 27 L23 34 L37 18"/>
+
+                                    <!-- ضربدر -->
+
+                                    <path
+                                        class="status-cross1"
+                                        d="M18 18 L34 34"/>
+
+                                    <path
+                                        class="status-cross2"
+                                        d="M34 18 L18 34"/>
+
+                                </svg>
+
+                            </div>
+
+                        
+
+                    </div>
+
+                </div>
+
+
+                <!--==========================
+                        ایمیل
+                ==========================-->
+
+                <div class="form-field">
+
+                    <div
+                        class="input-group"
+                        id="emailGroup">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            placeholder="ایمیل">
+
+                        
+                            <div class="field-status">
+
+                                <svg class="status-icon" viewBox="0 0 52 52">
+
+                                    <circle
+                                        class="status-circle"
+                                        cx="26"
+                                        cy="26"
+                                        r="22"/>
+
+                                    <!-- تیک -->
+
+                                    <path
+                                        class="status-check"
+                                        d="M16 27 L23 34 L37 18"/>
+
+                                    <!-- ضربدر -->
+
+                                    <path
+                                        class="status-cross1"
+                                        d="M18 18 L34 34"/>
+
+                                    <path
+                                        class="status-cross2"
+                                        d="M34 18 L18 34"/>
+
+                                </svg>
+
+                            </div>
+                        
+
+                    </div>
+
+                </div>
+
+
+                <!--==========================
+                        رمز عبور
+                ==========================-->
+
+                <div class="form-field">
+
+                <div
+                    class="password-group"
+                    id="passwordGroup">
+
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        autocomplete="new-password"
+                        placeholder="رمز عبور">
+
+                    <div
+                        class="password-toggle"
+                        id="togglePassword">
+
+                        <i class="fa-regular fa-eye"></i>
+
+                    </div>
+
+
+
+                </div>
+
+                <div
+                    class="password-success"
+                    id="passwordSuccess">
+
+                    
+
+                    <span
+                        class="typing-success"
+                        id="typingSuccess">
+
+                    </span>
+
+                </div>
+
+            </div>
+
+                <!--==========================
+                        تکرار رمز
+                ==========================-->
+
+                <div class="form-field">
+
+                    <div
+                        class="input-group"
+                        id="confirmPasswordGroup">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <input
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            type="password"
+                            autocomplete="new-password"
+                            placeholder="تکرار رمز عبور">
+
+                       
+                            <div class="field-status">
+
+                                <svg class="status-icon" viewBox="0 0 52 52">
+
+                                    <circle
+                                        class="status-circle"
+                                        cx="26"
+                                        cy="26"
+                                        r="22"/>
+
+                                    <!-- تیک -->
+
+                                    <path
+                                        class="status-check"
+                                        d="M16 27 L23 34 L37 18"/>
+
+                                    <!-- ضربدر -->
+
+                                    <path
+                                        class="status-cross1"
+                                        d="M18 18 L34 34"/>
+
+                                    <path
+                                        class="status-cross2"
+                                        d="M34 18 L18 34"/>
+
+                                </svg>
+
+                            </div>
+
+                        
+
+                    </div>
+
+                </div>
+
+
+                <!--==========================
+                        دکمه ثبت نام
+                ==========================-->
+
+                <button
+                    id="registerBtn"
+                    class="register-btn"
+                    type="submit">
+
+                    <span>
+
+                        ایجاد حساب
+
+                    </span>
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </button>
+
+            </form>
+
+                            <!--==========================
+                        FOOTER
+                ==========================-->
+
+                <div class="panel-footer">
+
+                    <p>
+
+                        قبلاً ثبت نام کرده‌اید؟
+
+                        <a href="login.html">
+
+                            ورود
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--==========================
+                LEFT SIDE
+        ==========================-->
+
+        <div class="login-left">
+
+            <div class="loader">
+
+                <svg viewBox="0 0 100 100">
+
+                    <defs>
+
+                        <filter id="shadow">
+
+                            <feDropShadow
+                                flood-color="#000"
+                                stdDeviation="1.5"
+                                dx="0"
+                                dy="0">
+
+                            </feDropShadow>
+
+                        </filter>
+
+                    </defs>
+
+                    <circle
+
+                        id="spinner"
+
+                        cx="50"
+
+                        cy="50"
+
+                        r="45"
+
+                        style="
+
+                            fill:transparent;
+
+                            stroke:#00b4d8;
+
+                            stroke-width:7px;
+
+                            stroke-linecap:round;
+
+                            filter:url(#shadow);
+
+                        ">
+
+                    </circle>
+
+                </svg>
+
+            </div>
+
+            <div class="CC">
+
+                <div class="loader5"></div>
+
+                <div class="loader6"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!--==========================
+        REGISTER JS
+===========================-->
+
+    <script>
+
+
+const texts = [
+
+"ایجاد حساب کاربری",
+
+"برای شروع یادگیری، حساب جدید خود را ایجاد کنید.",
+
+"ریاضی کد مسیر یادگیری شما",
+
+"آینده از اینجا شروع می‌شود."
+
+];
+
+const typing = document.getElementById("typing-text");
+
+let textIndex = 0;
+
+let charIndex = 0;
+
+let deleting = false;
+
+function typeEffect(){
+
+const current = texts[textIndex];
+
+if(!deleting){
+
+    typing.textContent = current.substring(0,charIndex++);
+
+    if(charIndex > current.length){
+
+        deleting = true;
+
+        setTimeout(typeEffect,1500);
+
+        return;
+
+    }
+
+}else{
+
+    typing.textContent = current.substring(0,charIndex--);
+
+    if(charIndex < 0){
+
+        deleting = false;
+
+        textIndex++;
+
+        if(textIndex >= texts.length){
+
+            textIndex = 0;
+
+        }
+
+    }
+
+}
+
+setTimeout(typeEffect,deleting?40:80);
+
+
+}
+
+typeEffect();
+
+// ==============================================================
+
+
+
+</script>
+
+<script src="اا.js"></script>
+
+</body>
+
+</html>

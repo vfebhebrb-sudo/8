@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        عملکرد من
+    </title>
+
+
+    <link rel="stylesheet" href="./12.css">
+
+    <link rel="stylesheet" href="performance.css">
+
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+
+<body>
+
+
+<div class="performance-page-new">
+
+
+
+    <!-- عنوان صفحه -->
+
+    <div class="performance-title-new">
+
+
+        <div class="performance-title-icon-new">
+
+            <i data-lucide="chart-column"></i>
+
+        </div>
+
+
+        <div>
+
+            <h1>
+                عملکرد من
+            </h1>
+
+
+            <p>
+                بررسی روند مطالعه و پیشرفت روزانه
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- کارت های آماری -->
+
+
+    <div class="performance-stats-new">
+
+
+
+        <div class="performance-stat-card-new">
+
+
+            <i data-lucide="clock"></i>
+
+
+            <span>
+                ساعت مطالعه کل
+            </span>
+
+
+            <strong id="totalStudyTime">
+
+                00:00:00
+
+            </strong>
+
+
+        </div>
+
+
+
+
+
+        <div class="performance-stat-card-new">
+
+
+            <i data-lucide="book-open"></i>
+
+
+            <span>
+                درس های انجام شده
+            </span>
+
+
+            <strong id="completedLessons">
+
+                0
+
+            </strong>
+
+
+        </div>
+
+
+
+
+
+        <div class="performance-stat-card-new">
+
+
+            <i data-lucide="calendar-check"></i>
+
+
+            <span>
+                روزهای فعال
+            </span>
+
+
+            <strong id="activeDays">
+
+                0
+
+            </strong>
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- آخرین فعالیت ها -->
+
+
+    <section class="performance-box-new">
+
+
+        <div class="performance-box-title-new">
+
+
+            <i data-lucide="activity"></i>
+
+
+            <h2>
+                آخرین فعالیت‌ها
+            </h2>
+
+
+        </div>
+
+
+
+
+        <div 
+            class="activity-list-new"
+            id="activityList"
+        >
+
+
+            <!-- JS اینجا اطلاعات را قرار می‌دهد -->
+
+
+            <div class="empty-performance-new">
+
+                هنوز گزارشی ثبت نشده است
+
+            </div>
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+    <!-- وضعیت درس ها -->
+
+
+    <section class="performance-box-new">
+
+
+
+        <div class="performance-box-title-new">
+
+
+            <i data-lucide="graduation-cap"></i>
+
+
+            <h2>
+                وضعیت درس‌ها
+            </h2>
+
+
+        </div>
+
+
+
+
+        <div 
+            class="lesson-progress-list-new"
+            id="lessonProgressList"
+        >
+
+
+            <!-- کارت درس ها با JS -->
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script src="performance.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+
+
+<!-- =================================================
+     DELETE CONFIRM MODAL
+================================================= -->
+
+<div
+    class="delete-confirm-overlay"
+    id="deleteConfirmOverlay"
+>
+
+    <div
+        class="delete-confirm-box"
+        id="deleteConfirmBox"
+    >
+
+        <!-- لوگو -->
+
+        <div class="delete-confirm-logo">
+
+            <i data-lucide="trash-2"></i>
+
+        </div>
+
+
+        <!-- متن -->
+
+        <div class="delete-confirm-content">
+
+            <h3>
+                حذف گزارش مطالعه
+            </h3>
+
+            <p>
+                آیا مطمئن هستید که می‌خواهید
+                تمام جلسات این درس را حذف کنید؟
+            </p>
+
+        </div>
+
+
+        <!-- دکمه‌ها -->
+
+        <div class="delete-confirm-actions">
+
+            <button
+                type="button"
+                class="delete-confirm-cancel"
+                id="deleteConfirmCancel"
+            >
+                انصراف
+            </button>
+
+
+            <button
+                type="button"
+                class="delete-confirm-submit"
+                id="deleteConfirmSubmit"
+            >
+
+                <i data-lucide="trash-2"></i>
+
+                حذف کن
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</body>
+
+
+</html>

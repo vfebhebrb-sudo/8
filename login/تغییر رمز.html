@@ -1,158 +1,289 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
+
 <head>
 
-    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>ثبت نام | کدماتیک</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="OTP.css">
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<title>
+تایید حساب | کدماتیک
+</title>
 
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon"
-        type="image/png"
-        href="./2.2.6.png">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+
+<link rel="stylesheet"
+href="./register.css">
+
+
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+<link rel="icon"
+type="image/png"
+href="./2.2.6.png">
+
 
 </head>
 
+
+
+
 <body>
+
+
 
 <div class="login-page">
 
-    <!--==========================
-            BACKGROUND
-    ==========================-->
-
-    <div class="background-glow"></div>
-
-    <div class="background-grid"></div>
-
-    <!--==========================
-            CARD
-    ==========================-->
-
-    <section class="login-card">
-
-        <!--==========================
-                RIGHT
-        ==========================-->
-
-        <div class="login-right">
-
-            <div class="login-panel">
-
-                <!--==========================
-                        HEADER
-                ==========================-->
-
-                <div class="panel-header">
-
-                    <div class="panel-logo">
-
-                        <img src="./لوگو1.png"
-                            alt="Codematic">
-
-                        <div class="logo-glow"></div>
-
-                    </div>
-
-                    <h3 id="typing-text"></h3>
-
-                </div>
-
-                <!--==========================
-                        FORM
-                ==========================-->
-<!-- OTP FORM -->
-
-<form 
-id="otpForm" 
-class="login-form">
 
 
-<!-- IDENTITY -->
-
-<div class="form-field">
-
-    <div 
-    class="input-group" 
-    id="phoneGroup">
+<div class="background-glow"></div>
 
 
-        <i class="fa-solid fa-user"></i>
+<div class="background-grid"></div>
 
 
-        <input 
-        id="phoneNumber"
-        type="text"
-        placeholder="شماره تلفن یا شناسه روبیکا">
 
 
-    </div>
+
+<section class="login-card">
+
+
+
+<div class="login-panel">
+
+
+
+
+
+
+<!-- HEADER -->
+
+
+<div class="panel-header">
+
+
+
+<div class="panel-logo">
+
+
+<img src="./لوگو1.png"
+alt="Codematic">
+
+
+<div class="logo-glow"></div>
+
+
+</div>
+
+
+
+<h3 id="typing-text"></h3>
+
+
 
 </div>
 
 
 
 
-<!-- SEND BUTTON -->
+
+
+<!-- OTP FORM -->
+
+
+<form
+
+id="otpForm"
+
+class="login-form">
+
+
+
+
+
+<!-- PHONE / RUBIKA -->
+
+
+<div class="form-field">
+
+
+
+<div
+
+class="input-group"
+
+id="phoneGroup">
+
+
+
+<i class="fa-solid fa-user"></i>
+
+
+
+
+
+<input
+
+id="phoneNumber"
+
+type="text"
+
+autocomplete="off"
+
+placeholder="شماره تلفن یا شناسه روبیکا">
+
+
+
+
+
+<div class="field-status">
+
+
+<svg class="status-icon"
+viewBox="0 0 52 52">
+
+
+
+<circle
+
+class="status-circle"
+
+cx="26"
+
+cy="26"
+
+r="22"/>
+
+
+
+<path
+
+class="status-check"
+
+d="M16 27 L23 34 L37 18"/>
+
+
+
+<path
+
+class="status-cross1"
+
+d="M18 18 L34 34"/>
+
+
+
+<path
+
+class="status-cross2"
+
+d="M34 18 L18 34"/>
+
+
+</svg>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- BUTTONS -->
+
 
 <div class="phone-actions">
 
 
-    <button 
-    id="sendCodeBtn"
-    class="login-btn"
-    type="button">
 
+<button
 
-        <span>
-            ارسال کد تایید
-        </span>
+id="sendCodeBtn"
 
+class="login-btn"
 
-        <i class="fa-solid fa-paper-plane"></i>
-
-
-    </button>
+type="button">
 
 
 
+<span>
 
-    <button 
-    id="editPhoneBtn"
-    class="edit-phone"
-    type="button">
+ارسال کد تایید
 
-
-        <i class="fa-solid fa-pen"></i>
+</span>
 
 
-        ویرایش اطلاعات
+
+<i class="fa-solid fa-paper-plane"></i>
 
 
-    </button>
+
+</button>
+
+
+
+
+
+<button
+
+id="editPhoneBtn"
+
+class="edit-phone"
+
+type="button">
+
+
+
+<i class="fa-solid fa-pen"></i>
+
+
+ویرایش اطلاعات
+
+
+
+</button>
+
 
 
 </div>
+
 
 
 
@@ -160,42 +291,22 @@ class="login-form">
 
 <!-- OTP TEXT -->
 
+
 <div class="otp-text">
 
 
-    کد ارسال شده را وارد کنید
+<p>
+
+کد تایید ارسال شده را وارد کنید
+
+</p>
 
 
-</div>
+<span id="otpPhoneText">
 
+به شماره شما ارسال شد
 
-
-
-
-<!-- OTP BOXES -->
-
-<div 
-class="otp-container">
-
-
-    <input 
-    class="otp-box"
-    maxlength="1">
-
-
-    <input 
-    class="otp-box"
-    maxlength="1">
-
-
-    <input 
-    class="otp-box"
-    maxlength="1">
-
-
-    <input 
-    class="otp-box"
-    maxlength="1">
+</span>
 
 
 </div>
@@ -205,12 +316,70 @@ class="otp-container">
 
 
 
-<!-- VERIFY -->
+<!-- OTP INPUTS -->
 
-<button 
+
+<div class="otp-container">
+
+
+
+<input
+
+class="otp-box"
+
+maxlength="1"
+
+inputmode="numeric">
+
+
+
+<input
+
+class="otp-box"
+
+maxlength="1"
+
+inputmode="numeric">
+
+
+
+<input
+
+class="otp-box"
+
+maxlength="1"
+
+inputmode="numeric">
+
+
+
+<input
+
+class="otp-box"
+
+maxlength="1"
+
+inputmode="numeric">
+
+
+
+</div>
+
+
+
+
+
+<!-- VERIFY BUTTON -->
+
+
+<button
+
 id="verifyBtn"
+
 class="login-btn"
+
 type="submit">
+
 
 
 <span>
@@ -220,7 +389,9 @@ type="submit">
 </span>
 
 
+
 <i class="fa-solid fa-arrow-left"></i>
+
 
 
 </button>
@@ -232,68 +403,133 @@ type="submit">
 
 
 
-<!-- =================================
-        CHANGE PASSWORD TAB
-================================= -->
 
-<div 
+
+
+
+
+<!-- ==========================
+        PASSWORD TAB
+========================== -->
+
+
+<div
+
 id="passwordTab"
+
 class="password-tab"
+
 style="display:none;">
 
 
-    <div class="form-field" style="margin-top: 50px;  margin-bottom: 15px;">
-
-        <div class="input-group">
-
-            <i class="fa-solid fa-lock"></i>
-
-            <input
-            id="newPassword"
-            type="password"
-            placeholder="رمز عبور جدید">
-
-        </div>
-
-    </div>
 
 
 
-    <div class="form-field" style="margin-bottom: 15px;">
 
-        <div class="input-group">
-
-            <i class="fa-solid fa-lock"></i>
-
-            <input
-            id="repeatPassword"
-            type="password"
-            placeholder="تکرار رمز عبور">
-
-        </div>
-
-    </div>
+<div class="form-field password-field">
 
 
 
-    <button
-    id="changePasswordBtn"
-    class="login-btn"
-    type="button">
+<div class="input-group">
 
 
-        <span>
-            ثبت رمز جدید
-        </span>
+<i class="fa-solid fa-lock"></i>
 
 
-        <i class="fa-solid fa-check"></i>
 
+<input
 
-    </button>
+id="newPassword"
+
+type="password"
+
+placeholder="رمز عبور جدید">
+
 
 
 </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="form-field password-field">
+
+
+
+<div class="input-group">
+
+
+<i class="fa-solid fa-lock"></i>
+
+
+
+<input
+
+id="repeatPassword"
+
+type="password"
+
+placeholder="تکرار رمز عبور">
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<button
+
+id="changePasswordBtn"
+
+class="login-btn"
+
+type="button">
+
+
+
+<span>
+
+ثبت رمز جدید
+
+</span>
+
+
+
+<i class="fa-solid fa-check"></i>
+
+
+
+</button>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
 
 
 
@@ -309,6 +545,7 @@ style="display:none;">
 قبلاً ثبت نام کرده‌اید؟
 
 
+
 <a href="login.html">
 
 ورود
@@ -316,9 +553,27 @@ style="display:none;">
 </a>
 
 
+
 </p>
 
 
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
 </div>
 
 
@@ -329,101 +584,45 @@ style="display:none;">
 
 
 
-        <!--==========================
-                LEFT SIDE
-        ==========================-->
-
-        <div class="login-left1">
-<!-- 
-            <img src="./ChatGPT Image ۸ مرداد ۱۴۰۵، ۲۳_۲۰_۵۵.png" alt=""> -->
-
-            <!-- <div class="loader">
-
-                <svg viewBox="0 0 100 100">
-
-                    <defs>
-
-                        <filter id="shadow">
-
-                            <feDropShadow
-                                flood-color="#000"
-                                stdDeviation="1.5"
-                                dx="0"
-                                dy="0">
-
-                            </feDropShadow>
-
-                        </filter>
-
-                    </defs>
-
-                    <circle
-
-                        id="spinner"
-
-                        cx="50"
-
-                        cy="50"
-
-                        r="45"
-
-                        style="
-
-                            fill:transparent;
-
-                            stroke:#00b4d8;
-
-                            stroke-width:7px;
-
-                            stroke-linecap:round;
-
-                            filter:url(#shadow);
-
-                        ">
-
-                    </circle>
-
-                </svg>
-
-            </div>
-
-            <div class="CC">
-
-                <div class="loader5"></div>
-
-                <div class="loader6"></div>
-
-            </div>
-
-        </div> -->
-
-    </section>
-
-</div>
-
-<!--==========================
-        REGISTER JS
-===========================-->
+<!-- CONFIG -->
 
 
 <script src="../config.js"></script>
 
-    <script>
+
+
+
+
+
+
+<!-- TYPING -->
+
+
+<script>
 
 
 const texts = [
 
-"ایجاد حساب کاربری",
 
-"برای شروع یادگیری، حساب جدید خود را ایجاد کنید.",
+"تایید حساب کاربری",
 
-"ریاضی کد مسیر یادگیری شما",
 
-"آینده از اینجا شروع می‌شود."
+"کد تایید را وارد کنید",
+
+
+"ساخت حساب شما در حال انجام است",
+
+
+"به کدماتیک خوش آمدید"
+
 
 ];
 
+
+
 const typing = document.getElementById("typing-text");
+
+
 
 let textIndex = 0;
 
@@ -431,66 +630,143 @@ let charIndex = 0;
 
 let deleting = false;
 
+
+
 function typeEffect(){
+
+
 
 const current = texts[textIndex];
 
+
+
+
 if(!deleting){
 
-    typing.textContent = current.substring(0,charIndex++);
 
-    if(charIndex > current.length){
+typing.textContent =
 
-        deleting = true;
+current.substring(0,charIndex++);
 
-        setTimeout(typeEffect,1500);
 
-        return;
 
-    }
 
-}else{
+if(charIndex > current.length){
 
-    typing.textContent = current.substring(0,charIndex--);
 
-    if(charIndex < 0){
+deleting=true;
 
-        deleting = false;
 
-        textIndex++;
+setTimeout(typeEffect,1500);
 
-        if(textIndex >= texts.length){
 
-            textIndex = 0;
-
-        }
-
-    }
+return;
 
 }
 
-setTimeout(typeEffect,deleting?40:80);
 
 
 }
+
+else{
+
+
+typing.textContent =
+
+current.substring(0,charIndex--);
+
+
+
+if(charIndex < 0){
+
+
+deleting=false;
+
+
+textIndex++;
+
+
+
+if(textIndex >= texts.length){
+
+textIndex=0;
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+setTimeout(
+
+typeEffect,
+
+deleting ? 40 : 80
+
+);
+
+
+
+}
+
+
 
 typeEffect();
-
-// ==============================================================
 
 
 
 </script>
+
+
+
+
+
 
 <script src="./change-password.js"></script>
 
 
 
 
-<div id="toast" class="toast">
-    <i class="fa-solid fa-circle-check"></i>
-    <span>کد شما تایید شد ✓</span>
+
+
+
+
+<!-- TOAST -->
+
+
+<div
+
+id="toast"
+
+class="toast">
+
+
+<i class="fa-solid fa-circle-check"></i>
+
+
+<span>
+
+کد شما تایید شد ✓
+
+</span>
+
+
+
 </div>
+
+
+
+
+
+
+
 </body>
+
 
 </html>

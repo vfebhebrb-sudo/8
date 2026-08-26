@@ -3,357 +3,579 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ثبت نام | کدماتیک</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<title>تایید شماره | کدماتیک</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="OTP.css">
 
-    <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+<link rel="stylesheet" href="./register.css">
 
-    <!-- Favicon -->
-    <link rel="icon"
-        type="image/png"
-        href="./2.2.6.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+<link rel="icon"
+type="image/png"
+href="./2.2.6.png">
+
 
 </head>
 
+
+
 <body>
+
+
 
 <div class="login-page">
 
-    <!--==========================
-            BACKGROUND
-    ==========================-->
-
-    <div class="background-glow"></div>
-
-    <div class="background-grid"></div>
-
-    <!--==========================
-            CARD
-    ==========================-->
-
-    <section class="login-card">
-
-        <!--==========================
-                RIGHT
-        ==========================-->
-
-        <div class="login-right">
-
-            <div class="login-panel">
-
-                <!--==========================
-                        HEADER
-                ==========================-->
-
-                <div class="panel-header">
-
-                    <div class="panel-logo">
-
-                        <img src="./لوگو1.png"
-                            alt="Codematic">
-
-                        <div class="logo-glow"></div>
-
-                    </div>
-
-                    <h3 id="typing-text"></h3>
-
-                </div>
-
-                <!--==========================
-                        FORM
-                ==========================-->
-
-                <!-- OTP FORM -->
-
-                    <form
-                    id="otpForm"
-                    class="login-form">
 
 
-                    <!-- PHONE -->
+<div class="background-glow"></div>
 
-                    <div class="form-field">
-
-                        <div
-                        class="input-group"
-                        id="phoneGroup">
+<div class="background-grid"></div>
 
 
-                            <i class="fa-solid fa-phone"></i>
 
 
-                            <input
-                            id="phoneNumber"
-                            type="tel"
-                            placeholder="شماره تلفن">
+
+<section class="login-card">
 
 
-                        </div>
 
 
-                    </div>
+
+<div class="login-panel">
+
+
+
+
+
+<!-- ==========================
+        HEADER
+========================== -->
+
+
+<!-- <div class="panel-header">
+
+
+
+<div class="panel-logo">
+
+
+<img src="./لوگو1.png"
+alt="Codematic">
+
+
+<div class="logo-glow"></div>
+
+
+</div>
+
+
+
+
+<h3 id="typing-text"></h3>
+
+
+
+
+</div> -->
+
+
+
+
+
+
+
+<!-- ==========================
+        FORM
+========================== -->
+
+
+<form
+
+id="otpForm"
+
+class="login-form"
+
+novalidate>
+
+
+
+
+
+
+<!-- PHONE -->
 
 <div class="form-field">
 
-    <div 
-    class="input-group" 
-    id="chatIdGroup">
+
+<div class="input-group"
+id="phoneGroup">
 
 
-        <i class="fa-solid fa-robot"></i>
+
+<i class="fa-solid fa-phone"></i>
 
 
-        <input 
-        id="chatId"
-        type="text"
-        placeholder="شناسه چت روبیکا">
+
+<input
+
+id="phoneNumber"
+
+name="phone"
+
+type="tel"
+
+autocomplete="tel"
+
+placeholder="شماره تلفن">
 
 
-    </div>
+
+
+
+
+<div class="field-status">
+
+
+<svg class="status-icon"
+viewBox="0 0 52 52">
+
+
+
+<circle
+
+class="status-circle"
+
+cx="26"
+
+cy="26"
+
+r="22"/>
+
+
+
+<path
+
+class="status-check"
+
+d="M16 27 L23 34 L37 18"/>
+
+
+
+<path
+
+class="status-cross1"
+
+d="M18 18 L34 34"/>
+
+
+
+<path
+
+class="status-cross2"
+
+d="M34 18 L18 34"/>
+
+
+
+</svg>
+
+
 
 </div>
 
-                    <!-- SEND BUTTON -->
 
-                   <div class="phone-actions">
 
 
-                        <button
-                        id="sendCodeBtn"
-                        class="login-btn"
-                        type="button">
+</div>
 
 
-                            <span>
-                                ارسال کد تایید
-                            </span>
+</div>
 
 
-                            <i class="fa-solid fa-paper-plane"></i>
 
 
-                        </button>
 
 
 
-                        <button
-                        id="editPhoneBtn"
-                        class="edit-phone"
-                        type="button">
 
 
-                            <i class="fa-solid fa-pen"></i>
+<!-- RUBIKA CHAT ID -->
 
-                            ویرایش شماره
 
+<div class="form-field">
 
-                        </button>
 
+<div class="input-group"
 
-                    </div>
+id="chatIdGroup">
 
 
-                    <!-- OTP TEXT -->
 
-                    <div class="otp-text">
+<i class="fa-solid fa-robot"></i>
 
 
-                        کد ارسال شده را وارد کنید
 
+<input
 
-                    </div>
+id="chatId"
 
+name="chatId"
 
+type="text"
 
+placeholder="شناسه چت روبیکا">
 
-                    <!-- OTP BOXES -->
 
-                    <div
-                    class="otp-container">
 
 
-                        <input
-                        class="otp-box"
-                        maxlength="1">
 
 
-                        <input
-                        class="otp-box"
-                        maxlength="1">
+<div class="field-status">
 
 
-                        <input
-                        class="otp-box"
-                        maxlength="1">
+<svg class="status-icon"
+viewBox="0 0 52 52">
 
 
-                        <input
-                        class="otp-box"
-                        maxlength="1">
 
+<circle
 
-                    </div>
+class="status-circle"
 
+cx="26"
 
+cy="26"
 
-                    <!-- LOGIN -->
+r="22"/>
 
-                    <button
-                    id="verifyBtn"
-                    class="login-btn"
-                    type="submit">
 
 
-                    <span>
-                        تایید و ایجاد حساب
-                    </span>
+<path
 
+class="status-check"
 
-                    <i class="fa-solid fa-arrow-left"></i>
+d="M16 27 L23 34 L37 18"/>
 
 
-                    </button>
 
+<path
 
+class="status-cross1"
 
-                    </form>
-                                
-                <!--==========================
-                        FOOTER
-                ==========================-->
+d="M18 18 L34 34"/>
 
-                <div class="panel-footer">
 
-                    <p>
 
-                        قبلاً ثبت نام کرده‌اید؟
+<path
 
-                        <a href="login.html">
+class="status-cross2"
 
-                            ورود
+d="M34 18 L18 34"/>
 
-                        </a>
 
-                    </p>
 
-                </div>
+</svg>
 
-            </div>
 
-        </div>
+</div>
 
-        <!--==========================
-                LEFT SIDE
-        ==========================-->
 
-        <div class="login-left1">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SEND CODE -->
+
+
+<div class="phone-actions">
+
+
+
+<button
+
+id="sendCodeBtn"
+
+class="login-btn"
+
+type="button">
+
+
+
+<span>
+
+ارسال کد تایید
+
+</span>
+
+
+
+<i class="fa-solid fa-paper-plane"></i>
+
+
+
+</button>
+
+
+
+
 <!-- 
-            <img src="./ChatGPT Image ۸ مرداد ۱۴۰۵، ۲۳_۲۰_۵۵.png" alt=""> -->
+<button
 
-            <!-- <div class="loader">
+id="editPhoneBtn"
 
-                <svg viewBox="0 0 100 100">
+class="edit-phone"
 
-                    <defs>
+type="button">
 
-                        <filter id="shadow">
 
-                            <feDropShadow
-                                flood-color="#000"
-                                stdDeviation="1.5"
-                                dx="0"
-                                dy="0">
 
-                            </feDropShadow>
+<i class="fa-solid fa-pen"></i>
 
-                        </filter>
 
-                    </defs>
+ویرایش شماره
 
-                    <circle
 
-                        id="spinner"
 
-                        cx="50"
+</button> -->
 
-                        cy="50"
 
-                        r="45"
 
-                        style="
-
-                            fill:transparent;
-
-                            stroke:#00b4d8;
-
-                            stroke-width:7px;
-
-                            stroke-linecap:round;
-
-                            filter:url(#shadow);
-
-                        ">
-
-                    </circle>
-
-                </svg>
-
-            </div>
-
-            <div class="CC">
-
-                <div class="loader5"></div>
-
-                <div class="loader6"></div>
-
-            </div>
-
-        </div> -->
-
-    </section>
 
 </div>
 
-<!--==========================
-        REGISTER JS
-===========================-->
+<!-- ==========================
+        OTP MESSAGE
+========================== -->
+
+
+<div class="otp-text">
+
+    <p>
+        کد تایید ارسال شده را وارد کنید
+    </p>
+
+    <span id="otpPhoneText">
+        به شماره شما ارسال شد
+    </span>
+
+</div>
+
+
+
+
+
+<!-- ==========================
+        OTP INPUTS
+========================== -->
+
+
+<div class="otp-container">
+
+
+    <input
+    class="otp-box"
+    id="otp1"
+    maxlength="1"
+    inputmode="numeric">
+
+
+    <input
+    class="otp-box"
+    id="otp2"
+    maxlength="1"
+    inputmode="numeric">
+
+
+    <input
+    class="otp-box"
+    id="otp3"
+    maxlength="1"
+    inputmode="numeric">
+
+
+    <input
+    class="otp-box"
+    id="otp4"
+    maxlength="1"
+    inputmode="numeric">
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ==========================
+        VERIFY BUTTON
+========================== -->
+
+
+<button
+
+id="verifyBtn"
+
+class="login-btn"
+
+type="submit">
+
+
+
+<span>
+
+    تایید و ایجاد حساب
+
+</span>
+
+
+
+<i class="fa-solid fa-arrow-left"></i>
+
+
+
+</button>
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+<!-- ==========================
+        FOOTER
+========================== -->
+
+
+<div class="panel-footer">
+
+
+<p>
+
+
+قبلاً ثبت نام کرده‌اید؟
+
+
+<a href="login.html">
+
+ورود
+
+</a>
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+        CONFIG
+========================== -->
+
+
 <script src="../config.js"></script>
 
-    <script>
+
+
+
+
+<!-- ==========================
+        TYPING EFFECT
+========================== -->
+
+
+<script>
 
 
 const texts = [
 
-"ایجاد حساب کاربری",
 
-"برای شروع یادگیری، حساب جدید خود را ایجاد کنید.",
+"تایید شماره تلفن",
 
-"ریاضی کد مسیر یادگیری شما",
 
-"آینده از اینجا شروع می‌شود."
+"کد ارسال شده را وارد کنید",
+
+
+"حساب شما در حال آماده سازی است",
+
+
+"به کدماتیک خوش آمدید"
+
 
 ];
 
+
+
 const typing = document.getElementById("typing-text");
+
+
 
 let textIndex = 0;
 
@@ -361,58 +583,105 @@ let charIndex = 0;
 
 let deleting = false;
 
+
+
 function typeEffect(){
+
+
 
 const current = texts[textIndex];
 
+
+
+
 if(!deleting){
 
-    typing.textContent = current.substring(0,charIndex++);
 
-    if(charIndex > current.length){
+typing.textContent =
+current.substring(0,charIndex++);
 
-        deleting = true;
 
-        setTimeout(typeEffect,1500);
 
-        return;
+if(charIndex > current.length){
 
-    }
+
+deleting = true;
+
+
+setTimeout(typeEffect,1500);
+
+
+return;
+
+
+}
+
+
+
 
 }else{
 
-    typing.textContent = current.substring(0,charIndex--);
 
-    if(charIndex < 0){
+typing.textContent =
+current.substring(0,charIndex--);
 
-        deleting = false;
 
-        textIndex++;
 
-        if(textIndex >= texts.length){
+if(charIndex < 0){
 
-            textIndex = 0;
 
-        }
+deleting=false;
 
-    }
+
+textIndex++;
+
+
+
+if(textIndex >= texts.length){
+
+textIndex=0;
 
 }
 
-setTimeout(typeEffect,deleting?40:80);
 
 
 }
+
+
+
+}
+
+
+
+
+setTimeout(
+typeEffect,
+deleting ? 40 : 80
+);
+
+
+
+}
+
+
 
 typeEffect();
-
-// ==============================================================
 
 
 
 </script>
 
+
+
+
+
+
+
 <script src="OTP.js"></script>
+
+
+
+
 
 </body>
 

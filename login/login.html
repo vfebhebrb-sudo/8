@@ -28,47 +28,52 @@
 </head>
 
 <body>
+<!-- ======================================
+        LOGIN PAGE
+====================================== -->
 
 <div class="login-page">
 
-    <!--==========================
-            BACKGROUND
-    ===========================-->
 
+    <!-- BACKGROUND -->
     <div class="background-glow"></div>
 
-    <div class="background-grid"></div>
 
 
-
-    <!--==========================
-            LOGIN CARD
-    ===========================-->
+    <!-- LOGIN CARD -->
 
     <section class="login-card">
 
 
-        <div class="login-right">
+        <!-- LOGO -->
 
+        <div class="panel-header">
 
-    <div class="login-panel">
+<!-- 
+            <div class="panel-logo">
 
+                <div class="logo-glow"></div>
 
-        <!-- HEADER -->
+                <img 
+                src="./لوگو1.png" 
+                alt="Codematic">
 
-            <div class="panel-header" style=" margin-bottom: -8px;">
-
-                <div class="panel-logo">
-
-                    <img src="./لوگو1.png" alt="Codematic">
-
-                    <div class="logo-glow"></div>
-
-                </div>
-
-                <!-- <h3 id="typing-text"></h3> -->
 
             </div>
+ -->
+
+
+            <h1>
+                ورود به حساب
+            </h1>
+
+
+            <p>
+                برای ادامه مسیر یادگیری خود وارد شوید
+            </p>
+
+
+        </div>
 
 
 
@@ -76,69 +81,83 @@
 
         <!-- FORM -->
 
-                    <form 
-            id="loginForm"
-            class="login-form">
+        <form 
+        id="loginForm"
+        class="login-form">
 
 
 
-            <!-- EMAIL -->
-
-       <div 
-class="input-box"
-id="loginIdentityGroup">
 
 
-    <div class="input-icon">
-
-        <i class="fa-solid fa-user"></i>
-
-    </div>
+            <!-- IDENTITY -->
 
 
-    <input
-    id="loginIdentity"
-    name="identity"
-    type="text"
-    autocomplete="username"
-    placeholder="شماره تلفن یا ایمیل خود را وارد کنید">
+            <div 
+            class="input-box"
+            id="loginIdentityGroup">
 
 
-    <div class="field-status">
+                <div class="input-icon">
 
-        <svg 
-        class="status-icon"
-        viewBox="0 0 52 52">
+                    <i class="fa-solid fa-user"></i>
 
-
-            <circle
-            class="status-circle"
-            cx="26"
-            cy="26"
-            r="22"/>
+                </div>
 
 
-            <path
-            class="status-check"
-            d="M16 27 L23 34 L37 18"/>
+
+                <input
+
+                id="loginIdentity"
+
+                name="identity"
+
+                type="text"
+
+                autocomplete="username"
+
+                placeholder="شماره تلفن یا ایمیل">
 
 
-            <path
-            class="status-cross1"
-            d="M18 18 L34 34"/>
+                
+
+                <!-- <div class="field-status">
+
+                    <svg 
+                    class="status-icon"
+                    viewBox="0 0 52 52">
 
 
-            <path
-            class="status-cross2"
-            d="M34 18 L18 34"/>
+                        <circle
+                        class="status-circle"
+                        cx="26"
+                        cy="26"
+                        r="22"/>
 
 
-        </svg>
+                        <path
+                        class="status-check"
+                        d="M16 27 L23 34 L37 18"/>
 
-    </div>
+
+                        <path
+                        class="status-cross1"
+                        d="M18 18 L34 34"/>
 
 
-</div>
+                        <path
+                        class="status-cross2"
+                        d="M34 18 L18 34"/>
+
+
+                    </svg>
+
+
+                </div> -->
+
+
+
+            </div>
+
 
 
 
@@ -146,6 +165,7 @@ id="loginIdentityGroup">
 
 
             <!-- PASSWORD -->
+
 
             <div class="input-box">
 
@@ -159,20 +179,34 @@ id="loginIdentityGroup">
 
 
                 <input
+
                 id="loginPassword"
+
                 type="password"
+
+                autocomplete="current-password"
+
                 placeholder="رمز عبور">
 
-                <div class="password-eye" id="passwordEye">
+
+
+                <button
+
+                type="button"
+
+                class="password-eye"
+
+                id="passwordEye">
+
 
                     <i class="fa-solid fa-eye"></i>
 
-                </div>
+
+                </button>
 
 
 
             </div>
-
 
 
 
@@ -190,22 +224,16 @@ id="loginIdentityGroup">
                 <label class="remember">
 
 
-                    <!-- <input type="checkbox"> -->
+                    <input 
+                    type="checkbox">
 
-                    <label class="container">
-                    <input type="checkbox">
-                    <svg viewBox="0 0 64 64" height="1em" width="1em">
-                        <path d="M 0 16 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 16 L 32 48 L 64 16 V 8 A 8 8 90 0 0 56 0 H 8 A 8 8 90 0 0 0 8 V 56 A 8 8 90 0 0 8 64 H 56 A 8 8 90 0 0 64 56 V 16" pathLength="575.0541381835938" class="path"></path>
-                    </svg>
-                    </label>
+
                     <span>
                         مرا به خاطر بسپار
                     </span>
 
 
                 </label>
-
-
 
 
 
@@ -221,46 +249,83 @@ id="loginIdentityGroup">
 
 
 
-           <!-- -- خطا -- -->
-            <div 
+
+
+
+
+
+            <!-- ERROR -->
+
+
+            <div
+
             class="login-error"
-            id="loginError">
-            </div>
 
-
-
-
-           <!--==========================
-        LOGIN BUTTON
-===========================-->
-
-            <button
-                id="loginBtn"
-                class="login-btn"
-                type="submit">
-
-                <span id="loginBtnText">
-                    ورود به حساب
-                </span>
-
-                <i 
-                    id="loginBtnIcon"
-                    class="fa-solid fa-arrow-left">
-                </i>
-
-            </button>
-
-            <div 
-             class="login-error"
             id="loginError">
 
             </div>
 
-            <div 
+
+
+
+
+            <!-- SUCCESS -->
+
+
+            <div
+
             class="login-success"
+
             id="loginSuccess">
 
             </div>
+
+
+
+
+
+
+
+
+
+            <!-- LOGIN BUTTON -->
+
+
+            <button
+
+            class="login-btn"
+
+            id="loginBtn"
+
+            type="submit">
+
+
+
+                <span id="loginBtnText">
+
+                    ورود به حساب
+
+                </span>
+
+
+
+                <i
+
+                id="loginBtnIcon"
+
+                class="fa-solid fa-arrow-left">
+
+                </i>
+
+
+
+            </button>
+
+
+
+
+
+
 
 
 
@@ -282,7 +347,6 @@ id="loginIdentityGroup">
                 <span></span>
 
 
-
             </div>
 
 
@@ -293,7 +357,7 @@ id="loginIdentityGroup">
 
 
 
-            <!-- SOCIAL LOGIN -->
+            <!-- SOCIAL -->
 
 
             <div class="social-login">
@@ -302,20 +366,18 @@ id="loginIdentityGroup">
 
                 <button
                 type="button"
-                class="google-btn">
+                class="social-btn">
 
 
                     <i class="fa-brands fa-google"></i>
 
 
                     <span>
-                        ورود با گوگل
+                        گوگل
                     </span>
 
 
-
                 </button>
-
 
 
 
@@ -324,22 +386,21 @@ id="loginIdentityGroup">
 
 
                 <button
+
                 type="button"
-                class="github-btn">
+
+                class="social-btn">
 
 
                     <i class="fa-brands fa-github"></i>
 
 
-
-                    <span">
-                        ورود با گیت‌هاب
+                    <span>
+                        گیت‌هاب
                     </span>
 
 
-
                 </button>
-
 
 
 
@@ -350,7 +411,12 @@ id="loginIdentityGroup">
 
 
 
+
+
+
         </form>
+
+
 
 
 
@@ -368,11 +434,16 @@ id="loginIdentityGroup">
 
                 حساب ندارید؟
 
-            <a href="register.html" id="registerLink">
+                <a 
+                href="register.html"
+                id="registerLink">
 
-                ثبت نام
 
-            </a>
+                    ثبت نام
+
+
+                </a>
+
 
             </p>
 
@@ -383,119 +454,71 @@ id="loginIdentityGroup">
 
 
 
-    </div>
+    </section>
+
 
 
 </div>
-        <!--==================================================
-                        LEFT SIDE
-        ==================================================-->
 
-        <div class="login-left">
-           <i data-lucide="graduation-cap"></i>
-        </div>
 
+
+
+
+
+
+
+
+<!-- SCRIPTS -->
 
 
 <script src="../config.js"></script>
 
 
+<script>
 
-        <script>
+const register =
+document.getElementById("registerLink");
 
-// const texts = [
-
-// "خوش آمدید ",
-
-// "برای ادامه وارد حساب خود شوید.",
-
-// "ریاضی کد مسیر یادگیری شما",
-
-// "آینده از اینجا شروع می‌شود."
-
-// ];
-
-// const typing = document.getElementById("typing-text");
-
-// let textIndex = 0;
-
-// let charIndex = 0;
-
-// let deleting = false;
-
-// function typeEffect(){
-
-//     const current = texts[textIndex];
-
-//     if(!deleting){
-
-//         typing.textContent = current.substring(0,charIndex++);
-
-//         if(charIndex > current.length){
-
-//             deleting = true;
-
-//             setTimeout(typeEffect,1500);
-
-//             return;
-
-//         }
-
-//     }else{
-
-//         typing.textContent = current.substring(0,charIndex--);
-
-//         if(charIndex < 0){
-
-//             deleting = false;
-
-//             textIndex++;
-
-//             if(textIndex >= texts.length){
-
-//                 textIndex = 0;
-
-//             }
-
-//         }
-
-//     }
-
-//     setTimeout(typeEffect,deleting?40:80);
-
-// }
-
-// typeEffect();
-
-
-
-// ==============================================================
-
-const register = document.getElementById("registerLink");
 
 register.addEventListener("click",function(e){
 
+
     e.preventDefault();
 
-    document.querySelector(".login-card")
+
+    document
+    .querySelector(".login-card")
     .classList.add("page-out");
+
+
 
     setTimeout(()=>{
 
+
         window.location.href="register.html";
 
+
     },400);
+
+
 
 });
 
 
 </script>
 
+
+
 <script>
-    lucide.createIcons();
+
+lucide.createIcons();
+
 </script>
 
+
+
 <script src="login.js"></script>
+
 
 </body>
 

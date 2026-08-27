@@ -1,11 +1,11 @@
 // ======================================================
-// MOBILE CHAT OPEN / CLOSE + LOAD CHATS
+// MOBILE CHAT + DATABASE LOAD
 // ======================================================
 
 
-// ======================================================
+// ===============================
 // ELEMENTS
-// ======================================================
+// ===============================
 
 const chatPanel = document.getElementById("chatPanel");
 
@@ -13,16 +13,25 @@ const conversation = document.getElementById("conversation");
 
 const mobileBackBtn = document.getElementById("mobileBackBtn");
 
-
 const chatList = document.getElementById("chatList");
 
-// ======================================================
-// CURRENT USER
-// ======================================================
 
-const savedUser = localStorage.getItem(
-    "currentUser"
-);
+
+
+// ===============================
+// API
+// ===============================
+
+const API = API_URL;
+
+
+
+
+// ===============================
+// CURRENT USER
+// ===============================
+
+const savedUser = localStorage.getItem("currentUser");
 
 
 const chatUser = savedUser
@@ -39,15 +48,22 @@ console.log(
 
 
 
-// ======================================================
-// OPEN MOBILE CHAT
-// ======================================================
+// ===============================
+// CHAT DATA
+// ===============================
+
+let chats = [];
+
+
+
+
+// ===============================
+// MOBILE OPEN
+// ===============================
 
 function openChatMobile(){
 
-
     if(window.innerWidth <= 768){
-
 
         chatPanel?.classList.add(
             "hide-panel"
@@ -58,21 +74,18 @@ function openChatMobile(){
             "show-chat"
         );
 
-
     }
-
 
 }
 
 
 
 
-// ======================================================
-// CLOSE MOBILE CHAT
-// ======================================================
+// ===============================
+// MOBILE CLOSE
+// ===============================
 
 function closeChatMobile(){
-
 
     chatPanel?.classList.remove(
         "hide-panel"
@@ -83,28 +96,21 @@ function closeChatMobile(){
         "show-chat"
     );
 
-
 }
 
 
 
 
-// ======================================================
+// ===============================
 // BACK BUTTON
-// ======================================================
+// ===============================
 
 if(mobileBackBtn){
 
-
     mobileBackBtn.addEventListener(
         "click",
-        ()=>{
-
-            closeChatMobile();
-
-        }
+        closeChatMobile
     );
-
 
 }
 
@@ -112,8 +118,9 @@ if(mobileBackBtn){
 
 
 // ======================================================
-// LOAD USER CHATS FROM DATABASE
+// LOAD CHATS FROM DATABASE
 // ======================================================
+
 
 async function loadUserChats(){
 
@@ -126,16 +133,13 @@ async function loadUserChats(){
 
     if(!chatUser){
 
-
         console.log(
             "❌ USER NOT LOGIN"
         );
 
-
         return;
 
     }
-
 
 
 
@@ -144,8 +148,7 @@ async function loadUserChats(){
 
         const url =
 
-            API +
-            `/chat/user/${chatUser.phone}`;
+        `${API}/chat/user/${chatUser.phone}`;
 
 
 
@@ -156,9 +159,7 @@ async function loadUserChats(){
 
 
 
-        const response =
-
-            await fetch(url);
+        const response = await fetch(url);
 
 
 
@@ -169,9 +170,7 @@ async function loadUserChats(){
 
 
 
-        const data =
-
-            await response.json();
+        const data = await response.json();
 
 
 
@@ -182,26 +181,14 @@ async function loadUserChats(){
 
 
 
-
-
         if(
             !data.success ||
             !Array.isArray(data.chats)
         ){
 
-
             console.log(
-                "⚠️ NO DATABASE CHATS"
+                "⚠️ NO CHATS"
             );
-
-
-            chats = [
-                ...staticChats
-            ];
-
-
-            renderChats();
-
 
             return;
 
@@ -210,28 +197,18 @@ async function loadUserChats(){
 
 
 
-
-        // ترکیب چت ثابت + دیتابیس
-
-
-        chats = [
-
-            ...staticChats,
-
-            ...data.chats
-
-        ];
+        chats = data.chats;
 
 
 
         console.log(
-            "🔥 FINAL CHATS:",
+            "🔥 CHATS:",
             chats
         );
 
 
 
-       createChatCards();
+        createChatCards();
 
 
 
@@ -242,7 +219,7 @@ async function loadUserChats(){
 
 
         console.log(
-            "🔥 LOAD CHAT ERROR:",
+            "🔥 LOAD ERROR:",
             error
         );
 
@@ -255,22 +232,21 @@ async function loadUserChats(){
 
 
 
+
+
+
 // ======================================================
 // CREATE CHAT CARDS
 // ======================================================
 
-function renderChats(){
 
-
-    const chatList = document.getElementById(
-        "chatList"
-    );
+function createChatCards(){
 
 
     if(!chatList){
 
         console.log(
-            "❌ chatList پیدا نشد"
+            "❌ chatList not found"
         );
 
         return;
@@ -280,6 +256,7 @@ function renderChats(){
 
 
     chatList.innerHTML = "";
+
 
 
 
@@ -291,43 +268,54 @@ function renderChats(){
         );
 
 
-        item.className = "chat-item";
+
+        item.className =
+        "chat-item";
 
 
-        item.dataset.chatId = chat._id;
+
+        item.dataset.chatId =
+        chat._id;
 
 
-        item.dataset.type = chat.type;
+
+        item.dataset.type =
+        chat.type;
+
 
 
 
         let icon = "user";
+
 
 
         if(chat.type === "ai"){
 
-            icon = "bot";
+            icon="bot";
 
         }
 
-        else if(chat.type === "group"){
 
-            icon = "users";
+        else if(chat.type==="group"){
+
+            icon="users";
+
+        }
+
+
+        else if(chat.type==="channel"){
+
+            icon="megaphone";
 
         }
 
-        else if(chat.type === "channel"){
-
-            icon = "megaphone";
-
-        }
 
 
 
         item.innerHTML = `
 
 
-        <div class="ai-avatar">
+        <div class="profile-icon">
 
 
             <i data-lucide="${icon}"></i>
@@ -337,215 +325,9 @@ function renderChats(){
 
 
 
+
         <div class="chat-info">
 
-
-            <div class="chat-name">
-
-
-                <strong>
-
-                    ${chat.name || "بدون نام"}
-
-                    ${
-                        chat.type === "ai"
-                        ?
-                        `<span class="verified">✓</span>`
-                        :
-                        ""
-                    }
-
-                </strong>
-
-
-                <time>
-
-                    ${
-                        chat.type === "ai"
-                        ?
-                        "آنلاین"
-                        :
-                        chat.type
-                    }
-
-                </time>
-
-
-            </div>
-
-
-
-            <p>
-
-                ${
-                    chat.lastMessage
-                    ||
-                    "پیامی وجود ندارد"
-
-                }
-
-            </p>
-
-
-        </div>
-
-
-        `;
-
-
-
-        chatList.appendChild(
-            item
-        );
-
-
-    });
-
-
-
-    if(typeof lucide !== "undefined"){
-
-        lucide.createIcons();
-
-    }
-
-
-
-    console.log(
-        "🔥 CHAT CARDS CREATED:",
-        chatList.children.length
-    );
-
-
-}
-
-
-
-
-
-
-// ======================================================
-// CLICK CHAT
-// ======================================================
-
-document.addEventListener(
-    "click",
-    function(event){
-
-
-        const item =
-
-            event.target.closest(
-                ".chat-item"
-            );
-
-
-
-        if(!item){
-
-            return;
-
-        }
-
-
-
-        console.log(
-            "🔥 OPEN CHAT:",
-            item.dataset.chatId
-        );
-
-
-
-        openChatMobile();
-
-
-
-    }
-);
-
-
-
-
-// ======================================================
-// START
-// ======================================================
-
-
-loadUserChats();
-
-
-
-
-
-// ======================================================
-// CREATE CHAT CARDS
-// ساخت کارت های چت
-// ======================================================
-
-function createChatCards(){
-
-    if(!chatList){
-
-        console.log("❌ chatList پیدا نشد");
-        return;
-
-    }
-
-
-    chatList.innerHTML = "";
-
-
-    chats.forEach(chat=>{
-
-
-        const item = document.createElement("div");
-
-
-        item.className = "chat-item";
-
-
-        item.dataset.chatId = chat._id;
-
-
-        item.dataset.type = chat.type;
-
-
-
-        let icon = "user";
-
-
-        if(chat.type === "group"){
-
-            icon = "users";
-
-        }
-
-        else if(chat.type === "channel"){
-
-            icon = "megaphone";
-
-        }
-
-        else if(chat.type === "ai"){
-
-            icon = "bot";
-
-        }
-
-
-
-        item.innerHTML = `
-
-
-        <div class="profile-icon ${chat.type}">
-
-            <i data-lucide="${icon}"></i>
-
-        </div>
-
-
-
-        <div class="chat-info">
 
 
             <div class="chat-name">
@@ -558,9 +340,8 @@ function createChatCards(){
                 </strong>
 
 
-
                 ${
-                    chat.type === "ai"
+                    chat.type==="ai"
 
                     ?
 
@@ -579,7 +360,7 @@ function createChatCards(){
                 <time>
 
                     ${
-                        chat.type === "ai"
+                        chat.type==="ai"
 
                         ?
 
@@ -594,7 +375,9 @@ function createChatCards(){
                 </time>
 
 
+
             </div>
+
 
 
 
@@ -603,11 +386,7 @@ function createChatCards(){
                 ${
                     chat.lastMessage
 
-                    ?
-
-                    chat.lastMessage
-
-                    :
+                    ||
 
                     "پیامی وجود ندارد"
 
@@ -617,6 +396,7 @@ function createChatCards(){
 
 
 
+
         </div>
 
 
@@ -624,14 +404,17 @@ function createChatCards(){
 
 
 
-        chatList.appendChild(item);
+        chatList.appendChild(
+            item
+        );
+
 
 
     });
 
 
 
-    // فعال کردن آیکون ها
+
 
     if(typeof lucide !== "undefined"){
 
@@ -640,10 +423,12 @@ function createChatCards(){
     }
 
 
+
     console.log(
-        "🔥 CHAT CARDS CREATED:",
+        "🔥 CARDS CREATED:",
         chatList.children.length
     );
+
 
 
 }
@@ -653,154 +438,49 @@ function createChatCards(){
 
 
 
-
-
-
-
-
-
-
-
 // ======================================================
-// RENDER CHAT CARDS
+// CLICK CHAT
 // ======================================================
 
-function renderChats(){
 
-    const chatList = document.getElementById("chatList");
+document.addEventListener(
+"click",
+(e)=>{
 
 
-    if(!chatList){
-        console.log("❌ chatList پیدا نشد");
+    const item =
+    e.target.closest(".chat-item");
+
+
+
+    if(!item){
+
         return;
-    }
-
-
-    chatList.innerHTML = "";
-
-
-    chats.forEach(chat=>{
-
-
-        const div = document.createElement("div");
-
-
-        div.className = "chat-item";
-
-
-        div.dataset.chatId = chat._id;
-
-
-        div.dataset.type = chat.type;
-
-
-
-        let icon = "users";
-
-
-        if(chat.type === "ai"){
-            icon = "bot";
-        }
-
-        else if(chat.type === "channel"){
-            icon = "megaphone";
-        }
-
-        else if(chat.type === "private"){
-            icon = "user";
-        }
-
-
-
-        div.innerHTML = `
-
-
-        <div class="profile-icon">
-
-            <i data-lucide="${icon}"></i>
-
-        </div>
-
-
-
-        <div class="chat-info">
-
-
-            <div class="chat-name">
-
-                <strong>
-
-                    ${chat.name || "بدون نام"}
-
-                </strong>
-
-
-                ${
-                    chat.type==="ai"
-                    ?
-                    `<span class="verified">✓</span>`
-                    :
-                    ""
-                }
-
-
-                <time>
-
-                ${
-                    chat.type==="ai"
-                    ?
-                    "آنلاین"
-                    :
-                    chat.type || ""
-
-                }
-
-                </time>
-
-
-            </div>
-
-
-
-            <p>
-
-            ${
-                chat.lastMessage 
-                ||
-                "پیامی وجود ندارد"
-
-            }
-
-            </p>
-
-
-
-        </div>
-
-
-        `;
-
-
-
-        chatList.appendChild(div);
-
-
-    });
-
-
-
-    if(typeof lucide !== "undefined"){
-
-        lucide.createIcons();
 
     }
 
 
 
     console.log(
-        "🔥 CHAT CARDS CREATED:",
-        chatList.children.length
+        "🔥 OPEN CHAT:",
+        item.dataset.chatId
     );
 
 
-}
+
+    openChatMobile();
+
+
+
+});
+
+
+
+
+
+// ======================================================
+// START
+// ======================================================
+
+
+loadUserChats();

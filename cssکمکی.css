@@ -1457,7 +1457,39 @@
     --subject-color: #36b9ff;
 }
 
+.subject-card[data-subject="geometry"] {
 
+    --subject-color: #8b5cf6;
+
+}
+
+
+.subject-card[data-subject="calculus"] {
+
+    --subject-color: #ec4899;
+
+}
+
+
+.subject-card[data-subject="discrete"] {
+
+    --subject-color: #f97316;
+
+}
+
+
+.subject-card[data-subject="statistics"] {
+
+    --subject-color: #14b8a6;
+
+}
+
+
+.subject-card[data-subject="test"] {
+
+    --subject-color: #ef4444;
+
+}
 /* =========================================================
    HOVER CARD
 ========================================================= */

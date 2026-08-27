@@ -1,5 +1,13 @@
 // ======================================================
 // CHANGE PASSWORD OTP SYSTEM
+// سیستم بازیابی رمز عبور با کد تایید
+// ======================================================
+
+
+
+// ======================================================
+// گرفتن المنت های صفحه
+// برای دسترسی به ورودی ها و دکمه ها
 // ======================================================
 
 
@@ -19,8 +27,17 @@ const editPhoneBtn =
 document.getElementById("editPhoneBtn");
 
 
+const otpForm =
+document.getElementById("otpForm");
+
+
 const otpBoxes =
 document.querySelectorAll(".otp-box");
+
+
+const passwordTab =
+document.getElementById("passwordTab");
+
 
 const newPassword =
 document.getElementById("newPassword");
@@ -33,222 +50,240 @@ document.getElementById("repeatPassword");
 const changePasswordBtn =
 document.getElementById("changePasswordBtn");
 
+
+
+
+// وضعیت ارسال کد
 let codeSent = false;
 
 
 
+
 // ======================================================
-// PHONE VALIDATION
+// اعتبارسنجی شماره تلفن
+// بررسی میکند شماره درست وارد شده یا نه
 // ======================================================
+
 
 function validatePhone(phone){
 
-    const regex = /^09\d{9}$/;
-
-    return regex.test(phone);
+    return /^09\d{9}$/.test(phone);
 
 }
 
 
+
+
 // ======================================================
-// SEND RESET OTP
+// نمایش پیام Toast
+// پیام کوچک موفقیت یا خطا
 // ======================================================
+
+
+function showToast(message){
+
+
+    const toast =
+    document.getElementById("toast");
+
+
+    if(!toast)
+        return;
+
+
+    const text =
+    toast.querySelector("span");
+
+
+    if(text)
+        text.innerText = message;
+
+
+
+    toast.classList.add("show");
+
+
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },2500);
+
+
+}
+
+
+
+
+
+// ======================================================
+// ارسال کد تایید
+// درخواست ارسال OTP به سرور
+// ======================================================
+
+
+if(sendCodeBtn){
+
 
 sendCodeBtn.addEventListener(
 "click",
 async()=>{
 
 
-    const phone =
-    phoneNumber.value.trim();
+const phone =
+phoneNumber.value.trim();
 
 
 
-    if(!validatePhone(phone)){
+if(!validatePhone(phone)){
 
 
-        phoneGroup.classList.add(
+    phoneGroup?.classList.add(
+        "invalid"
+    );
+
+
+    setTimeout(()=>{
+
+        phoneGroup?.classList.remove(
             "invalid"
         );
 
+    },700);
 
-        setTimeout(()=>{
 
-            phoneGroup.classList.remove(
-                "invalid"
-            );
+    return;
 
-        },700);
+}
 
 
-        return;
 
-    }
 
+try{
 
 
-    try{
+sendCodeBtn.disabled=true;
 
 
-        sendCodeBtn.disabled = true;
 
+sendCodeBtn.innerHTML=`
 
-        sendCodeBtn.innerHTML = `
+<span>
+در حال ارسال...
+</span>
 
-            <span>
-                در حال ارسال...
-            </span>
+`;
 
-        `;
 
 
 
-        const response =
-        await fetch(
 
-            `${API_URL}/password-reset/send-reset-otp`,
+const response =
+await fetch(
 
-            {
+`${API_URL}/password-reset/send-reset-otp`,
 
-                method:"POST",
+{
 
 
-                headers:{
+method:"POST",
 
-                    "Content-Type":
-                    "application/json"
 
-                },
+headers:{
 
+"Content-Type":
+"application/json"
 
-                body:JSON.stringify({
+},
 
-                    phone:phone
 
-                })
+body:JSON.stringify({
 
-            }
+phone
 
-        );
+})
 
 
+}
 
-        const data =
-        await response.json();
+);
 
 
 
-        console.log(
-            "RESET OTP RESPONSE:",
-            data
-        );
 
 
+const data =
+await response.json();
 
-        if(response.ok){
 
 
-            phoneNumber.disabled = true;
 
+console.log(
+"RESET OTP:",
+data
+);
 
 
-            sendCodeBtn.innerHTML = `
 
-                <span>
-                    کد ارسال شد ✓
-                </span>
 
-                <i class="fa-solid fa-check"></i>
 
-            `;
+if(!response.ok){
 
 
+throw new Error(
+data.message ||
+"ارسال کد ناموفق بود"
+);
 
-            otpBoxes.forEach(box=>{
 
-                box.disabled = false;
+}
 
-            });
 
 
 
-            codeSent = true;
+// قفل کردن شماره
 
+phoneNumber.disabled=true;
 
 
-        }
 
-        else{
+sendCodeBtn.innerHTML=`
 
+<span>
+کد ارسال شد ✓
+</span>
 
-            throw new Error(
-                data.message ||
-                "ارسال کد ناموفق بود"
-            );
+<i class="fa-solid fa-check"></i>
 
+`;
 
-        }
 
 
 
-    }
+// فعال کردن باکس های کد
 
+otpBoxes.forEach(box=>{
 
-    catch(error){
-
-
-        console.log(
-            "RESET OTP ERROR:",
-            error
-        );
-
-
-
-        sendCodeBtn.disabled = false;
-
-
-
-        sendCodeBtn.innerHTML = `
-
-            <span>
-                ارسال کد تایید
-            </span>
-
-            <i class="fa-solid fa-paper-plane"></i>
-
-        `;
-
-
-
-        alert(
-            error.message ||
-            "خطا در اتصال به سرور"
-        );
-
-
-    }
-
-
+box.disabled=false;
 
 });
 
 
 
-
-// ======================================================
-// EDIT PHONE
-// ======================================================
+codeSent=true;
 
 
-editPhoneBtn.addEventListener(
-"click",
-()=>{
+
+}
 
 
-phoneNumber.disabled=false;
 
 
-phoneNumber.focus();
+catch(error){
+
+
+console.log(error);
 
 
 
@@ -268,10 +303,55 @@ sendCodeBtn.innerHTML=`
 
 
 
+alert(
+error.message
+);
+
+
+}
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+// ======================================================
+// ویرایش شماره
+// فعال کردن دوباره شماره تلفن
+// ======================================================
+
+
+if(editPhoneBtn){
+
+
+editPhoneBtn.addEventListener(
+"click",
+()=>{
+
+
+phoneNumber.disabled=false;
+
+
+phoneNumber.focus();
+
+
+
+sendCodeBtn.disabled=false;
+
+
+
 otpBoxes.forEach(box=>{
 
 
 box.value="";
+
 
 box.disabled=true;
 
@@ -284,14 +364,31 @@ codeSent=false;
 
 
 
+sendCodeBtn.innerHTML=`
+
+<span>
+ارسال کد تایید
+</span>
+
+<i class="fa-solid fa-paper-plane"></i>
+
+`;
+
+
+
 });
+
+
+}
+
 
 
 
 
 
 // ======================================================
-// OTP INPUT CONTROL
+// کنترل باکس های OTP
+// حرکت خودکار بین خانه ها
 // ======================================================
 
 
@@ -326,8 +423,9 @@ otpBoxes[index+1].focus();
 }
 
 
-
 });
+
+
 
 
 
@@ -347,54 +445,21 @@ otpBoxes[index-1].focus();
 }
 
 
-
 });
 
 
 });
-
-
-
-function showToast(message){
-
-
-const toast =
-document.getElementById("toast");
-
-
-toast.querySelector("span")
-.innerText = message;
-
-
-
-toast.classList.add("show");
-
-
-
-setTimeout(()=>{
-
-
-toast.classList.remove("show");
-
-
-},2500);
-
-
-}
-
-
-
-
-
 
 // ======================================================
 // VERIFY RESET OTP
+// تایید کد ارسال شده
 // ======================================================
 
 
-document
-.getElementById("otpForm")
-.addEventListener(
+if(otpForm){
+
+
+otpForm.addEventListener(
 "submit",
 async(e)=>{
 
@@ -415,76 +480,15 @@ phoneNumber.value.trim();
 
 
 
+
+
+// بررسی کامل بودن کد
+
 if(otpCode.length !== 4){
-
-    alert(
-        "کد تایید را کامل وارد کنید"
-    );
-
-    return;
-
-}
-
-
-
-
-try{
-
-
-const response =
-await fetch(
-
-`${API_URL}/password-reset/verify-reset-otp`,
-
-{
-
-method:"POST",
-
-headers:{
-
-"Content-Type":
-"application/json"
-
-},
-
-
-body:JSON.stringify({
-
-phone:phone,
-
-otp:otpCode
-
-})
-
-
-}
-
-);
-
-
-
-
-
-const data =
-await response.json();
-
-
-
-console.log(
-"VERIFY RESET:",
-data
-);
-
-
-
-
-
-if(!response.ok){
 
 
 alert(
-data.message || 
-"کد تایید اشتباه است"
+"کد تایید را کامل وارد کنید"
 );
 
 
@@ -497,6 +501,95 @@ return;
 
 
 
+try{
+
+
+
+const response =
+await fetch(
+
+`${API_URL}/password-reset/verify-reset-otp`,
+
+{
+
+
+method:"POST",
+
+
+headers:{
+
+
+"Content-Type":
+"application/json"
+
+
+},
+
+
+body:JSON.stringify({
+
+
+phone:phone,
+
+
+otp:otpCode
+
+
+})
+
+
+}
+
+);
+
+
+
+
+
+
+const data =
+await response.json();
+
+
+
+
+console.log(
+"VERIFY OTP:",
+data
+);
+
+
+
+
+
+
+if(!response.ok){
+
+
+
+alert(
+
+data.message ||
+
+"کد تایید اشتباه است"
+
+);
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+
+// نمایش پیام موفقیت
+
 showToast(
 "کد تایید شد ✓"
 );
@@ -504,6 +597,9 @@ showToast(
 
 
 
+
+
+// ذخیره شماره برای مرحله تغییر رمز
 
 sessionStorage.setItem(
 
@@ -518,22 +614,36 @@ phone
 
 
 
+
+// رفتن به بخش رمز جدید
+
 setTimeout(()=>{
 
 
-document
-.getElementById("otpForm")
-.style.display="none";
+
+if(otpForm){
+
+otpForm.style.display="none";
+
+}
 
 
 
-document
-.getElementById("passwordTab")
-.style.display="block";
+if(passwordTab){
 
+
+passwordTab.style.display="block";
+
+
+passwordTab.style.opacity="1";
+
+
+}
 
 
 },1000);
+
+
 
 
 
@@ -548,7 +658,7 @@ catch(error){
 
 console.log(
 
-"VERIFY RESET ERROR:",
+"VERIFY ERROR:",
 
 error
 
@@ -563,6 +673,7 @@ alert(
 );
 
 
+
 }
 
 
@@ -570,56 +681,7 @@ alert(
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -631,16 +693,29 @@ alert(
 
 // ======================================================
 // CHANGE PASSWORD
+// ثبت رمز عبور جدید
 // ======================================================
 
 
+if(changePasswordBtn){
+
+
+
 changePasswordBtn.addEventListener(
+
 "click",
+
 async()=>{
+
+
+
+
 
 
 const password =
 newPassword.value.trim();
+
+
 
 
 const repeat =
@@ -648,190 +723,363 @@ repeatPassword.value.trim();
 
 
 
+
+
+
+
+
+// بررسی خالی نبودن رمز
+
+
 if(!password || !repeat){
 
-    alert(
-        "رمز عبور را کامل وارد کنید"
-    );
 
-    return;
+alert(
+
+"رمز عبور را کامل وارد کنید"
+
+);
+
+
+return;
+
 
 }
 
+
+
+
+
+
+
+// بررسی یکی بودن دو رمز
 
 
 if(password !== repeat){
 
-    alert(
-        "تکرار رمز عبور صحیح نیست"
-    );
 
-    return;
+alert(
+
+"تکرار رمز عبور صحیح نیست"
+
+);
+
+
+return;
+
 
 }
 
 
 
+
+
+
+
+
+// گرفتن شماره ذخیره شده
+
+
 const phone =
+
 sessionStorage.getItem(
-    "resetPhone"
+
+"resetPhone"
+
 );
+
+
+
+
+
 
 
 
 if(!phone){
 
-    alert(
-        "شماره کاربر پیدا نشد، دوباره تلاش کنید"
-    );
 
-    return;
+alert(
+
+"اطلاعات کاربر پیدا نشد"
+
+);
+
+
+return;
+
 
 }
+
+
+
+
+
+
 
 
 
 try{
 
 
-changePasswordBtn.disabled = true;
 
 
-changePasswordBtn.innerHTML = `
+
+changePasswordBtn.disabled=true;
+
+
+
+
+changePasswordBtn.innerHTML=`
 
 <span>
+
 در حال تغییر...
+
 </span>
 
 `;
+
+
+
+
 
 
 
 
 
 const response =
+
 await fetch(
 
 `${API_URL}/password-reset/change-password`,
 
 {
 
+
 method:"POST",
+
 
 
 headers:{
 
+
 "Content-Type":
+
 "application/json"
+
 
 },
 
 
+
 body:JSON.stringify({
+
 
 phone:phone,
 
+
 newPassword:password
+
 
 })
 
 
 }
 
+
 );
+
+
+
 
 
 
 
 
 const data =
+
 await response.json();
 
 
 
+
+
 console.log(
+
 "CHANGE PASSWORD:",
+
 data
+
 );
 
 
 
 
 
-if(response.ok){
 
+
+
+if(!response.ok){
+
+
+throw new Error(
+
+data.message ||
+
+"خطا در تغییر رمز"
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+// موفقیت
 
 showToast(
+
 "رمز عبور با موفقیت تغییر کرد ✓"
+
 );
 
+
+
+
+
+
+
+// پاک کردن اطلاعات موقت
 
 
 sessionStorage.removeItem(
+
 "resetPhone"
+
 );
+
+
+
+
+
 
 
 
 setTimeout(()=>{
 
 
+
+const isMobile =
+/Android|iPhone|iPad|iPod/i.test(
+navigator.userAgent
+);
+
+
+
+if(isMobile){
+
+
 window.location.href =
-"../index.html";
+ "../گوشی/موبایل.html";
+
+
+}
+else{
+
+
+window.location.href =
+"../index1.html";
+
+
+}
+
 
 
 },1500);
 
 
 
-}
-
-else{
 
 
-throw new Error(
-data.message ||
-"خطا در تغییر رمز"
-);
 
 
 }
 
 
 
-}
+
+
 
 
 catch(error){
 
 
+
+
+
 console.log(
+
 "CHANGE PASSWORD ERROR:",
+
 error
+
 );
+
+
+
 
 
 alert(
+
 error.message ||
+
 "خطا در اتصال به سرور"
+
 );
+
+
+
+
+
 
 
 
 changePasswordBtn.disabled=false;
 
 
-changePasswordBtn.innerHTML = `
+
+
+
+changePasswordBtn.innerHTML=`
 
 <span>
-تغییر رمز عبور
+
+ثبت رمز جدید
+
 </span>
 
+
+<i class="fa-solid fa-check"></i>
+
 `;
+
+
+
+
 
 
 
 }
 
 
+
 });
+
+
+
+}

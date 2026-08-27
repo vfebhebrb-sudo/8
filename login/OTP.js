@@ -616,12 +616,8 @@ password:registerData.password
 );
 
 
-
-
-const data =
+const data = 
 await response.json();
-
-
 
 
 
@@ -653,7 +649,6 @@ localStorage.removeItem(
 
 
 
-
 showToast(
 "حساب شما با موفقیت ساخته شد ✓"
 );
@@ -661,11 +656,34 @@ showToast(
 
 
 
+
 setTimeout(()=>{
+
+
+const isMobile =
+/Android|iPhone|iPad|iPod/i.test(
+navigator.userAgent
+);
+
+
+
+if(isMobile){
+
+
+window.location.href =
+ "../گوشی/موبایل.html";
+
+
+}
+else{
 
 
 window.location.href =
 "../index.html";
+
+
+}
+
 
 
 },2000);
@@ -684,10 +702,6 @@ data.message
 
 
 }
-
-
-
-
 
 }
 

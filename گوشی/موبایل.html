@@ -1,0 +1,2541 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>کدماتیک</title>
+
+
+<!-- ==========================
+        FONT
+========================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+<!-- ==========================
+        ICONS
+========================== -->
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+
+<!-- ==========================
+        CSS
+========================== -->
+
+<link rel="stylesheet" href="./موبایل.css">
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- ==========================================
+        MOBILE APP CONTAINER
+========================================== -->
+
+
+<div class="app">
+
+
+
+<!-- ==========================================
+        MOBILE HEADER
+========================================== -->
+
+
+<header 
+class="mobile-header page-animate"
+id="appHeader">
+
+
+
+    <!-- RIGHT PROFILE -->
+
+<div class="mobile-header-right">
+
+
+    <div class="mobile-profile-menu">
+
+
+        <button 
+        class="mobile-profile-btn"
+        id="profileBtn"
+        aria-label="profile">
+
+
+            <i data-lucide="user"></i>
+
+
+        </button>
+
+
+
+        <!-- PROFILE DROPDOWN -->
+
+        <div 
+        class="profile-dropdown mobile-profile-dropdown"
+        id="profileDropdown">
+
+
+
+            <div class="profile-header">
+
+
+                <div class="profile-avatar">
+
+                    <i data-lucide="user"></i>
+
+                </div>
+
+
+
+                <div>
+
+
+                    <strong id="profileName">
+                        کاربر
+                    </strong>
+
+
+                    <span id="profilePhone">
+                        -
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <div class="profile-line"></div>
+
+
+
+
+            <button class="profile-item">
+
+                اطلاعات حساب
+
+            </button>
+
+
+
+
+            <button 
+            class="profile-item"
+            id="changePasswordBtn">
+
+
+                <i data-lucide="key-round"></i>
+
+
+                <span>
+                    تغییر رمز عبور
+                </span>
+
+
+            </button>
+
+
+
+
+
+            <button 
+            class="profile-item logout"
+            id="logoutBtn">
+
+
+                <i data-lucide="log-out"></i>
+
+
+                <span>
+                    خروج از حساب
+                </span>
+
+
+            </button>
+
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+    <!-- CENTER LOGO -->
+
+
+    <div class="mobile-logo">
+
+
+        <i data-lucide="graduation-cap"></i>
+
+
+        <span>
+            برنامه کنکور
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <!-- LEFT ACTIONS -->
+
+
+    <div class="mobile-header-left">
+
+
+
+        <!-- THEME BUTTON -->
+
+
+        <button
+        class="mobile-icon-btn"
+        id="themeToggle"
+        aria-label="theme">
+
+
+            <i data-lucide="moon"></i>
+
+
+        </button>
+
+
+
+
+
+        <!-- MENU BUTTON -->
+
+
+        <button
+        class="mobile-icon-btn"
+        id="menuToggle"
+        aria-label="menu">
+
+
+            <i data-lucide="chevron-down"></i>
+
+
+        </button>
+
+
+
+    </div>
+
+
+
+</header>
+
+
+
+
+
+
+
+<!-- ==========================================
+        MOBILE DROP MENU
+========================================== -->
+
+
+<div
+class="mobile-menu"
+id="mobileMenu">
+
+
+
+
+
+    <div class="mobile-menu-item">
+
+
+        <i data-lucide="house"></i>
+
+
+        <span>
+            خانه
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="mobile-menu-item">
+
+
+        <i data-lucide="calendar-days"></i>
+
+
+        <span>
+            برنامه هفتگی
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="mobile-menu-item">
+
+
+        <i data-lucide="chart-column"></i>
+
+
+        <span>
+            عملکرد
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <div class="mobile-menu-item">
+
+
+        <i data-lucide="settings"></i>
+
+
+        <span>
+            تنظیمات
+        </span>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ==========================================
+        DASHBOARD CONTENT
+        بعداً کارت‌ها اینجا قرار می‌گیرند
+========================================== -->
+
+<!-- ==========================================
+        MOBILE TOP DASHBOARD
+========================================== -->
+
+
+<!-- ==========================================
+        MOBILE TOP DASHBOARD
+========================================== -->
+
+
+<section class="top-dashboard mobile-top-dashboard page-animate">
+
+
+
+
+
+<!-- ==========================================
+        AYAH CARD
+========================================== -->
+
+
+<div class="mobile-ayah-card">
+
+
+
+    <div class="mobile-ayah-header">
+
+
+        <div class="mobile-ayah-title">
+
+
+            <i data-lucide="book-open"></i>
+
+
+            <span>
+                آیه امروز
+            </span>
+
+
+        </div>
+
+
+
+
+
+        <div class="mobile-ayah-actions">
+
+
+            <button 
+            class="mobile-ayah-btn"
+            aria-label="share">
+
+
+                <i data-lucide="share-2"></i>
+
+
+            </button>
+
+
+
+
+
+            <button 
+            class="mobile-ayah-btn"
+            aria-label="bookmark">
+
+
+                <i data-lucide="bookmark"></i>
+
+
+            </button>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="mobile-ayah-text">
+
+
+        وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="mobile-ayah-translation">
+
+
+        و برای انسان جز حاصل تلاش او نیست.
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="mobile-ayah-concept">
+
+
+        <span class="concept-title">
+
+            مفهوم:
+
+        </span>
+
+
+
+        <p>
+
+            موفقیت نتیجه تلاش و پشتکار مداوم است.
+
+        </p>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="mobile-ayah-source">
+
+
+        سوره نجم / آیه ۳۹
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================
+        EXAM INFO CARD
+========================================== -->
+
+
+<div class="mobile-exam-card">
+
+
+
+
+
+    <div class="mobile-exam-title">
+
+
+        <i data-lucide="calendar-days"></i>
+
+
+
+        <span>
+            اطلاعات کنکور
+        </span>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="mobile-days">
+
+
+        <strong id="daysRemaining">
+
+            302
+
+        </strong>
+
+
+
+        <span>
+
+            روز تا کنکور
+
+        </span>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="mobile-exam-details">
+
+
+
+
+
+        <div class="mobile-exam-detail">
+
+
+            <i data-lucide="calendar-days"></i>
+
+
+
+            <span>
+
+                <b id="programMonth">
+
+                    ماه ۱
+
+                </b>
+
+
+                از برنامه
+
+
+            </span>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <div class="mobile-exam-detail">
+
+
+            <i data-lucide="clock-3"></i>
+
+
+
+            <span>
+
+
+                <b id="programWeek">
+
+                    هفته ۱
+
+                </b>
+
+
+                از برنامه
+
+
+
+            </span>
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="mobile-progress">
+
+
+
+
+
+        <div class="mobile-progress-top">
+
+
+            <span>
+
+                پیشرفت
+
+            </span>
+
+
+
+
+            <b id="progressPercent">
+
+                23%
+
+            </b>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="mobile-progress-bar">
+
+
+
+            <div 
+            class="progress-fill mobile-progress-fill"
+            id="progressFill">
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========================
+     WEEKLY PLANNER
+========================= -->
+
+<section class="weekly-planner page-animate">
+
+
+    <!-- HEADER -->
+
+    <div class="planner-header">
+
+
+        <div class="planner-title">
+
+            <i data-lucide="calendar-days"></i>
+
+            <h2>
+                برنامه هفتگی
+            </h2>
+
+        </div>
+
+
+
+        <button 
+        class="planner-add-btn"
+        id="openModalBtn">
+
+            <i data-lucide="plus"></i>
+
+        </button>
+
+
+    </div>
+
+
+
+
+    <!-- SCROLL AREA -->
+
+    <div class="planner-scroll">
+
+
+        <div 
+        class="planner-week"
+        id="weeklyPlannerGrid">
+
+
+
+            <div class="planner-day" data-day="saturday">
+
+                <div class="planner-day-header">
+
+                    <h3>شنبه</h3>
+
+                    <span class="planner-date"></span>
+
+                </div>
+
+
+                <div class="planner-tasks"
+                data-tasks="saturday">
+
+
+
+
+                
+                </div>
+
+
+                <div class="planner-total">
+
+                    مجموع:
+
+                    <span>
+                        ۰ ساعت
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="planner-day" data-day="sunday">
+
+                <div class="planner-day-header">
+
+                    <h3>یکشنبه</h3>
+
+                    <span class="planner-date"></span>
+
+                </div>
+
+
+                <div class="planner-tasks"
+                data-tasks="sunday">
+                </div>
+
+
+                <div class="planner-total">
+
+                    مجموع:
+
+                    <span>
+                        ۰ ساعت
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="planner-day" data-day="monday">
+
+                <div class="planner-day-header">
+
+                    <h3>دوشنبه</h3>
+
+                    <span class="planner-date"></span>
+
+                </div>
+
+
+                <div class="planner-tasks"
+                data-tasks="monday">
+                </div>
+
+
+                <div class="planner-total">
+
+                    مجموع:
+
+                    <span>
+                        ۰ ساعت
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="planner-day" data-day="tuesday">
+
+                <div class="planner-day-header">
+
+                    <h3>سه‌شنبه</h3>
+
+                    <span class="planner-date"></span>
+
+                </div>
+
+
+                <div class="planner-tasks"
+                data-tasks="tuesday">
+                </div>
+
+
+                <div class="planner-total">
+
+                    مجموع:
+
+                    <span>
+                        ۰ ساعت
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="planner-day" data-day="wednesday">
+
+                <div class="planner-day-header">
+
+                    <h3>چهارشنبه</h3>
+
+                    <span class="planner-date"></span>
+
+                </div>
+
+
+                <div class="planner-tasks"
+                data-tasks="wednesday">
+                </div>
+
+
+                <div class="planner-total">
+
+                    مجموع:
+
+                    <span>
+                        ۰ ساعت
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="planner-day" data-day="thursday">
+
+                <div class="planner-day-header">
+
+                    <h3>پنجشنبه</h3>
+
+                    <span class="planner-date"></span>
+
+                </div>
+
+
+                <div class="planner-tasks"
+                data-tasks="thursday">
+                </div>
+
+
+                <div class="planner-total">
+
+                    مجموع:
+
+                    <span>
+                        ۰ ساعت
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <div class="planner-day planner-rest" data-day="friday">
+
+                <div class="planner-day-header">
+
+                    <h3>جمعه</h3>
+
+                    <span class="planner-date"></span>
+
+                </div>
+
+
+                <div class="planner-tasks"
+                data-tasks="friday">
+                </div>
+
+
+                <div class="planner-total">
+
+                    مجموع:
+
+                    <span>
+                        ۰ ساعت
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- COLLAPSE -->
+
+    <button
+    class="planner-toggle"
+    id="plannerCollapseBtn"
+    type="button">
+
+
+        <span></span>
+
+        <i data-lucide="chevron-up"></i>
+
+        <span></span>
+
+
+    </button>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     MOBILE STUDY TIMER
+===================================================== -->
+
+<section class="mobile-study-section page-animate">
+
+
+    <div class="mobile-study-card">
+
+
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <!-- HEADER -->
+
+<div class="mobile-study-header">
+
+
+    <div class="mobile-timer-title">
+
+
+        <i data-lucide="clock-3"></i>
+
+
+        <span>
+            تایمر مطالعه
+        </span>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+        <!-- =========================
+             TIMER CONTENT
+        ========================== -->
+
+
+        <div class="mobile-timer-content">
+
+
+
+
+
+            <!-- =========================
+                 LESSON CARD
+            ========================== -->
+
+
+            <div class="mobile-current-lesson">
+
+
+
+                <div class="mobile-lesson-header">
+
+
+                    <div 
+                    class="mobile-lesson-icon"
+                    id="mobileLessonIcon">
+
+
+                        <i data-lucide="book-open"></i>
+
+
+                    </div>
+
+
+
+
+                    <div class="mobile-lesson-title">
+
+
+                        <span>
+                            درس فعلی
+                        </span>
+
+
+                        <strong 
+                        id="mobileLessonName">
+
+                            هنوز انتخاب نشده
+
+                        </strong>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+                <div class="mobile-lesson-details">
+
+
+
+                    <div class="mobile-detail-box">
+
+
+                        <span>
+                            مبحث
+                        </span>
+
+
+                        <p id="mobileLessonTopic">
+                            -
+                        </p>
+
+
+                    </div>
+
+
+
+
+
+                    <div class="mobile-detail-box">
+
+
+                        <span>
+                            زمان
+                        </span>
+
+
+                        <p id="mobileLessonTime">
+                            -
+                        </p>
+
+
+                    </div>
+
+
+
+
+                    <div class="mobile-detail-box">
+
+
+                        <span>
+                            یادداشت
+                        </span>
+
+
+                        <p id="mobileLessonNote">
+                            -
+                        </p>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- =========================
+                 TIMER
+            ========================== -->
+
+<!-- ======================================
+     MOBILE STUDY TIMER
+====================================== -->
+
+<section class="mobile-study-timer">
+
+
+    <div class="mobile-timer-card">
+
+
+        <!-- HEADER -->
+
+        <div class="mobile-timer-header">
+
+            <div class="timer-title">
+
+                <i data-lucide="timer"></i>
+
+                <span>
+                    تایمر مطالعه
+                </span>
+
+            </div>
+
+
+            <span 
+            class="timer-state"
+            id="timerStatus">
+
+                آماده
+
+            </span>
+
+
+        </div>
+
+
+
+        <!-- TIMER -->
+
+        <div class="mobile-timer-box">
+
+
+            <div 
+            class="mobile-timer-display"
+            id="timerDisplay">
+
+                00:00:00
+
+            </div>
+
+
+            <span>
+                ساعت : دقیقه : ثانیه
+            </span>
+
+
+        </div>
+
+
+
+
+        <!-- CONTROLS -->
+
+        <div class="mobile-timer-controls">
+
+
+            <button 
+            id="timerReset">
+
+                <i data-lucide="rotate-ccw"></i>
+
+            </button>
+
+
+
+            <button 
+            id="timerPause">
+
+                <i data-lucide="play"></i>
+
+            </button>
+
+
+
+            <button 
+            id="timerStop">
+
+                <i data-lucide="square"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+            <!-- =========================
+                 STATUS
+            ========================== -->
+
+<!-- 
+            <div 
+            class="mobile-timer-status"
+            id="mobileTimerStatus">
+
+
+                آماده شروع
+
+
+            </div>
+ -->
+
+
+
+
+
+
+
+
+            <!-- =========================
+                 CONTROLS
+            ========================== -->
+
+<!-- 
+            <div class="mobile-timer-controls">
+
+
+
+                <button 
+                id="mobileTimerReset"
+                title="ریست">
+
+
+                    <i data-lucide="rotate-ccw"></i>
+
+
+                </button>
+
+
+
+
+
+                <button 
+                id="mobileTimerPause"
+                title="شروع">
+
+
+                    <i 
+                    data-lucide="play"
+                    id="mobilePauseIcon"></i>
+
+
+                </button>
+
+
+
+
+
+                <button 
+                id="mobileTimerStop"
+                title="توقف">
+
+
+                    <i data-lucide="square"></i>
+
+
+                </button>
+
+
+
+            </div>
+ -->
+
+
+
+
+
+
+
+
+            <!-- =========================
+                 FINISH BUTTON
+            ========================== -->
+
+
+            <button 
+            class="mobile-finish-btn"
+            id="mobileFinishStudyBtn">
+
+
+                <i data-lucide="check-circle-2"></i>
+
+
+                پایان مطالعه
+
+
+            </button>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+        <!-- =========================
+             BACK SIDE
+        ========================== -->
+<!-- 
+
+        <div class="mobile-timer-back">
+
+
+
+            <div class="mobile-back-subject">
+
+
+                <div class="mobile-back-icon">
+
+                    <i data-lucide="book-open"></i>
+
+                </div>
+
+
+
+                <span>
+                    درس فعلی
+                </span>
+
+
+                <strong id="mobileBackSubject">
+
+                    ریاضی
+
+                </strong>
+
+
+
+                <p id="mobileBackTopic">
+
+                    -
+
+                </p>
+
+
+            </div>
+
+
+
+
+
+
+
+            CHECK LIST -->
+<!-- 
+
+            <div class="mobile-checklist">
+
+
+                <div class="mobile-check-title">
+
+
+                    <span>
+                        لیست کارها
+                    </span>
+
+
+                    <i data-lucide="list-checks"></i>
+
+
+                </div>
+
+
+
+
+
+                <label>
+
+                    <input type="checkbox">
+
+                    <span>
+                        مطالعه مبحث
+                    </span>
+
+
+                </label>
+
+
+
+
+
+                <label>
+
+                    <input type="checkbox">
+
+                    <span>
+                        حل تمرین
+                    </span>
+
+
+                </label>
+
+
+
+
+
+                <label>
+
+                    <input type="checkbox">
+
+                    <span>
+                        تست آموزشی
+                    </span>
+
+
+                </label>
+
+
+
+
+
+                <label>
+
+                    <input type="checkbox">
+
+                    <span>
+                        مرور نکات
+                    </span>
+
+
+                </label>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <button 
+            class="mobile-change-subject"
+            id="mobileChangeSubjectBtn">
+
+
+                تغییر درس
+
+
+                <i data-lucide="refresh-cw"></i>
+
+
+            </button>
+
+
+
+
+        </div>
+
+
+
+
+    </div>  -->
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======================================
+     MOBILE SERVICES
+====================================== -->
+
+
+<div class="mobile-services-container">
+
+
+
+    <div class="mobile-service-card">
+
+
+        <div class="mobile-service-icon">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </div>
+
+
+        <div class="mobile-service-content">
+
+            <h3>
+                بخش تست‌ها
+            </h3>
+
+            <p>
+                آزمون، تست زمان‌دار و تحلیل
+            </p>
+
+        </div>
+
+
+        <a href="/تست/tests.html">
+            ورود
+        </a>
+
+
+    </div>
+
+
+
+
+
+    <div class="mobile-service-card">
+
+
+        <div class="mobile-service-icon">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+
+
+        <div class="mobile-service-content">
+
+            <h3>
+                دستیار هوش مصنوعی
+            </h3>
+
+            <p>
+                پاسخ و کمک درسی با AI
+            </p>
+
+        </div>
+
+
+        <a href="./chat/chat.html">
+            ورود
+        </a>
+
+
+    </div>
+
+
+
+
+
+    <div class="mobile-service-card">
+
+
+        <div class="mobile-service-icon">
+            <i class="fa-solid fa-file-arrow-up"></i>
+        </div>
+
+
+        <div class="mobile-service-content">
+
+            <h3>
+                آپلود فایل
+            </h3>
+
+            <p>
+                ارسال جزوه و PDF
+            </p>
+
+        </div>
+
+
+        <a href="/upload/upload.html">
+            ورود
+        </a>
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========================================================= 
+     ADD TASK MODAL MOBILE
+========================================================= -->
+
+
+<div class="modal-overlay" id="taskModal">
+
+
+<div class="task-modal">
+
+
+<!-- HEADER -->
+
+<div class="modal-header">
+
+
+<div class="modal-header-title">
+
+<i data-lucide="calendar-days"></i>
+
+<h3>
+افزودن برنامه جدید
+</h3>
+
+</div>
+
+
+<button
+type="button"
+class="close-modal"
+id="closeModalBtn">
+
+<i data-lucide="x"></i>
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="modal-body">
+
+
+
+<!-- SUBJECT -->
+
+
+<div class="modal-section subject-section">
+
+
+<div class="modal-field-title">
+
+<i data-lucide="book-open"></i>
+
+<span>
+انتخاب درس
+</span>
+
+</div>
+
+
+
+
+<div class="subject-slider-wrapper">
+
+
+
+<button
+type="button"
+class="subject-arrow subject-prev">
+
+<i data-lucide="chevron-right"></i>
+
+</button>
+
+
+
+
+
+<div class="subject-slider">
+
+
+<div 
+class="subject-card active"
+data-subject="math"
+data-color="#6366f1"
+data-icon="book-open">
+
+<i data-lucide="book-open"></i>
+<span>ریاضی</span>
+
+</div>
+
+
+<div 
+class="subject-card"
+data-subject="geometry"
+data-color="#8b5cf6"
+data-icon="triangle">
+
+<i data-lucide="triangle"></i>
+<span>هندسه</span>
+
+</div>
+
+
+
+<div 
+class="subject-card"
+data-subject="calculus"
+data-color="#ec4899"
+data-icon="function-square">
+
+<i data-lucide="function-square"></i>
+<span>حسابان</span>
+
+</div>
+
+
+
+<div 
+class="subject-card"
+data-subject="discrete"
+data-color="#f97316"
+data-icon="network">
+
+<i data-lucide="network"></i>
+<span>گسسته</span>
+
+</div>
+
+
+
+<div 
+class="subject-card"
+data-subject="statistics"
+data-color="#14b8a6"
+data-icon="chart-column">
+
+<i data-lucide="chart-column"></i>
+<span>آمار و احتمال</span>
+
+</div>
+
+
+
+<div 
+class="subject-card"
+data-subject="physics"
+data-color="#0ea5e9"
+data-icon="zap">
+
+<i data-lucide="zap"></i>
+<span>فیزیک</span>
+
+</div>
+
+
+
+<div 
+class="subject-card"
+data-subject="chemistry"
+data-color="#10b981"
+data-icon="flask-conical">
+
+<i data-lucide="flask-conical"></i>
+<span>شیمی</span>
+
+</div>
+
+
+
+<div 
+class="subject-card"
+data-subject="biology"
+data-color="#22c55e"
+data-icon="leaf">
+
+<i data-lucide="leaf"></i>
+<span>زیست</span>
+
+</div>
+
+
+
+<div 
+class="subject-card"
+data-subject="test"
+data-color="#ef4444"
+data-icon="clipboard-check">
+
+<i data-lucide="clipboard-check"></i>
+<span>کارت تست</span>
+
+</div>
+
+
+
+<button
+type="button"
+class="subject-arrow subject-next">
+
+<i data-lucide="chevron-left"></i>
+
+</button>
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- INPUT GRID -->
+
+
+<div class="mobile-input-grid">
+
+
+
+
+
+<!-- DAY -->
+
+<div class="modal-input-wrapper">
+
+
+<i data-lucide="calendar-days"></i>
+
+
+<select id="taskDay">
+
+
+<option value="saturday">
+شنبه
+</option>
+
+
+<option value="sunday">
+یکشنبه
+</option>
+
+
+<option value="monday">
+دوشنبه
+</option>
+
+
+<option value="tuesday">
+سه شنبه
+</option>
+
+
+<option value="wednesday">
+چهارشنبه
+</option>
+
+
+<option value="thursday">
+پنجشنبه
+</option>
+
+
+<option value="friday">
+جمعه
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- TIME -->
+
+
+<div class="modal-input-wrapper">
+
+
+<i data-lucide="clock-3"></i>
+
+
+<input
+type="text"
+id="taskDuration"
+placeholder="ساعت مطالعه">
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- TOPIC -->
+
+
+<div class="modal-input-wrapper full">
+
+
+<i data-lucide="clipboard-list"></i>
+
+
+<input
+type="text"
+id="taskTopic"
+placeholder="مبحث مطالعه">
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- NOTE -->
+
+
+<div class="modal-textarea-wrapper">
+
+
+<i data-lucide="notebook-pen"></i>
+
+
+<textarea
+id="taskNote"
+placeholder="یادداشت برنامه..."></textarea>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- BUTTON -->
+
+
+<div class="modal-footer">
+
+
+<button
+type="button"
+class="add-card-btn"
+id="addCardBtn">
+
+
+<span>
+افزودن کارت
+</span>
+
+
+<i data-lucide="plus"></i>
+
+
+</button>
+
+
+<button
+id="deletePlanBtn"
+class="delete-plan-btn"
+style="display:none">
+
+    حذف برنامه
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+<!-- ==========================
+        JAVASCRIPT
+========================== -->
+
+<script src="../config.js"></script>
+
+<!-- <script>
+    const plannerCollapseBtn =
+document.getElementById(
+    "plannerCollapseBtn"
+);
+
+
+const weeklyPlanner =
+document.querySelector(
+    ".weekly-planner"
+);
+
+
+
+plannerCollapseBtn.addEventListener(
+"click",
+()=>{
+
+
+    weeklyPlanner.classList.toggle(
+        "collapsed"
+    );
+
+
+});
+</script> -->
+
+<script src="mobile.js"></script>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+<script src="./1.js"></script>
+
+
+</body>
+
+
+</html>

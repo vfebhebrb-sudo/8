@@ -281,12 +281,35 @@ await fetch(
                 JSON.stringify(data.user)
             );
 
-
             setTimeout(()=>{
 
 
-                window.location.href =
-                "../index.html";
+                const isMobile =
+                window.innerWidth <= 768;
+
+
+
+                if(isMobile){
+
+
+                    // صفحه مخصوص موبایل
+
+                    window.location.href =
+                    "../گوشی/موبایل.html";
+
+
+
+                }
+                else{
+
+
+                    // صفحه مخصوص دسکتاپ
+
+                    window.location.href =
+                    "../index1.html";
+
+
+                }
 
 
             },1000);

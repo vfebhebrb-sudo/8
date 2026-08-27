@@ -10,12 +10,7 @@
 <title>Chat Mobile</title>
 
 
-<link rel="stylesheet" href="./موبایل.css">
-
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="./چت.css">
 
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -26,143 +21,142 @@
 
 </head>
 
-<body class="mobile-chat-page">
+
+<body class="public-chat-page">
 
 
-<div class="mobile-chat-app">
+<div class="chat-app">
 
 
-<!-- =================================
-     CHAT LIST PAGE
-================================= -->
+<!-- ===============================
+        CHAT PANEL
+================================ -->
 
 <section class="chat-panel" id="chatPanel">
 
 
-<header class="mobile-chat-header">
+    <!-- HEADER CARD -->
 
-    <h1>
-        کنکوری
-    </h1>
+    <div class="chat-title">
 
 
-    <button id="chatMenuBtn">
-        <i data-lucide="ellipsis-vertical"></i>
-    </button>
+        <div class="title-content">
 
-</header>
+            <h1>
+                کنکوری
+            </h1>
 
+            <p>
+                دستیار هوشمند مطالعه
+            </p>
 
+        </div>
 
-<div class="search-box">
 
 
-<i data-lucide="search"></i>
+        <button id="chatMenuBtn">
 
+            <i data-lucide="ellipsis-vertical"></i>
 
-<input 
-id="chatSearch"
-placeholder="جستجو در گفتگوها">
+        </button>
 
 
-</div>
+    </div>
 
 
 
 
-<div class="filters">
 
+    <!-- SEARCH BOX -->
 
-<button class="active">
-همه
-</button>
+    <div class="search-box">
 
 
-<button>
-خوانده نشده
+        <i data-lucide="search"></i>
 
-<span class="badge">
-3
-</span>
 
-</button>
+        <input
 
+        id="chatSearch"
 
-<button>
-گروه‌ها
-</button>
+        type="text"
 
+        placeholder="جستجو در گفتگوها">
 
-<button>
-کانال‌ها
-</button>
 
+    </div>
 
-</div>
 
 
 
 
-<div class="chat-list" id="chatList">
 
 
+    <!-- FILTER BOX -->
 
-<div 
-class="chat-item active"
-data-chat-id="ai">
 
+    <div class="filters">
 
 
-<div class="ai-avatar">
+        <button class="active">
 
-<i data-lucide="bot"></i>
+            همه
 
-</div>
+        </button>
 
 
 
+        <button>
 
-<div class="chat-info">
+            خوانده نشده
 
+            <span class="badge">
 
-<div class="chat-name">
+                3
 
+            </span>
 
-<strong>
+        </button>
 
-هوش مصنوعی
 
-<span class="verified">
-✓
-</span>
 
-</strong>
+        <button>
 
+            گروه‌ها
 
-<time>
-آنلاین
-</time>
+        </button>
 
 
-</div>
 
+        <button>
 
+            کانال‌ها
 
-<p>
-سلام 👋 آماده کمک به برنامه کنکور شما هستم
-</p>
+        </button>
 
 
+    </div>
 
-</div>
 
 
-</div>
 
 
 
 
-</div>
+    <!-- CHAT LIST -->
+
+    <div 
+    class="chat-list" 
+    id="chatList">
+
+
+        <!--
+            JS اینجا چت ها را می سازد
+        -->
+
+
+    </div>
+
 
 
 </section>
@@ -174,73 +168,62 @@ data-chat-id="ai">
 
 
 
-<!-- =================================
-     CONVERSATION PAGE
-================================= -->
+<!-- ===============================
+        CONVERSATION
+================================ -->
 
 
 <section 
-class="conversation"
+class="conversation" 
 id="conversation">
 
 
 
 
 
-<header class="chat-header">
-
-
-<button 
-class="mobile-back-btn"
-id="mobileBackBtn">
-
-<i data-lucide="arrow-right"></i>
-
-</button>
+<header 
+class="chat-header" 
+id="chatHeader">
 
 
 
+    <button  
+    class="mobile-back-btn"
+    id="mobileBackBtn"
+    type="button">
 
 
-<div class="contact">
+        <i data-lucide="arrow-right"></i>
 
 
-<div class="avatar-box">
-
-
-<i data-lucide="bot"></i>
-
-
-<span class="online"></span>
-
-
-</div>
+    </button>
 
 
 
-<div>
 
 
-<h3>
-
-هوش مصنوعی
-
-<span class="verified">
-✓
-</span>
-
-</h3>
+    <div 
+    class="contact" 
+    id="currentContact">
 
 
-<p>
-آنلاین
-</p>
+
+        <div 
+        class="avatar-box" 
+        id="headerAvatar">
 
 
-</div>
+            <i data-lucide="bot"></i>
 
 
-</div>
+            <span class="online"></span>
+
+
+        </div>
+
+
+
+    </div>
 
 
 
@@ -252,10 +235,11 @@ id="mobileBackBtn">
 
 
 
+
 <!-- MESSAGES -->
 
 
-<div 
+<div
 class="messages"
 id="messagesContainer">
 
@@ -271,144 +255,83 @@ id="messagesContainer">
 
 
 
+
 <!-- INPUT -->
 
 
-<footer 
+<footer
 class="message-box"
 id="messageBox">
 
 
 
+    <div class="input-area">
 
 
-<div 
-class="selected-file"
-id="selectedFile">
 
 
-<div 
-class="selected-file-icon"
-id="selectedFileIcon">
 
-<i data-lucide="file"></i>
+        <button
+        class="emoji-btn"
+        id="emojiBtn">
 
-</div>
 
+            <i data-lucide="smile"></i>
 
-<div class="selected-file-info">
 
+        </button>
 
-<strong id="selectedFileName">
-نام فایل
-</strong>
 
 
-<span id="selectedFileSize">
-0 KB
-</span>
 
 
-</div>
 
+        <input
 
+        id="messageInput"
 
-<button 
-id="removeFile"
-class="remove-file">
+        type="text"
 
-<i data-lucide="x"></i>
+        placeholder="پیام خود را بنویسید...">
 
-</button>
 
 
-</div>
 
 
 
+        <button
+        class="attach"
+        id="attachBtn">
 
 
+            <i data-lucide="paperclip"></i>
 
 
+        </button>
 
-<div class="input-area">
 
 
 
-<button
-class="attach"
-id="attachBtn">
 
-<i data-lucide="paperclip"></i>
 
-</button>
+        <button
+        class="send-icon"
+        id="sendBtn">
 
 
+            <img
+            src="../01/d23f70af-6a30-4f7b-993d-1cfac3346844.png"
+            alt="send">
 
-<input
-type="file"
-id="fileInput"
-hidden>
 
+        </button>
 
 
 
 
 
+    </div>
 
-<button
-class="emoji-btn"
-id="emojiBtn">
-
-<i data-lucide="smile"></i>
-
-</button>
-
-
-
-
-<div
-class="emoji-picker"
-id="emojiPicker">
-
-
-<button>😀</button>
-<button>😂</button>
-<button>😍</button>
-<button>❤️</button>
-<button>🔥</button>
-
-
-</div>
-
-
-
-
-
-
-<input
-id="messageInput"
-placeholder="پیام خود را بنویسید...">
-
-
-
-
-
-
-<button
-class="send-icon"
-id="sendBtn">
-
-
-<img 
-src="../01/d23f70af-6a30-4f7b-993d-1cfac3346844.png">
-
-
-</button>
-
-
-
-</div>
 
 
 
@@ -418,10 +341,7 @@ src="../01/d23f70af-6a30-4f7b-993d-1cfac3346844.png">
 
 
 
-
 </section>
-
-
 
 </div>
 
@@ -430,17 +350,18 @@ src="../01/d23f70af-6a30-4f7b-993d-1cfac3346844.png">
 
 
 <script src="../config.js"></script>
-
-
-<script src="https://unpkg.com/lucide@latest"></script>
-
+<script src="./2.js"></script>
 
 <script>
+
+
 lucide.createIcons();
+
 </script>
 
 
 <script src="chat.js"></script>
+
 
 
 </body>

@@ -2415,7 +2415,6 @@ document.addEventListener(
 
 
 
-
 document.addEventListener("DOMContentLoaded",()=>{
 
 

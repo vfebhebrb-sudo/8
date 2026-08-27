@@ -5481,3 +5481,52 @@ cancelDeleteBtn.addEventListener(
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ======================================================
+// PROFILE BUTTONS
+// ======================================================
+
+// تغییر رمز عبور
+const changePasswordBtn =
+    document.getElementById("changePasswordBtn");
+
+if (changePasswordBtn) {
+
+    changePasswordBtn.addEventListener("click", () => {
+
+        window.location.href = "./change-password.html";
+
+    });
+
+}
+
+
+// ======================================================
+// LOGOUT
+// ======================================================
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", () => {
+
+        window.location.href = "./login/login.html";
+
+    });
+
+}

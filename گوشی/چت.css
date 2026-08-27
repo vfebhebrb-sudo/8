@@ -1,0 +1,408 @@
+/* ======================================================
+   MOBILE CHAT APP BASE
+====================================================== */
+
+
+*{
+    box-sizing:border-box;
+}
+
+
+body.mobile-chat-page{
+
+    margin:0;
+
+    background:#0b0f14;
+
+    font-family:"Vazirmatn",sans-serif;
+
+    color:#fff;
+
+}
+
+
+
+
+.mobile-chat-app{
+
+    width:100%;
+
+    max-width:450px;
+
+    height:100vh;
+
+    margin:auto;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:#0b0f14;
+
+}
+
+
+
+
+
+
+/* ======================================================
+   CHAT LIST HEADER
+====================================================== */
+
+
+.mobile-chat-header{
+
+
+    height:70px;
+
+    padding:0 18px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    background:#111820;
+
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+
+}
+
+
+
+
+.mobile-chat-header h1{
+
+
+    margin:0;
+
+    font-size:22px;
+
+    font-weight:700;
+
+
+    color:#fff;
+
+
+}
+
+
+
+
+
+
+.mobile-chat-header button{
+
+
+    width:42px;
+
+    height:42px;
+
+
+    border:none;
+
+    background:rgba(255,255,255,.06);
+
+
+    border-radius:50%;
+
+
+    color:#fff;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+.mobile-chat-header svg{
+
+    width:22px;
+
+    height:22px;
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================================================
+   CONVERSATION HEADER
+====================================================== */
+
+
+.chat-header{
+
+
+    height:70px;
+
+
+    padding:0 14px;
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+    background:#111820;
+
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+
+}
+
+
+
+
+
+.mobile-back-btn{
+
+
+    width:42px;
+
+    height:42px;
+
+
+    border:none;
+
+
+    border-radius:50%;
+
+
+    background:rgba(255,255,255,.06);
+
+
+    color:white;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+}
+
+
+
+
+
+.mobile-back-btn svg{
+
+
+    width:22px;
+
+    height:22px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ======================================================
+   CONTACT HEADER
+====================================================== */
+
+
+.contact{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+}
+
+
+
+
+.avatar-box{
+
+
+    width:45px;
+
+    height:45px;
+
+
+    border-radius:50%;
+
+
+    background:linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    position:relative;
+
+
+}
+
+
+
+.avatar-box svg{
+
+
+    width:24px;
+
+    height:24px;
+
+
+}
+
+
+
+
+
+
+
+.online{
+
+
+    position:absolute;
+
+
+    width:12px;
+
+    height:12px;
+
+
+    background:#22c55e;
+
+
+    border:2px solid #111820;
+
+
+    border-radius:50%;
+
+
+    bottom:1px;
+
+    right:2px;
+
+
+}
+
+
+
+
+
+
+
+.contact h3{
+
+
+    margin:0;
+
+
+    font-size:16px;
+
+
+    font-weight:600;
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+
+}
+
+
+
+
+
+.contact p{
+
+
+    margin:3px 0 0;
+
+
+    font-size:12px;
+
+
+    color:#9ca3af;
+
+
+}
+
+
+
+
+
+
+.verified{
+
+
+    display:inline-flex;
+
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    width:16px;
+
+    height:16px;
+
+
+    border-radius:50%;
+
+
+    background:#229ed9;
+
+
+    font-size:11px;
+
+
+    color:white;
+
+
+}

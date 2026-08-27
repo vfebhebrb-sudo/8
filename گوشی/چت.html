@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chat Mobile</title>
+
+
+<link rel="stylesheet" href="./موبایل.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+<body class="mobile-chat-page">
+
+
+<div class="mobile-chat-app">
+
+
+<!-- =================================
+     CHAT LIST PAGE
+================================= -->
+
+<section class="chat-panel" id="chatPanel">
+
+
+<header class="mobile-chat-header">
+
+    <h1>
+        کنکوری
+    </h1>
+
+
+    <button id="chatMenuBtn">
+        <i data-lucide="ellipsis-vertical"></i>
+    </button>
+
+</header>
+
+
+
+<div class="search-box">
+
+
+<i data-lucide="search"></i>
+
+
+<input 
+id="chatSearch"
+placeholder="جستجو در گفتگوها">
+
+
+</div>
+
+
+
+
+<div class="filters">
+
+
+<button class="active">
+همه
+</button>
+
+
+<button>
+خوانده نشده
+
+<span class="badge">
+3
+</span>
+
+</button>
+
+
+<button>
+گروه‌ها
+</button>
+
+
+<button>
+کانال‌ها
+</button>
+
+
+</div>
+
+
+
+
+<div class="chat-list" id="chatList">
+
+
+
+<div 
+class="chat-item active"
+data-chat-id="ai">
+
+
+
+<div class="ai-avatar">
+
+<i data-lucide="bot"></i>
+
+</div>
+
+
+
+
+<div class="chat-info">
+
+
+<div class="chat-name">
+
+
+<strong>
+
+هوش مصنوعی
+
+<span class="verified">
+✓
+</span>
+
+</strong>
+
+
+<time>
+آنلاین
+</time>
+
+
+</div>
+
+
+
+<p>
+سلام 👋 آماده کمک به برنامه کنکور شما هستم
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- =================================
+     CONVERSATION PAGE
+================================= -->
+
+
+<section 
+class="conversation"
+id="conversation">
+
+
+
+
+
+<header class="chat-header">
+
+
+<button 
+class="mobile-back-btn"
+id="mobileBackBtn">
+
+<i data-lucide="arrow-right"></i>
+
+</button>
+
+
+
+
+
+<div class="contact">
+
+
+<div class="avatar-box">
+
+
+<i data-lucide="bot"></i>
+
+
+<span class="online"></span>
+
+
+</div>
+
+
+
+<div>
+
+
+<h3>
+
+هوش مصنوعی
+
+<span class="verified">
+✓
+</span>
+
+</h3>
+
+
+<p>
+آنلاین
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+</header>
+
+
+
+
+
+
+
+<!-- MESSAGES -->
+
+
+<div 
+class="messages"
+id="messagesContainer">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- INPUT -->
+
+
+<footer 
+class="message-box"
+id="messageBox">
+
+
+
+
+
+<div 
+class="selected-file"
+id="selectedFile">
+
+
+<div 
+class="selected-file-icon"
+id="selectedFileIcon">
+
+<i data-lucide="file"></i>
+
+</div>
+
+
+<div class="selected-file-info">
+
+
+<strong id="selectedFileName">
+نام فایل
+</strong>
+
+
+<span id="selectedFileSize">
+0 KB
+</span>
+
+
+</div>
+
+
+
+<button 
+id="removeFile"
+class="remove-file">
+
+<i data-lucide="x"></i>
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="input-area">
+
+
+
+<button
+class="attach"
+id="attachBtn">
+
+<i data-lucide="paperclip"></i>
+
+</button>
+
+
+
+<input
+type="file"
+id="fileInput"
+hidden>
+
+
+
+
+
+
+
+<button
+class="emoji-btn"
+id="emojiBtn">
+
+<i data-lucide="smile"></i>
+
+</button>
+
+
+
+
+<div
+class="emoji-picker"
+id="emojiPicker">
+
+
+<button>😀</button>
+<button>😂</button>
+<button>😍</button>
+<button>❤️</button>
+<button>🔥</button>
+
+
+</div>
+
+
+
+
+
+
+<input
+id="messageInput"
+placeholder="پیام خود را بنویسید...">
+
+
+
+
+
+
+<button
+class="send-icon"
+id="sendBtn">
+
+
+<img 
+src="../01/d23f70af-6a30-4f7b-993d-1cfac3346844.png">
+
+
+</button>
+
+
+
+</div>
+
+
+
+</footer>
+
+
+
+
+
+
+</section>
+
+
+
+</div>
+
+
+
+
+
+<script src="../config.js"></script>
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+<script>
+lucide.createIcons();
+</script>
+
+
+<script src="chat.js"></script>
+
+
+</body>
+</html>

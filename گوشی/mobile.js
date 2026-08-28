@@ -126,7 +126,7 @@ logoutBtn.addEventListener("click",()=>{
     localStorage.removeItem("currentUser"); 
  
  
-    window.location.href="./index.html"; 
+    window.location.href="../index.html"; 
  
  
 }); 
@@ -155,7 +155,7 @@ if(changePasswordBtn){
 changePasswordBtn.addEventListener("click",()=>{ 
  
  
-window.location.href="./login/تغییر رمز.html"; 
+window.location.href="../login/تغییر رمز.html"; 
  
  
 }); 
@@ -166,8 +166,15 @@ window.location.href="./login/تغییر رمز.html";
  
  
  
- 
- 
+
+
+
+
+
+
+
+
+
  
  
 // ========================================== 

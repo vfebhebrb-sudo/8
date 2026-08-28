@@ -1803,419 +1803,1086 @@ body.public-chat-page{
 
 
 
-
 /* =====================================================
-        CHAT LIST ITEMS
+   CHAT MESSAGES
+   CLEAN FINAL STYLE
 ===================================================== */
 
+.messages {
 
-.chat-list{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding: 14px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   MESSAGE ROW
+===================================================== */
+
+.message {
+
+    display: flex;
+
+    width: 100%;
+
+    margin: 2px 0;
+
+    box-sizing: border-box;
+
+    animation: messageAppear .25s ease both;
+
+}
+
+
+/* =====================================================
+   SENT
+   پیام ارسالی → راست
+===================================================== */
+
+.message.sent {
+
+    justify-content: flex-end;
+
+}
+
+
+/* =====================================================
+   RECEIVED
+   پیام دریافتی → چپ
+===================================================== */
+
+.message.received {
+
+    justify-content: flex-start;
+
+}
+
+
+/* =====================================================
+   MESSAGE CONTENT
+   حباب دقیقاً متناسب با متن
+===================================================== */
+
+.message-content {
+
+    display: inline-flex;
+
+    flex-direction: column;
+
+    width: fit-content;
+
+    max-width: min(70%, 520px);
+
+    min-width: 0;
+
+    padding: 8px 12px;
+
+    box-sizing: border-box;
+
+    border-radius: 16px;
+
+    position: relative;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+/* =====================================================
+   SENT MESSAGE
+   آبی + راست
+===================================================== */
+
+.message.sent .message-content {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2196f3,
+            #1976d2
+        );
+
+    color: #fff;
+
+    border-bottom-right-radius: 5px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(33,150,243,.22);
+
+}
+
+
+/* =====================================================
+   RECEIVED MESSAGE
+   خاکستری + چپ
+===================================================== */
+
+.message.received .message-content {
+
+    background:
+        linear-gradient(
+            135deg,
+            #3f3f3f,
+            #303030
+        );
+
+    color: #fff;
+
+    border-bottom-left-radius: 5px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,.20);
+
+}
+
+
+/* =====================================================
+   MESSAGE TEXT
+===================================================== */
+
+.message-text {
+
+    display: block;
+
+    width: auto;
+
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+
+}
+
+
+/* =====================================================
+   SENDER NAME
+===================================================== */
+
+.message-sender {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    opacity: .75;
+
+}
+
+
+/* =====================================================
+   MESSAGE TIME
+===================================================== */
+
+.message-time {
+
+    align-self: flex-end;
+
+    margin-top: 3px;
+
+    font-size: 8px;
+
+    line-height: 1;
+
+    opacity: .55;
+
+    white-space: nowrap;
+
+}
+
+
+/* =====================================================
+   MESSAGE ANIMATION
+===================================================== */
+
+@keyframes messageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(6px)
+            scale(.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.message-content:hover {
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.messages-loading {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px 15px;
+
+    box-sizing: border-box;
+
+    color: #8b98a8;
+
+    font-size: 12px;
+
+    text-align: center;
+
+    animation:
+        messageLoading .4s ease both;
+
+}
+
+
+@keyframes messageLoading {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =====================================================
+   EMPTY MESSAGES
+===================================================== */
+
+.empty-messages {
+
+    width: 100%;
+
+    min-height: 180px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+
+    color: #7f8a98;
+
+    font-size: 12px;
+
+    text-align: center;
+
+    animation:
+        emptyMessageAppear .4s ease both;
+
+}
+
+
+@keyframes emptyMessageAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .messages {
+
+        padding: 10px 8px;
+
+        gap: 5px;
+
+    }
+
+
+    .message {
+
+        margin: 2px 0;
+
+    }
+
+
+    .message-content {
+
+        max-width: 78%;
+
+        padding: 7px 10px;
+
+        border-radius: 14px;
+
+    }
+
+
+    .message.sent .message-content {
+
+        border-bottom-right-radius: 4px;
+
+    }
+
+
+    .message.received .message-content {
+
+        border-bottom-left-radius: 4px;
+
+    }
+
+
+    .message-text {
+
+        font-size: 12px;
+
+        line-height: 1.7;
+
+    }
+
+
+    .message-sender {
+
+        font-size: 9px;
+
+        margin-bottom: 2px;
+
+    }
+
+
+    .message-time {
+
+        font-size: 7px;
+
+        margin-top: 3px;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .message-content {
+
+        max-width: 82%;
+
+        padding: 6px 9px;
+
+    }
+
+
+    .message-text {
+
+        font-size: 11px;
+
+        line-height: 1.65;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================
+   MESSAGES CONTAINER
+====================================================== */
+
+.messages{
 
     width:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:7px;
+
+    padding:14px;
+
+    box-sizing:border-box;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+}
+
+
+/* ======================================================
+   MESSAGE ROW
+====================================================== */
+
+.message{
+
+    width:100%;
+
+    display:flex;
+
+    box-sizing:border-box;
+
+    animation:
+        messageEnter .3s ease both;
+
+}
+
+
+/* ======================================================
+   SENT / RECEIVED
+====================================================== */
+
+.message.sent{
+
+    justify-content:flex-end;
+
+}
+
+
+.message.received{
+
+    justify-content:flex-start;
+
+}
+
+
+/* ======================================================
+   MESSAGE CONTENT
+   حباب دقیقاً متناسب با متن
+====================================================== */
+
+.message-content{
 
     display:flex;
 
     flex-direction:column;
 
-    gap:8px;
+    width:fit-content;
 
-    overflow-y:auto;
-
-    padding:6px;
-
-}
-
-
-
-
-
-.chat-list::-webkit-scrollbar{
-
-    width:4px;
-
-}
-
-
-.chat-list::-webkit-scrollbar-thumb{
-
-    background:var(--border);
-
-    border-radius:20px;
-
-}
-
-
-
-
-
-
-/* ===============================
-        CHAT ITEM
-================================ */
-
-
-.chat-item{
-
-
-    width:100%;
-
-    min-height:72px;
-
-
-    display:flex;
-
-    align-items:center;
-
-
-    gap:12px;
-
-
-    padding:10px 12px;
-
-
-    border-radius:18px;
-
-
-    cursor:pointer;
-
-
-    background:
-
-    var(--surface);
-
-
-    border:1px solid transparent;
-
-
-    transition:.25s ease;
-
-
-}
-
-
-
-
-
-
-.chat-item:hover{
-
-
-    background:
-
-    var(--surface-hover);
-
-
-    transform:translateY(-2px);
-
-
-}
-
-
-
-
-
-
-.chat-item.active{
-
-
-    background:
-
-    linear-gradient(
-        135deg,
-        rgba(59,130,246,.15),
-        var(--surface)
-    );
-
-
-    border-color:
-
-    rgba(59,130,246,.25);
-
-
-}
-
-
-
-
-
-
-/* ===============================
-        PROFILE ICON
-================================ */
-
-
-.profile-icon{
-
-
-    width:48px;
-
-    height:48px;
-
-
-    flex-shrink:0;
-
-
-    border-radius:50%;
-
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-
-    color:white;
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #4b5563,
-        #1f2937
-    );
-
-
-}
-
-
-
-
-.profile-icon svg{
-
-
-    width:24px;
-
-
-}
-
-
-
-
-
-
-
-/* AI */
-
-.profile-icon.ai{
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #2563eb,
-        #1e3a8a
-    );
-
-}
-
-
-
-
-
-
-/* GROUP */
-
-.profile-icon.group{
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #10b981,
-        #065f46
-    );
-
-}
-
-
-
-
-
-
-/* CHANNEL */
-
-.profile-icon.channel{
-
-
-    background:
-
-    linear-gradient(
-        145deg,
-        #f59e0b,
-        #92400e
-    );
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-        INFO
-================================ */
-
-
-.chat-info{
-
-
-    flex:1;
+    max-width:min(72%, 520px);
 
     min-width:0;
 
+    padding:8px 11px;
 
-}
+    box-sizing:border-box;
 
+    border-radius:17px;
 
-
-
-
-
-
-.chat-name{
-
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-
-    gap:8px;
-
-
-}
-
-
-
-
-
-
-.chat-name strong{
-
-
-    display:flex;
-
-    align-items:center;
-
-
-    gap:5px;
-
-
-    color:var(--text);
-
-
-    font-size:14px;
-
-
-    white-space:nowrap;
+    position:relative;
 
     overflow:hidden;
 
-    text-overflow:ellipsis;
+    word-break:break-word;
 
+    overflow-wrap:anywhere;
 
-}
-
-
-
-
-
-
-.chat-name time{
-
-
-    font-size:11px;
-
-
-    color:
-
-    var(--text-secondary);
-
-
-    white-space:nowrap;
-
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 
 }
 
 
+/* ======================================================
+   SENT MESSAGE
+====================================================== */
 
+.message.sent .message-content{
 
+    color:#fff;
 
+    background:
+        linear-gradient(
+            135deg,
+            #2388f5,
+            #1769d1
+        );
 
+    border-bottom-right-radius:5px;
 
-.chat-info p{
-
-
-    margin-top:5px;
-
-
-    font-size:12px;
-
-
-    color:
-
-    var(--text-secondary);
-
-
-    overflow:hidden;
-
-
-    white-space:nowrap;
-
-
-    text-overflow:ellipsis;
-
+    box-shadow:
+        0 6px 18px
+        rgba(35,136,245,.18);
 
 }
 
 
+/* ======================================================
+   RECEIVED MESSAGE
+====================================================== */
+
+.message.received .message-content{
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3d4148,
+            #2d3035
+        );
+
+    border-bottom-left-radius:5px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.18);
+
+}
 
 
+/* ======================================================
+   SENDER
+====================================================== */
+
+.message-sender-wrap{
+
+    display:flex;
+
+    width:100%;
+
+    margin-bottom:3px;
+
+}
 
 
-
-/* ===============================
-        VERIFIED
-================================ */
-
-
-.verified{
-
-
-    width:16px;
-
-    height:16px;
-
-
-    border-radius:50%;
-
-
-    display:inline-flex;
-
-
-    align-items:center;
-
-
-    justify-content:center;
-
-
-    background:#3b82f6;
-
-
-    color:white;
-
+.message-sender{
 
     font-size:10px;
 
+    font-weight:700;
+
+    line-height:1.5;
+
+    opacity:.75;
+
+}
+
+
+/* ======================================================
+   MESSAGE BODY
+====================================================== */
+
+.message-body{
+
+    width:100%;
+
+    display:block;
+
+}
+
+
+/* ======================================================
+   MESSAGE TEXT
+====================================================== */
+
+.message-text{
+
+    display:block;
+
+    width:fit-content;
+
+    max-width:100%;
+
+    margin:0;
+
+    padding:0;
+
+    font-size:13px;
+
+    line-height:1.75;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    overflow-wrap:anywhere;
+
+}
+
+
+/* ======================================================
+   MESSAGE FOOTER
+====================================================== */
+
+.message-footer{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    margin-top:3px;
+
+}
+
+
+/* ======================================================
+   MESSAGE TIME
+====================================================== */
+
+.message-time{
+
+    display:block;
+
+    font-size:8px;
+
+    line-height:1;
+
+    opacity:.55;
+
+    white-space:nowrap;
+
+}
+
+
+/* ======================================================
+   HOVER
+====================================================== */
+
+.message-content:hover{
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* ======================================================
+   MESSAGE ANIMATION
+====================================================== */
+
+@keyframes messageEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(7px)
+            scale(.97);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media(max-width:600px){
+
+    .messages{
+
+        padding:10px 8px;
+
+        gap:5px;
+
+    }
+
+
+    .message{
+
+        margin:1px 0;
+
+    }
+
+
+    .message-content{
+
+        max-width:80%;
+
+        padding:7px 10px;
+
+        border-radius:15px;
+
+    }
+
+
+    .message.sent .message-content{
+
+        border-bottom-right-radius:4px;
+
+    }
+
+
+    .message.received .message-content{
+
+        border-bottom-left-radius:4px;
+
+    }
+
+
+    .message-text{
+
+        font-size:12px;
+
+        line-height:1.7;
+
+    }
+
+
+    .message-sender{
+
+        font-size:9px;
+
+    }
+
+
+    .message-time{
+
+        font-size:7px;
+
+    }
+
+}
+
+
+/* ======================================================
+   VERY SMALL MOBILE
+====================================================== */
+
+@media(max-width:380px){
+
+    .message-content{
+
+        max-width:84%;
+
+        padding:6px 9px;
+
+    }
+
+
+    .message-text{
+
+        font-size:11px;
+
+        line-height:1.65;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================================
+   MESSAGE LOADING
+====================================================== */
+
+.messages-loading{
+
+    width:100%;
+    min-height:180px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-sizing:border-box;
+
+    color:var(--text-secondary);
+
+    font-size:12px;
+
+    text-align:center;
+
+    animation:
+        messageStateAppear .35s ease both;
+
+}
+
+
+/* ======================================================
+   EMPTY MESSAGES
+====================================================== */
+
+.empty-messages{
+
+    width:100%;
+    min-height:180px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    box-sizing:border-box;
+
+    color:var(--text-secondary);
+
+    font-size:12px;
+
+    text-align:center;
+
+    animation:
+        messageStateAppear .4s ease both;
+
+}
+
+
+/* ======================================================
+   MESSAGE STATE ANIMATION
+====================================================== */
+
+@keyframes messageStateAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+
+    }
 
 }

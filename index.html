@@ -391,6 +391,46 @@ playBtn.addEventListener("click",()=>{
 
 </script>
 
+<script>
+    // ======================================================
+// SERVER KEEP ALIVE
+// هر ۵ دقیقه یک درخواست به سرور
+// ======================================================
+
+function keepServerAlive(){
+
+    fetch(`${API}/`)
+        .then(response => {
+
+            console.log(
+                "🟢 SERVER KEEP ALIVE:",
+                response.status
+            );
+
+        })
+
+        .catch(error => {
+
+            console.log(
+                "🔴 SERVER KEEP ALIVE ERROR:",
+                error
+            );
+
+        });
+
+}
+
+
+// هر ۵ دقیقه
+setInterval(
+    keepServerAlive,
+    5 * 60 * 1000
+);
+
+
+// اولین درخواست بلافاصله
+keepServerAlive();
+</script>
 
 <!-- فعال کردن آیکون ها -->
 <script src="https://unpkg.com/lucide@latest"></script>

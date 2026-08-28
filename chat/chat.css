@@ -3631,7 +3631,7 @@ height:28px;
 
 .message.outgoing.user .message-content {
 
-    background: linear-gradient(90deg, #173e7d, #17448d);
+background: linear-gradient(90deg, #173e7d, #17448d);    
 
 }
 
@@ -3639,7 +3639,7 @@ height:28px;
 
 .message.outgoing.user .message-avatar {
 
-    background: linear-gradient(90deg, #173e7d, #17448d);
+background: linear-gradient(90deg, #173e7d, #17448d);    
 
 } 
 

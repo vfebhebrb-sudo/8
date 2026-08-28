@@ -3150,3 +3150,119 @@ loadMobileTasks();
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ======================================================
+// MOBILE THEME TOGGLE
+// ======================================================
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+
+if(themeToggle){
+
+    themeToggle.addEventListener(
+        "click",
+        function(){
+
+            // تغییر تم
+            document.body.classList.toggle(
+                "light-theme"
+            );
+
+
+            // پیدا کردن آیکون فعلی
+            const icon =
+                themeToggle.querySelector(
+                    "svg"
+                );
+
+
+            if(!icon){
+                return;
+            }
+
+
+            // تغییر آیکون
+            if(
+                document.body.classList.contains(
+                    "light-theme"
+                )
+            ){
+
+                icon.outerHTML = `
+                    <i
+                        data-lucide="sun"
+                    ></i>
+                `;
+
+            }else{
+
+                icon.outerHTML = `
+                    <i
+                        data-lucide="moon"
+                    ></i>
+                `;
+
+            }
+
+
+            // تبدیل i جدید به SVG
+            if(
+                typeof lucide !== "undefined"
+            ){
+
+                lucide.createIcons();
+
+            }
+
+        }
+    );
+
+}

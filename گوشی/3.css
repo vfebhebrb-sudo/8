@@ -1,0 +1,1751 @@
+/* ==========================================
+        APP WIDTH LIMIT
+========================================== */
+
+
+*{
+    box-sizing:border-box;
+     font-family: "Vazirmatn", sans-serif;
+}
+
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:var(--background);
+
+    font-family:"Vazirmatn",sans-serif;
+
+}
+
+
+
+/* ==========================================
+        MOBILE APP CONTAINER
+========================================== */
+
+
+.app{
+
+    width:100%;
+
+    max-width:450px;
+
+    min-height:100vh;
+
+    margin:0 auto;
+
+    padding:12px;
+
+}
+
+
+
+/* ==========================================
+        THEME SYSTEM
+========================================== */
+
+
+:root{
+
+
+    --background:#111315;
+
+    --surface:#191c21;
+
+    --surface-hover:#22262d;
+
+    --text:#f9fafb;
+
+    --text-secondary:#9ca3af;
+
+    --border:#292e36;
+
+
+    --accent:#3b82f6;
+
+    --accent-soft:#172554;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.35);
+
+
+}
+
+
+
+.light-theme{
+
+
+    --background:#f5f6f8;
+
+    --surface:#ffffff;
+
+    --surface-hover:#f3f4f6;
+
+    --text:#111827;
+
+    --text-secondary:#6b7280;
+
+    --border:#e5e7eb;
+
+
+    --accent:#2563eb;
+
+    --accent-soft:#eff6ff;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        MOBILE HEADER
+========================================== */
+
+
+.mobile-header{
+
+
+    width:100%;
+
+    height:56px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    position:relative;
+
+
+    padding:0 8px;
+
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+
+    box-shadow:var(--shadow);
+
+
+    transition:.25s ease;
+
+    margin-bottom: 11px;
+}
+
+
+
+/* ==========================================
+        RIGHT PROFILE
+========================================== */
+
+
+.mobile-header-right{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+}
+
+
+
+.mobile-profile-btn{
+
+
+    width:34px;
+
+    height:34px;
+
+
+    border:none;
+
+    border-radius:11px;
+
+
+    background:var(--accent-soft);
+
+    color:var(--accent);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.2s;
+
+
+    -webkit-tap-highlight-color:transparent;
+
+
+}
+
+
+
+.mobile-profile-btn:active{
+
+    transform:scale(.92);
+
+}
+
+
+
+.mobile-profile-btn svg{
+
+    width:18px;
+
+}
+
+
+
+/* ==========================================
+        CENTER LOGO
+========================================== */
+
+
+.mobile-logo{
+
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:5px;
+
+
+    color:var(--text);
+
+
+    font-size:13px;
+
+    font-weight:700;
+
+
+}
+
+
+
+.mobile-logo svg{
+
+
+    width:19px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+/* ==========================================
+        LEFT BUTTONS
+========================================== */
+
+
+.mobile-header-left{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:5px;
+
+
+}
+
+
+
+.mobile-icon-btn{
+
+
+    width:32px;
+
+    height:32px;
+
+
+    border:none;
+
+    border-radius:10px;
+
+
+    background:var(--surface-hover);
+
+    color:var(--text-secondary);
+
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.2s ease;
+
+
+    -webkit-tap-highlight-color:transparent;
+
+
+}
+
+
+
+.mobile-icon-btn:active{
+
+    transform:scale(.9);
+
+}
+
+
+
+.mobile-icon-btn svg{
+
+    width:16px;
+
+}
+
+
+/* ==========================================
+        MOBILE MENU - FLOATING
+========================================== */
+.mobile-menu{
+
+    position:fixed;
+
+    top:70px;
+
+    left:50%;
+    right:auto;
+
+    width:calc(100% - 24px);
+    max-width:450px;
+
+    transform:
+        translate(-50%, -12px)
+        scale(.97);
+
+    z-index:99999;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    max-height:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+
+    transition:
+        max-height .3s ease,
+        opacity .22s ease,
+        transform .3s ease;
+}
+
+
+.mobile-menu.active{
+
+    max-height:300px;
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+
+/* ==========================================
+        MENU ITEM
+========================================== */
+
+.mobile-menu-item{
+
+    height:45px;
+
+    padding:0 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--text);
+
+    font-size:13px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.mobile-menu-item:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.mobile-menu-item svg{
+
+    width:18px;
+
+    height:18px;
+
+    color:var(--accent);
+
+    flex-shrink:0;
+
+}
+
+
+.mobile-menu-item:active{
+
+    background:var(--surface-hover);
+
+}
+
+
+
+/* ==========================================
+        SMALL SCREEN
+========================================== */
+
+
+@media(max-width:380px){
+
+
+
+.app{
+
+    padding:10px;
+
+}
+
+
+
+.mobile-header{
+
+
+    height:52px;
+
+
+    border-radius:14px;
+
+
+}
+
+
+
+.mobile-logo{
+
+
+    font-size:12px;
+
+
+}
+
+
+
+.mobile-icon-btn{
+
+
+    width:30px;
+
+    height:30px;
+
+
+}
+
+
+
+.mobile-profile-btn{
+
+
+    width:32px;
+
+    height:32px;
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.exam-user-card{
+
+
+background:var(--surface);
+
+
+border:1px solid var(--border);
+
+
+border-radius:22px;
+
+
+padding:14px;
+
+
+box-shadow:var(--shadow);
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+
+}
+
+
+
+
+.exam-user-header{
+
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+
+}
+
+
+
+
+.user-icon-box{
+
+
+width:48px;
+
+height:48px;
+
+
+border-radius:16px;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+background:var(--accent-soft);
+
+
+color:var(--accent);
+
+
+}
+
+
+
+
+.user-icon-box svg{
+
+width:25px;
+
+}
+
+
+
+
+.user-details{
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:4px;
+
+
+}
+
+
+
+
+.user-details h3{
+
+
+font-size:15px;
+
+color:var(--text);
+
+font-weight:800;
+
+
+}
+
+
+
+.user-details span{
+
+
+font-size:11px;
+
+color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+.exam-info-grid{
+
+
+display:grid;
+
+
+grid-template-columns:1fr 1fr;
+
+
+gap:8px;
+
+
+}
+
+
+
+
+.exam-info-grid div{
+
+
+height:42px;
+
+
+background:var(--surface-hover);
+
+
+border-radius:12px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:8px;
+
+
+padding:0 10px;
+
+
+font-size:11px;
+
+
+color:var(--text);
+
+
+}
+
+
+
+.exam-info-grid svg{
+
+
+width:16px;
+
+color:var(--accent);
+
+
+}
+
+
+
+
+
+.exam-warning{
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:8px;
+
+
+padding:10px;
+
+
+border-radius:14px;
+
+
+background:rgba(59,130,246,.08);
+
+
+color:var(--text-secondary);
+
+
+}
+
+
+
+.exam-warning svg{
+
+
+width:18px;
+
+color:var(--accent);
+
+
+}
+
+
+
+.exam-warning p{
+
+
+font-size:11px;
+
+line-height:1.8;
+
+margin:0;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================
+   TEST TIMER CARD MOBILE
+===================================== */
+
+
+.test-timer-sticky{
+
+    position:sticky;
+    top:10px;
+
+    z-index:100;
+
+    margin-bottom:12px;
+
+}
+
+
+
+/* CARD */
+
+.timer-card{
+
+
+    width:100%;
+
+    height:70px;
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:16px;
+
+
+    padding:0 14px;
+
+
+    box-shadow:var(--shadow);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+}
+
+
+
+/* RIGHT SIDE */
+
+
+.timer-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+
+    color:var(--text-secondary);
+
+    font-size:12px;
+
+    font-weight:600;
+
+
+}
+
+
+
+.timer-header svg{
+
+
+    width:17px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+/* LEFT SIDE TIMER */
+
+
+.timer-display{
+
+
+    direction:ltr;
+
+
+    font-size:24px;
+
+
+    font-weight:900;
+
+
+    letter-spacing:1px;
+
+
+    color:#22c55e;
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+/* PROGRESS حذف شود */
+
+.timer-progress{
+
+    display:none;
+
+}
+
+
+
+
+/* WARNING */
+
+.timer-display.warning{
+
+    color:#eab308;
+
+}
+
+
+
+.timer-display.danger{
+
+    color:#ef4444;
+
+}
+
+
+
+
+
+/* SMALL SCREEN */
+
+@media(max-width:380px){
+
+
+.timer-card{
+
+    height:64px;
+
+    border-radius:14px;
+
+}
+
+
+
+.timer-display{
+
+    font-size:21px;
+
+}
+
+
+
+.timer-header{
+
+    font-size:11px;
+
+}
+
+
+}
+
+/* =====================================
+   TIMER DISPLAY BOX
+===================================== */
+
+
+.timer-display{
+
+
+    direction:ltr;
+
+
+    min-width:72px;
+
+    height:34px;
+
+
+    padding:0 10px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:10px;
+
+
+    border:1px solid var(--border);
+
+
+    background:var(--surface-hover);
+
+
+    font-size:18px;
+
+
+    font-weight:900;
+
+
+    letter-spacing:1px;
+
+
+    color:#22c55e;
+
+
+    transition:.35s ease;
+
+
+    box-shadow:
+    inset 0 0 12px rgba(0,0,0,.15);
+
+
+}
+
+.timer-display.warning{
+
+
+    color:#eab308;
+
+
+    border-color:#eab308;
+
+
+    background:rgba(234,179,8,.08);
+
+
+}
+
+
+
+.timer-display.danger{
+
+
+    color:#ef4444;
+
+
+    border-color:#ef4444;
+
+
+    background:rgba(239,68,68,.08);
+
+
+}
+
+.timer-card{
+
+
+    height:64px;
+
+    border-radius:16px;
+
+    padding:0 12px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        QUESTION BOX
+========================================== */
+
+.mobile-question-box{
+
+    width:100%;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:14px;
+
+    box-shadow:var(--shadow);
+
+    margin-top:12px;
+
+}
+
+
+.question-header{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:var(--accent);
+
+    margin-bottom:12px;
+
+}
+
+
+.question-text{
+
+    color:var(--text);
+
+    font-size:14px;
+
+    line-height:2;
+
+    margin-bottom:15px;
+
+}
+
+
+.question-options{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+.question-options button{
+
+    min-height:42px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface-hover);
+
+    color:var(--text);
+
+    text-align:right;
+
+    padding:0 12px;
+
+}
+
+
+/* ==========================================
+        STATUS TAB
+========================================== */
+
+.test-status-tab{
+
+    position:fixed;
+
+    left:0;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:30px;
+    height:64px;
+
+    border:none;
+
+    border-radius:0 14px 14px 0;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    color:var(--accent);
+
+    z-index:9998;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    box-shadow:var(--shadow);
+
+    cursor:pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+
+.test-status-tab:active{
+
+    transform:
+        translateY(-50%)
+        scale(.90);
+
+}
+
+
+.test-status-tab svg{
+
+    width:15px;
+    height:15px;
+
+}
+
+
+/* ==========================================
+        STATUS PANEL
+========================================== */
+
+.test-status-panel{
+
+    position:fixed;
+
+    left:-220px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:200px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:0 18px 18px 0;
+
+    padding:12px;
+
+    box-shadow:var(--shadow);
+
+    z-index:9999;
+
+    transition:
+        left .35s ease;
+
+}
+
+
+/* باز شدن پنل */
+
+.test-status-panel.active{
+
+    left:0;
+
+}
+
+
+/* ==========================================
+        STATUS HEADER
+========================================== */
+
+.status-panel-header{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+}
+
+
+/* عنوان */
+
+.status-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:var(--text);
+
+    font-size:11px;
+
+    font-weight:700;
+
+}
+
+
+.status-title svg{
+
+    width:15px;
+    height:15px;
+
+    color:var(--accent);
+
+}
+
+
+/* دکمه بستن */
+
+.status-close-btn{
+
+    width:25px;
+    height:25px;
+
+    padding:0;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:var(--surface-hover);
+
+    color:var(--text-secondary);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.status-close-btn:active{
+
+    transform:scale(.88);
+
+}
+
+
+.status-close-btn svg{
+
+    width:13px;
+    height:13px;
+
+}
+
+
+/* ==========================================
+        TEST STATUS GRID
+========================================== */
+
+.test-status-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap:8px;
+
+    padding:4px 0;
+
+}
+
+
+/* ==========================================
+        TEST STATUS NUMBER
+========================================== */
+
+.test-status-grid button{
+
+    width:28px;
+    height:28px;
+
+    margin:auto;
+
+    padding:0;
+
+    border-radius:8px;
+
+    border:1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
+    backdrop-filter:blur(8px);
+
+    -webkit-backdrop-filter:blur(8px);
+
+    color:var(--text-secondary);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+        transform .18s ease,
+        background .18s ease,
+        border-color .18s ease,
+        color .18s ease;
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+
+/* ==========================================
+        NUMBER ACTIVE / HOVER
+========================================== */
+
+.test-status-grid button:hover{
+
+    background:
+        rgba(59,130,246,.10);
+
+    border-color:
+        rgba(59,130,246,.35);
+
+    color:var(--text);
+
+}
+
+
+.test-status-grid button:active{
+
+    transform:scale(.86);
+
+}
+
+
+/* ==========================================
+        ANSWERED
+        پاسخ داده شده
+========================================== */
+
+.test-status-grid button.answered{
+
+    background:
+        rgba(34,197,94,.14);
+
+    border-color:
+        rgba(34,197,94,.30);
+
+    color:#4ade80;
+
+}
+
+
+/* ==========================================
+        WRONG
+        پاسخ اشتباه
+========================================== */
+
+.test-status-grid button.wrong{
+
+    background:
+        rgba(239,68,68,.14);
+
+    border-color:
+        rgba(239,68,68,.30);
+
+    color:#f87171;
+
+}
+
+
+/* ==========================================
+        MARKED
+        علامت‌گذاری شده
+========================================== */
+
+.test-status-grid button.marked{
+
+    background:
+        rgba(234,179,8,.14);
+
+    border-color:
+        rgba(234,179,8,.30);
+
+    color:#facc15;
+
+}
+
+
+/* ==========================================
+        CURRENT QUESTION
+========================================== */
+
+.test-status-grid button.current{
+
+    border-color:
+        var(--accent);
+
+    background:
+        rgba(59,130,246,.16);
+
+    color:
+        #60a5fa;
+
+    box-shadow:
+        0 0 0 2px
+        rgba(59,130,246,.08);
+
+}
+
+
+/* ==========================================
+        VERY SMALL MOBILE
+========================================== */
+
+@media(max-width:380px){
+
+    .test-status-panel{
+
+        width:190px;
+
+        padding:11px;
+
+    }
+
+
+    .test-status-grid{
+
+        gap:7px;
+
+    }
+
+
+    .test-status-grid button{
+
+        width:27px;
+        height:27px;
+
+        font-size:9px;
+
+    }
+
+}

@@ -37,6 +37,18 @@ document.querySelector(".otp-container");
 
 
 
+
+
+
+
+
+
+
+
+
+console.log("sendCodeBtn:", sendCodeBtn);
+console.log("editPhoneBtn:", editPhoneBtn);
+console.log("otpForm:", document.getElementById("otpForm"));
 /* =================================
         TOAST
 ================================= */
@@ -381,345 +393,493 @@ showToast(
         EDIT PHONE
 ================================= */
 
+if (editPhoneBtn) {
 
-editPhoneBtn.addEventListener(
-"click",
-()=>{
+    editPhoneBtn.addEventListener(
+        "click",
+        () => {
 
+            // فعال کردن شماره
+            phoneNumber.disabled = false;
 
-phoneNumber.disabled=false;
+            phoneNumber.focus();
 
+            // فعال کردن ارسال مجدد
+            sendCodeBtn.disabled = false;
 
-phoneNumber.focus();
+            sendCodeBtn.innerHTML = `
 
+                <span>
+                    ارسال کد تایید
+                </span>
 
+                <i class="fa-solid fa-paper-plane"></i>
 
-sendCodeBtn.disabled=false;
-
-
-
-sendCodeBtn.innerHTML = `
-
-<span>
-ارسال کد تایید
-</span>
-
-<i class="fa-solid fa-paper-plane"></i>
-
-`;
+            `;
 
 
+            // پاک کردن OTP
+            otpBoxes.forEach(box => {
 
-otpBoxes.forEach(box=>{
+                box.value = "";
 
+                box.disabled = true;
 
-box.value="";
+            });
 
-box.disabled=true;
+        }
+    );
 
-
-});
-
-
-});
-
-
-
-
+}
 
 
 /* =================================
         OTP INPUT
 ================================= */
 
-
 otpBoxes.forEach(
-(box,index)=>{
+    (box, index) => {
+
+        // در ابتدا غیرفعال
+        box.disabled = true;
 
 
-box.disabled=true;
+        /* =============================
+                INPUT
+        ============================= */
+
+        box.addEventListener(
+            "input",
+            () => {
+
+                // فقط عدد
+                box.value =
+                    box.value.replace(/\D/g, "");
 
 
+                // رفتن به خانه بعدی
+                if (
+                    box.value &&
+                    index < otpBoxes.length - 1
+                ) {
 
-box.addEventListener(
-"input",
-()=>{
+                    otpBoxes[index + 1].focus();
 
+                }
 
-box.value =
-box.value.replace(/\D/g,"");
-
-
-
-if(
-box.value &&
-index < otpBoxes.length-1
-){
-
-otpBoxes[index+1].focus();
-
-}
+            }
+        );
 
 
-});
+        /* =============================
+                BACKSPACE
+        ============================= */
 
+        box.addEventListener(
+            "keydown",
+            (e) => {
 
+                if (
+                    e.key === "Backspace" &&
+                    !box.value &&
+                    index > 0
+                ) {
 
+                    otpBoxes[index - 1].focus();
 
-box.addEventListener(
-"keydown",
-(e)=>{
+                }
 
+            }
+        );
 
-if(
-e.key==="Backspace" &&
-!box.value &&
-index>0
-){
-
-
-otpBoxes[index-1].focus();
-
-
-}
-
-
-});
-
-
-});
-
-
-
-
-
+    }
+);
 
 
 /* =================================
         VERIFY OTP
 ================================= */
 
-
-document
-.getElementById("otpForm")
-.addEventListener(
-"submit",
-async(e)=>{
+const otpForm =
+    document.getElementById("otpForm");
 
 
-e.preventDefault();
+if (otpForm) {
+
+    otpForm.addEventListener(
+        "submit",
+        async (e) => {
+
+            e.preventDefault();
 
 
+            /* =============================
+                    OTP CODE
+            ============================= */
 
-const otpCode =
-[...otpBoxes]
-.map(box=>box.value)
-.join("");
-
-
-
-const phone =
-phoneNumber.value.trim();
+            const otpCode =
+                [...otpBoxes]
+                    .map(box => box.value)
+                    .join("");
 
 
+            /* =============================
+                    PHONE
+            ============================= */
 
-const rubikaChatId =
-chatId.value.trim();
-
-
-
-
-const registerData =
-JSON.parse(
-localStorage.getItem("registerData")
-);
+            const phone =
+                phoneNumber.value.trim();
 
 
+            /* =============================
+                    RUBIKA CHAT ID
+            ============================= */
+
+            const rubikaChatId =
+                chatId.value.trim();
 
 
+            /* =============================
+                    REGISTER DATA
+            ============================= */
 
-if(!registerData){
+            const savedRegisterData =
+                localStorage.getItem(
+                    "registerData"
+                );
 
 
-alert(
-"اطلاعات ثبت نام پیدا نشد"
-);
+            if (!savedRegisterData) {
+
+                alert(
+                    "اطلاعات ثبت نام پیدا نشد"
+                );
+
+                return;
+
+            }
 
 
-return;
+            let registerData;
 
+
+            try {
+
+                registerData =
+                    JSON.parse(
+                        savedRegisterData
+                    );
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    "REGISTER DATA ERROR:",
+                    error
+                );
+
+                alert(
+                    "اطلاعات ثبت نام نامعتبر است"
+                );
+
+                return;
+
+            }
+
+
+            /* =============================
+                    VALIDATE OTP
+            ============================= */
+
+            if (otpCode.length !== 4) {
+
+                alert(
+                    "کد تایید را کامل وارد کنید"
+                );
+
+                return;
+
+            }
+
+
+            /* =============================
+                    DISABLE VERIFY BUTTON
+            ============================= */
+
+            verifyBtn.disabled = true;
+
+
+            verifyBtn.innerHTML = `
+
+                <span>
+                    در حال تایید...
+                </span>
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+            `;
+
+
+            try {
+
+
+                /* =============================
+                        API REQUEST
+                ============================= */
+
+                const response =
+                    await fetch(
+
+                        `${API_URL}/auth/verify-otp`,
+
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                phone:
+
+                                    phone,
+
+                                chatId:
+
+                                    rubikaChatId,
+
+                                otp:
+
+                                    otpCode,
+
+                                fullname:
+
+                                    registerData.fullname,
+
+                                email:
+
+                                    registerData.email,
+
+                                password:
+
+                                    registerData.password
+
+                            })
+
+                        }
+
+                    );
+
+
+                /* =============================
+                        RESPONSE
+                ============================= */
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "VERIFY RESPONSE:",
+                    data
+                );
+
+
+                /* =============================
+                        SUCCESS
+                ============================= */
+
+                if (response.ok) {
+
+
+                    /* =============================
+                            OTP SUCCESS STYLE
+                    ============================= */
+
+                    if (otpContainer) {
+
+                        otpContainer.classList.add(
+                            "valid"
+                        );
+
+                    }
+
+
+                    /* =============================
+                            BUTTON
+                    ============================= */
+
+                    verifyBtn.innerHTML = `
+
+                        <span>
+                            حساب ایجاد شد ✓
+                        </span>
+
+                        <i class="fa-solid fa-check"></i>
+
+                    `;
+
+
+                    /* =============================
+                            SAVE USER
+                    ============================= */
+
+                    if (data.user) {
+
+                        localStorage.setItem(
+                            "currentUser",
+                            JSON.stringify(
+                                data.user
+                            )
+                        );
+
+                    }
+
+
+                    /* =============================
+                            REMOVE REGISTER DATA
+                    ============================= */
+
+                    localStorage.removeItem(
+                        "registerData"
+                    );
+
+
+                    /* =============================
+                            SUCCESS MESSAGE
+                    ============================= */
+
+                    showToast(
+                        "حساب شما با موفقیت ساخته شد ✓"
+                    );
+
+
+                    /* =============================
+                            REDIRECT
+                    ============================= */
+
+                    setTimeout(
+                        () => {
+
+
+                            const screenWidth =
+                                window.innerWidth;
+
+
+                            /*
+                                موبایل:
+                                768px و کمتر
+
+                                دسکتاپ:
+                                بیشتر از 768px
+                            */
+
+                            if (
+                                screenWidth <= 768
+                            ) {
+
+
+                                // 📱 Mobile Dashboard
+
+                                window.location.href =
+                                    "../گوشی/موبایل.html";
+
+
+                            }
+
+                            else {
+
+
+                                // 💻 Desktop Dashboard
+
+                                window.location.href =
+                                    "../index1.html";
+
+                            }
+
+
+                        },
+                        2000
+                    );
+
+
+                }
+
+
+                /* =============================
+                        ERROR RESPONSE
+                ============================= */
+
+                else {
+
+
+                    verifyBtn.disabled = false;
+
+
+                    verifyBtn.innerHTML = `
+
+                        <span>
+                            تایید کد
+                        </span>
+
+                        <i class="fa-solid fa-check"></i>
+
+                    `;
+
+
+                    alert(
+                        data.message ||
+                        "کد تایید صحیح نیست"
+                    );
+
+                }
+
+            }
+
+
+            /* =============================
+                    CONNECTION ERROR
+            ============================= */
+
+            catch (error) {
+
+
+                console.log(
+                    "VERIFY OTP ERROR:",
+                    error
+                );
+
+
+                verifyBtn.disabled = false;
+
+
+                verifyBtn.innerHTML = `
+
+                    <span>
+                        تایید کد
+                    </span>
+
+                    <i class="fa-solid fa-check"></i>
+
+                `;
+
+
+                alert(
+                    "خطا در اتصال به سرور"
+                );
+
+            }
+
+        }
+    );
 
 }
 
 
 
-
-
-if(otpCode.length !== 4){
-
-
-alert(
-"کد را کامل وارد کنید"
-);
-
-
-return;
-
-
-}
-
-
-
-
-
-try{
-
-
-
-const response =
-await fetch(
-
-`${API_URL}/auth/verify-otp`,
-
-{
-
-method:"POST",
-
-
-headers:{
-
-"Content-Type":
-"application/json"
-
-},
-
-
-body:JSON.stringify({
-
-phone,
-
-chatId:rubikaChatId,
-
-otp:otpCode,
-
-fullname:registerData.fullname,
-
-email:registerData.email,
-
-password:registerData.password
-
-})
-
-
-}
-
-);
-
-
-const data = 
-await response.json();
-
-
-
-if(response.ok){
-
-
-
-otpContainer.classList.add(
-"valid"
-);
-
-
-
-verifyBtn.innerHTML = `
-
-<span>
-حساب ایجاد شد ✓
-</span>
-
-<i class="fa-solid fa-check"></i>
-
-`;
-
-
-
-localStorage.removeItem(
-"registerData"
-);
-
-
-
-showToast(
-"حساب شما با موفقیت ساخته شد ✓"
-);
-
-
-
-
-
-setTimeout(()=>{
-
-
-const isMobile =
-/Android|iPhone|iPad|iPod/i.test(
-navigator.userAgent
-);
-
-
-
-if(isMobile){
-
-
-window.location.href =
- "../گوشی/موبایل.html";
-
-
-}
-else{
-
-
-window.location.href =
-"../index.html";
-
-
-}
-
-
-
-},2000);
-
-
-
-
-
-}
-else{
-
-
-alert(
-data.message
-);
-
-
-}
-
-}
-
-
-
-catch(error){
-
-
-console.log(error);
-
-
-alert(
-"خطا در اتصال به سرور"
-);
-
-
-}
-
-
-
-});

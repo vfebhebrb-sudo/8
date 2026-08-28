@@ -638,8 +638,8 @@ function renderMessages(
 
             messageElement.className =
                 isMe
-                    ? "message sent"
-                    : "message received";
+                    ? "message received"
+                    : "message sent";
 
 
             messageElement.dataset.messageId =
@@ -960,10 +960,10 @@ function appendMessage(
         );
 
 
-    messageElement.className =
-        isMe
-            ? "message sent"
-            : "message received";
+messageElement.className =
+    isMe
+        ? "message received"
+        : "message sent";
 
 
     messageElement.dataset.messageId =

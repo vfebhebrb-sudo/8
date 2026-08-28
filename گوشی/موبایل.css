@@ -146,7 +146,7 @@ body{
 
     transition:.25s ease;
 
-
+    margin-bottom: 11px;
 }
 
 
@@ -344,118 +344,93 @@ body{
 }
 
 
-
 /* ==========================================
-        MOBILE MENU
+        MOBILE MENU - FLOATING
 ========================================== */
-
-
 .mobile-menu{
 
+    position:fixed;
 
-    width:100%;
+    top:70px;
 
+    left:50%;
+    right:auto;
 
-    margin-top:8px;
+    width:calc(100% - 24px);
+    max-width:450px;
 
+    transform:
+        translate(-50%, -12px)
+        scale(.97);
 
+    z-index:99999;
 
     background:var(--surface);
 
-
     border:1px solid var(--border);
-
 
     border-radius:16px;
 
-
     overflow:hidden;
-
-
 
     max-height:0;
 
-
     opacity:0;
-
-
-    transform:translateY(-10px);
-
 
     pointer-events:none;
 
-
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
 
     transition:
-
-    max-height .35s ease,
-
-    opacity .25s ease,
-
-    transform .35s ease;
-
-
+        max-height .3s ease,
+        opacity .22s ease,
+        transform .3s ease;
 }
-
-
-
 
 
 .mobile-menu.active{
 
-
     max-height:300px;
-
 
     opacity:1;
 
-
-    transform:translateY(0);
-
-
     pointer-events:auto;
 
-
+    transform:
+        translate(-50%, 0)
+        scale(1);
 }
 
 
-
-
+/* ==========================================
+        MENU ITEM
+========================================== */
 
 .mobile-menu-item{
 
-
     height:45px;
-
 
     padding:0 14px;
 
-
     display:flex;
-
 
     align-items:center;
 
-
     gap:10px;
-
-
 
     color:var(--text);
 
-
     font-size:13px;
 
+    border-bottom:
+        1px solid var(--border);
 
-
-    border-bottom:1px solid var(--border);
-
-
-    transition:.2s;
-
+    transition:
+        background .2s ease,
+        transform .2s ease;
 
 }
-
 
 
 .mobile-menu-item:last-child{
@@ -465,25 +440,22 @@ body{
 }
 
 
-
 .mobile-menu-item svg{
-
 
     width:18px;
 
+    height:18px;
 
     color:var(--accent);
 
+    flex-shrink:0;
 
 }
 
 
-
 .mobile-menu-item:active{
 
-
     background:var(--surface-hover);
-
 
 }
 
@@ -1796,7 +1768,7 @@ body{
 
     width:100%;
 
-    margin-top:12px;
+    
 
     padding:14px;
 
@@ -2454,6 +2426,70 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        HIDE PLANNER SCROLLBAR
+========================================== */
+
+.planner-scroll{
+
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+
+}
+
+.planner-scroll::-webkit-scrollbar{
+
+    display:none;
+    width:0;
+    height:0;
+
+}
+
+.planner-scroll{
+
+    margin-top:18px;
+
+    max-height:none;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    padding-bottom:4px;
+
+    box-sizing:border-box;
+
+}
+
+.planner-day{
+
+    min-height:210px;
+
+    height:auto;
+
+}
 
 
 

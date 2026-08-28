@@ -553,121 +553,85 @@ type="submit">
 
 <script>
 
-
 const texts = [
 
+    "تایید شماره تلفن",
 
-"تایید شماره تلفن",
+    "کد ارسال شده را وارد کنید",
 
+    "حساب شما در حال آماده سازی است",
 
-"کد ارسال شده را وارد کنید",
-
-
-"حساب شما در حال آماده سازی است",
-
-
-"به کدماتیک خوش آمدید"
-
+    "به کدماتیک خوش آمدید"
 
 ];
-
 
 
 const typing = document.getElementById("typing-text");
 
 
-
 let textIndex = 0;
-
 let charIndex = 0;
-
 let deleting = false;
-
 
 
 function typeEffect(){
 
+    if(!typing) return;
 
 
-const current = texts[textIndex];
+    const current = texts[textIndex];
 
 
+    if(!deleting){
+
+        typing.textContent =
+            current.substring(0,charIndex++);
 
 
-if(!deleting){
+        if(charIndex > current.length){
+
+            deleting = true;
+
+            setTimeout(typeEffect,1500);
+
+            return;
+
+        }
+
+    }
+
+    else{
+
+        typing.textContent =
+            current.substring(0,charIndex--);
 
 
-typing.textContent =
-current.substring(0,charIndex++);
+        if(charIndex < 0){
+
+            deleting = false;
+
+            textIndex++;
+
+            if(textIndex >= texts.length){
+
+                textIndex = 0;
+
+            }
+
+        }
+
+    }
 
 
-
-if(charIndex > current.length){
-
-
-deleting = true;
-
-
-setTimeout(typeEffect,1500);
-
-
-return;
-
-
-}
-
-
-
-
-}else{
-
-
-typing.textContent =
-current.substring(0,charIndex--);
-
-
-
-if(charIndex < 0){
-
-
-deleting=false;
-
-
-textIndex++;
-
-
-
-if(textIndex >= texts.length){
-
-textIndex=0;
+    setTimeout(
+        typeEffect,
+        deleting ? 40 : 80
+    );
 
 }
-
-
-
-}
-
-
-
-}
-
-
-
-
-setTimeout(
-typeEffect,
-deleting ? 40 : 80
-);
-
-
-
-}
-
 
 
 typeEffect();
-
-
 
 </script>
 

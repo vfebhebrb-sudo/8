@@ -1802,7 +1802,6 @@ body.public-chat-page{
 
 
 
-
 /* =====================================================
    CHAT MESSAGES
    CLEAN FINAL STYLE
@@ -1848,24 +1847,24 @@ body.public-chat-page{
 
 /* =====================================================
    SENT
-   پیام ارسالی → راست
+   پیام ارسالی → سمت چپ
 ===================================================== */
 
 .message.sent {
 
-    justify-content: flex-end;
+    justify-content: flex-start;
 
 }
 
 
 /* =====================================================
    RECEIVED
-   پیام دریافتی → چپ
+   پیام دریافتی → سمت راست
 ===================================================== */
 
 .message.received {
 
-    justify-content: flex-start;
+    justify-content: flex-end;
 
 }
 
@@ -1908,7 +1907,7 @@ body.public-chat-page{
 
 /* =====================================================
    SENT MESSAGE
-   آبی + راست
+   پیام ارسالی → باکس آبی
 ===================================================== */
 
 .message.sent .message-content {
@@ -1920,30 +1919,25 @@ body.public-chat-page{
             #1976d2
         );
 
+
     color: #fff;
 
     border-bottom-right-radius: 5px;
 
     box-shadow:
         0 5px 18px
-        rgba(33,150,243,.22);
+        rgba(0,0,0,.20);
 
 }
 
 
 /* =====================================================
    RECEIVED MESSAGE
-   خاکستری + چپ
+   پیام دریافتی → باکس خاکستری
 ===================================================== */
 
 .message.received .message-content {
 
-    background:
-        linear-gradient(
-            135deg,
-            #3f3f3f,
-            #303030
-        );
 
     color: #fff;
 
@@ -1951,7 +1945,7 @@ body.public-chat-page{
 
     box-shadow:
         0 5px 18px
-        rgba(0,0,0,.20);
+        rgba(33,150,243,.22);
 
 }
 
@@ -2198,16 +2192,20 @@ body.public-chat-page{
     }
 
 
+    /* پیام ارسالی → چپ */
+
     .message.sent .message-content {
 
-        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
 
     }
 
 
+    /* پیام دریافتی → راست */
+
     .message.received .message-content {
 
-        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
 
     }
 
@@ -2265,8 +2263,6 @@ body.public-chat-page{
     }
 
 }
-
-
 
 
 
@@ -2448,6 +2444,29 @@ body.public-chat-page{
     background:
         linear-gradient(
             135deg,
+            #3d4148,
+            #2d3035
+        );
+
+    border-bottom-left-radius:5px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0,0,0,.18);
+
+}
+
+
+/* ======================================================
+   RECEIVED MESSAGE
+====================================================== */
+
+.message.received .message-content{
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
             #2388f5,
             #1769d1
         );
@@ -2458,29 +2477,6 @@ body.public-chat-page{
         0 6px 18px
         rgba(35,136,245,.18);
 
-}
-
-
-/* ======================================================
-   RECEIVED MESSAGE
-====================================================== */
-
-.message.received .message-content{
-
-    color:#fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #3d4148,
-            #2d3035
-        );
-
-    border-bottom-left-radius:5px;
-
-    box-shadow:
-        0 6px 18px
-        rgba(0,0,0,.18);
 
 }
 
@@ -2685,7 +2681,7 @@ body.public-chat-page{
 
         font-size:12px;
 
-        line-height:1.7;
+        line-height:5px;
 
     }
 
@@ -2753,6 +2749,278 @@ body.public-chat-page{
 
 
 
+/* =====================================================
+   MOBILE CHAT LAYOUT
+===================================================== */
+
+@media (max-width: 600px){
+
+    /* کل اپ */
+    .chat-app{
+
+        width:100%;
+        max-width:450px;
+
+        height:100dvh;
+        min-height:100dvh;
+
+        overflow:hidden;
+
+        position:relative;
+
+    }
+
+
+    /* =================================================
+       CHAT PANEL + CONVERSATION
+    ================================================= */
+
+    .chat-panel,
+    .conversation{
+
+        position:absolute;
+
+        top:0;
+        left:0;
+
+        width:100%;
+        height:100dvh;
+
+        min-height:0;
+
+        box-sizing:border-box;
+
+        transition:
+            transform .35s ease,
+            opacity .35s ease;
+
+    }
+
+
+    /* =================================================
+       CONVERSATION
+    ================================================= */
+
+    .conversation{
+
+        display:flex;
+
+        flex-direction:column;
+
+        overflow:hidden;
+
+        background:var(--background);
+
+    }
+
+
+    /* =================================================
+       CHAT HEADER
+    ================================================= */
+
+    .chat-header{
+
+        flex:0 0 auto;
+
+        height:62px;
+
+        min-height:62px;
+
+        margin:8px 8px 0;
+
+        padding:0 10px;
+
+        border-radius:18px;
+
+        border:1px solid var(--border);
+
+        box-sizing:border-box;
+
+        background:var(--surface);
+
+    }
+
+
+    /* =================================================
+       MESSAGES
+    ================================================= */
+
+    .messages{
+
+        flex:1;
+
+        min-height:0;
+
+        width:100%;
+
+        overflow-y:auto;
+
+        overflow-x:hidden;
+
+        padding:12px 8px 10px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    /* =================================================
+       MESSAGE FOOTER
+    ================================================= */
+
+    .message-box{
+
+        flex:0 0 auto;
+
+        width:calc(100% - 16px);
+
+        margin:0 8px 8px;
+
+        padding:8px 8px 8px;
+
+        box-sizing:border-box;
+
+        border-radius:18px;
+
+        border:1px solid var(--border);
+
+        background:var(--surface);
+
+    }
+
+
+    /* =================================================
+       INPUT
+    ================================================= */
+
+    .input-area{
+
+        width:100%;
+
+        height:46px;
+
+        min-height:46px;
+
+        box-sizing:border-box;
+
+        border-radius:15px;
+
+    }
+
+
+    /* =================================================
+       CHAT SWITCH
+    ================================================= */
+
+    .chat-panel{
+
+        transform:translateX(0);
+
+        opacity:1;
+
+        pointer-events:auto;
+
+        z-index:2;
+
+    }
+
+
+    .conversation{
+
+        transform:translateX(100%);
+
+        opacity:0;
+
+        pointer-events:none;
+
+        z-index:3;
+
+    }
+
+
+    .conversation.show-chat{
+
+        transform:translateX(0);
+
+        opacity:1;
+
+        pointer-events:auto;
+
+    }
+
+
+    .chat-panel.hide-panel{
+
+        transform:translateX(-100%);
+
+        opacity:0;
+
+        pointer-events:none;
+
+    }
+
+
+    /* =================================================
+       MESSAGE BUBBLES
+    ================================================= */
+
+    .message-content{
+
+        max-width:78%;
+
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width:380px){
+
+    .chat-header{
+
+        height:58px;
+
+        min-height:58px;
+
+        margin:6px 6px 0;
+
+        border-radius:16px;
+
+    }
+
+
+    .message-box{
+
+        width:calc(100% - 12px);
+
+        margin:0 6px 6px;
+
+        padding:7px;
+
+        border-radius:16px;
+
+    }
+
+
+    .messages{
+
+        padding:10px 6px 8px;
+
+    }
+
+
+    .input-area{
+
+        height:44px;
+
+        min-height:44px;
+
+    }
+
+}
 
 
 
@@ -2784,10 +3052,13 @@ body.public-chat-page{
 
 
 
+.message.sent .message-content {
+    border-radius: 16px 16px 16px 5px;
+}
 
-
-
-
+.message.received .message-content {
+    border-radius: 16px 16px 5px 16px;
+}
 
 
 
@@ -2885,4 +3156,79 @@ body.public-chat-page{
 
     }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   FINAL MESSAGE DIRECTION
+===================================================== */
+
+.messages {
+    direction: ltr !important;
+}
+
+.message {
+    width: 100%;
+    display: flex;
+}
+
+.message.sent {
+    justify-content: flex-start !important;
+}
+
+.message.received {
+    justify-content: flex-end !important;
+}
+
+/* متن داخل حباب همچنان فارسی و راست‌چین */
+.message-content {
+    direction: rtl;
+    text-align: right;
 }

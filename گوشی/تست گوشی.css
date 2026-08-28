@@ -1,0 +1,1319 @@
+/* ==========================================
+        APP WIDTH LIMIT
+========================================== */
+
+
+*{
+    box-sizing:border-box;
+     font-family: "Vazirmatn", sans-serif;
+}
+
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:var(--background);
+
+    font-family:"Vazirmatn",sans-serif;
+
+}
+
+
+
+/* ==========================================
+        MOBILE APP CONTAINER
+========================================== */
+
+
+.app{
+
+    width:100%;
+
+    max-width:450px;
+
+    min-height:100vh;
+
+    margin:0 auto;
+
+    padding:12px;
+
+}
+
+
+
+/* ==========================================
+        THEME SYSTEM
+========================================== */
+
+
+:root{
+
+
+    --background:#111315;
+
+    --surface:#191c21;
+
+    --surface-hover:#22262d;
+
+    --text:#f9fafb;
+
+    --text-secondary:#9ca3af;
+
+    --border:#292e36;
+
+
+    --accent:#3b82f6;
+
+    --accent-soft:#172554;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.35);
+
+
+}
+
+
+
+.light-theme{
+
+
+    --background:#f5f6f8;
+
+    --surface:#ffffff;
+
+    --surface-hover:#f3f4f6;
+
+    --text:#111827;
+
+    --text-secondary:#6b7280;
+
+    --border:#e5e7eb;
+
+
+    --accent:#2563eb;
+
+    --accent-soft:#eff6ff;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        MOBILE HEADER
+========================================== */
+
+
+.mobile-header{
+
+
+    width:100%;
+
+    height:56px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    position:relative;
+
+
+    padding:0 8px;
+
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+
+    box-shadow:var(--shadow);
+
+
+    transition:.25s ease;
+
+    margin-bottom: 11px;
+}
+
+
+
+/* ==========================================
+        RIGHT PROFILE
+========================================== */
+
+
+.mobile-header-right{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+}
+
+
+
+.mobile-profile-btn{
+
+
+    width:34px;
+
+    height:34px;
+
+
+    border:none;
+
+    border-radius:11px;
+
+
+    background:var(--accent-soft);
+
+    color:var(--accent);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.2s;
+
+
+    -webkit-tap-highlight-color:transparent;
+
+
+}
+
+
+
+.mobile-profile-btn:active{
+
+    transform:scale(.92);
+
+}
+
+
+
+.mobile-profile-btn svg{
+
+    width:18px;
+
+}
+
+
+
+/* ==========================================
+        CENTER LOGO
+========================================== */
+
+
+.mobile-logo{
+
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:5px;
+
+
+    color:var(--text);
+
+
+    font-size:13px;
+
+    font-weight:700;
+
+
+}
+
+
+
+.mobile-logo svg{
+
+
+    width:19px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+/* ==========================================
+        LEFT BUTTONS
+========================================== */
+
+
+.mobile-header-left{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:5px;
+
+
+}
+
+
+
+.mobile-icon-btn{
+
+
+    width:32px;
+
+    height:32px;
+
+
+    border:none;
+
+    border-radius:10px;
+
+
+    background:var(--surface-hover);
+
+    color:var(--text-secondary);
+
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.2s ease;
+
+
+    -webkit-tap-highlight-color:transparent;
+
+
+}
+
+
+
+.mobile-icon-btn:active{
+
+    transform:scale(.9);
+
+}
+
+
+
+.mobile-icon-btn svg{
+
+    width:16px;
+
+}
+
+
+/* ==========================================
+        MOBILE MENU - FLOATING
+========================================== */
+.mobile-menu{
+
+    position:fixed;
+
+    top:70px;
+
+    left:50%;
+    right:auto;
+
+    width:calc(100% - 24px);
+    max-width:450px;
+
+    transform:
+        translate(-50%, -12px)
+        scale(.97);
+
+    z-index:99999;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    max-height:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+
+    transition:
+        max-height .3s ease,
+        opacity .22s ease,
+        transform .3s ease;
+}
+
+
+.mobile-menu.active{
+
+    max-height:300px;
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+
+/* ==========================================
+        MENU ITEM
+========================================== */
+
+.mobile-menu-item{
+
+    height:45px;
+
+    padding:0 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--text);
+
+    font-size:13px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.mobile-menu-item:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.mobile-menu-item svg{
+
+    width:18px;
+
+    height:18px;
+
+    color:var(--accent);
+
+    flex-shrink:0;
+
+}
+
+
+.mobile-menu-item:active{
+
+    background:var(--surface-hover);
+
+}
+
+
+
+/* ==========================================
+        SMALL SCREEN
+========================================== */
+
+
+@media(max-width:380px){
+
+
+
+.app{
+
+    padding:10px;
+
+}
+
+
+
+.mobile-header{
+
+
+    height:52px;
+
+
+    border-radius:14px;
+
+
+}
+
+
+
+.mobile-logo{
+
+
+    font-size:12px;
+
+
+}
+
+
+
+.mobile-icon-btn{
+
+
+    width:30px;
+
+    height:30px;
+
+
+}
+
+
+
+.mobile-profile-btn{
+
+
+    width:32px;
+
+    height:32px;
+
+
+}
+
+
+
+}
+
+/* ==========================================
+        USER STATISTICS
+========================================== */
+
+.exam-info-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:8px;
+
+}
+
+
+/* ==========================================
+        USER STAT
+========================================== */
+
+.user-stat{
+
+    min-height:46px;
+
+    padding:8px 9px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    background:
+        var(--surface-hover);
+
+    border:1px solid
+        rgba(255,255,255,.035);
+
+    border-radius:13px;
+
+}
+
+
+/* ==========================================
+        ICON
+========================================== */
+
+.user-stat > svg{
+
+    width:16px;
+    height:16px;
+
+    flex-shrink:0;
+
+    color:var(--accent);
+
+}
+
+
+/* ==========================================
+        TEXT - ONE ROW
+========================================== */
+
+.user-stat > div{
+
+    min-width:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    flex-direction:row;
+
+    white-space:nowrap;
+
+}
+
+
+/* TITLE */
+
+.user-stat span{
+
+    font-size:9px;
+
+    color:var(--text-secondary);
+
+    white-space:nowrap;
+
+}
+
+
+/* VALUE */
+
+.user-stat strong{
+
+    font-size:10px;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    white-space:nowrap;
+
+}
+
+
+/* ==========================================
+        SMALL MOBILE
+========================================== */
+
+@media(max-width:380px){
+
+    .user-stat{
+
+        min-height:44px;
+
+        padding:7px 7px;
+
+        gap:6px;
+
+    }
+
+
+    .user-stat > svg{
+
+        width:15px;
+        height:15px;
+
+    }
+
+
+    .user-stat > div{
+
+        gap:4px;
+
+    }
+
+
+    .user-stat span{
+
+        font-size:8px;
+
+    }
+
+
+    .user-stat strong{
+
+        font-size:9px;
+
+    }
+
+}
+
+
+
+
+
+.exam-user-card{
+
+
+background:var(--surface);
+
+
+border:1px solid var(--border);
+
+
+border-radius:22px;
+
+
+padding:14px;
+
+
+box-shadow:var(--shadow);
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:14px;
+
+
+}
+
+
+
+
+.exam-user-header{
+
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+
+}
+
+
+
+
+.user-icon-box{
+
+
+width:48px;
+
+height:48px;
+
+
+border-radius:16px;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+background:var(--accent-soft);
+
+
+color:var(--accent);
+
+
+}
+
+
+
+
+.user-icon-box svg{
+
+width:25px;
+
+}
+
+
+
+
+.user-details{
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:4px;
+
+
+}
+
+
+
+
+.user-details h3{
+
+
+font-size:15px;
+
+color:var(--text);
+
+font-weight:800;
+
+
+}
+
+
+
+.user-details span{
+
+
+font-size:11px;
+
+color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+.exam-info-grid{
+
+
+display:grid;
+
+
+grid-template-columns:1fr 1fr;
+
+
+gap:8px;
+
+
+}
+
+
+
+
+.exam-info-grid div{
+
+
+height:42px;
+
+
+background:var(--surface-hover);
+
+
+border-radius:12px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:8px;
+
+
+padding:0 10px;
+
+
+font-size:11px;
+
+
+color:var(--text);
+
+
+}
+
+
+
+.exam-info-grid svg{
+
+
+width:16px;
+
+color:var(--accent);
+
+
+}
+
+
+
+
+
+.exam-warning{
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:8px;
+
+
+padding:10px;
+
+
+border-radius:14px;
+
+
+background:rgba(59,130,246,.08);
+
+
+color:var(--text-secondary);
+
+
+}
+
+
+
+.exam-warning svg{
+
+
+width:18px;
+
+color:var(--accent);
+
+
+}
+
+
+
+.exam-warning p{
+
+
+font-size:11px;
+
+line-height:1.8;
+
+margin:0;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        ACTIVE EXAMS
+========================================== */
+
+
+.active-exams-card{
+
+
+margin-top:12px;
+
+
+background:var(--surface);
+
+
+border:1px solid var(--border);
+
+
+border-radius:22px;
+
+
+padding:14px;
+
+
+box-shadow:var(--shadow);
+
+
+}
+
+
+
+
+
+.active-exams-title{
+
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+
+margin-bottom:12px;
+
+
+}
+
+
+
+.active-exams-title svg{
+
+
+width:19px;
+
+color:var(--accent);
+
+
+}
+
+
+
+.active-exams-title h3{
+
+
+font-size:14px;
+
+margin:0;
+
+color:var(--text);
+
+
+}
+
+
+
+
+
+
+.active-exams-list{
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+
+}
+
+
+
+
+
+.exam-item{
+
+
+height:70px;
+
+
+background:var(--surface-hover);
+
+
+border:1px solid var(--border);
+
+
+border-radius:16px;
+
+
+padding:8px;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+gap:10px;
+
+
+}
+
+
+
+
+
+.exam-icon{
+
+
+width:42px;
+
+height:42px;
+
+
+border-radius:14px;
+
+
+background:var(--accent-soft);
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+color:var(--accent);
+
+
+flex-shrink:0;
+
+
+}
+
+
+
+.exam-icon svg{
+
+
+width:20px;
+
+
+}
+
+
+
+
+
+.exam-details{
+
+
+flex:1;
+
+
+display:flex;
+
+flex-direction:column;
+
+gap:5px;
+
+
+}
+
+
+
+.exam-details h4{
+
+
+font-size:12px;
+
+margin:0;
+
+
+color:var(--text);
+
+
+}
+
+
+
+.exam-details span{
+
+
+font-size:10px;
+
+color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+.enter-exam-btn{
+
+
+height:36px;
+
+
+padding:0 12px;
+
+
+border:none;
+
+
+border-radius:12px;
+
+
+background:var(--accent);
+
+
+color:white;
+
+
+display:flex;
+
+align-items:center;
+
+gap:5px;
+
+
+font-size:11px;
+
+
+cursor:pointer;
+
+
+transition:.2s;
+
+
+}
+
+
+
+.enter-exam-btn svg{
+
+
+width:14px;
+
+
+}
+
+
+
+
+.enter-exam-btn:active{
+
+
+transform:scale(.92);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

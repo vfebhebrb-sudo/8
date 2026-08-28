@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>آزمون</title>
+
+
+<link rel="stylesheet" href="./تست گوشی.css">
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+<body>
+
+
+
+<div class="app">
+
+
+<header 
+class="mobile-header page-animate"
+id="appHeader">
+
+
+
+    <!-- RIGHT PROFILE -->
+
+<div class="mobile-header-right">
+
+
+    <div class="mobile-profile-menu">
+
+
+        <!-- <button 
+        class="mobile-profile-btn"
+        id="profileBtn"
+        aria-label="profile">
+
+
+            <i data-lucide="user"></i>
+
+
+        </button> -->
+
+
+
+        <!-- PROFILE DROPDOWN -->
+
+        
+
+
+    </div>
+
+
+</div>
+
+
+
+    <!-- CENTER LOGO -->
+
+
+    <div class="mobile-logo">
+
+
+        <i data-lucide="graduation-cap"></i>
+
+
+        <span>
+            برنامه کنکور
+        </span>
+
+
+    </div>
+
+
+
+
+
+    <!-- LEFT ACTIONS -->
+
+
+    <div class="mobile-header-left">
+
+
+
+        <!-- THEME BUTTON -->
+
+
+        <button
+        class="mobile-icon-btn"
+        id="themeToggle"
+        aria-label="theme">
+
+
+            <i data-lucide="moon"></i>
+
+
+        </button>
+
+
+
+
+
+        <!-- MENU BUTTON -->
+
+
+        <button
+        class="mobile-icon-btn"
+        id="menuToggle"
+        aria-label="menu">
+
+
+            <i data-lucide="chevron-down"></i>
+
+
+        </button>
+
+
+
+    </div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="exam-user-card" id="studentProfileCard">
+
+    <!-- =========================
+         USER HEADER
+    ========================== -->
+
+    <div class="exam-user-header">
+
+        <div class="user-icon-box">
+
+            <i data-lucide="user-round"></i>
+
+        </div>
+
+
+        <div class="user-details">
+
+            <h3 id="studentName">
+                امیرحسین حسینی
+            </h3>
+
+            <span id="studentCandidateNumber">
+                شماره داوطلبی: 102548
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         USER STATISTICS
+    ========================== -->
+
+    <div
+        class="exam-info-grid"
+        id="studentStatistics"
+    >
+
+
+        <!-- سابقه -->
+
+        <div
+            class="user-stat"
+            id="statStudyDays"
+        >
+
+            <i data-lucide="calendar-days"></i>
+
+            <div>
+
+                <span>
+                    سابقه
+                </span>
+
+                <strong id="studyDays">
+                    128 روز
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- لیگ -->
+
+        <div
+            class="user-stat"
+            id="statLeague"
+        >
+
+            <i data-lucide="trophy"></i>
+
+            <div>
+
+                <span>
+                    لیگ شما
+                </span>
+
+                <strong id="studentLeague">
+                    الماس
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- آزمون ها -->
+
+        <div
+            class="user-stat"
+            id="statExams"
+        >
+
+            <i data-lucide="file-check-2"></i>
+
+            <div>
+
+                <span>
+                    آزمون‌های داده شده
+                </span>
+
+                <strong id="completedExams">
+                    24 آزمون
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- تراز -->
+
+        <div
+            class="user-stat"
+            id="statScore"
+        >
+
+            <i data-lucide="chart-no-axes-combined"></i>
+
+            <div>
+
+                <span>
+                    تراز قبلی
+                </span>
+
+                <strong id="previousScore">
+                    7820
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         MOTIVATION / STATUS
+    ========================== -->
+
+    <div
+        class="exam-warning"
+        id="studentNotice"
+    >
+
+        <i data-lucide="sparkles"></i>
+
+        <p id="studentNoticeText">
+
+            مسیرت رو ادامه بده؛
+            هر آزمون یک قدم به هدف نزدیک‌ترت می‌کند.
+
+        </p>
+
+    </div>
+
+
+</div>
+
+
+
+
+<!-- =====================================================
+     ACTIVE EXAMS
+===================================================== -->
+
+<section
+    class="active-exams-card"
+    id="activeExamsPage"
+>
+
+
+    <!-- =========================
+         SECTION HEADER
+    ========================== -->
+
+    <div class="active-exams-title">
+
+        <i data-lucide="files"></i>
+
+        <h3>
+            آزمون‌های فعال
+        </h3>
+
+    </div>
+
+
+
+    <!-- =========================
+         ACTIVE EXAMS LIST
+         آزمون‌ها توسط JavaScript
+         از API ساخته می‌شوند
+    ========================== -->
+
+    <div
+        class="active-exams-list"
+        id="activeExamsList"
+    >
+
+
+        <!-- =========================
+             EXAM ITEM
+        ========================== -->
+
+        <article
+            class="exam-item"
+            id="examItem-001"
+            data-exam-id="demo-exam-001"
+        >
+
+
+            <!-- ICON -->
+
+            <div class="exam-icon">
+
+                <i data-lucide="book-open"></i>
+
+            </div>
+
+
+
+            <!-- DETAILS -->
+
+            <div class="exam-details">
+
+                <h4 id="examTitle-001">
+                    زیست شناسی فصل اول
+                </h4>
+
+                <span id="examInfo-001">
+                    40 سوال • 45 دقیقه
+                </span>
+
+            </div>
+
+
+
+            <!-- ENTER -->
+
+            <button
+                class="enter-exam-btn"
+                id="enterExam-001"
+                type="button"
+                data-exam-id="demo-exam-001"
+            >
+
+                <span>
+                    ورود
+                </span>
+
+                <i data-lucide="arrow-left"></i>
+
+            </button>
+
+
+        </article>
+
+
+
+        <!-- =========================
+             EXAM ITEM
+        ========================== -->
+
+        <article
+            class="exam-item"
+            id="examItem-002"
+            data-exam-id="demo-exam-002"
+        >
+
+
+            <!-- ICON -->
+
+            <div class="exam-icon">
+
+                <i data-lucide="calculator"></i>
+
+            </div>
+
+
+
+            <!-- DETAILS -->
+
+            <div class="exam-details">
+
+                <h4 id="examTitle-002">
+                    ریاضی جامع
+                </h4>
+
+                <span id="examInfo-002">
+                    30 سوال • 40 دقیقه
+                </span>
+
+            </div>
+
+
+
+            <!-- ENTER -->
+
+            <button
+                class="enter-exam-btn"
+                id="enterExam-002"
+                type="button"
+                data-exam-id="demo-exam-002"
+            >
+
+                <span>
+                    ورود
+                </span>
+
+                <i data-lucide="arrow-left"></i>
+
+            </button>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script src="../config.js"></script>
+
+
+<Script src="./5.JS"></Script>
+
+
+<script>
+
+lucide.createIcons();
+
+</script>
+
+
+</body>
+
+</html>

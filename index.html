@@ -3,162 +3,1211 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <title>
-        کنکور | برنامه‌ریزی هوشمند
-    </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <!-- Font Awesome -->
-    <link 
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    >
+<title>
+کنکور | برنامه هوشمند
+</title>
 
 
-    <!-- Vazirmatn Font -->
-    <link 
-        href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap"
-        rel="stylesheet"
-    >
+<link rel="icon" href="./01/riseo-icon.png">
 
 
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+<link rel="stylesheet" href="main.css">
 
 
-    <!-- Main CSS -->
-    <link 
-        rel="stylesheet"
-        href="2.css"
-    >
+<link 
+href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 
-    <!-- Website Icon -->
-    <link 
-        rel="icon"
-        type="image/png"
-        href="./01/2.2.6.png"
-    >
+<script src="https://unpkg.com/lucide@latest"></script>
 
+
+    <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0b0b0b">
+
+
+<style>
+    /* ==========================================
+        RESET
+========================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:"Vazirmatn",sans-serif;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+
+    min-height:100vh;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+}
+
+
+
+/* ==========================================
+        THEME SYSTEM
+========================================== */
+
+
+:root{
+
+
+    --background:#111315;
+
+    --surface:#191c21;
+
+    --surface-hover:#22262d;
+
+
+    --text:#f9fafb;
+
+    --text-secondary:#9ca3af;
+
+
+    --border:#292e36;
+
+
+
+    --accent:#3b82f6;
+
+    --accent-soft:#172554;
+
+
+
+    --gradient:
+    linear-gradient(
+        135deg,
+        #3b82f6,
+        #8b5cf6
+    );
+
+
+
+    --glass:
+    rgba(255,255,255,.05);
+
+
+
+    --glass-border:
+    rgba(255,255,255,.08);
+
+
+
+    --shadow:
+    0 15px 40px rgba(0,0,0,.35);
+
+
+}
+
+
+
+.light-theme{
+
+
+    --background:#f5f6f8;
+
+
+    --surface:#ffffff;
+
+
+    --surface-hover:#f3f4f6;
+
+
+
+    --text:#111827;
+
+
+    --text-secondary:#6b7280;
+
+
+
+    --border:#e5e7eb;
+
+
+
+    --accent:#2563eb;
+
+
+    --accent-soft:#eff6ff;
+
+
+
+    --glass:
+    rgba(255,255,255,.7);
+
+
+
+    --glass-border:
+    rgba(0,0,0,.08);
+
+
+
+    --shadow:
+    0 15px 40px rgba(0,0,0,.08);
+
+
+}
+
+
+
+/* ==========================================
+        LINKS
+========================================== */
+
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+
+/* ==========================================
+        CONTAINER
+========================================== */
+
+
+section{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px 20px;
+
+}
+
+
+
+
+
+
+/* ==========================================
+        HEADER
+========================================== */
+
+
+.main-header{
+
+    position:sticky;
+
+    top:20px;
+
+    z-index:100;
+
+
+    width:calc(100% - 40px);
+
+    max-width:1200px;
+
+    margin:20px auto 0;
+
+
+    padding:15px 25px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    background:var(--glass);
+
+    backdrop-filter:blur(18px);
+
+
+    border:1px solid var(--glass-border);
+
+
+    border-radius:22px;
+
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+
+/* BRAND */
+
+
+.brand{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+    font-size:22px;
+
+    font-weight:800;
+
+
+}
+
+
+
+.brand svg{
+
+    width:32px;
+
+    height:32px;
+
+
+    color:var(--accent);
+
+}
+
+
+
+
+
+/* MENU */
+
+
+.main-header nav{
+
+
+    display:flex;
+
+    gap:35px;
+
+
+}
+
+
+
+.main-header nav a{
+
+
+    color:var(--text-secondary);
+
+
+    font-size:15px;
+
+    transition:.3s;
+
+
+}
+
+
+
+.main-header nav a:hover{
+
+
+    color:var(--text);
+
+}
+
+
+
+
+
+/* LOGIN BUTTON */
+
+
+.header-actions a{
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    padding:10px 22px;
+
+
+    border-radius:14px;
+
+
+    background:var(--accent);
+
+
+    color:white;
+
+
+    font-size:14px;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.header-actions a:hover{
+
+
+    transform:translateY(-2px);
+
+
+    box-shadow:
+    0 10px 25px
+    rgba(59,130,246,.35);
+
+
+}
+
+
+@media(max-width:700px){
+
+
+.main-header{
+
+
+    width:calc(100% - 24px);
+
+    padding:12px 16px;
+
+
+}
+
+
+
+.main-header nav{
+
+    display:none;
+
+}
+
+
+
+.brand{
+
+    font-size:18px;
+
+}
+
+
+
+.header-actions a{
+
+
+    padding:8px 15px;
+
+    font-size:13px;
+
+
+}
+
+
+
+}
+
+
+
+
+/* ==========================================
+        HERO
+========================================== */
+
+
+.hero{
+
+    max-width:1200px;
+
+    margin:80px auto;
+
+
+    padding:20px;
+
+
+    display:grid;
+
+    grid-template-columns:1fr 420px;
+
+
+    gap:60px;
+
+
+    align-items:center;
+
+}
+
+
+
+
+
+.hero-badge{
+
+
+    display:inline-flex;
+
+
+    padding:8px 18px;
+
+
+    border-radius:50px;
+
+
+    background:var(--accent-soft);
+
+
+    color:var(--accent);
+
+
+    font-size:14px;
+
+
+    margin-bottom:25px;
+
+
+}
+
+
+
+.hero h1{
+
+
+    font-size:55px;
+
+
+    line-height:1.3;
+
+
+    font-weight:900;
+
+
+}
+
+
+
+.hero h1 span{
+
+
+    display:block;
+
+
+    background:var(--gradient);
+
+
+    -webkit-background-clip:text;
+
+
+    color:transparent;
+
+
+}
+
+
+
+
+
+.hero p{
+
+
+    margin-top:25px;
+
+
+    color:var(--text-secondary);
+
+
+    font-size:18px;
+
+
+    line-height:2;
+
+
+    max-width:600px;
+
+
+}
+
+
+
+
+
+.hero-buttons{
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    margin-top:35px;
+
+
+}
+
+
+
+
+
+.primary-btn,
+.secondary-btn{
+
+
+    padding:15px 30px;
+
+
+    border-radius:16px;
+
+
+    font-weight:700;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+
+.primary-btn{
+
+
+    background:var(--accent);
+
+
+    color:white;
+
+
+}
+
+
+
+.secondary-btn{
+
+
+    border:1px solid var(--border);
+
+
+    background:var(--surface);
+
+
+}
+
+
+
+
+.primary-btn:hover,
+.secondary-btn:hover{
+
+
+    transform:translateY(-4px);
+
+
+}
+
+
+
+
+
+/* STATS */
+
+
+.hero-stats{
+
+
+    display:flex;
+
+
+    gap:30px;
+
+
+    margin-top:50px;
+
+
+}
+
+
+
+.hero-stats div{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+}
+
+
+
+.hero-stats strong{
+
+
+    font-size:22px;
+
+
+}
+
+
+
+.hero-stats span{
+
+
+    color:var(--text-secondary);
+
+
+    font-size:13px;
+
+
+}
+
+.hero-card{
+
+
+    padding:30px;
+
+
+    background:var(--glass);
+
+
+    backdrop-filter:blur(20px);
+
+
+    border:1px solid var(--glass-border);
+
+
+    border-radius:30px;
+
+
+    box-shadow:var(--shadow);
+
+
+}
+
+
+
+.floating-icon{
+
+
+    font-size:45px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.study-box{
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    margin-top:15px;
+
+
+    padding:18px;
+
+
+    background:var(--surface);
+
+
+    border-radius:18px;
+
+
+}
+
+
+
+.progress{
+
+
+    height:10px;
+
+
+    background:var(--border);
+
+
+    border-radius:20px;
+
+
+    margin-top:25px;
+
+
+}
+
+
+
+.progress div{
+
+
+    width:75%;
+
+
+    height:100%;
+
+
+    border-radius:20px;
+
+
+    background:var(--accent);
+
+
+}
+
+@media(max-width:850px){
+
+
+.hero{
+
+
+    grid-template-columns:1fr;
+
+    margin-top:10px;
+
+
+}
+
+
+
+.hero h1{
+
+    font-size:38px;
+
+}
+
+
+
+.hero-buttons{
+
+
+    flex-direction:column;
+
+
+}
+
+
+
+.hero-stats{
+
+
+    justify-content:space-between;
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        ARTICLE BOX
+========================================== */
+
+
+.article-box-section{
+
+    max-width:1200px;
+
+    margin:100px auto;
+
+    padding:20px;
+
+}
+
+
+
+.article-box{
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+    display:grid;
+
+
+    grid-template-columns:1fr 300px;
+
+
+    gap:40px;
+
+
+    padding:50px;
+
+
+
+    background:var(--glass);
+
+
+    backdrop-filter:blur(25px);
+
+
+    border:1px solid var(--glass-border);
+
+
+    border-radius:35px;
+
+
+    box-shadow:var(--shadow);
+
+
+
+    animation:articleShow 1s ease forwards;
+
+
+}
+
+
+
+
+
+@keyframes articleShow{
+
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(60px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+
+.article-tag{
+
+
+    color:var(--accent);
+
+
+    font-weight:700;
+
+
+}
+
+
+
+.article-content h2{
+
+
+    margin-top:20px;
+
+
+    font-size:38px;
+
+
+    line-height:1.5;
+
+
+}
+
+
+
+.article-content p{
+
+
+    margin-top:20px;
+
+
+    color:var(--text-secondary);
+
+
+    line-height:2.2;
+
+
+    font-size:16px;
+
+
+}
+
+
+
+
+
+.article-points{
+
+
+    margin-top:30px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+
+}
+
+
+
+.article-points div{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+}
+
+
+
+.article-points i{
+
+
+    color:#22c55e;
+
+
+}
+
+
+
+
+
+
+/* Decoration */
+
+
+.article-decoration{
+
+
+    position:relative;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+
+.article-decoration i{
+
+
+    position:relative;
+
+
+    z-index:2;
+
+
+    font-size:90px;
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+.circle-one,
+.circle-two{
+
+
+    position:absolute;
+
+
+    border-radius:50%;
+
+
+    filter:blur(1px);
+
+
+}
+
+
+
+.circle-one{
+
+
+    width:220px;
+
+    height:220px;
+
+
+    background:
+    rgba(59,130,246,.25);
+
+
+}
+
+
+
+.circle-two{
+
+
+    width:140px;
+
+    height:140px;
+
+
+    background:
+    rgba(139,92,246,.25);
+
+
+}
+
+
+@media(max-width:850px){
+
+
+.article-box{
+
+
+    grid-template-columns:1fr;
+
+
+    padding:30px;
+
+
+}
+
+
+
+.article-decoration{
+
+
+    height:200px;
+
+
+}
+
+
+
+.article-content h2{
+
+
+    font-size:28px;
+
+
+}
+
+
+}
+</style>
 
 </head>
+
+
 <body>
 
-<!-- Header -->
-<header class="header">
 
 
-    <!-- سمت راست: منو -->
-     <nav class="header-right">
+<!-- HEADER -->
+
+<header class="main-header">
 
 
-        <!-- <a href="#" class="menu-item active">
-
-            <i data-lucide="house"></i>
-
-            <span>خانه</span>
-
-        </a>
+<div class="brand">
 
 
-
-        <a href="#" class="menu-item">
-
-            <i data-lucide="calendar-days"></i>
-
-            <span>برنامه هفتگی</span>
-
-        </a>
- -->
+<i data-lucide="graduation-cap"></i>
 
 
-        <!-- <a href="#" class="menu-item">
+<span>
+Konkur
+</span>
 
-            <i data-lucide="chart-column"></i>
 
-            <span>گزارش‌ها</span>
-
-        </a> -->
+</div>
 
 
 
-        <!-- <a href="perfo.html" class="header-link-new">
-
-            <i data-lucide="chart-no-axes-column"></i>
-
-            <span>
-                عملکرد
-            </span>
-
-        </a> -->
+<nav>
 
 
-
-        <!-- <a href="#" class="menu-item">
-
-            <i data-lucide="notebook"></i>
-
-            <span>یادداشت‌ها</span>
-
-        </a> -->
+<a href="#">
+خانه
+</a>
 
 
-    </nav>
+<a href="#">
+امکانات
+</a>
 
 
-    <!-- لوگو وسط -->
-    <div class="logo">
+<a href="#">
+درباره
+</a>
 
 
-        <i data-lucide="graduation-cap"></i>
-
-
-        <span>
-            برنامه ریزی کنکور
-        </span>
-
-
-    </div>
+</nav>
 
 
 
+<div class="header-actions">
 
 
-
-    <!-- سمت چپ -->
-     <!-- <div class="header-left">
-
-        <a href="./login/login.html" class="menu-item"> -->
-
-            <!-- <i data-lucide="chart-column"></i> -->
-
-            <!-- <span>ثبت نام/ورود</span>
-
-        </a>  -->
-
-        <!-- <button class="icon-btn">
-
-            <i data-lucide="settings"></i>
-
-        </button>
+<a href="./login/login.html">
+ورود
+</a>
 
 
-
-
-        <button class="icon-btn">
-
-            <i data-lucide="moon"></i>
-
-        </button> -->
-
-
-    </div> 
-
+</div>
 
 
 </header>
@@ -167,167 +1216,84 @@
 
 
 
-<section class="konkur-hero">
 
+<!-- HERO -->
 
-    <!-- بخش معرفی کنکور -->
-    <div class="konkur-intro">
 
+<section class="hero">
 
-        <div class="konkur-title">
+    <div class="hero-content">
 
-            <div class="konkur-title-icon">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
+        <span class="hero-badge">
+            🚀 برنامه هوشمند کنکور
+        </span>
 
-            <h1>
-                مسیر موفقیت در کنکور
-                <span>
-                    از امروز شروع می‌شود
-                </span>
-            </h1>
 
-        </div>
-
-
-
-        <p class="konkur-description">
-
-            برنامه‌ریزی کن، مطالعه کن و پیشرفت خودت را هر روز ببین.
-            یک همراه هوشمند برای مدیریت زمان، درس‌ها و هدف‌های کنکوری.
-
-        </p>
-
-
-
-        <!-- امکانات -->
-
-        <div class="konkur-features">
-
-
-            <div class="konkur-feature">
-
-                <i class="fa-solid fa-book-open"></i>
-
-                <span>
-                    برنامه درسی
-                </span>
-
-            </div>
-
-
-
-            <div class="konkur-feature">
-
-                <i class="fa-solid fa-clock"></i>
-
-                <span>
-                    تایمر مطالعه
-                </span>
-
-            </div>
-
-
-
-            <div class="konkur-feature">
-
-                <i class="fa-solid fa-chart-line"></i>
-
-                <span>
-                    گزارش پیشرفت
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-
-
-        <!-- باکس موسیقی -->
-
-        <div class="konkur-music-box">
-
-
-            <div class="konkur-music-icon">
-
-                <i class="fa-solid fa-music"></i>
-
-            </div>
-
-
-            <div class="konkur-music-info">
-
-                <h3>
-                    موسیقی تمرکز
-                </h3>
-
-                <span>
-                    آهنگ مطالعه خود را پخش کنید
-                </span>
-
-            </div>
-
-
-            <button class="konkur-play-btn">
-
-                <i class="fa-solid fa-play"></i>
-
-            </button>
-
-
-            <audio id="studyMusic">
-
-                <source src="./اهنگ/MELODY V [MusicAz.IR] .mp3" type="audio/mpeg">
-
-            </audio>
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <!-- کارت شروع -->
-
-    <div class="konkur-welcome-card">
-
-
-        <div class="konkur-welcome-icon">
-
-            <i class="fa-solid fa-rocket"></i>
-
-        </div>
-
-
-
-        <h2>
-            خوش آمدید 👋
-        </h2>
+        <h1>
+            مسیر موفقیت در کنکور
+            <span>
+                از امروز شروع می‌شود
+            </span>
+        </h1>
 
 
         <p>
-            آماده‌ای برای ساختن بهترین نتیجه؟
-            برنامه خودت را شروع کن.
+            برنامه‌ریزی، مدیریت زمان و بررسی پیشرفت
+            در یک محیط ساده و هوشمند برای رسیدن به هدف.
         </p>
 
 
+        <div class="hero-buttons">
 
-        <div class="konkur-welcome-buttons">
-
-
-            <a href="#" class="konkur-start-btn">
+            <a href="./login/login.html" class="primary-btn">
                 شروع برنامه
             </a>
 
 
-            <a href="./login/login.html" class="konkur-login-btn">
-                ورود / ثبت نام
-            </a>
+<button id="installAppBtn" class="secondary-btn" style="color: white;">
+
+    <i class="fa-solid fa-mobile-screen-button"></i>
+
+    نصب نسخه موبایل
+
+</button>
+
+        </div>
+
+
+        <div class="hero-stats">
+
+
+            <div>
+                <strong>
+                    24/7
+                </strong>
+                <span>
+                    همراه مطالعه
+                </span>
+            </div>
+
+
+
+            <div>
+                <strong>
+                    10 ماه
+                </strong>
+                <span>
+                    برنامه‌ریزی
+                </span>
+            </div>
+
+
+
+            <div>
+                <strong>
+                    هوشمند
+                </strong>
+                <span>
+                    مدیریت زمان
+                </span>
+            </div>
 
 
         </div>
@@ -335,109 +1301,283 @@
 
     </div>
 
+
+
+
+    <div class="hero-card">
+
+
+        <div class="floating-icon">
+            🎯
+        </div>
+
+
+        <h3>
+            امروز چه برنامه‌ای داری؟
+        </h3>
+
+
+        <div class="study-box">
+
+            <span>
+                ریاضی
+            </span>
+
+            <strong>
+                2:30 ساعت
+            </strong>
+
+        </div>
+
+
+
+        <div class="study-box">
+
+            <span>
+                فیزیک
+            </span>
+
+            <strong>
+                1:45 ساعت
+            </strong>
+
+        </div>
+
+
+
+        <div class="progress">
+
+            <div></div>
+
+        </div>
+
+
+        <small>
+            پیشرفت امروز ۷۵٪
+        </small>
+
+
+    </div>
 
 
 </section>
 
 
 
+<section class="article-box-section">
+
+
+    <div class="article-box">
+
+
+        <div class="article-content">
+
+
+            <span class="article-tag">
+                ✨ درباره برنامه کنکور
+            </span>
+
+
+
+            <h2>
+                یک همراه هوشمند برای ساختن آینده‌ای بهتر
+            </h2>
+
+
+
+            <p>
+                موفقیت در کنکور فقط به ساعت‌های زیاد مطالعه وابسته نیست؛
+                داشتن یک برنامه منظم، مدیریت زمان و بررسی مداوم عملکرد
+                نقش بسیار مهمی در رسیدن به هدف دارد.
+                برنامه کنکور طراحی شده تا تمام ابزارهای مورد نیاز یک
+                دانش‌آموز را در یک محیط ساده، زیبا و هوشمند فراهم کند.
+            </p>
+
+
+
+            <p>
+                با استفاده از برنامه هفتگی می‌توانید مسیر مطالعه خود را
+                مشخص کنید، درس‌ها را مدیریت کنید و هر روز بدانید چه کاری
+                باید انجام دهید. تایمر مطالعه به شما کمک می‌کند زمان واقعی
+                مطالعه را ثبت کنید و تمرکز بیشتری روی یادگیری داشته باشید.
+            </p>
+
+
+
+            <p>
+                علاوه بر این، بخش گزارش پیشرفت به شما نشان می‌دهد که در
+                مسیر خود چگونه حرکت کرده‌اید، چه مقدار مطالعه داشته‌اید و
+                برای رسیدن به هدف چه قدم‌هایی باقی مانده است.
+            </p>
+
+
+
+
+            <div class="article-points">
+
+
+                <div>
+                    <i class="fa-solid fa-check"></i>
+                    برنامه‌ریزی دقیق و ساده
+                </div>
+
+
+                <div>
+                    <i class="fa-solid fa-check"></i>
+                    مدیریت زمان مطالعه
+                </div>
+
+
+                <div>
+                    <i class="fa-solid fa-check"></i>
+                    مشاهده رشد و پیشرفت
+                </div>
+
+
+            </div>
+
+
+        </div>
 
 
 
 
 
+        <div class="article-decoration">
+
+
+            <div class="circle-one"></div>
+
+
+            <div class="circle-two"></div>
+
+
+            <i class="fa-solid fa-graduation-cap"></i>
+
+
+        </div>
 
 
 
+    </div>
 
 
-
-
-
-
-
+</section>
 
 
 <script>
-
-const music = document.getElementById("studyMusic");
-const playBtn = document.querySelector(".konkur-play-btn");
-
-
-playBtn.addEventListener("click",()=>{
+    // ==========================================
+// PWA INSTALL
+// ==========================================
 
 
-    if(music.paused){
-
-        music.play();
-
-        playBtn.innerHTML =
-        '<i class="fa-solid fa-pause"></i>';
-
-    }
-
-    else{
-
-        music.pause();
-
-        playBtn.innerHTML =
-        '<i class="fa-solid fa-play"></i>';
-
-    }
+let deferredPrompt;
 
 
-});
-
-
-</script>
-
-<script>
-    // ======================================================
-// SERVER KEEP ALIVE
-// هر ۵ دقیقه یک درخواست به سرور
-// ======================================================
-
-function keepServerAlive(){
-
-    fetch(`${API}/`)
-        .then(response => {
-
-            console.log(
-                "🟢 SERVER KEEP ALIVE:",
-                response.status
-            );
-
-        })
-
-        .catch(error => {
-
-            console.log(
-                "🔴 SERVER KEEP ALIVE ERROR:",
-                error
-            );
-
-        });
-
-}
-
-
-// هر ۵ دقیقه
-setInterval(
-    keepServerAlive,
-    5 * 60 * 1000
+const installBtn = document.getElementById(
+    "installAppBtn"
 );
 
 
-// اولین درخواست بلافاصله
-keepServerAlive();
-</script>
 
-<!-- فعال کردن آیکون ها -->
-<script src="https://unpkg.com/lucide@latest"></script>
+window.addEventListener(
+    "beforeinstallprompt",
+    (e)=>{
+
+
+        // جلوگیری از نمایش خودکار
+        e.preventDefault();
+
+
+        // ذخیره برای بعد
+        deferredPrompt = e;
+
+
+        // نمایش دکمه
+        installBtn.style.display = "flex";
+
+
+    }
+);
+
+
+
+
+
+installBtn.addEventListener(
+    "click",
+    async ()=>{
+
+
+        if(!deferredPrompt){
+
+            alert(
+                "امکان نصب در این مرورگر وجود ندارد"
+            );
+
+            return;
+
+        }
+
+
+
+        // باز کردن پنجره نصب
+        deferredPrompt.prompt();
+
+
+
+        const result =
+        await deferredPrompt.userChoice;
+
+
+
+        if(result.outcome === "accepted"){
+
+
+            console.log(
+                "App Installed"
+            );
+
+
+        }
+
+
+
+        deferredPrompt = null;
+
+
+    }
+);
+
+
+
+
+
+window.addEventListener(
+    "appinstalled",
+    ()=>{
+
+
+        console.log(
+            "Konkur App Installed"
+        );
+
+
+        installBtn.style.display="none";
+
+
+    }
+);
+</script>
 
 <script>
-    lucide.createIcons();
+
+lucide.createIcons();
+
+
 </script>
-</body> 
+
+
+</body>
 
 </html>

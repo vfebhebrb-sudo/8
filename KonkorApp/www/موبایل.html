@@ -4,13 +4,14 @@
 <head>
 
 <meta charset="UTF-8">
-
+<link rel="shortcut icon" href="./riseo-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 <title>ROBO</title>
 
-
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b0b0b">
 <!-- ==========================
         FONT
 ========================== -->
@@ -21,7 +22,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="shortcut icon" href="./01/riseo-icon.png">
+
 
 <!-- ==========================
         ICONS
@@ -2525,6 +2526,20 @@ plannerCollapseBtn.addEventListener(
 </script> -->
 
 <script src="mobile.js"></script>
+
+<script>
+if ("serviceWorker" in navigator) {
+
+    navigator.serviceWorker.register("service-worker.js")
+    .then(()=>{
+        console.log("Service Worker Registered");
+    })
+    .catch(err=>{
+        console.log("SW Error:", err);
+    });
+
+}
+</script>
 
 <script src="https://unpkg.com/lucide@latest"></script>
 

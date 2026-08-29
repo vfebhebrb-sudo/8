@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Konkor</title>
+
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b0b0b">
+
+<style>
+
+
+
+*{
+    box-sizing:border-box;
+     font-family: "Vazirmatn", sans-serif;
+}
+
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:var(--background);
+
+    font-family:"Vazirmatn",sans-serif;
+
+}
+
+
+
+/* ==========================================
+        MOBILE APP CONTAINER
+========================================== */
+
+
+.app{
+
+    width:100%;
+
+    max-width:450px;
+
+    min-height:100vh;
+
+    margin:0 auto;
+
+    padding:12px;
+
+}
+
+
+
+/* ==========================================
+        THEME SYSTEM
+========================================== */
+
+
+:root{
+
+
+    --background:#111315;
+
+    --surface:#191c21;
+
+    --surface-hover:#22262d;
+
+    --text:#f9fafb;
+
+    --text-secondary:#9ca3af;
+
+    --border:#292e36;
+
+
+    --accent:#3b82f6;
+
+    --accent-soft:#172554;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.35);
+
+
+}
+
+
+
+.light-theme{
+
+
+    --background:#f5f6f8;
+
+    --surface:#ffffff;
+
+    --surface-hover:#f3f4f6;
+
+    --text:#111827;
+
+    --text-secondary:#6b7280;
+
+    --border:#e5e7eb;
+
+
+    --accent:#2563eb;
+
+    --accent-soft:#eff6ff;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+.splash{
+
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:splashIn .7s ease;
+
+
+}
+
+
+
+.logo-container{
+
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:35px;
+
+
+    background:var(--surface);
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    box-shadow:var(--shadow);
+
+
+}
+
+
+
+.logo-temp{
+
+
+    width:80px;
+
+    height:80px;
+
+
+    border-radius:25px;
+
+
+    background:var(--accent);
+
+
+    color:white;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    font-size:45px;
+
+    font-weight:800;
+
+
+    animation:logoFloat 2s infinite ease-in-out;
+
+
+}
+
+
+
+
+
+.app-name{
+
+
+    margin-top:25px;
+
+
+    color:var(--text);
+
+
+    font-size:32px;
+
+
+    font-weight:800;
+
+
+}
+
+
+
+.app-subtitle{
+
+
+    margin-top:5px;
+
+
+    color:var(--text-secondary);
+
+
+    font-size:15px;
+
+
+}
+
+
+
+.loader{
+
+
+    display:flex;
+
+
+    gap:10px;
+
+
+    margin-top:45px;
+
+
+}
+
+
+
+.loader span{
+
+
+    width:10px;
+
+    height:10px;
+
+
+    border-radius:50%;
+
+
+    background:var(--accent);
+
+
+    animation:loading 1s infinite;
+
+
+}
+
+
+
+.loader span:nth-child(2){
+
+    animation-delay:.2s;
+
+}
+
+
+.loader span:nth-child(3){
+
+    animation-delay:.4s;
+
+}
+
+
+
+
+
+.hide{
+
+
+    animation:splashOut .5s forwards;
+
+
+}
+
+
+
+
+@keyframes loading{
+
+
+    50%{
+
+        transform:translateY(-12px);
+
+        opacity:.5;
+
+    }
+
+}
+
+
+
+
+@keyframes logoFloat{
+
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
+
+
+
+
+@keyframes splashIn{
+
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.95);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+
+@keyframes splashOut{
+
+
+    to{
+
+        opacity:0;
+
+        transform:scale(1.05);
+
+    }
+
+}
+    
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+    <div class="splash">
+
+
+        <div class="logo-container">
+
+            <div class="logo-temp">
+                K
+            </div>
+
+        </div>
+
+
+
+        <h1 class="app-name">
+            Konkor
+        </h1>
+
+
+        <p class="app-subtitle">
+            مسیر موفقیت کنکور
+        </p>
+
+
+
+        <div class="loader">
+
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+setTimeout(()=>{
+
+
+    const token =
+    localStorage.getItem("authToken");
+
+
+    const user =
+    localStorage.getItem("currentUser");
+
+
+
+    if(token && user){
+
+
+        window.location.href =
+        "موبایل.html";
+
+
+    }else{
+
+
+        window.location.href =
+        "lobby.html";
+
+
+    }
+
+
+
+},2000);
+</script>
+
+<script>
+
+if("serviceWorker" in navigator){
+
+    navigator.serviceWorker.register(
+        "service-worker.js"
+    );
+
+}
+
+</script>
+
+
+
+
+</body>
+
+</html>

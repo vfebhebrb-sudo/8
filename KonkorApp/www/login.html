@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ورود | کدماتیک</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="login.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="./2.2.6.png">
+</head>
+
+<body>
+<!-- ======================================
+        LOGIN PAGE
+====================================== -->
+
+<div class="login-page">
+
+
+    <!-- BACKGROUND -->
+    <div class="background-glow"></div>
+
+
+
+    <!-- LOGIN CARD -->
+
+    <section class="login-card">
+
+
+        <!-- LOGO -->
+
+        <div class="panel-header">
+
+<!-- 
+            <div class="panel-logo">
+
+                <div class="logo-glow"></div>
+
+                <img 
+                src="./لوگو1.png" 
+                alt="Codematic">
+
+
+            </div>
+ -->
+
+
+            <h1>
+                ورود به حساب
+            </h1>
+
+
+            <p>
+                برای ادامه مسیر یادگیری خود وارد شوید
+            </p>
+
+
+        </div>
+
+
+
+
+
+        <!-- FORM -->
+
+        <form 
+        id="loginForm"
+        class="login-form">
+
+
+
+
+
+            <!-- IDENTITY -->
+
+
+            <div 
+            class="input-box"
+            id="loginIdentityGroup">
+
+
+                <div class="input-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+
+                <input
+
+                id="loginIdentity"
+
+                name="identity"
+
+                type="text"
+
+                autocomplete="username"
+
+                placeholder="شماره تلفن یا ایمیل">
+
+
+                
+
+                <!-- <div class="field-status">
+
+                    <svg 
+                    class="status-icon"
+                    viewBox="0 0 52 52">
+
+
+                        <circle
+                        class="status-circle"
+                        cx="26"
+                        cy="26"
+                        r="22"/>
+
+
+                        <path
+                        class="status-check"
+                        d="M16 27 L23 34 L37 18"/>
+
+
+                        <path
+                        class="status-cross1"
+                        d="M18 18 L34 34"/>
+
+
+                        <path
+                        class="status-cross2"
+                        d="M34 18 L18 34"/>
+
+
+                    </svg>
+
+
+                </div> -->
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <!-- PASSWORD -->
+
+
+            <div class="input-box">
+
+
+                <div class="input-icon">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+
+
+                <input
+
+                id="loginPassword"
+
+                type="password"
+
+                autocomplete="current-password"
+
+                placeholder="رمز عبور">
+
+
+
+                <button
+
+                type="button"
+
+                class="password-eye"
+
+                id="passwordEye">
+
+
+                    <i class="fa-solid fa-eye"></i>
+
+
+                </button>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <!-- OPTIONS -->
+
+
+            <div class="form-options">
+
+
+                <label class="remember">
+
+
+                    <input 
+                    type="checkbox">
+
+
+                    <span>
+                        مرا به خاطر بسپار
+                    </span>
+
+
+                </label>
+
+
+
+                <a href="./تغییر رمز.html">
+
+                    فراموشی رمز؟
+
+                </a>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <!-- ERROR -->
+
+
+            <div
+
+            class="login-error"
+
+            id="loginError">
+
+            </div>
+
+
+
+
+
+            <!-- SUCCESS -->
+
+
+            <div
+
+            class="login-success"
+
+            id="loginSuccess">
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- LOGIN BUTTON -->
+
+
+            <button
+
+            class="login-btn"
+
+            id="loginBtn"
+
+            type="submit">
+
+
+
+                <span id="loginBtnText">
+
+                    ورود به حساب
+
+                </span>
+
+
+
+                <i
+
+                id="loginBtnIcon"
+
+                class="fa-solid fa-arrow-left">
+
+                </i>
+
+
+
+            </button>
+
+
+
+
+
+
+
+
+
+
+            <!-- DIVIDER -->
+
+
+            <div class="divider">
+
+
+                <span></span>
+
+
+                <p>
+                    یا
+                </p>
+
+
+                <span></span>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- SOCIAL -->
+
+
+            <div class="social-login">
+
+
+
+                <button
+                type="button"
+                class="social-btn">
+
+
+                    <i class="fa-brands fa-google"></i>
+
+
+                    <span>
+                        گوگل
+                    </span>
+
+
+                </button>
+
+
+
+
+
+
+
+                <button
+
+                type="button"
+
+                class="social-btn">
+
+
+                    <i class="fa-brands fa-github"></i>
+
+
+                    <span>
+                        گیت‌هاب
+                    </span>
+
+
+                </button>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+        </form>
+
+
+
+
+
+
+
+
+
+        <!-- FOOTER -->
+
+
+        <div class="panel-footer">
+
+
+            <p>
+
+                حساب ندارید؟
+
+                <a 
+                href="register.html"
+                id="registerLink">
+
+
+                    ثبت نام
+
+
+                </a>
+
+
+            </p>
+
+
+        </div>
+
+
+
+
+
+    </section>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- SCRIPTS -->
+
+
+<script src="./config.js"></script>
+
+
+<script>
+
+const register =
+document.getElementById("registerLink");
+
+
+register.addEventListener("click",function(e){
+
+
+    e.preventDefault();
+
+
+    document
+    .querySelector(".login-card")
+    .classList.add("page-out");
+
+
+
+    setTimeout(()=>{
+
+
+        window.location.href="register.html";
+
+
+    },400);
+
+
+
+});
+
+
+</script>
+
+
+
+<script>
+
+lucide.createIcons();
+
+</script>
+
+
+
+<script src="login.js"></script>
+
+
+</body>
+
+</html>

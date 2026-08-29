@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Chat Mobile</title>
+
+
+<link rel="stylesheet" href="./چت.css">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<script src="https://unpkg.com/lucide@latest"></script>
+
+
+</head>
+
+
+<body class="public-chat-page">
+
+
+<div class="chat-app">
+
+
+<!-- ===============================
+        CHAT PANEL
+================================ -->
+
+<section class="chat-panel" id="chatPanel">
+
+
+    <!-- HEADER CARD -->
+
+    <div class="chat-title">
+
+
+        <div class="title-content">
+
+            <h1>
+                کنکوری
+            </h1>
+
+            <p>
+                دستیار هوشمند مطالعه
+            </p>
+
+        </div>
+
+
+
+        <button id="chatMenuBtn">
+
+            <i data-lucide="ellipsis-vertical"></i>
+
+        </button>
+
+
+    </div>
+
+
+
+
+
+    <!-- SEARCH BOX -->
+
+    <div class="search-box">
+
+
+        <i data-lucide="search"></i>
+
+
+        <input
+
+        id="chatSearch"
+
+        type="text"
+
+        placeholder="جستجو در گفتگوها">
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- FILTER BOX -->
+
+<!-- 
+    <div class="filters">
+
+
+        <button class="active">
+
+            همه
+
+        </button>
+
+
+
+        <button>
+
+            خوانده نشده
+
+            <span class="badge">
+
+                3
+
+            </span>
+
+        </button>
+
+
+
+        <button>
+
+            گروه‌ها
+
+        </button>
+
+
+
+        <button>
+
+            کانال‌ها
+
+        </button>
+
+
+    </div> -->
+
+
+
+
+
+
+
+    <!-- CHAT LIST -->
+
+    <div 
+    class="chat-list" 
+    id="chatList">
+
+
+        <!--
+            JS اینجا چت ها را می سازد
+        -->
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- ===============================
+        CONVERSATION
+================================ -->
+
+
+<section 
+class="conversation" 
+id="conversation">
+
+
+
+
+
+<header 
+class="chat-header" 
+id="chatHeader">
+
+
+
+    <button  
+    class="mobile-back-btn"
+    id="mobileBackBtn"
+    type="button">
+
+
+        <i data-lucide="arrow-right"></i>
+
+
+    </button>
+
+
+
+
+
+    <div 
+    class="contact" 
+    id="currentContact">
+
+
+
+        <div 
+        class="avatar-box" 
+        id="headerAvatar">
+
+
+            <i data-lucide="bot"></i>
+
+
+            <span class="online"></span>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</header>
+
+
+
+
+
+
+
+
+<!-- MESSAGES -->
+
+
+<div
+class="messages"
+id="messagesContainer">
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- INPUT -->
+
+
+<footer
+class="message-box"
+id="messageBox">
+
+
+
+    <div class="input-area">
+
+
+
+
+
+        <button
+        class="emoji-btn"
+        id="emojiBtn">
+
+
+            <i data-lucide="smile"></i>
+
+
+        </button>
+
+
+
+
+
+
+        <input
+
+        id="messageInput"
+
+        type="text"
+
+        placeholder="پیام خود را بنویسید...">
+
+
+
+
+
+
+        <button
+        class="attach"
+        id="attachBtn">
+
+
+            <i data-lucide="paperclip"></i>
+
+
+        </button>
+
+
+
+
+
+
+        <button
+        class="send-icon"
+        id="sendBtn">
+
+
+            <img
+            src="../01/d23f70af-6a30-4f7b-993d-1cfac3346844.png"
+            alt="send">
+
+
+        </button>
+
+
+
+
+
+    </div>
+
+
+
+
+</footer>
+
+
+
+
+
+</section>
+
+</div>
+
+
+
+
+
+<script src="../config.js"></script>
+<script src="./2.js"></script>
+
+<script>
+
+
+lucide.createIcons();
+
+</script>
+
+
+<script src="chat.js"></script>
+
+
+
+</body>
+</html>

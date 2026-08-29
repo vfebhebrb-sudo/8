@@ -1,0 +1,7832 @@
+/* ==========================================
+        APP WIDTH LIMIT
+========================================== */
+
+
+*{
+    box-sizing:border-box;
+     font-family: "Vazirmatn", sans-serif;
+}
+
+
+
+body{
+
+    margin:0;
+
+    min-height:100vh;
+
+    background:var(--background);
+
+    font-family:"Vazirmatn",sans-serif;
+
+}
+
+
+
+/* ==========================================
+        MOBILE APP CONTAINER
+========================================== */
+
+
+.app{
+
+    width:100%;
+
+    max-width:450px;
+
+    min-height:100vh;
+
+    margin:0 auto;
+
+    padding:12px;
+
+}
+
+
+
+/* ==========================================
+        THEME SYSTEM
+========================================== */
+
+
+:root{
+
+
+    --background:#111315;
+
+    --surface:#191c21;
+
+    --surface-hover:#22262d;
+
+    --text:#f9fafb;
+
+    --text-secondary:#9ca3af;
+
+    --border:#292e36;
+
+
+    --accent:#3b82f6;
+
+    --accent-soft:#172554;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.35);
+
+
+}
+
+
+
+.light-theme{
+
+
+    --background:#f5f6f8;
+
+    --surface:#ffffff;
+
+    --surface-hover:#f3f4f6;
+
+    --text:#111827;
+
+    --text-secondary:#6b7280;
+
+    --border:#e5e7eb;
+
+
+    --accent:#2563eb;
+
+    --accent-soft:#eff6ff;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+
+/* ==========================================
+        MOBILE HEADER
+========================================== */
+
+
+.mobile-header{
+
+
+    width:100%;
+
+    height:56px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    position:relative;
+
+
+    padding:0 8px;
+
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+
+    box-shadow:var(--shadow);
+
+
+    transition:.25s ease;
+
+    margin-bottom: 11px;
+}
+
+
+
+/* ==========================================
+        RIGHT PROFILE
+========================================== */
+
+
+.mobile-header-right{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+}
+
+
+
+.mobile-profile-btn{
+
+
+    width:34px;
+
+    height:34px;
+
+
+    border:none;
+
+    border-radius:11px;
+
+
+    background:var(--accent-soft);
+
+    color:var(--accent);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.2s;
+
+
+    -webkit-tap-highlight-color:transparent;
+
+
+}
+
+
+
+.mobile-profile-btn:active{
+
+    transform:scale(.92);
+
+}
+
+
+
+.mobile-profile-btn svg{
+
+    width:18px;
+
+}
+
+
+
+/* ==========================================
+        CENTER LOGO
+========================================== */
+
+
+.mobile-logo{
+
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:5px;
+
+
+    color:var(--text);
+
+
+    font-size:13px;
+
+    font-weight:700;
+
+
+}
+
+
+
+.mobile-logo svg{
+
+
+    width:19px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+/* ==========================================
+        LEFT BUTTONS
+========================================== */
+
+
+.mobile-header-left{
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:5px;
+
+
+}
+
+
+
+.mobile-icon-btn{
+
+
+    width:32px;
+
+    height:32px;
+
+
+    border:none;
+
+    border-radius:10px;
+
+
+    background:var(--surface-hover);
+
+    color:var(--text-secondary);
+
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.2s ease;
+
+
+    -webkit-tap-highlight-color:transparent;
+
+
+}
+
+
+
+.mobile-icon-btn:active{
+
+    transform:scale(.9);
+
+}
+
+
+
+.mobile-icon-btn svg{
+
+    width:16px;
+
+}
+
+
+/* ==========================================
+        MOBILE MENU - FLOATING
+========================================== */
+.mobile-menu{
+
+    position:fixed;
+
+    top:70px;
+
+    left:50%;
+    right:auto;
+
+    width:calc(100% - 24px);
+    max-width:450px;
+
+    transform:
+        translate(-50%, -12px)
+        scale(.97);
+
+    z-index:99999;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    max-height:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+
+    transition:
+        max-height .3s ease,
+        opacity .22s ease,
+        transform .3s ease;
+}
+
+
+.mobile-menu.active{
+
+    max-height:300px;
+
+    opacity:1;
+
+    pointer-events:auto;
+
+    transform:
+        translate(-50%, 0)
+        scale(1);
+}
+
+
+/* ==========================================
+        MENU ITEM
+========================================== */
+
+.mobile-menu-item{
+
+    height:45px;
+
+    padding:0 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--text);
+
+    font-size:13px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+
+.mobile-menu-item:last-child{
+
+    border-bottom:none;
+
+}
+
+
+.mobile-menu-item svg{
+
+    width:18px;
+
+    height:18px;
+
+    color:var(--accent);
+
+    flex-shrink:0;
+
+}
+
+
+.mobile-menu-item:active{
+
+    background:var(--surface-hover);
+
+}
+
+
+
+/* ==========================================
+        SMALL SCREEN
+========================================== */
+
+
+@media(max-width:380px){
+
+
+
+.app{
+
+    padding:10px;
+
+}
+
+
+
+.mobile-header{
+
+
+    height:52px;
+
+
+    border-radius:14px;
+
+
+}
+
+
+
+.mobile-logo{
+
+
+    font-size:12px;
+
+
+}
+
+
+
+.mobile-icon-btn{
+
+
+    width:30px;
+
+    height:30px;
+
+
+}
+
+
+
+.mobile-profile-btn{
+
+
+    width:32px;
+
+    height:32px;
+
+
+}
+
+
+
+}
+
+
+
+
+/* ==========================================
+        MOBILE PROFILE
+========================================== */
+
+
+.mobile-header-right{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+
+.mobile-profile-menu{
+
+    position:relative;
+
+}
+
+
+
+.mobile-profile-btn{
+
+
+    width:36px;
+
+    height:36px;
+
+
+    border:none;
+
+    border-radius:12px;
+
+
+    background:var(--accent-soft);
+
+    color:var(--accent);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.2s;
+
+
+}
+
+
+
+.mobile-profile-btn:active{
+
+    transform:scale(.92);
+
+}
+
+
+
+.mobile-profile-btn svg{
+
+    width:19px;
+
+}
+
+
+
+
+
+/* ==========================================
+        MOBILE PROFILE DROPDOWN
+========================================== */
+
+
+.mobile-profile-dropdown{
+
+
+    position:absolute;
+
+
+    top:43px;
+
+
+    right:0;
+
+
+
+    width:205px;
+
+
+
+    background:rgba(25,28,33,.82);
+
+
+
+    backdrop-filter:blur(18px);
+
+
+    -webkit-backdrop-filter:blur(18px);
+
+
+
+    border:1px solid rgba(255,255,255,.08);
+
+
+
+    border-radius:15px;
+
+
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,.35);
+
+
+
+    overflow:hidden;
+
+
+
+    opacity:0;
+
+
+    visibility:hidden;
+
+
+
+    transform:
+    translateY(-8px)
+    scale(.95);
+
+
+
+    transform-origin:top right;
+
+
+
+    transition:.22s ease;
+
+
+
+    z-index:2000;
+
+
+
+}
+
+
+
+
+
+.mobile-profile-dropdown.show{
+
+
+    opacity:1;
+
+
+    visibility:visible;
+
+
+
+    transform:
+    translateY(0)
+    scale(1);
+
+
+
+}
+
+
+
+
+
+
+/* ==========================================
+        PROFILE HEADER
+========================================== */
+
+
+.profile-header{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+
+    gap:9px;
+
+
+
+    padding:11px;
+
+
+
+}
+
+
+
+
+
+.profile-avatar{
+
+
+    width:34px;
+
+
+    height:34px;
+
+
+
+    border-radius:11px;
+
+
+
+    background:var(--accent-soft);
+
+
+
+    color:var(--accent);
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    justify-content:center;
+
+
+
+}
+
+
+
+
+.profile-avatar svg{
+
+
+    width:17px;
+
+
+}
+
+
+
+
+
+
+.profile-header strong{
+
+
+    display:block;
+
+
+
+    font-size:12px;
+
+
+
+    color:var(--text);
+
+
+
+}
+
+
+
+.profile-header span{
+
+
+    display:block;
+
+
+
+    margin-top:2px;
+
+
+
+    font-size:11px;
+
+
+
+    color:var(--text-secondary);
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        DIVIDER
+========================================== */
+
+
+.profile-line{
+
+
+    height:1px;
+
+
+
+    background:rgba(255,255,255,.08);
+
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        MENU ITEMS
+========================================== */
+
+
+.profile-item{
+
+
+    width:calc(100% - 14px);
+
+
+
+    height:36px;
+
+
+
+    margin:4px 7px;
+
+
+
+    padding:0 10px;
+
+
+
+    border:none;
+
+
+
+    border-radius:10px;
+
+
+
+    background:transparent;
+
+
+
+    color:var(--text);
+
+
+
+    display:flex;
+
+
+
+    align-items:center;
+
+
+
+    gap:8px;
+
+
+
+    font-family:inherit;
+
+
+
+    font-size:12px;
+
+
+
+    cursor:pointer;
+
+
+
+    transition:.2s ease;
+
+
+
+}
+
+
+
+
+
+.profile-item:hover{
+
+
+    background:rgba(255,255,255,.07);
+
+
+
+}
+
+
+
+
+.profile-item:active{
+
+
+    transform:scale(.97);
+
+
+
+}
+
+
+
+
+
+
+
+.profile-item svg{
+
+
+    width:15px;
+
+
+    color:var(--accent);
+
+
+
+}
+
+
+
+
+
+
+/* ==========================================
+        LOGOUT
+========================================== */
+
+
+.profile-item.logout{
+
+
+    color:#ef4444;
+
+
+
+}
+
+
+
+.profile-item.logout svg{
+
+
+    color:#ef4444;
+
+
+
+}
+
+
+
+
+
+
+/* LIGHT THEME */
+
+.light-theme .mobile-profile-dropdown{
+
+
+    background:rgba(255,255,255,.85);
+
+
+
+    border-color:rgba(0,0,0,.08);
+
+
+
+}
+
+
+
+.light-theme .profile-line{
+
+
+    background:rgba(0,0,0,.08);
+
+
+
+}
+
+
+
+.light-theme .profile-item:hover{
+
+
+    background:rgba(0,0,0,.05);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        MOBILE TOP DASHBOARD
+========================================== */
+
+
+.mobile-top-dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+
+
+
+
+/* AYAH */
+
+
+.mobile-ayah-card,
+.mobile-exam-card{
+
+
+    width:100%;
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:18px;
+
+
+    box-shadow:var(--shadow);
+
+
+}
+
+
+
+
+
+.mobile-ayah-card{
+
+
+    padding:14px;
+
+
+}
+
+
+
+
+
+.mobile-ayah-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+}
+
+
+
+
+
+.mobile-ayah-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+
+    color:var(--text);
+
+    font-size:13px;
+
+    font-weight:700;
+
+
+}
+
+
+
+.mobile-ayah-title svg{
+
+
+    width:17px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+
+
+.mobile-ayah-actions{
+
+
+    display:flex;
+
+    gap:5px;
+
+
+}
+
+
+
+
+.mobile-ayah-btn{
+
+
+    width:30px;
+
+    height:30px;
+
+
+    border:none;
+
+
+    border-radius:10px;
+
+
+    background:var(--surface-hover);
+
+
+    color:var(--text-secondary);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+}
+
+
+
+.mobile-ayah-btn svg{
+
+    width:15px;
+
+}
+
+
+
+
+
+
+.mobile-ayah-text{
+
+
+    margin-top:18px;
+
+
+    text-align:center;
+
+
+    font-size:18px;
+
+
+    font-weight:700;
+
+
+    line-height:2;
+
+
+    color:var(--text);
+
+
+}
+
+
+
+
+
+.mobile-ayah-translation{
+
+
+    margin-top:8px;
+
+
+    text-align:center;
+
+
+    font-size:12px;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+.mobile-ayah-concept{
+
+
+    margin-top:14px;
+
+
+    padding:10px;
+
+
+    border-radius:12px;
+
+
+    background:var(--surface-hover);
+
+
+    font-size:12px;
+
+
+}
+
+
+
+.mobile-ayah-concept span{
+
+
+    color:var(--accent);
+
+    font-weight:700;
+
+
+}
+
+
+
+.mobile-ayah-concept p{
+
+
+    margin:5px 0 0;
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+.mobile-ayah-source{
+
+
+    margin-top:12px;
+
+
+    font-size:11px;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+
+/* EXAM CARD */
+
+
+
+.mobile-exam-card{
+
+
+    padding:14px;
+
+
+}
+
+
+
+
+.mobile-exam-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+
+
+.mobile-exam-title svg{
+
+
+    width:17px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+
+.mobile-days{
+
+
+    text-align:center;
+
+    margin:15px 0;
+
+
+}
+
+
+
+.mobile-days strong{
+
+
+    display:block;
+
+
+    font-size:38px;
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+.mobile-days span{
+
+
+    font-size:12px;
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+
+.mobile-exam-details{
+
+
+    display:flex;
+
+    gap:8px;
+
+
+}
+
+
+
+
+.mobile-exam-detail{
+
+
+    flex:1;
+
+
+    background:var(--surface-hover);
+
+
+    border-radius:12px;
+
+
+    padding:10px;
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:7px;
+
+
+    font-size:11px;
+
+
+}
+
+
+
+
+
+.mobile-exam-detail svg{
+
+
+    width:16px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+.mobile-exam-detail b{
+
+
+    display:block;
+
+    font-size:12px;
+
+}
+
+
+
+
+
+
+/* PROGRESS */
+
+
+
+.mobile-progress{
+
+
+    margin-top:14px;
+
+
+}
+
+
+
+
+.mobile-progress-top{
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+
+    font-size:12px;
+
+
+}
+
+
+
+
+.mobile-progress-bar{
+
+
+    margin-top:8px;
+
+
+    height:7px;
+
+
+    border-radius:10px;
+
+
+    background:var(--surface-hover);
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+.mobile-progress-fill{
+
+
+    height:100%;
+
+
+    width:23%;
+
+
+    background:var(--accent);
+
+
+    border-radius:10px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile-ayah-text{
+
+    color:var(--text);
+
+}
+
+
+.mobile-ayah-translation{
+
+    color:var(--text-secondary);
+
+}
+
+
+
+.mobile-ayah-concept{
+
+    color:var(--text);
+
+}
+
+
+.mobile-ayah-concept p{
+
+    color:var(--text-secondary);
+
+}
+
+
+
+.mobile-ayah-source{
+
+    color:var(--text-secondary);
+
+}
+
+
+
+.mobile-exam-title{
+
+    color:var(--text);
+
+}
+
+
+
+.mobile-exam-detail{
+
+    color:var(--text);
+
+}
+
+
+
+.mobile-days span{
+
+    color:var(--text-secondary);
+
+}
+
+
+
+.mobile-progress-top{
+
+    color:var(--text);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===============================
+        WEEKLY PLANNER
+================================ */
+
+
+.weekly-planner{
+
+    width:100%;
+
+    
+
+    padding:14px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+/* ===============================
+        HEADER
+================================ */
+
+
+.planner-header{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+
+.planner-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--text);
+
+}
+
+
+
+.planner-title svg{
+
+    width:18px;
+
+    color:var(--accent);
+
+}
+
+
+
+.planner-title h2{
+
+    margin:0;
+
+    font-size:14px;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+.planner-add-btn{
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    border-radius:11px;
+
+    background:var(--accent-soft);
+
+    color:var(--accent);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+/* ===============================
+        SCROLL CONTAINER
+================================ */
+
+
+.planner-scroll{
+
+    width:100%;
+
+    margin-top:14px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    padding-bottom:10px;
+
+}
+
+
+
+/* ===============================
+        DAYS ROW
+================================ */
+
+
+.planner-week{
+
+    display:flex;
+
+    flex-wrap:nowrap;
+
+    gap:10px;
+
+    width:max-content;
+
+}
+
+
+
+
+
+/* ===============================
+        DAY CARD
+================================ */
+
+
+.planner-day{
+
+    flex:0 0 125px;
+
+    width:125px;
+
+    min-width:125px;
+
+    min-height:150px;
+
+
+    background:var(--surface-hover);
+
+    border-radius:15px;
+
+    padding:10px;
+
+}
+
+
+
+
+
+/* ===============================
+        DAY HEADER
+================================ */
+
+
+.planner-day-header{
+
+    text-align:center;
+
+}
+
+
+
+.planner-day-header h3{
+
+    margin:0;
+
+    font-size:12px;
+
+    color:var(--text);
+
+}
+
+
+
+.planner-date{
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    color:var(--text-secondary);
+
+}
+
+
+
+
+
+/* ===============================
+        TASK AREA
+================================ */
+
+
+.planner-tasks{
+
+    width:100%;
+
+    min-height:70px;
+
+    margin-top:10px;
+
+}
+
+
+
+
+
+/* ===============================
+        TOTAL HOURS
+================================ */
+
+
+.planner-total{
+
+    margin-top:10px;
+
+    padding-top:8px;
+
+    border-top:1px solid var(--border);
+
+    text-align:center;
+
+    font-size:11px;
+
+    color:var(--text-secondary);
+
+}
+
+
+
+.planner-total span{
+
+    color:var(--accent);
+
+    font-weight:700;
+
+}
+
+
+
+
+
+/* ===============================
+        REST DAY
+================================ */
+
+
+.planner-rest{
+
+    opacity:.7;
+
+}
+
+
+
+
+
+/* ===============================
+        SCROLLBAR STYLE
+================================ */
+
+
+/* Chrome / Edge / Safari */
+
+
+.planner-scroll::-webkit-scrollbar{
+
+    height:7px;
+
+}
+
+
+
+.planner-scroll::-webkit-scrollbar-track{
+
+    background:var(--surface-hover);
+
+    border-radius:20px;
+
+}
+
+
+
+.planner-scroll::-webkit-scrollbar-thumb{
+
+    background:var(--accent);
+
+    border-radius:20px;
+
+}
+
+
+
+.planner-scroll::-webkit-scrollbar-thumb:hover{
+
+    opacity:.8;
+
+}
+
+
+
+
+
+/* Firefox */
+
+
+.planner-scroll{
+
+    scrollbar-width:auto;
+
+    scrollbar-color:var(--accent) var(--surface-hover);
+
+}
+
+
+
+
+
+/* ===============================
+        SMALL MOBILE
+================================ */
+
+
+@media(max-width:380px){
+
+
+    .planner-day{
+
+        flex-basis:115px;
+
+        width:115px;
+
+        min-width:115px;
+
+    }
+
+
+}
+
+
+
+
+
+
+/* ===============================
+        PLANNER HEIGHT
+================================ */
+
+
+.weekly-planner{
+
+    min-height:260px;
+
+}
+
+
+
+/* ===============================
+        SCROLL AREA
+================================ */
+
+
+.planner-scroll{
+
+    margin-top:18px;
+
+    max-height:220px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    padding-bottom:12px;
+
+}
+
+
+
+/* ===============================
+        DAY CARD BIGGER
+================================ */
+
+
+.planner-day{
+
+    flex:0 0 145px;
+
+    width:145px;
+
+    min-width:145px;
+
+    min-height:210px;
+
+
+    padding:12px;
+
+
+    border-radius:18px;
+
+
+}
+
+
+
+
+
+/* ===============================
+        TASK AREA
+================================ */
+
+
+.planner-tasks{
+
+    min-height:120px;
+
+    margin-top:14px;
+
+}
+
+
+
+
+
+
+
+/* ===============================
+        COLLAPSE BUTTON
+================================ */
+
+
+.planner-toggle{
+
+
+    width:100%;
+
+
+    margin-top:18px;
+
+
+    height:34px;
+
+
+    border:none;
+
+
+    background:var(--surface-hover);
+
+
+    border-radius:12px;
+
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    gap:12px;
+
+
+    cursor:pointer;
+
+
+    color:var(--text-secondary);
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+
+
+.planner-toggle:hover{
+
+
+    background:var(--accent-soft);
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+.planner-toggle:active{
+
+
+    transform:scale(.97);
+
+
+}
+
+
+
+
+
+.planner-toggle span{
+
+
+    height:1px;
+
+
+    flex:1;
+
+
+    background:var(--border);
+
+
+}
+
+
+
+
+
+.planner-toggle svg{
+
+
+    width:20px;
+
+
+    height:20px;
+
+
+    color:var(--accent);
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+/* وقتی باز است */
+
+
+.planner-toggle.active svg{
+
+
+    transform:rotate(180deg);
+
+
+}
+
+
+
+
+
+/* ===============================
+        MOBILE SMALL
+================================ */
+
+
+@media(max-width:380px){
+
+
+    .planner-day{
+
+
+        flex-basis:135px;
+
+        width:135px;
+
+        min-width:135px;
+
+
+    }
+
+
+}
+
+
+
+/* ===============================
+        MINIMAL BLUE SCROLLBAR
+================================ */
+
+
+.planner-scroll::-webkit-scrollbar{
+
+    height:4px;
+
+}
+
+
+
+.planner-scroll::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+
+
+.planner-scroll::-webkit-scrollbar-thumb{
+
+    background:var(--accent);
+
+    border-radius:20px;
+
+}
+
+
+
+.planner-scroll::-webkit-scrollbar-thumb:hover{
+
+    background:#60a5fa;
+
+}
+
+
+
+/* Firefox */
+
+.planner-scroll{
+
+    scrollbar-width:thin;
+
+    scrollbar-color:var(--accent) transparent;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        HIDE PLANNER SCROLLBAR
+========================================== */
+
+.planner-scroll{
+
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+
+}
+
+.planner-scroll::-webkit-scrollbar{
+
+    display:none;
+    width:0;
+    height:0;
+
+}
+
+.planner-scroll{
+
+    margin-top:18px;
+
+    max-height:none;
+
+    overflow-x:auto;
+    overflow-y:hidden;
+
+    padding-bottom:4px;
+
+    box-sizing:border-box;
+
+}
+
+.planner-day{
+
+    min-height:210px;
+
+    height:auto;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+        MOBILE TASK MODAL
+========================================================= */
+
+
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(8px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s ease;
+
+    z-index:9999;
+
+}
+
+
+
+.modal-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+
+
+
+
+/* ===============================
+        MAIN BOX
+================================ */
+
+
+.task-modal{
+
+    width:100%;
+
+    max-width:440px;
+
+    max-height:85vh;
+
+    overflow:hidden;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+    transform:translateY(25px) scale(.96);
+
+    transition:.25s ease;
+
+}
+
+
+
+.modal-overlay.active .task-modal{
+
+    transform:translateY(0) scale(1);
+
+}
+
+
+
+
+
+
+
+/* ===============================
+        HEADER
+================================ */
+
+
+.modal-header{
+
+
+    height:58px;
+
+    padding:0 16px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+
+.modal-header-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--text);
+
+}
+
+
+
+.modal-header-title svg{
+
+    width:20px;
+
+    color:var(--accent);
+
+}
+
+
+
+.modal-header-title h3{
+
+    margin:0;
+
+    font-size:15px;
+
+}
+
+
+
+
+
+.close-modal{
+
+
+    width:34px;
+
+    height:34px;
+
+    border:none;
+
+    border-radius:12px;
+
+
+    background:var(--surface-hover);
+
+    color:var(--text);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+
+
+
+
+
+/* ===============================
+        BODY
+================================ */
+
+
+.modal-body{
+
+
+    padding:15px;
+
+    overflow-y:auto;
+
+    max-height:calc(85vh - 58px);
+
+
+}
+
+
+
+
+
+
+/* ===============================
+        SUBJECT
+================================ */
+
+
+.modal-field-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+
+    font-size:13px;
+
+    color:var(--text-secondary);
+
+
+    margin-bottom:10px;
+
+}
+
+
+
+.subject-slider-wrapper{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+
+.subject-slider{
+
+
+    flex:1;
+
+    display:flex;
+
+    gap:10px;
+
+    overflow:hidden;
+
+}
+
+
+
+.subject-card{
+
+
+    min-width:75px;
+
+    height:65px;
+
+
+    border-radius:16px;
+
+
+    background:var(--surface-hover);
+
+    border:1px solid var(--border);
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    gap:5px;
+
+
+    color:var(--text-secondary);
+
+
+    font-size:12px;
+
+
+}
+
+
+
+.subject-card svg{
+
+    width:20px;
+
+}
+
+
+
+.subject-card.active{
+
+
+    border-color:var(--accent);
+
+    color:var(--accent);
+
+}
+
+
+
+
+
+
+.subject-arrow{
+
+
+    width:30px;
+
+    height:30px;
+
+    border:none;
+
+    border-radius:10px;
+
+
+    background:var(--surface-hover);
+
+    color:var(--text);
+
+
+}
+
+
+
+
+
+
+
+
+/* ===============================
+        INPUT GRID
+================================ */
+
+
+.mobile-input-grid{
+
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:15px;
+
+
+}
+
+
+
+
+
+
+.modal-input-wrapper{
+
+
+    height:46px;
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:8px;
+
+
+    padding:0 12px;
+
+
+    border-radius:14px;
+
+
+    background:var(--surface-hover);
+
+
+    border:1px solid var(--border);
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+.modal-input-wrapper svg{
+
+
+    width:17px;
+
+    flex-shrink:0;
+
+
+}
+
+
+
+.modal-input-wrapper input,
+.modal-input-wrapper select{
+
+
+    width:100%;
+
+
+    border:none;
+
+    outline:none;
+
+
+    background:transparent;
+
+
+    color:var(--text);
+
+
+    font-family:inherit;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+.modal-input-wrapper select option{
+
+    color:#111;
+
+}
+
+
+
+
+
+
+
+
+/* ===============================
+        FULL INPUT
+================================ */
+
+
+.modal-input-wrapper.full{
+
+
+    margin-top:10px;
+
+
+}
+
+
+
+
+
+
+/* ===============================
+        TEXTAREA
+================================ */
+
+
+.modal-textarea-wrapper{
+
+
+    margin-top:10px;
+
+
+    min-height:80px;
+
+
+    display:flex;
+
+
+    align-items:flex-start;
+
+
+    gap:8px;
+
+
+    padding:12px;
+
+
+    border-radius:16px;
+
+
+    background:var(--surface-hover);
+
+
+    border:1px solid var(--border);
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+.modal-textarea-wrapper svg{
+
+
+    width:18px;
+
+    margin-top:3px;
+
+}
+
+
+
+.modal-textarea-wrapper textarea{
+
+
+    width:100%;
+
+
+    height:55px;
+
+
+    resize:none;
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    background:transparent;
+
+
+    color:var(--text);
+
+
+    font-family:inherit;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ===============================
+        BUTTON
+================================ */
+
+
+.modal-footer{
+
+
+    margin-top:12px;
+
+
+}
+
+
+
+.add-card-btn{
+
+
+    width:100%;
+
+
+    height:46px;
+
+
+    border:none;
+
+
+    border-radius:15px;
+
+
+    background:var(--accent);
+
+
+    color:white;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    gap:8px;
+
+
+    font-family:inherit;
+
+
+    font-size:14px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* موبایل کوچک */
+
+
+@media(max-width:380px){
+
+
+.task-modal{
+
+    max-height:88vh;
+
+}
+
+
+
+.modal-body{
+
+    padding:12px;
+
+}
+
+
+
+.subject-card{
+
+    min-width:65px;
+
+}
+
+
+
+}
+
+
+
+
+/* ===============================
+        COMPACT MOBILE MODAL
+================================ */
+
+
+.task-modal{
+
+    max-width:410px;
+
+    max-height:78vh;
+
+    border-radius:20px;
+
+}
+
+
+
+.modal-header{
+
+    height:50px;
+
+    padding:0 12px;
+
+}
+
+
+.modal-header-title h3{
+
+    font-size:13px;
+
+}
+
+
+
+.close-modal{
+
+    width:30px;
+
+    height:30px;
+
+    border-radius:10px;
+
+}
+
+
+
+
+
+
+.modal-body{
+
+    padding:10px;
+
+    max-height:calc(78vh - 50px);
+
+}
+
+
+
+
+
+
+
+/* SUBJECT SMALLER */
+
+
+.modal-field-title{
+
+    font-size:12px;
+
+    margin-bottom:7px;
+
+}
+
+
+.subject-card{
+
+    min-width:62px;
+
+    height:52px;
+
+    border-radius:13px;
+
+    font-size:11px;
+
+}
+
+
+.subject-card svg{
+
+    width:16px;
+
+    height:16px;
+
+}
+
+
+
+.subject-arrow{
+
+    width:26px;
+
+    height:26px;
+
+}
+
+
+
+
+
+
+
+/* INPUTS */
+
+
+.mobile-input-grid{
+
+    gap:8px;
+
+    margin-top:10px;
+
+}
+
+
+
+.modal-input-wrapper{
+
+    height:38px;
+
+    padding:0 9px;
+
+    border-radius:12px;
+
+    gap:6px;
+
+}
+
+
+
+.modal-input-wrapper input,
+.modal-input-wrapper select{
+
+    font-size:12px;
+
+}
+
+
+
+.modal-input-wrapper svg{
+
+    width:14px;
+
+    height:14px;
+
+}
+
+
+
+
+
+
+/* TOPIC */
+
+
+.modal-input-wrapper.full{
+
+    margin-top:8px;
+
+}
+
+
+
+
+
+
+
+/* TEXTAREA */
+
+
+.modal-textarea-wrapper{
+
+    margin-top:8px;
+
+    min-height:60px;
+
+    padding:8px;
+
+    border-radius:12px;
+
+}
+
+
+.modal-textarea-wrapper textarea{
+
+    height:40px;
+
+    font-size:12px;
+
+}
+
+
+.modal-textarea-wrapper svg{
+
+    width:15px;
+
+}
+
+
+
+
+
+
+
+/* BUTTON */
+
+
+.modal-footer{
+
+    margin-top:8px;
+
+}
+
+
+.add-card-btn{
+
+    height:38px;
+
+    border-radius:12px;
+
+    font-size:13px;
+
+}
+
+/* =================================
+      EXTRA COMPACT MODAL
+================================= */
+
+
+.task-modal{
+
+    width:92%;
+
+    max-width:380px;
+
+    max-height:72vh;
+
+    border-radius:18px;
+
+}
+
+
+
+
+.modal-header{
+
+    height:46px;
+
+    padding:0 10px;
+
+}
+
+
+
+.modal-header-title{
+
+    gap:6px;
+
+}
+
+
+.modal-header-title h3{
+
+    font-size:12px;
+
+}
+
+
+
+.close-modal{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+
+
+
+
+.modal-body{
+
+    padding:8px;
+
+    max-height:calc(72vh - 46px);
+
+}
+
+
+
+
+
+
+/* SUBJECT */
+
+.modal-field-title{
+
+    font-size:11px;
+
+    margin-bottom:6px;
+
+}
+
+
+.subject-card{
+
+    min-width:58px;
+
+    height:46px;
+
+    border-radius:11px;
+
+}
+
+
+.subject-card span{
+
+    font-size:10px;
+
+}
+
+
+.subject-card svg{
+
+    width:15px;
+
+}
+
+
+
+.subject-arrow{
+
+    width:24px;
+
+    height:24px;
+
+}
+
+
+
+
+
+
+/* INPUTS */
+
+
+.mobile-input-grid{
+
+    gap:7px;
+
+    margin-top:8px;
+
+}
+
+
+
+.modal-input-wrapper{
+
+    height:34px;
+
+    border-radius:10px;
+
+    padding:0 8px;
+
+}
+
+
+.modal-input-wrapper input,
+.modal-input-wrapper select{
+
+    font-size:11px;
+
+}
+
+
+
+
+.modal-input-wrapper svg{
+
+    width:13px;
+
+}
+
+
+
+
+
+
+/* TOPIC */
+
+
+.modal-input-wrapper.full{
+
+    margin-top:7px;
+
+}
+
+
+
+
+
+/* NOTE */
+
+
+.modal-textarea-wrapper{
+
+    min-height:52px;
+
+    margin-top:7px;
+
+    border-radius:10px;
+
+    padding:7px;
+
+}
+
+
+
+.modal-textarea-wrapper textarea{
+
+    height:32px;
+
+    font-size:11px;
+
+}
+
+
+
+
+
+
+/* BUTTON */
+
+
+.modal-footer{
+
+    margin-top:7px;
+
+}
+
+
+
+.add-card-btn{
+
+    height:34px;
+
+    border-radius:10px;
+
+    font-size:12px;
+
+}
+
+/* =================================
+      SUBJECT MOBILE SCROLL
+================================= */
+
+
+/* حذف دکمه های چپ و راست */
+
+.subject-arrow{
+
+    display:none;
+
+}
+
+
+
+/* باکس انتخاب درس */
+
+.subject-slider-wrapper{
+
+    width:100%;
+
+}
+
+
+
+
+
+.subject-slider{
+
+
+    width:100%;
+
+    display:flex;
+
+    gap:8px;
+
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+
+    scroll-behavior:smooth;
+
+
+    padding-bottom:5px;
+
+
+    scrollbar-width:none;
+
+
+}
+
+
+
+.subject-slider::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+
+
+
+
+/* کارت های درس */
+
+
+.subject-card{
+
+
+    flex:0 0 auto;
+
+
+    min-width:62px;
+
+
+    height:48px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   MOBILE MINI TASK CARD
+========================================= */
+
+
+.mobile-mini-card{
+
+    width:90%;
+    max-width:240px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    border:
+    1px solid rgba(255,255,255,.10);
+
+    border-radius:14px;
+
+    padding:8px;
+
+    backdrop-filter:blur(10px);
+
+    transition:.25s ease;
+
+}
+
+
+
+.mobile-mini-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:
+    color-mix(
+        in srgb,
+        var(--subject-color) 40%,
+        transparent
+    );
+
+}
+
+
+
+/* =========================================
+   TOP SECTION
+========================================= */
+
+
+.mini-card-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+}
+
+
+
+/* =========================================
+   SUBJECT ICON
+========================================= */
+
+
+.mini-subject-icon{
+
+    width:24px;
+
+    height:24px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    color:
+    var(--subject-color);
+
+}
+
+
+.mini-subject-icon svg{
+
+    width:15px;
+
+    height:15px;
+
+}
+
+
+
+/* =========================================
+   SUBJECT NAME
+========================================= */
+
+
+.mini-subject-name{
+
+    font-size:12px;
+
+    font-weight:600;
+
+    color:white;
+
+}
+
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+
+.mini-card-actions{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:9px;
+
+}
+
+
+
+.mini-card-actions button{
+
+    width:28px;
+
+    height:28px;
+
+
+    border:none;
+
+    border-radius:9px;
+
+
+    background:
+    rgba(255,255,255,.08);
+
+
+    color:white;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:
+
+    transform .25s ease,
+
+    background .25s ease;
+
+}
+
+
+
+.mini-card-actions button:hover{
+
+
+    transform:
+
+    translateY(-3px)
+
+    scale(1.08);
+
+
+    background:
+
+    color-mix(
+        in srgb,
+        var(--subject-color) 25%,
+        transparent
+    );
+
+}
+
+
+
+/* ICONS */
+
+
+.mini-card-actions svg{
+
+    width:13px;
+
+    height:13px;
+
+}
+
+/* SUBJECT ICON */
+
+.mini-subject-icon{
+
+    width:24px;
+
+    height:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    color:var(--subject-color);
+
+}
+
+
+
+.mini-subject-icon svg{
+
+    width:16px;
+
+    height:16px;
+
+    stroke-width:2;
+
+}
+
+
+
+
+
+
+
+
+
+.planner-tasks{
+
+    max-height:220px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+
+    scrollbar-width:none;
+
+    -ms-overflow-style:none;
+
+}
+
+
+/* Chrome / Edge */
+
+.planner-tasks::-webkit-scrollbar{
+
+    width:0;
+
+    height:0;
+
+}
+
+
+
+
+.mobile-mini-card{
+
+
+    width:90%;
+
+    max-width:240px;
+
+
+    background:
+
+    color-mix(
+        in srgb,
+        var(--subject-color) 18%,
+        rgba(255,255,255,.08)
+    );
+
+
+    border:
+
+    1px solid
+
+    color-mix(
+        in srgb,
+        var(--subject-color) 35%,
+        transparent
+    );
+
+
+    border-radius:16px;
+
+
+    padding:8px;
+
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+
+    box-shadow:
+
+    0 8px 25px
+
+    rgba(0,0,0,.15);
+
+
+    transition:.3s ease;
+
+}
+
+
+.mobile-mini-card:hover{
+
+
+    transform:
+
+    translateY(-3px);
+
+
+    box-shadow:
+
+    0 12px 30px
+
+    color-mix(
+        in srgb,
+        var(--subject-color) 30%,
+        transparent
+    );
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   DAY BOX SCROLL
+========================================= */
+/* =========================================
+   EACH DAY BOX
+========================================= */
+
+.planner-day{
+
+    height:280px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+
+
+/* =========================================
+   TASK AREA SCROLL
+========================================= */
+
+.planner-tasks{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+
+    scrollbar-width:none;
+
+    -ms-overflow-style:none;
+
+}
+
+
+/* Chrome */
+
+.planner-tasks::-webkit-scrollbar{
+
+    width:0;
+
+}
+
+
+/* =========================================
+   TASK CARDS GAP
+========================================= */
+
+
+.planner-tasks{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.subject-card[data-subject="math"] {
+    --subject-color: #6278ff;
+}
+
+.subject-card[data-subject="physics"] {
+    --subject-color: #37c5ff;
+}
+
+.subject-card[data-subject="chemistry"] {
+    --subject-color: #a56cff;
+}
+
+.subject-card[data-subject="biology"] {
+    --subject-color: #51cf72;
+}
+
+.subject-card[data-subject="literature"] {
+    --subject-color: #e66dc7;
+}
+
+.subject-card[data-subject="language"] {
+    --subject-color: #36b9ff;
+}
+
+.subject-card[data-subject="geometry"] {
+
+    --subject-color: #8b5cf6;
+
+}
+
+
+.subject-card[data-subject="calculus"] {
+
+    --subject-color: #ec4899;
+
+}
+
+
+.subject-card[data-subject="discrete"] {
+
+    --subject-color: #f97316;
+
+}
+
+
+.subject-card[data-subject="statistics"] {
+
+    --subject-color: #14b8a6;
+
+}
+
+
+.subject-card[data-subject="test"] {
+
+    --subject-color: #ef4444;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   SUBJECT ONLY SCROLL
+========================================= */
+
+
+.subject-slider-wrapper{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+
+
+.subject-slider{
+
+    display:flex;
+
+    gap:5px;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    scroll-behavior:smooth;
+
+    -webkit-overflow-scrolling:touch;
+
+
+
+    /* Firefox */
+
+    scrollbar-width:thin;
+
+    scrollbar-color:
+    rgba(255,255,255,.15)
+    transparent;
+
+}
+
+
+
+
+
+/* Chrome - Edge - Safari */
+
+
+.subject-slider::-webkit-scrollbar{
+
+    height:3px;
+
+}
+
+
+
+.subject-slider::-webkit-scrollbar-track{
+
+    background:
+
+    rgba(255,255,255,.04);
+
+}
+
+
+
+.subject-slider::-webkit-scrollbar-thumb{
+
+    background:
+
+    rgba(255,255,255,.15);
+
+    border-radius:20px;
+
+}
+
+
+
+
+
+
+/* =========================================
+   MODAL FOOTER BUTTONS
+========================================= */
+
+
+.modal-footer{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:row;
+
+    gap:10px;
+
+    align-items:center;
+
+}
+
+
+
+/* SAVE BUTTON */
+
+.add-card-btn{
+
+    flex:1;
+
+}
+
+
+
+/* DELETE BUTTON */
+.delete-plan-btn{
+
+    flex:1;
+
+    height: 36px;
+
+
+    border:none;
+
+    border-radius:12px;
+
+    font-family: "Vazirmatn", sans-serif;
+
+
+    background:
+    rgba(178, 24, 24, 0.838);
+
+
+
+    border:
+    1px solid rgba(142, 4, 4, 0.872);
+
+
+
+    color:#080505;
+
+
+
+    font-size:13px;
+
+    font-weight:600;
+
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+
+    backdrop-filter:blur(10px);
+
+
+
+    cursor:pointer;
+
+
+
+    transition:.25s;
+
+}
+
+
+
+.delete-plan-btn:hover{
+
+
+    background:
+    rgba(239,68,68,.25);
+
+
+
+    border-color:
+    rgba(239,68,68,.6);
+
+
+
+    color:#ff6b6b;
+
+
+
+    transform:
+    translateY(-2px);
+
+
+
+    box-shadow:
+    0 8px 20px rgba(239,68,68,.18);
+
+}
+
+
+.delete-plan-btn:hover{
+
+    background:
+    rgba(239,68,68,.28);
+
+
+    transform:translateY(-2px);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   WEEKLY PLANNER COLLAPSE FINAL
+========================================= */
+
+
+.weekly-planner{
+
+    overflow:hidden;
+
+    transition:
+    max-height .35s ease,
+    padding .35s ease;
+
+    max-height:2000px;
+
+}
+
+
+
+/* CLOSED */
+
+.weekly-planner.collapsed{
+
+    max-height:65px;
+
+    padding:0;
+
+}
+
+
+
+/* hide planner content */
+
+.weekly-planner.collapsed .planner-scroll{
+
+    display:none;
+
+}
+
+
+
+/* تنظیم دکمه پایین */
+
+.weekly-planner.collapsed .planner-toggle{
+
+    margin-top:5px;
+
+}
+
+
+
+/* حذف فاصله های داخلی اضافی */
+
+.weekly-planner.collapsed .planner-header{
+
+    margin-bottom:0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   MOBILE STUDY TIMER CARD
+========================================== */
+
+
+.mobile-study-section{
+
+    width:100%;
+
+}
+
+
+
+.mobile-study-card{
+
+
+    width:100%;
+
+    background:
+    var(--surface);
+
+
+    border:
+    1px solid var(--border);
+
+
+    border-radius:24px;
+
+
+    padding:14px;
+
+
+    box-shadow:
+    var(--shadow);
+
+
+    color:
+    var(--text);
+
+
+    overflow:hidden;
+
+}
+
+
+
+
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+
+.mobile-study-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+.mobile-timer-tabs{
+
+
+    display:flex;
+
+    flex:1;
+
+    gap:8px;
+
+
+    background:
+    rgba(255,255,255,.04);
+
+
+    padding:4px;
+
+
+    border-radius:14px;
+
+
+}
+
+
+
+
+.mobile-timer-tab{
+
+
+    flex:1;
+
+
+    border:none;
+
+
+    background:transparent;
+
+
+    color:
+    var(--text-secondary);
+
+
+    padding:8px;
+
+
+    border-radius:12px;
+
+
+    font-size:12px;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.mobile-timer-tab.active{
+
+
+    background:
+    var(--accent);
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+.mobile-timer-flip{
+
+
+    width:36px;
+
+    height:36px;
+
+
+    border-radius:12px;
+
+
+    border:1px solid var(--border);
+
+
+    background:
+    var(--surface-hover);
+
+
+    color:
+    var(--text);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+   CURRENT LESSON
+========================================== */
+
+
+.mobile-current-lesson{
+
+
+    background:
+    rgba(255,255,255,.05);
+
+
+    border:
+    1px solid var(--border);
+
+
+    border-radius:18px;
+
+
+    padding:12px;
+
+
+}
+
+
+
+
+
+.mobile-lesson-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+
+}
+
+
+
+.mobile-lesson-icon{
+
+
+    width:42px;
+
+    height:42px;
+
+
+    border-radius:14px;
+
+
+    background:
+    var(--accent-soft);
+
+
+    color:
+    var(--accent);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+}
+
+
+
+
+.mobile-lesson-icon svg{
+
+
+    width:20px;
+
+}
+
+
+
+
+.mobile-lesson-title{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+
+}
+
+
+
+
+.mobile-lesson-title span{
+
+
+    color:
+    var(--text-secondary);
+
+
+    font-size:11px;
+
+
+}
+
+
+
+.mobile-lesson-title strong{
+
+
+    font-size:14px;
+
+    color:
+    var(--text);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================
+   LESSON DETAILS
+========================================== */
+
+
+.mobile-lesson-details{
+
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:8px;
+
+
+    margin-top:12px;
+
+
+}
+
+
+
+.mobile-detail-box{
+
+
+    background:
+    rgba(255,255,255,.04);
+
+
+    border-radius:12px;
+
+
+    padding:8px;
+
+
+}
+
+
+
+.mobile-detail-box span{
+
+
+    font-size:10px;
+
+    color:
+    var(--text-secondary);
+
+
+}
+
+
+
+.mobile-detail-box p{
+
+
+    margin:4px 0 0;
+
+
+    font-size:12px;
+
+
+    color:
+    var(--text);
+
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+   TIMER
+========================================== */
+
+
+.mobile-timer-box{
+
+
+    margin:22px auto;
+
+
+    width:200px;
+
+    height:200px;
+
+
+    border-radius:50%;
+
+
+    border:
+
+    5px solid var(--accent);
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+
+    background:
+    rgba(59,130,246,.08);
+
+
+}
+
+
+
+.mobile-timer-display{
+
+
+    font-size:32px;
+
+
+    font-weight:700;
+
+
+    direction:ltr;
+
+
+}
+
+
+
+.mobile-timer-box span{
+
+
+    margin-top:8px;
+
+
+    font-size:11px;
+
+
+    color:
+    var(--text-secondary);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+
+.mobile-timer-status{
+
+
+    text-align:center;
+
+
+    color:
+    var(--text-secondary);
+
+
+    font-size:13px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+
+.mobile-timer-controls{
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:14px;
+
+
+}
+
+
+
+.mobile-timer-controls button{
+
+
+    width:44px;
+
+    height:44px;
+
+
+    border-radius:50%;
+
+
+    border:1px solid var(--border);
+
+
+    background:
+    var(--surface-hover);
+
+
+    color:
+    var(--text);
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.mobile-timer-controls button:hover{
+
+
+    transform:translateY(-3px);
+
+
+    background:
+    var(--accent);
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+   FINISH BUTTON
+========================================== */
+
+
+.mobile-finish-btn{
+ font-family: "Vazirmatn", sans-serif;
+
+    width:100%;
+
+
+    margin-top:8px;
+
+
+    height:45px;
+
+
+    border:none;
+
+
+    border-radius:14px;
+
+
+    background:
+    var(--accent);
+
+
+    color:white;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    gap:8px;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================
+   BACK SIDE
+========================================== */
+
+
+.mobile-timer-back{
+
+
+    margin-top:15px;
+
+
+    padding:15px;
+
+
+    background:
+    rgba(255,255,255,.04);
+
+
+    border-radius:18px;
+
+
+}
+
+
+
+.mobile-back-subject{
+
+
+    text-align:center;
+
+
+}
+
+
+
+.mobile-back-icon{
+
+
+    width:50px;
+
+    height:50px;
+
+
+    margin:auto;
+
+
+    border-radius:16px;
+
+
+    background:
+    var(--accent-soft);
+
+
+    color:
+    var(--accent);
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+}
+
+
+
+
+
+.mobile-checklist{
+
+
+    margin-top:15px;
+
+
+}
+
+
+
+.mobile-check-title{
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+
+}
+
+
+
+.mobile-checklist label{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:8px;
+
+
+    padding:8px;
+
+
+    background:
+    rgba(255,255,255,.04);
+
+
+    border-radius:10px;
+
+
+    margin-bottom:6px;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+.mobile-change-subject{
+
+
+    width:100%;
+
+
+    height:42px;
+
+
+    margin-top:15px;
+
+
+    border-radius:14px;
+
+
+    border:1px solid var(--border);
+
+
+    background:
+    var(--surface-hover);
+
+
+    color:
+    var(--text);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================
+   MOBILE STUDY TIMER
+====================================== */
+
+
+.mobile-study-timer{
+
+    width:100%;
+
+}
+
+
+
+.mobile-timer-card{
+
+
+    width:100%;
+
+
+    background:
+    rgba(255,255,255,.05);
+
+
+    border:
+    1px solid var(--border);
+
+
+    border-radius:22px;
+
+
+    padding:14px;
+
+
+    backdrop-filter:blur(14px);
+
+
+    box-shadow:
+    var(--shadow);
+
+
+}
+
+
+
+/* HEADER */
+
+.mobile-timer-header{
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    margin-bottom:14px;
+
+
+}
+
+
+
+.timer-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+
+    color:var(--text);
+
+
+    font-size:13px;
+
+    font-weight:600;
+
+
+}
+
+
+.timer-title svg{
+
+    width:16px;
+
+    color:var(--accent);
+
+}
+
+
+
+.timer-state{
+
+
+    font-size:11px;
+
+
+    padding:4px 10px;
+
+
+    border-radius:20px;
+
+
+    background:
+    var(--accent-soft);
+
+
+    color:
+    var(--accent);
+
+
+}
+
+
+
+
+/* TIMER BOX */
+
+
+.mobile-timer-box{
+
+
+    height:95px;
+
+
+    border-radius:18px;
+
+
+    background:
+    var(--surface);
+
+
+    border:
+    1px solid var(--border);
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    gap:4px;
+
+
+}
+
+
+
+
+.mobile-timer-display{
+
+
+    font-size:32px;
+
+
+    font-weight:700;
+
+
+    letter-spacing:2px;
+
+
+    color:
+    var(--text);
+
+
+}
+
+
+
+
+.mobile-timer-box span{
+
+
+    font-size:11px;
+
+
+    color:
+    var(--text-secondary);
+
+
+}
+
+
+
+
+/* CONTROLS */
+
+
+.mobile-timer-controls{
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    gap:12px;
+
+
+    margin-top:14px;
+
+
+}
+
+
+
+
+.mobile-timer-controls button{
+
+
+    width:38px;
+
+    height:38px;
+
+
+    border-radius:14px;
+
+
+    border:
+    1px solid var(--border);
+
+
+    background:
+    var(--surface);
+
+
+    color:
+    var(--text);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    cursor:pointer;
+
+
+    transition:.25s;
+
+
+}
+
+
+
+
+.mobile-timer-controls button:hover{
+
+
+    transform:
+    translateY(-3px);
+
+
+    background:
+    var(--surface-hover);
+
+
+}
+
+
+
+
+.mobile-timer-controls svg{
+
+
+    width:16px;
+
+    height:16px;
+
+
+}
+
+
+
+
+
+.mobile-timer-box {
+
+        margin-left: 20px;
+    margin-right: 20px;
+    width: 90%;
+}
+
+
+.mobile-timer-card {
+        margin-top: 8px;
+}
+
+
+
+
+
+/* ======================================
+   MOBILE FINISH STUDY BUTTON
+====================================== */
+
+
+.mobile-finish-btn{
+
+
+    width:100%;
+
+
+    height:42px;
+
+
+    border-radius:14px;
+
+
+    border:1px solid rgba(255,255,255,.12);
+
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        rgba(34,197,94,.18),
+
+        rgba(255,255,255,.03)
+
+    );
+
+
+    color:var(--text);
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    gap:8px;
+
+
+    font-size:13px;
+
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    backdrop-filter:blur(14px);
+
+
+    box-shadow:
+
+    0 8px 25px rgba(0,0,0,.35);
+
+
+    position:relative;
+
+
+    overflow:hidden;
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+.mobile-finish-btn svg{
+
+
+    width:17px;
+
+    height:17px;
+
+
+    color:#22c55e;
+
+
+}
+
+
+
+
+
+
+/* افکت نور */
+
+.mobile-finish-btn::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    background:
+
+    linear-gradient(
+
+        110deg,
+
+        transparent,
+
+        rgba(255,255,255,.18),
+
+        transparent
+
+    );
+
+
+    transform:translateX(-120%);
+
+
+    transition:.5s;
+
+
+}
+
+
+
+
+.mobile-finish-btn:hover::before{
+
+
+    transform:translateX(120%);
+
+
+}
+
+
+
+
+.mobile-finish-btn:hover{
+
+
+    transform:translateY(-3px);
+
+
+    border-color:
+
+    rgba(34,197,94,.45);
+
+
+    box-shadow:
+
+    0 12px 35px rgba(34,197,94,.2);
+
+
+}
+
+
+
+
+
+.mobile-finish-btn:active{
+
+
+    transform:scale(.96);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================
+   MOBILE SERVICES
+====================================== */
+
+
+.mobile-services-container{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+.mobile-service-card{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+    padding:10px;
+
+
+    border-radius:18px;
+
+
+    background:
+
+
+    rgba(255,255,255,.05);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    backdrop-filter:blur(14px);
+
+
+    box-shadow:
+
+    var(--shadow);
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+.mobile-service-card:hover{
+
+
+    transform:translateY(-3px);
+
+
+    background:
+
+    rgba(255,255,255,.08);
+
+
+}
+
+
+
+
+
+
+.mobile-service-icon{
+
+
+    width:42px;
+
+
+    height:42px;
+
+
+    border-radius:14px;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    background:
+
+    var(--accent-soft);
+
+
+    color:
+
+    var(--accent);
+
+
+    flex-shrink:0;
+
+
+}
+
+
+
+
+.mobile-service-icon i{
+
+
+    font-size:18px;
+
+
+}
+
+
+
+
+
+.mobile-service-content{
+
+
+    flex:1;
+
+
+}
+
+
+
+
+
+.mobile-service-content h3{
+
+
+    margin:0;
+
+
+    font-size:13px;
+
+
+    color:
+
+    var(--text);
+
+
+}
+
+
+
+
+.mobile-service-content p{
+
+
+    margin:4px 0 0;
+
+
+    font-size:11px;
+
+
+    color:
+
+    var(--text-secondary);
+
+
+}
+
+
+
+
+
+.mobile-service-card a{
+
+
+    padding:6px 12px;
+
+
+    border-radius:12px;
+
+
+    text-decoration:none;
+
+
+    font-size:11px;
+
+
+    color:
+
+    var(--text);
+
+
+    background:
+
+
+    rgba(255,255,255,.08);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+.mobile-service-card a:hover{
+
+
+    background:
+
+    var(--accent);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======================================
+   MOBILE STUDY HEADER
+====================================== */
+
+
+.mobile-study-header{
+
+
+    width:100%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+}
+
+
+
+
+
+.mobile-timer-title{
+
+
+    display:flex;
+
+
+    flex-direction:row;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+    gap:8px;
+
+
+    font-size:13px;
+
+
+    font-weight:600;
+
+
+    color:var(--text);
+
+
+}
+
+
+
+
+
+.mobile-timer-title svg{
+
+
+    width:17px;
+
+
+    height:17px;
+
+
+    color:var(--accent);
+
+
+    flex-shrink:0;
+
+
+}
+
+
+
+
+
+.mobile-timer-title span{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    line-height:1;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   MOBILE STUDY SECTION
+========================================== */
+
+
+.mobile-study-section{
+
+    width:100%;
+
+}
+
+
+.mobile-study-card{
+
+
+    width:100%;
+
+    background:
+    var(--surface);
+
+    border:
+
+    1px solid var(--border);
+
+
+    border-radius:22px;
+
+    padding:14px;
+
+
+    box-shadow:
+    var(--shadow);
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+
+
+/* ==========================================
+   HEADER
+========================================== */
+
+
+.mobile-study-header{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+
+}
+
+
+
+.mobile-timer-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+
+    color:var(--text);
+
+    font-size:14px;
+
+    font-weight:700;
+
+
+}
+
+
+.mobile-timer-title svg{
+
+
+    width:18px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+/* ==========================================
+   TABS
+========================================== */
+
+
+.mobile-study-tabs{
+
+
+    display:flex;
+
+    gap:8px;
+
+    width:100%;
+
+
+}
+
+
+
+.study-tab{
+
+
+    flex:1;
+
+
+    height:38px;
+
+
+    border-radius:14px;
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+    color:
+
+    var(--text-secondary);
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    gap:6px;
+
+
+    font-size:12px;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.study-tab svg{
+
+
+    width:15px;
+
+}
+
+
+
+
+
+.study-tab.active{
+
+
+    background:
+
+    var(--accent);
+
+
+    color:white;
+
+
+    border-color:transparent;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+   PAGE SWITCH
+========================================== */
+
+
+.mobile-study-page{
+
+
+    display:none;
+
+
+    margin-top:14px;
+
+
+}
+
+
+
+.mobile-study-page.active{
+
+
+    display:block;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================
+   CURRENT LESSON CARD
+========================================== */
+
+
+.mobile-current-lesson{
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    border-radius:18px;
+
+
+    padding:12px;
+
+
+    margin-bottom:12px;
+
+
+}
+
+
+
+
+
+.mobile-lesson-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+
+}
+
+
+
+.mobile-lesson-icon{
+
+
+    width:38px;
+
+    height:38px;
+
+
+    border-radius:13px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    background:
+
+    var(--accent-soft);
+
+
+    color:
+
+    var(--accent);
+
+
+}
+
+
+
+.mobile-lesson-icon svg{
+
+
+    width:20px;
+
+}
+
+
+
+
+
+
+.mobile-lesson-title{
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+
+}
+
+
+
+.mobile-lesson-title span{
+
+
+    font-size:11px;
+
+    color:
+
+    var(--text-secondary);
+
+
+}
+
+
+
+.mobile-lesson-title strong{
+
+
+    color:
+
+    var(--text);
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+
+
+
+/* DETAILS */
+
+
+.mobile-lesson-details{
+
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:7px;
+
+
+    margin-top:12px;
+
+
+}
+
+
+
+.mobile-detail-box{
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+    border-radius:12px;
+
+
+    padding:8px;
+
+
+    text-align:center;
+
+
+}
+
+
+
+.mobile-detail-box span{
+
+
+    font-size:10px;
+
+    color:
+
+    var(--text-secondary);
+
+
+}
+
+
+
+.mobile-detail-box p{
+
+
+    margin:5px 0 0;
+
+
+    font-size:11px;
+
+    color:
+
+    var(--text);
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================
+   TIMER
+========================================== */
+
+
+.mobile-timer-card{
+
+
+    background:
+
+    rgba(255,255,255,.05);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+    border-radius:20px;
+
+
+    padding:14px;
+
+
+}
+
+
+
+
+
+.mobile-timer-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+}
+
+
+
+.timer-title{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+
+    color:var(--text);
+
+    font-size:12px;
+
+    font-weight:600;
+
+
+}
+
+
+
+.timer-title svg{
+
+
+    width:16px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+.timer-state{
+
+
+    font-size:11px;
+
+
+    color:
+
+    var(--accent);
+
+
+}
+
+
+
+
+
+
+.mobile-timer-box{
+
+
+    margin-top:15px;
+
+
+    height:100px;
+
+
+    border-radius:18px;
+
+
+    background:
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(59,130,246,.12),
+
+    rgba(255,255,255,.03)
+
+    );
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+}
+
+
+
+.mobile-timer-display{
+
+
+    font-size:32px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+
+    color:
+
+    var(--text);
+
+
+}
+
+
+
+.mobile-timer-box span{
+
+
+    font-size:10px;
+
+    color:
+
+    var(--text-secondary);
+
+
+}
+
+
+
+
+
+
+/* ==========================================
+   FINISH BUTTON
+========================================== */
+
+
+.mobile-finish-btn{
+
+
+    width:100%;
+
+
+    height:42px;
+
+
+    margin-top:14px;
+
+
+    border-radius:15px;
+
+
+    border:1px solid rgba(59,130,246,.4);
+
+
+    background:
+
+
+    linear-gradient(
+
+    135deg,
+
+    rgba(59,130,246,.35),
+
+    rgba(37,99,235,.15)
+
+    );
+
+
+    color:white;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    gap:7px;
+
+
+    font-size:13px;
+
+    font-weight:600;
+
+
+    cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.mobile-finish-btn:hover{
+
+
+    transform:translateY(-2px);
+
+
+}
+
+
+
+
+
+
+/* ==========================================
+   PAGE 2
+========================================== */
+
+
+.plan-selector-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    gap:7px;
+
+
+    color:var(--text);
+
+    font-size:13px;
+
+    font-weight:600;
+
+
+}
+
+
+
+
+.plan-selector-header svg{
+
+
+    width:17px;
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+
+.mobile-day-selector{
+
+
+    display:flex;
+
+
+    gap:7px;
+
+
+    overflow-x:auto;
+
+
+    margin-top:12px;
+
+
+    padding-bottom:5px;
+
+
+}
+
+
+
+
+
+.day-btn{
+
+
+    flex:0 0 auto;
+
+
+    padding:7px 14px;
+
+
+    border-radius:12px;
+
+
+    border:1px solid var(--border);
+
+
+    background:
+
+    rgba(255,255,255,.04);
+
+
+    color:var(--text-secondary);
+
+
+    font-size:11px;
+
+
+}
+
+
+
+.day-btn.active{
+
+
+    background:
+
+    var(--accent);
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+
+.mobile-plan-list{
+
+
+    margin-top:12px;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    gap:8px;
+
+
+}
+
+
+
+
+
+
+.mobile-start-study-btn{
+
+
+    width:100%;
+
+
+    height:42px;
+
+
+    margin-top:14px;
+
+
+    border-radius:15px;
+
+
+    border:none;
+
+
+    background:
+
+    var(--accent);
+
+
+    color:white;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    gap:7px;
+
+
+    font-size:13px;
+
+
+}
+
+
+
+
+
+/* ==========================================
+   HIDE DAY SELECTOR SCROLLBAR
+========================================== */
+
+
+.mobile-day-selector{
+
+    scrollbar-width:none; /* Firefox */
+
+    -ms-overflow-style:none; /* IE */
+
+}
+
+
+
+.mobile-day-selector::-webkit-scrollbar{
+
+    display:none; /* Chrome / Safari */
+
+}
+
+
+
+
+/* ==========================================
+   KEEP STUDY CARD HEIGHT FIXED
+========================================== */
+
+
+.mobile-study-card{
+
+    min-height:520px;
+
+}
+
+
+
+/* فضای صفحات تب */
+
+.mobile-timer-content,
+.mobile-study-page{
+
+
+    min-height:430px;
+
+
+}
+
+
+
+/* جلوگیری از پرش هنگام تغییر تب */
+
+.mobile-study-page{
+
+    animation:tabFade .25s ease;
+
+
+}
+
+
+
+@keyframes tabFade{
+
+
+    from{
+
+        opacity:0;
+        transform:translateY(8px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.completed-label{
+
+    font-size:11px;
+
+    margin-top:3px;
+
+    color:#22c55e;
+
+    opacity:.9;
+
+}
+
+
+
+.mobile-plan-card.completed{
+
+    border-color:#22c55e;
+
+}
+
+
+
+.mobile-plan-card.completed .plan-icon{
+
+    filter:
+    drop-shadow(
+        0 0 8px rgba(34,197,94,.5)
+    );
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile-current-lesson{
+
+    border:1px solid 
+    color-mix(
+        in srgb,
+        var(--lesson-color),
+        transparent 65%
+    );
+
+    background:
+    linear-gradient(
+        135deg,
+        color-mix(
+            in srgb,
+            var(--lesson-color),
+            transparent 85%
+        ),
+        var(--surface)
+    );
+
+}

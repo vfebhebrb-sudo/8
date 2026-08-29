@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>تایید شماره | کدماتیک</title>
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+<link rel="stylesheet" href="./register.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+<link rel="icon"
+type="image/png"
+href="./2.2.6.png">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="login-page">
+
+
+
+<div class="background-glow"></div>
+
+<div class="background-grid"></div>
+
+
+
+
+
+<section class="login-card">
+
+
+
+
+
+<div class="login-panel">
+
+
+
+
+
+<!-- ==========================
+        HEADER
+========================== -->
+
+
+<!-- <div class="panel-header">
+
+
+
+<div class="panel-logo">
+
+
+<img src="./لوگو1.png"
+alt="Codematic">
+
+
+<div class="logo-glow"></div>
+
+
+</div>
+
+
+
+
+<h3 id="typing-text"></h3>
+
+
+
+
+</div> -->
+
+
+
+
+
+
+
+<!-- ==========================
+        FORM
+========================== -->
+
+
+<form
+
+id="otpForm"
+
+class="login-form"
+
+novalidate>
+
+
+
+
+
+
+<!-- PHONE -->
+
+<div class="form-field">
+
+
+<div class="input-group"
+id="phoneGroup">
+
+
+
+<i class="fa-solid fa-phone"></i>
+
+
+
+<input
+
+id="phoneNumber"
+
+name="phone"
+
+type="tel"
+
+autocomplete="tel"
+
+placeholder="شماره تلفن">
+
+
+
+
+
+
+<div class="field-status">
+
+
+<svg class="status-icon"
+viewBox="0 0 52 52">
+
+
+
+<circle
+
+class="status-circle"
+
+cx="26"
+
+cy="26"
+
+r="22"/>
+
+
+
+<path
+
+class="status-check"
+
+d="M16 27 L23 34 L37 18"/>
+
+
+
+<path
+
+class="status-cross1"
+
+d="M18 18 L34 34"/>
+
+
+
+<path
+
+class="status-cross2"
+
+d="M34 18 L18 34"/>
+
+
+
+</svg>
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- RUBIKA CHAT ID -->
+
+
+<div class="form-field">
+
+
+<div class="input-group"
+
+id="chatIdGroup">
+
+
+
+<i class="fa-solid fa-robot"></i>
+
+
+
+<input
+
+id="chatId"
+
+name="chatId"
+
+type="text"
+
+placeholder="شناسه چت روبیکا">
+
+
+
+
+
+
+<div class="field-status">
+
+
+<svg class="status-icon"
+viewBox="0 0 52 52">
+
+
+
+<circle
+
+class="status-circle"
+
+cx="26"
+
+cy="26"
+
+r="22"/>
+
+
+
+<path
+
+class="status-check"
+
+d="M16 27 L23 34 L37 18"/>
+
+
+
+<path
+
+class="status-cross1"
+
+d="M18 18 L34 34"/>
+
+
+
+<path
+
+class="status-cross2"
+
+d="M34 18 L18 34"/>
+
+
+
+</svg>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- SEND CODE -->
+
+
+<div class="phone-actions">
+
+
+
+<button
+
+id="sendCodeBtn"
+
+class="login-btn"
+
+type="button">
+
+
+
+<span>
+
+ارسال کد تایید
+
+</span>
+
+
+
+<i class="fa-solid fa-paper-plane"></i>
+
+
+
+</button>
+
+
+
+
+<!-- 
+<button
+
+id="editPhoneBtn"
+
+class="edit-phone"
+
+type="button">
+
+
+
+<i class="fa-solid fa-pen"></i>
+
+
+ویرایش شماره
+
+
+
+</button> -->
+
+
+
+
+</div>
+
+<!-- ==========================
+        OTP MESSAGE
+========================== -->
+
+
+<div class="otp-text">
+
+    <p>
+        کد تایید ارسال شده را وارد کنید
+    </p>
+
+    <span id="otpPhoneText">
+        به شماره شما ارسال شد
+    </span>
+
+</div>
+
+
+
+
+
+<!-- ==========================
+        OTP INPUTS
+========================== -->
+
+
+<div class="otp-container">
+
+
+    <input
+    class="otp-box"
+    id="otp1"
+    maxlength="1"
+    inputmode="numeric">
+
+
+    <input
+    class="otp-box"
+    id="otp2"
+    maxlength="1"
+    inputmode="numeric">
+
+
+    <input
+    class="otp-box"
+    id="otp3"
+    maxlength="1"
+    inputmode="numeric">
+
+
+    <input
+    class="otp-box"
+    id="otp4"
+    maxlength="1"
+    inputmode="numeric">
+
+
+
+</div>
+
+
+
+
+
+
+<!-- ==========================
+        VERIFY BUTTON
+========================== -->
+
+
+<button
+
+id="verifyBtn"
+
+class="login-btn"
+
+type="submit">
+
+
+
+<span>
+
+    تایید و ایجاد حساب
+
+</span>
+
+
+
+<i class="fa-solid fa-arrow-left"></i>
+
+
+
+</button>
+
+
+
+
+
+
+</form>
+
+
+
+
+
+
+<!-- ==========================
+        FOOTER
+========================== -->
+
+
+<div class="panel-footer">
+
+
+<p>
+
+
+قبلاً ثبت نام کرده‌اید؟
+
+
+<a href="login.html">
+
+ورود
+
+</a>
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+        CONFIG
+========================== -->
+
+
+<script src="./config.js"></script>
+
+
+
+
+
+<!-- ==========================
+        TYPING EFFECT
+========================== -->
+
+
+<script>
+
+const texts = [
+
+    "تایید شماره تلفن",
+
+    "کد ارسال شده را وارد کنید",
+
+    "حساب شما در حال آماده سازی است",
+
+    "به کدماتیک خوش آمدید"
+
+];
+
+
+const typing = document.getElementById("typing-text");
+
+
+let textIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+
+function typeEffect(){
+
+    if(!typing) return;
+
+
+    const current = texts[textIndex];
+
+
+    if(!deleting){
+
+        typing.textContent =
+            current.substring(0,charIndex++);
+
+
+        if(charIndex > current.length){
+
+            deleting = true;
+
+            setTimeout(typeEffect,1500);
+
+            return;
+
+        }
+
+    }
+
+    else{
+
+        typing.textContent =
+            current.substring(0,charIndex--);
+
+
+        if(charIndex < 0){
+
+            deleting = false;
+
+            textIndex++;
+
+            if(textIndex >= texts.length){
+
+                textIndex = 0;
+
+            }
+
+        }
+
+    }
+
+
+    setTimeout(
+        typeEffect,
+        deleting ? 40 : 80
+    );
+
+}
+
+
+typeEffect();
+
+</script>
+
+
+
+
+
+
+
+<script src="OTP.js"></script>
+
+
+
+
+
+</body>
+
+</html>

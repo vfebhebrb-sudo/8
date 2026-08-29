@@ -1,0 +1,29 @@
+{
+  "name": "Konkur App",
+  "short_name": "Konkur",
+  "description": "برنامه هوشمند کنکور",
+
+  "start_url": "./index.html",
+
+  "scope": "./",
+
+  "display": "standalone",
+
+  "orientation": "portrait",
+
+  "background_color": "#0b0b0b",
+
+  "theme_color": "#0b0b0b",
+
+  "lang": "fa",
+
+  "dir": "rtl",
+
+  "icons": [
+    {
+      "src": "./icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

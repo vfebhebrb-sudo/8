@@ -1806,151 +1806,6 @@ body{
 }
 
 
-
-/* =========================
-       MESSAGE INPUT
-========================= */
-/* 
-.message-box{
-
-
-height:90px;
-
-background:#0b1725;
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-padding:15px 25px;
-
-}
-
-
-
-.input-area{
-
-
-height:58px;
-
-flex:1;
-
-background:#172638;
-
-border-radius:30px;
-
-display:flex;
-
-align-items:center;
-
-padding:0 15px;
-
-
-}
-
-
-
-.input-area input{
-
-
-flex:1;
-
-height:100%;
-
-background:none;
-
-border:none;
-
-outline:none;
-
-color:white;
-
-font-family:"Vazirmatn";
-
-font-size:15px;
-
-padding:0 15px;
-
-
-}
-
-
-
-
-.input-area button{
-
-
-background:none;
-
-border:none;
-
-color:#9badc2;
-
-cursor:pointer;
-
-
-}
-
-
-
-.input-area svg{
-
-
-width:23px;
-
-}
-
-
-
-
-.message-box .send{
-
-
-width:60px;
-
-height:60px;
-
-border-radius:50%;
-
-border:none;
-
-background:#1680ff;
-
-color:white;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-cursor:pointer;
-
-box-shadow:
-
-0 5px 20px rgba(0,100,255,.3);
-
-
-}
-
-
-
-
-.message-box .send svg{
-
-
-width:28px;
-
-height:28px;
-
-
-}
-
- */
-
-
 /* =========================
         SCROLLBAR
 ========================= */
@@ -2056,23 +1911,6 @@ height:28px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =========================
    FLOATING MESSAGE BOX
 ========================= */
@@ -2104,8 +1942,8 @@ height:28px;
 ========================= */
 
 .input-area {
-
-    width: 100%;
+    width: 1001.22222px;
+   
     height: 46px;
 
     background: rgba(20, 35, 52, .88);
@@ -2328,24 +2166,6 @@ height:28px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =====================================================
    MESSAGE STATUS
 ===================================================== */
@@ -2388,19 +2208,6 @@ height:28px;
     color: #ff5c5c;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* =========================
       FLOATING CHAT HEADER FIX
@@ -2560,118 +2367,6 @@ height:28px;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* 
-.ai-avatar{
-
-    width:50px;
-    height:50px;
-
-    border-radius:50%;
-
-    background:linear-gradient(
-        135deg,
-        #2563eb,
-        #60a5fa
-    );
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    color:white;
-
-    font-size:22px;
-
-}
-
-.typing{
-    width:70px;
-    padding:15px;
-}
-
-
-.dots{
-    display:flex;
-    gap:6px;
-}
-
-
-.dots span{
-
-    width:8px;
-    height:8px;
-
-    background:#3b82f6;
-
-    border-radius:50%;
-
-    animation:typing 1.2s infinite;
-
-}
-
-
-.dots span:nth-child(2){
-    animation-delay:.2s;
-}
-
-
-.dots span:nth-child(3){
-    animation-delay:.4s;
-}
-
-
-
-@keyframes typing{
-
-    0%,80%,100%{
-        transform:translateY(0);
-        opacity:.4;
-    }
-
-
-    40%{
-        transform:translateY(-6px);
-        opacity:1;
-    }
-
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .ai-typing {
 
     display: flex;
@@ -2743,55 +2438,6 @@ height:28px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .floating-add-btn{
 
     position:fixed;
@@ -2835,34 +2481,6 @@ height:28px;
     transform:translateY(-3px) scale(1.05);
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2956,49 +2574,9 @@ height:28px;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .input-area {
     width: 870px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .create-modal{
@@ -3171,17 +2749,6 @@ height:28px;
         scale(1.15);
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3386,23 +2953,6 @@ height:28px;
     height: 16px;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3701,50 +3251,6 @@ background: linear-gradient(90deg, #173e7d, #17448d);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =================================
         MOBILE CHAT MODE
 ================================= */
@@ -3931,70 +3437,6 @@ background: linear-gradient(90deg, #173e7d, #17448d);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media(max-width:768px){
 
 .chat-panel.mobile-hide{
@@ -4111,33 +3553,6 @@ background: linear-gradient(90deg, #173e7d, #17448d);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =================================
    MOBILE CHAT FULL SCREEN FIX
 ================================= */
@@ -4199,40 +3614,6 @@ background: linear-gradient(90deg, #173e7d, #17448d);
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* =================================
    MOBILE DEFAULT STATE
 ================================= */
@@ -4276,29 +3657,6 @@ background: linear-gradient(90deg, #173e7d, #17448d);
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4508,17 +3866,501 @@ background: linear-gradient(90deg, #173e7d, #17448d);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        NEW CHAT APP THEME SYSTEM
+========================================== */
+
+
+:root{
+
+    --background:#111315;
+
+    --surface:#191c21;
+
+    --surface-hover:#22262d;
+
+
+    --text:#f9fafb;
+
+    --text-secondary:#9ca3af;
+
+
+    --border:#292e36;
+
+
+    --accent:#3b82f6;
+
+    --accent-soft:#172554;
+
+
+    --success:#20d760;
+
+    --danger:#ef4444;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.35);
+
+
+    --radius:18px;
+
+}
+
+
+
+
+.light-theme{
+
+
+    --background:#f5f6f8;
+
+
+    --surface:#ffffff;
+
+
+    --surface-hover:#f3f4f6;
+
+
+    --text:#111827;
+
+
+    --text-secondary:#6b7280;
+
+
+    --border:#e5e7eb;
+
+
+    --accent:#2563eb;
+
+
+    --accent-soft:#eff6ff;
+
+
+    --success:#16a34a;
+
+
+    --danger:#dc2626;
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+
+/* ==========================================
+        GLOBAL
+========================================== */
+
+
+body{
+
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+
+
+/* ==========================================
+        MAIN APP BOX
+========================================== */
+
+
+.app{
+
+
+    width:100%;
+
+    height:100vh;
+
+
+    padding:18px;
+
+
+    display:flex;
+
+    gap:18px;
+
+
+    background:var(--background);
+
+
+}
+
+
+
+
+/* ==========================================
+        SIDEBAR
+========================================== */
+
+
+.sidebar{
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:var(--radius);
+
+
+    box-shadow:var(--shadow);
+
+
+    overflow:hidden;
+
+
+}
+
+
+
+
+/* ==========================================
+        CHAT LIST PANEL
+========================================== */
+
+
+.chat-panel{
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:var(--radius);
+
+
+    box-shadow:var(--shadow);
+
+
+    overflow:hidden;
+
+
+    height:calc(100vh - 36px);
+
+
+}
+
+
+
+/* ==========================================
+        CONVERSATION PANEL
+========================================== */
+
+
+.conversation{
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:var(--radius);
+
+
+    box-shadow:var(--shadow);
+
+
+    overflow:hidden;
+
+
+    height:calc(100vh - 36px);
+
+
+}
+
+
+
+/* ==========================================
+        HEADER INSIDE CHAT
+========================================== */
+
+
+.chat-header{
+
+
+    background:var(--surface);
+
+
+    border-bottom:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+/* ==========================================
+        SEARCH
+========================================== */
+
+
+.search-box{
+
+
+    background:var(--surface-hover);
+
+
+    border:
+
+    1px solid var(--border);
+
+
+}
+
+
+
+.search-box input{
+
+
+    color:var(--text);
+
+}
+
+
+
+.search-box input::placeholder{
+
+
+    color:var(--text-secondary);
+
+}
+
+
+
+/* ==========================================
+        CHAT ITEMS
+========================================== */
+
+
+.chat-item{
+
+
+    color:var(--text);
+
+
+}
+
+
+
+.chat-item:hover{
+
+
+    background:var(--surface-hover);
+
+
+}
+
+
+
+.chat-info p{
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+.chat-name time{
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+/* ==========================================
+        MESSAGES AREA
+========================================== */
+
+
 .messages{
 
-    background-image:
-    url("../01/ChatGPT\ Image\ Jul\ 8\,\ 2026\,\ 08_24_47\ PM.png");
+
+    background:var(--background);
+
+
+}
+
+
+
+/* ==========================================
+        INPUT BOX
+========================================== */
+
+
+.input-area{
+
+
+    background:
+
+    color-mix(
+        in srgb,
+        var(--surface) 90%,
+        transparent
+    );
+
+
+    border:
+
+    1px solid var(--border);
+
+    width: 1001.22222px;
+    margin-bottom: 10px;
+}
+
+
+
+
+/* ==========================================
+        BUTTONS
+========================================== */
+
+
+button{
+
+
+    font-family:"Vazirmatn",sans-serif;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.messages {
+    background-image: url("../01/ChatGPT Image Sep 1, 2026, 01_56_23 PM.png");
 
     background-size: cover;
-
     background-position: center;
-
     background-repeat: no-repeat;
 
-    background-attachment: fixed;
+    /* عکس فقط داخل همین باکس */
+    overflow: hidden;
 
+    /* ثابت ماندن عکس داخل باکس */
+    background-attachment: scroll;
 }

@@ -488,10 +488,10 @@ id
 
 // ذخیره آیدی آزمون
 
-sessionStorage.setItem(
+essionStorage.setItem(
 "selectedExamId",
 id
-);
+);s
 
 
 // رفتن به صفحه تست

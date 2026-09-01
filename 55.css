@@ -1,0 +1,2081 @@
+/* ==========================================
+        GLOBAL RESET
+        تنظیمات اولیه کل صفحه
+========================================== */
+
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+
+}
+
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+
+/* ==========================================
+        BODY
+        استایل اصلی صفحه
+========================================== */
+
+
+body{
+
+
+    min-height:100vh;
+
+
+    background:var(--background);
+
+
+    color:var(--text);
+
+
+    font-family:"Vazirmatn",sans-serif;
+
+
+    direction:rtl;
+
+    margin-top: 10px;
+    margin-left:10px ;
+    margin-right: 10px;
+}
+
+
+
+/* ==========================================
+        THEME SYSTEM
+        سیستم تغییر حالت تاریک و روشن
+========================================== */
+
+
+:root{
+
+
+    --background:#111315;
+
+
+    --surface:#191c21;
+
+
+    --surface-hover:#22262d;
+
+
+    --text:#f9fafb;
+
+
+    --text-secondary:#9ca3af;
+
+
+    --border:#292e36;
+
+
+
+    --accent:#3b82f6;
+
+
+    --accent-soft:#172554;
+
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.35);
+
+
+}
+
+
+
+.light-theme{
+
+
+    --background:#f5f6f8;
+
+
+    --surface:#ffffff;
+
+
+    --surface-hover:#f3f4f6;
+
+
+    --text:#111827;
+
+
+    --text-secondary:#6b7280;
+
+
+    --border:#e5e7eb;
+
+
+
+    --accent:#2563eb;
+
+
+    --accent-soft:#eff6ff;
+
+
+
+    --shadow:
+    0 8px 25px rgba(0,0,0,.06);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        DESKTOP CONTAINER
+        فاصله کلی صفحه دسکتاپ
+========================================== */
+
+
+.desktop-app{
+
+
+    width:100%;
+
+
+    min-height:100vh;
+
+
+    padding:10px;
+
+
+}
+
+
+
+
+
+/* ==========================================
+        HEADER
+        هدر اصلی بالای صفحه
+========================================== */
+
+
+.header{
+
+
+    width:100%;
+
+
+    height:70px;
+
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:space-between;
+
+
+
+    padding:0 24px;
+
+
+
+    background:var(--surface);
+
+
+
+    border:1px solid var(--border);
+
+
+
+    border-radius:14px;
+
+
+
+    box-shadow:var(--shadow);
+
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+/* ==========================================
+        HEADER LOGO
+        لوگوی برنامه
+========================================== */
+
+
+.header-logo{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+
+    color:var(--text);
+
+
+
+    font-size:18px;
+
+
+    font-weight:800;
+
+
+}
+
+
+
+.header-logo svg{
+
+
+    width:26px;
+
+
+    height:26px;
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        HEADER BUTTONS
+        دکمه های سمت هدر
+========================================== */
+
+
+.header-actions{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:10px;
+
+
+}
+
+
+
+
+.icon-btn{
+
+
+    width:42px;
+
+
+    height:42px;
+
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+
+    border-radius:12px;
+
+
+
+    cursor:pointer;
+
+
+
+    color:var(--text-secondary);
+
+
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.08),
+        transparent
+    );
+
+
+
+    border:1px solid var(--border);
+
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+.icon-btn svg{
+
+
+    width:20px;
+
+
+    height:20px;
+
+
+}
+
+
+
+
+.icon-btn:hover{
+
+
+    transform:translateY(-3px);
+
+
+    color:var(--text);
+
+
+
+    background:var(--surface-hover);
+
+
+
+    border-color:var(--accent);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        DASHBOARD GRID
+        چیدمان اصلی کارت ها
+========================================== */
+
+
+.exam-dashboard{
+
+
+    width:100%;
+
+
+    margin-top:10px;
+
+
+
+    display:grid;
+
+
+
+    grid-template-columns:
+
+        300px
+
+        minmax(450px,1fr)
+
+        300px;
+
+
+
+    grid-template-areas:
+
+
+        "user active history"
+
+
+        "info info info";
+
+
+
+    gap:10px;
+
+
+
+    direction:rtl;
+
+
+}
+
+
+
+
+
+/* ==========================================
+        ALL CARDS BASE
+        استایل مشترک تمام کارت ها
+========================================== */
+
+
+.exam-user-card,
+.active-exams-card,
+.history-card,
+.exam-info-card{
+
+
+    background:var(--surface);
+
+
+
+    border:1px solid var(--border);
+
+
+
+    border-radius:16px;
+
+
+
+    box-shadow:var(--shadow);
+
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+
+
+.exam-user-card:hover,
+.active-exams-card:hover,
+.history-card:hover,
+.exam-info-card:hover{
+
+
+    border-color:var(--accent);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        USER CARD
+        کارت اطلاعات دانش آموز سمت راست
+========================================== */
+
+
+.exam-user-card{
+
+
+    grid-area:user;
+
+
+    height:320px;
+
+
+}
+
+
+
+
+
+/* ==========================================
+        ACTIVE EXAMS CARD
+        کارت آزمون های فعال وسط
+========================================== */
+
+
+.active-exams-card{
+
+
+    grid-area:active;
+
+
+    height:320px;
+
+
+}
+
+
+
+
+
+/* ==========================================
+        HISTORY CARD
+        کارت سابقه سمت چپ
+========================================== */
+
+
+.history-card{
+
+
+    grid-area:history;
+
+
+    height:320px;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        DAILY SECTION
+        بخش محتوای روزانه
+========================================== */
+
+
+.daily-section{
+
+    width:100%;
+
+    margin-top:10px;
+
+
+    display:grid;
+
+    grid-template-columns:
+
+        minmax(300px,1fr)
+
+        minmax(300px,1fr);
+
+
+    gap:10px;
+
+
+    direction:rtl;
+
+}
+
+
+
+
+/* ==========================================
+        DAILY CARDS BASE
+        استایل مشترک کارت ها
+========================================== */
+
+
+.today-note-card,
+.uploaded-files-card{
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:16px;
+
+
+    box-shadow:var(--shadow);
+
+
+    padding:20px;
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+.today-note-card:hover,
+.uploaded-files-card:hover{
+
+
+    border-color:var(--accent);
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        SECTION HEADER
+        عنوان کارت
+========================================== */
+
+
+.section-header{
+
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+    margin-bottom:20px;
+
+
+}
+
+
+
+.section-icon{
+
+
+    width:42px;
+
+    height:42px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:12px;
+
+
+    background:var(--accent-soft);
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+.section-icon svg{
+
+
+    width:22px;
+
+    height:22px;
+
+
+}
+
+
+
+.section-header h3{
+
+
+    font-size:17px;
+
+
+    font-weight:800;
+
+
+    color:var(--text);
+
+
+}
+
+
+
+.section-header p{
+
+
+    margin-top:4px;
+
+
+    font-size:12px;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        TODAY NOTE
+        کارت نکته امروز
+========================================== */
+
+
+.note-content{
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:14px;
+
+
+    padding:18px;
+
+
+}
+
+
+
+.note-content h4{
+
+
+    font-size:16px;
+
+
+    margin-bottom:10px;
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+.note-content p{
+
+
+    color:var(--text-secondary);
+
+
+    font-size:14px;
+
+
+    line-height:2;
+
+
+}
+
+
+
+
+
+.note-footer{
+
+
+    margin-top:15px;
+
+
+    display:flex;
+
+
+    justify-content:flex-end;
+
+
+    align-items:center;
+
+
+    gap:8px;
+
+
+    color:var(--text-secondary);
+
+
+    font-size:13px;
+
+
+}
+
+
+
+.note-footer svg{
+
+
+    width:16px;
+
+}
+
+
+
+
+
+/* ==========================================
+        UPLOADED FILES
+        لیست فایل ها
+========================================== */
+
+
+.files-list{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+}
+
+
+
+
+
+.file-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+    padding:14px;
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:14px;
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+
+.file-item:hover{
+
+
+    background:var(--surface-hover);
+
+
+    border-color:var(--accent);
+
+
+}
+
+
+
+
+
+.file-icon{
+
+
+    width:42px;
+
+    height:42px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:12px;
+
+
+    background:#2563eb22;
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+.file-icon svg{
+
+
+    width:21px;
+
+    height:21px;
+
+
+}
+
+
+
+
+
+.file-info{
+
+
+    flex:1;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:5px;
+
+
+}
+
+
+
+.file-info strong{
+
+
+    font-size:14px;
+
+
+    color:var(--text);
+
+
+}
+
+
+
+.file-info span{
+
+
+    font-size:12px;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        DOWNLOAD BUTTON
+========================================== */
+
+
+.download-btn{
+
+
+    width:38px;
+
+    height:38px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:12px;
+
+
+    cursor:pointer;
+
+
+    background:transparent;
+
+
+    color:var(--text-secondary);
+
+
+    border:1px solid var(--border);
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+.download-btn svg{
+
+
+    width:18px;
+
+    height:18px;
+
+
+}
+
+
+
+
+.download-btn:hover{
+
+
+    color:white;
+
+
+    background:var(--accent);
+
+
+    border-color:var(--accent);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        RESPONSIVE
+        موبایل
+========================================== */
+
+
+@media(max-width:900px){
+
+
+    .daily-section{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        COMMUNITY SECTION
+        کاربران و اطلاعیه ها
+========================================== */
+
+
+.community-section{
+
+
+    width:100%;
+
+
+    margin-top:10px;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+        minmax(300px,1fr)
+
+        minmax(300px,1fr);
+
+
+
+    gap:10px;
+
+
+
+    direction:rtl;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        CARDS BASE
+        استایل مشترک
+========================================== */
+
+
+.users-card,
+.notifications-card{
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:16px;
+
+
+    box-shadow:var(--shadow);
+
+
+    padding:20px;
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+.users-card:hover,
+.notifications-card:hover{
+
+
+    border-color:var(--accent);
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        USERS LIST
+        لیست کاربران
+========================================== */
+
+
+.users-list{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+
+    max-height:300px;
+
+
+    overflow-y:auto;
+
+
+    padding-right:3px;
+
+
+}
+
+
+
+
+
+
+
+.user-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+
+    padding:14px;
+
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+
+    border:1px solid var(--border);
+
+
+
+    border-radius:14px;
+
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+.user-item:hover{
+
+
+    background:var(--surface-hover);
+
+
+    border-color:var(--accent);
+
+
+}
+
+
+
+
+
+
+
+.user-avatar{
+
+
+    width:42px;
+
+
+    height:42px;
+
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+
+    border-radius:50%;
+
+
+
+    background:var(--accent-soft);
+
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+.user-avatar svg{
+
+
+    width:20px;
+
+
+    height:20px;
+
+
+}
+
+
+
+
+
+
+
+.user-info{
+
+
+    flex:1;
+
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:5px;
+
+
+}
+
+
+
+.user-info strong{
+
+
+    font-size:14px;
+
+
+    color:var(--text);
+
+
+}
+
+
+
+.user-info span{
+
+
+    font-size:12px;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        USER STATUS
+========================================== */
+
+
+.user-status{
+
+
+    padding:5px 10px;
+
+
+    border-radius:20px;
+
+
+
+    font-size:11px;
+
+
+    background:#30343b;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+.user-status.online{
+
+
+    background:#166534;
+
+
+    color:#dcfce7;
+
+
+}
+
+
+
+
+
+
+
+
+/* ==========================================
+        NOTIFICATIONS
+        اطلاعیه ها
+========================================== */
+
+
+.notification-list{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:10px;
+
+
+
+    max-height:300px;
+
+
+    overflow-y:auto;
+
+
+}
+
+
+
+
+
+
+
+.notification-item{
+
+
+    display:flex;
+
+
+    gap:12px;
+
+
+
+    padding:15px;
+
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+
+    border:1px solid var(--border);
+
+
+
+    border-radius:14px;
+
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+
+.notification-item:hover{
+
+
+    background:var(--surface-hover);
+
+
+    border-color:var(--accent);
+
+
+}
+
+
+
+
+
+
+
+.notification-icon{
+
+
+    width:42px;
+
+
+    height:42px;
+
+
+
+    flex-shrink:0;
+
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:center;
+
+
+
+    border-radius:12px;
+
+
+
+    background:#2563eb22;
+
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+.notification-icon svg{
+
+
+    width:21px;
+
+
+    height:21px;
+
+
+}
+
+
+
+
+
+
+
+.notification-content{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:6px;
+
+
+
+}
+
+
+
+.notification-content strong{
+
+
+    font-size:14px;
+
+
+    color:var(--text);
+
+
+}
+
+
+
+.notification-content p{
+
+
+    font-size:13px;
+
+
+    line-height:1.8;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+.notification-content span{
+
+
+    font-size:11px;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        SCROLL BAR
+        اسکرول داخلی لیست ها
+========================================== */
+
+
+.users-list::-webkit-scrollbar,
+.notification-list::-webkit-scrollbar{
+
+
+    width:5px;
+
+
+}
+
+
+
+.users-list::-webkit-scrollbar-thumb,
+.notification-list::-webkit-scrollbar-thumb{
+
+
+    background:var(--border);
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        MOBILE
+========================================== */
+
+
+@media(max-width:900px){
+
+
+
+    .community-section{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+}
+
+.community-section{
+
+    width:100%;
+
+    margin-top:10px;
+
+    display:grid;
+
+    grid-template-columns:
+        40% 
+        60%;
+
+    gap:10px;
+
+    direction:rtl;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        GUIDE SECTION
+        مرکز منابع و راهنما
+========================================== */
+
+
+.guide-section{
+
+
+    width:100%;
+
+
+    margin-top:10px;
+
+
+}
+
+
+
+.guide-card{
+
+
+    width:100%;
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:16px;
+
+
+    box-shadow:var(--shadow);
+
+
+    padding:20px;
+
+
+    transition:.3s ease;
+
+
+}
+
+
+
+.guide-card:hover{
+
+
+    border-color:var(--accent);
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+/* ==========================================
+        GUIDE ITEMS
+        آیتم های راهنما
+========================================== */
+
+
+.guide-items{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+        repeat(3,1fr);
+
+
+    gap:10px;
+
+
+}
+
+
+
+
+
+
+
+.guide-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+    padding:16px;
+
+
+    background:
+
+    rgba(255,255,255,.03);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:14px;
+
+
+    transition:.25s ease;
+
+
+}
+
+
+
+
+
+.guide-item:hover{
+
+
+    background:var(--surface-hover);
+
+
+    border-color:var(--accent);
+
+
+    transform:translateY(-2px);
+
+
+}
+
+
+
+
+
+
+
+.guide-item > svg{
+
+
+    width:22px;
+
+
+    height:22px;
+
+
+    flex-shrink:0;
+
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+
+
+.guide-item div{
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    gap:5px;
+
+
+}
+
+
+
+
+
+.guide-item strong{
+
+
+    font-size:14px;
+
+
+    color:var(--text);
+
+
+}
+
+
+
+.guide-item span{
+
+
+    font-size:12px;
+
+
+    color:var(--text-secondary);
+
+
+    line-height:1.7;
+
+
+}
+
+
+
+
+
+
+
+/* ==========================================
+        RESPONSIVE
+        موبایل
+========================================== */
+
+
+@media(max-width:900px){
+
+
+
+    .guide-items{
+
+
+        grid-template-columns:1fr;
+
+
+    }
+
+
+
+}

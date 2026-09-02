@@ -1,12 +1,7 @@
 /* =========================
       HEADER
 ========================= */
-/* 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box; */
-     /* font-family:"Vazirmatn",sans-serif; */
+
 
 body {
     /* margin: 0; */
@@ -10421,8 +10416,8 @@ body{
             transparent
         );
 
-    border-color:
-        var(--admin-border);
+    /* border-color:
+        var(--admin-border); */
 
     color:
         var(--admin-text);
@@ -10447,8 +10442,8 @@ body{
             var(--admin-bg)
         );
 
-    border-color:
-        var(--admin-border);
+    /* border-color:
+        var(--admin-border); */
 
     color:
         var(--admin-text);
@@ -10469,8 +10464,8 @@ body{
             var(--admin-card-bg)
         );
 
-    border-color:
-        var(--admin-border);
+    /* border-color:
+        var(--admin-border); */
 
 }
 
@@ -10516,8 +10511,8 @@ body{
             transparent
         );
 
-    border-color:
-        var(--admin-border);
+    /* border-color: */
+        /* var(--admin-border); */
 
     color:
         var(--admin-text);
@@ -10557,8 +10552,8 @@ body{
             transparent
         );
 
-    border-color:
-        var(--admin-border);
+    /* border-color:
+        var(--admin-border); */
 
     color:
         var(--admin-text-muted);
@@ -10849,3 +10844,5050 @@ body{
 .daily-study-bar-new { background: var(--surface);}
 
 .save-report-btn { background-color: var( --accent);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+        DAILY TASK MANAGER
+========================================== */
+
+
+.daily-task-section{
+
+    width:100%;
+    max-width:1465px;
+
+    margin:10px auto;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
+}
+
+
+
+/* ==========================================
+        HEADER
+========================================== */
+
+
+.daily-task-header{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+height: 70px;
+}
+
+
+
+/* RIGHT TITLE */
+
+
+.daily-title-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+
+.daily-icon{
+
+    width:44px;
+    height:44px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:
+    rgba(59,130,246,.12);
+
+    color:var(--accent);
+
+}
+
+
+.daily-icon svg{
+
+    width:22px;
+
+}
+
+
+
+.daily-title h3{
+
+    font-size:18px;
+
+    font-weight:800;
+
+}
+
+
+
+.daily-title p{
+
+    font-size:12px;
+
+    margin-top:4px;
+
+    color:var(--text-secondary);
+
+}
+
+
+
+/* LEFT ACTION */
+
+
+.daily-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+
+.task-counter{
+
+
+    padding:7px 12px;
+
+    border-radius:12px;
+
+    background:var(--surface-hover);
+
+    border:1px solid var(--border);
+
+    font-size:13px;
+
+}
+
+
+
+.task-counter strong{
+
+    color:var(--accent);
+
+}
+
+
+
+
+.add-task{
+
+
+    width:42px;
+    height:42px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:12px;
+
+
+    background:
+    linear-gradient(
+    145deg,
+    rgba(255,255,255,.08),
+    transparent
+    );
+
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+
+.add-task:hover{
+
+    transform:translateY(-3px);
+
+    border-color:var(--accent);
+
+}
+
+
+
+
+
+/* ==========================================
+        MAIN GRID
+========================================== */
+
+
+.daily-grid{
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    minmax(0,1fr)
+
+    260px;
+
+
+
+    gap:12px;
+
+
+    width:100%;
+
+
+}
+
+
+
+
+
+/* ==========================================
+        TASK LIST
+========================================== */
+
+
+.task-list-card{
+
+
+    background:var(--surface-hover);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:15px;
+
+
+    min-width:0;
+
+
+}
+
+
+
+#taskList{
+
+    max-height:420px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    padding-left:3px;
+
+}
+
+
+
+
+
+.task-item{
+
+
+    width:100%;
+
+
+    background:var(--surface);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:14px;
+
+
+    padding:14px;
+
+
+    margin-bottom:10px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+
+    transition:.25s;
+
+
+}
+
+
+
+.task-item:hover{
+
+    border-color:var(--accent);
+
+    transform:translateY(-2px);
+
+}
+
+
+
+.task-info{
+
+    min-width:0;
+
+}
+
+
+
+.task-info h4{
+
+    font-size:15px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+
+.task-time{
+
+    font-size:12px;
+
+    color:var(--text-secondary);
+
+    margin-top:6px;
+
+}
+
+
+
+
+.task-check{
+
+    flex-shrink:0;
+
+
+    width:32px;
+
+    height:32px;
+
+
+    border-radius:10px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border:1px solid var(--border);
+
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+.task-item.done{
+
+    opacity:.55;
+
+}
+
+
+
+.task-item.done h4{
+
+    text-decoration:line-through;
+
+}
+
+
+
+
+/* ==========================================
+        TODAY INFO CARD
+========================================== */
+
+
+.today-card{
+
+
+    background:var(--surface-hover);
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:16px;
+
+
+    padding:15px;
+
+
+}
+
+
+
+.today-item{
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+    padding:12px 0;
+
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+
+.today-item:last-child{
+
+    border:none;
+
+}
+
+
+
+
+.today-icon{
+
+
+    width:38px;
+
+    height:38px;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    border-radius:12px;
+
+
+    background:rgba(59,130,246,.12);
+
+    color:var(--accent);
+
+
+}
+
+
+
+
+
+.today-item span{
+
+
+    display:block;
+
+    font-size:12px;
+
+    color:var(--text-secondary);
+
+}
+
+
+
+.today-item strong{
+
+
+    display:block;
+
+    margin-top:4px;
+
+    font-size:15px;
+
+}
+
+
+
+
+/* ==========================================
+        EMPTY
+========================================== */
+
+
+.empty-task{
+
+
+    height:200px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    color:var(--text-secondary);
+
+
+}
+
+
+
+/* ==========================================
+        RESPONSIVE
+========================================== */
+
+
+@media(max-width:900px){
+
+
+.daily-grid{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+}
+
+
+@media(max-width:600px){
+
+
+.daily-task-header{
+
+
+    flex-direction:row;
+
+}
+
+
+.daily-title h3{
+
+    font-size:15px;
+
+}
+
+
+.task-counter{
+
+    display:none;
+
+}
+
+
+}
+
+
+/* ==========================================
+        MAIN GRID
+========================================== */
+
+
+.daily-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+    250px
+
+    minmax(0,1fr);
+
+
+    gap:12px;
+
+    width:100%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* /* ==========================================
+        DAILY TASK MODAL
+========================================== */
+
+.daily-task-modal{
+
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.62);
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+
+    z-index:99999;
+
+    animation:dailyOverlayIn .25s ease;
+
+}
+
+
+/* ==========================================
+        MODAL CARD
+========================================== */
+
+.daily-task-modal-card{
+
+    width:100%;
+    max-width:560px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        ),
+        var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:22px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.6),
+        0 0 0 1px rgba(255,255,255,.02);
+
+    animation:dailyModalIn .35s cubic-bezier(.2,.8,.2,1);
+
+}
+
+
+/* ==========================================
+        HEADER
+========================================== */
+
+.daily-task-modal-header{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding-bottom:17px;
+    margin-bottom:4px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+.daily-task-modal-title{
+
+    display:flex;
+    align-items:center;
+
+    gap:11px;
+
+}
+
+
+.daily-task-modal-title svg{
+
+    width:23px;
+    height:23px;
+
+    color:var(--accent);
+
+    animation:
+        modalIconFloat 2.5s ease-in-out infinite;
+
+}
+
+
+/* ==========================================
+        CLOSE BUTTON
+========================================== */
+
+.daily-task-modal-close{
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:var(--surface-hover);
+
+    color:var(--text-secondary);
+
+    cursor:pointer;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        transform .3s ease;
+
+}
+
+
+.daily-task-modal-close svg{
+
+    width:18px;
+    height:18px;
+
+    transition:transform .3s ease;
+
+}
+
+
+.daily-task-modal-close:hover{
+
+    color:var(--text);
+
+    border-color:var(--accent);
+
+    background:rgba(59,130,246,.1);
+
+    transform:translateY(-2px);
+
+}
+
+
+.daily-task-modal-close:hover svg{
+
+    transform:rotate(90deg) scale(1.08);
+
+}
+
+
+/* ==========================================
+        TITLE
+========================================== */
+
+.daily-task-modal-title h3{
+
+    margin:0;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:var(--text);
+
+}
+
+
+/* ==========================================
+        CONTENT
+========================================== */
+
+.daily-task-modal-content{
+
+    padding-top:5px;
+
+}
+
+
+.daily-task-modal-content label{
+
+    display:block;
+
+    margin-top:16px;
+    margin-bottom:7px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    color:var(--text-secondary);
+
+}
+
+
+/* ==========================================
+        INPUTS
+========================================== */
+
+.daily-task-modal-content input,
+.daily-task-modal-content textarea{
+
+    width:100%;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    border-radius:13px;
+
+    background:var(--surface-hover);
+
+    color:var(--text);
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    transition:
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease,
+        transform .2s ease;
+
+}
+
+
+.daily-task-modal-content input{
+
+    height:46px;
+
+    padding:0 14px;
+
+}
+
+
+.daily-task-modal-content textarea{
+
+    min-height:105px;
+
+    padding:12px 14px;
+
+    resize:vertical;
+
+    line-height:1.8;
+
+}
+
+
+.daily-task-modal-content input:hover,
+.daily-task-modal-content textarea:hover{
+
+    border-color:#363d48;
+
+}
+
+
+.daily-task-modal-content input:focus,
+.daily-task-modal-content textarea:focus{
+
+    border-color:var(--accent);
+
+    background:rgba(59,130,246,.045);
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,.08);
+
+    transform:translateY(-1px);
+
+}
+
+
+/* ==========================================
+        TIME
+========================================== */
+
+.daily-task-modal-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+}
+
+
+.daily-task-modal-content input[type="time"]{
+
+    direction:ltr;
+
+    text-align:center;
+
+    font-family:inherit;
+
+    font-weight:700;
+
+}
+
+
+/* ==========================================
+        FOOTER
+========================================== */
+
+.daily-task-modal-footer{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:22px;
+
+    padding-top:17px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+.daily-task-modal-footer button{
+
+    height:46px;
+
+    flex:1;
+
+    border-radius:13px;
+
+    border:1px solid var(--border);
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* ==========================================
+        CANCEL
+========================================== */
+
+.daily-task-cancel-btn{
+
+    background:var(--surface-hover);
+
+    color:var(--text-secondary);
+
+}
+
+
+.daily-task-cancel-btn:hover{
+
+    color:var(--text);
+
+    border-color:var(--accent);
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================
+        SAVE
+========================================== */
+
+.daily-task-save-btn{
+
+    background:var(--accent);
+
+    color:#fff;
+
+    border-color:var(--accent) !important;
+
+}
+
+
+.daily-task-save-btn:hover{
+
+    transform:translateY(-2px);
+
+    filter:brightness(1.08);
+
+    box-shadow:
+        0 8px 25px rgba(59,130,246,.25);
+
+}
+
+
+.daily-task-save-btn svg{
+
+    width:17px;
+    height:17px;
+
+    transition:transform .3s ease;
+
+}
+
+
+.daily-task-save-btn:hover svg{
+
+    transform:
+        scale(1.15)
+        rotate(-8deg);
+
+}
+
+
+/* ==========================================
+        ICON ANIMATION
+========================================== */
+
+@keyframes modalIconFloat{
+
+    0%,
+    100%{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:
+            translateY(-3px)
+            rotate(-4deg);
+
+    }
+
+}
+
+
+/* ==========================================
+        MODAL ANIMATION
+========================================== */
+
+@keyframes dailyOverlayIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+@keyframes dailyModalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(25px)
+            scale(.94);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* ==========================================
+        SCROLLBAR
+========================================== */
+
+.daily-task-modal-card::-webkit-scrollbar{
+
+    width:5px;
+
+}
+
+
+.daily-task-modal-card::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+
+.daily-task-modal-card::-webkit-scrollbar-thumb{
+
+    background:var(--border);
+
+    border-radius:20px;
+
+}
+
+
+/* ==========================================
+        MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+    .daily-task-modal{
+
+        padding:12px;
+
+    }
+
+
+    .daily-task-modal-card{
+
+        max-width:100%;
+
+        padding:17px;
+
+        border-radius:20px;
+
+    }
+
+
+    .daily-task-modal-title h3{
+
+        font-size:16px;
+
+    }
+
+
+    .daily-task-modal-row{
+
+        gap:9px;
+
+    }
+
+}
+
+
+@media(max-width:380px){
+
+    .daily-task-modal-row{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+/* ===============================
+   MODAL INPUTS
+================================ */
+
+.daily-task-modal-content{
+    width:100%;
+    padding:4px 2px;
+}
+
+.daily-task-modal-content label{
+    display:block;
+    margin:0 4px 8px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--text-secondary);
+}
+
+.daily-task-modal-content input,
+.daily-task-modal-content textarea{
+    width:100%;
+    max-width:100%;
+    display:block;
+    box-sizing:border-box;
+
+    background:var(--surface);
+    color:var(--text);
+
+    border:1px solid var(--border);
+    border-radius:13px;
+
+    padding:12px 14px;
+    outline:none;
+
+    font-family:inherit;
+    font-size:14px;
+
+    transition:.25s;
+}
+
+
+/* ===============================
+   INPUT FOCUS
+================================ */
+
+.daily-task-modal-content input:focus,
+.daily-task-modal-content textarea:focus{
+    border-color:var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,.10);
+
+    transform:translateY(-1px);
+}
+
+
+/* ===============================
+   TIME ROW
+================================ */
+
+.daily-task-modal-row{
+    width:100%;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:16px;
+
+    margin:16px 0;
+}
+
+.daily-task-modal-row > div{
+    min-width:0;
+    width:100%;
+}
+
+.daily-task-modal-row input{
+    width:100%;
+}
+
+
+/* ===============================
+   TEXTAREA
+================================ */
+
+.daily-task-modal-content textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media(max-width:500px){
+
+    .daily-task-modal-row{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* ==========================================
+        COMPACT DAILY TASK CARDS
+========================================== */
+
+.task-item{
+    width:100%;
+    min-height:64px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:9px 11px;
+    margin-bottom:8px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.035),
+        rgba(255,255,255,.015)
+    );
+
+    border:1px solid var(--border);
+    border-radius:13px;
+
+    transition:
+        border-color .25s ease,
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* hover */
+
+.task-item:hover{
+    transform:translateY(-1px);
+
+    border-color:rgba(59,130,246,.45);
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.18);
+}
+
+
+/* ==========================================
+        TASK INFO
+========================================== */
+
+.task-info{
+    min-width:0;
+    flex:1;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+
+/* عنوان */
+
+.task-info h4{
+    margin:0;
+
+    font-size:13px;
+    font-weight:800;
+
+    color:var(--text);
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+/* ==========================================
+        TIME
+========================================== */
+
+.task-time{
+    width:max-content;
+
+    display:flex;
+    align-items:center;
+    gap:5px;
+
+    margin-top:4px;
+
+    padding:3px 7px;
+
+    border-radius:7px;
+
+    color:#fbbf24;
+
+    background:rgba(245,158,11,.08);
+
+    border:1px solid rgba(245,158,11,.16);
+
+    font-size:10px;
+    font-weight:700;
+}
+
+.task-time svg{
+    width:12px;
+    height:12px;
+}
+
+
+/* ==========================================
+        DESCRIPTION
+========================================== */
+
+.task-info p{
+    margin:4px 0 0;
+
+    font-size:10px;
+
+    color:var(--text-secondary);
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+
+/* ==========================================
+        CHECK BUTTON
+========================================== */
+
+.task-check{
+    flex-shrink:0;
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    border:1px solid rgba(239,68,68,.25);
+
+    background:rgba(239,68,68,.08);
+
+    color:#ef4444;
+
+    cursor:pointer;
+
+    font-size:16px;
+    font-weight:900;
+
+    transition:.25s;
+}
+
+
+/* انجام نشده */
+
+.task-item:not(.done) .task-check:hover{
+    background:rgba(34,197,94,.12);
+
+    border-color:rgba(34,197,94,.35);
+
+    color:#22c55e;
+
+    transform:scale(1.06);
+}
+
+
+/* ==========================================
+        COMPLETED
+========================================== */
+
+.task-item.done{
+    opacity:1;
+
+    border-color:rgba(34,197,94,.22);
+
+    background:rgba(34,197,94,.045);
+}
+
+
+.task-item.done .task-check{
+    background:rgba(34,197,94,.14);
+
+    border-color:rgba(34,197,94,.35);
+
+    color:#22c55e;
+}
+
+
+.task-item.done .task-info h4{
+    color:#86efac;
+
+    text-decoration:line-through;
+}
+
+
+.task-item.done .task-time{
+    color:#86efac;
+
+    background:rgba(34,197,94,.08);
+
+    border-color:rgba(34,197,94,.18);
+}
+
+
+/* ==========================================
+        MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+    .task-item{
+        min-height:58px;
+
+        padding:8px 9px;
+
+        border-radius:11px;
+    }
+
+    .task-info h4{
+        font-size:12px;
+    }
+
+    .task-time{
+        font-size:9px;
+        padding:2px 6px;
+    }
+
+    .task-info p{
+        font-size:9px;
+    }
+
+    .task-check{
+        width:31px;
+        height:31px;
+        border-radius:9px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   DAILY TASK CARDS
+   MATTE / SQUARE / CLEAN
+========================================================= */
+
+#taskList{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3, minmax(220px, 1fr));
+
+    gap:14px;
+
+    max-height:520px;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding:3px;
+
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.daily-task-card{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    min-width:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#171a1f;
+
+    border:1px solid #2a2f38;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    overflow:hidden;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.daily-task-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#3b82f6;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.28);
+
+}
+
+
+/* =========================================================
+   TOP ACCENT
+========================================================= */
+
+.daily-task-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+    left:0;
+
+    height:3px;
+
+    background:#3b82f6;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.daily-task-card-header{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    min-height:42px;
+
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.daily-task-card-brand{
+
+    min-width:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.daily-task-card-logo{
+
+    flex-shrink:0;
+
+    width:36px;
+    height:36px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#20252d;
+
+    border:1px solid #303641;
+
+    color:#60a5fa;
+
+}
+
+
+.daily-task-card-logo svg{
+
+    width:18px;
+    height:18px;
+
+}
+
+
+/* =========================================================
+   TITLE BOX
+========================================================= */
+
+.daily-task-card-title-box{
+
+    min-width:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1px;
+
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.daily-task-card-number{
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+    color:#6b7280;
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.daily-task-card-title{
+
+    margin:0;
+
+    max-width:150px;
+
+    color:#f9fafb;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    line-height:1.5;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.daily-task-status{
+
+    position:relative;
+
+    flex-shrink:0;
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    background:#25191b;
+
+    border:1px solid #54262b;
+
+    cursor:default;
+
+}
+
+
+/* status light */
+
+.daily-task-status span{
+
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#ef4444;
+
+    box-shadow:
+        0 0 0 3px rgba(239,68,68,.08);
+
+    animation:
+        taskStatusBlink 1.3s infinite;
+
+}
+
+
+@keyframes taskStatusBlink{
+
+    0%,
+    100%{
+
+        opacity:1;
+
+        box-shadow:
+            0 0 0 3px rgba(239,68,68,.08);
+
+    }
+
+    50%{
+
+        opacity:.25;
+
+        box-shadow:
+            0 0 0 7px rgba(239,68,68,.02);
+
+    }
+
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.daily-task-card-body{
+
+    flex:1;
+
+    min-height:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    gap:11px;
+
+    padding:10px 0;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.daily-task-description{
+
+    width:100%;
+
+    min-height:60px;
+
+    max-height:72px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:7px;
+
+    padding:9px;
+
+    background:#13161a;
+
+    border:1px solid #252a31;
+
+    border-radius:10px;
+
+    color:#9ca3af;
+
+    font-size:10px;
+
+    line-height:1.8;
+
+    overflow:hidden;
+
+}
+
+
+.daily-task-description svg{
+
+    flex-shrink:0;
+
+    width:13px;
+    height:13px;
+
+    margin-top:2px;
+
+    color:#fbbf24;
+
+}
+
+
+.daily-task-description span{
+
+    overflow:hidden;
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:3;
+
+    -webkit-box-orient:vertical;
+
+}
+
+
+/* =========================================================
+   TIME
+========================================================= */
+
+.daily-task-time{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:1fr auto 1fr;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:9px;
+
+    background:#211e17;
+
+    border:1px solid #493b1d;
+
+    border-radius:10px;
+
+}
+
+
+/* =========================================================
+   TIME ITEM
+========================================================= */
+
+.daily-time-item{
+
+    min-width:0;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+}
+
+
+.daily-time-item svg{
+
+    flex-shrink:0;
+
+    width:14px;
+    height:14px;
+
+    color:#fbbf24;
+
+}
+
+
+.daily-time-item div{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-width:0;
+
+}
+
+
+.daily-time-item small{
+
+    font-size:8px;
+
+    color:#9ca3af;
+
+}
+
+
+.daily-time-item strong{
+
+    margin-top:1px;
+
+    font-size:11px;
+
+    color:#fbbf24;
+
+}
+
+
+/* =========================================================
+   TIME DIVIDER
+========================================================= */
+
+.daily-time-divider{
+
+    width:1px;
+
+    height:25px;
+
+    background:#493b1d;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.daily-task-card-footer{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding-top:10px;
+
+    border-top:1px solid #252a31;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.daily-task-check,
+.daily-task-delete{
+
+    width:36px;
+    height:36px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease;
+
+}
+
+
+.daily-task-check svg,
+.daily-task-delete svg{
+
+    width:17px;
+    height:17px;
+
+}
+
+
+/* =========================================================
+   CHECK BUTTON
+========================================================= */
+
+.daily-task-check{
+
+    background:#17231b;
+
+    border:1px solid #285c36;
+
+    color:#22c55e;
+
+}
+
+
+.daily-task-check:hover{
+
+    background:#1d6333;
+
+    border-color:#22c55e;
+
+    color:#fff;
+
+    transform:scale(1.06);
+
+}
+
+
+/* =========================================================
+   DELETE BUTTON
+========================================================= */
+
+.daily-task-delete{
+
+    background:#21191b;
+
+    border:1px solid #4b2529;
+
+    color:#ef4444;
+
+}
+
+
+.daily-task-delete:hover{
+
+    background:#641f26;
+
+    border-color:#ef4444;
+
+    color:#fff;
+
+    transform:scale(1.06);
+
+}
+
+
+/* =========================================================
+   COMPLETED CARD
+========================================================= */
+
+.daily-task-card.completed{
+
+    background:#13251a;
+
+    border-color:#28633a;
+
+}
+
+
+/* =========================================================
+   COMPLETED TOP
+========================================================= */
+
+.daily-task-card.completed::before{
+
+    background:#22c55e;
+
+}
+
+
+/* =========================================================
+   COMPLETED LOGO
+========================================================= */
+
+.daily-task-card.completed
+.daily-task-card-logo{
+
+    background:#18331f;
+
+    border-color:#2d6b3e;
+
+    color:#4ade80;
+
+}
+
+
+/* =========================================================
+   COMPLETED NUMBER
+========================================================= */
+
+.daily-task-card.completed
+.daily-task-card-number{
+
+    color:#4ade80;
+
+}
+
+
+/* =========================================================
+   COMPLETED TITLE
+========================================================= */
+
+.daily-task-card.completed
+.daily-task-card-title{
+
+    color:#86efac;
+
+}
+
+
+/* =========================================================
+   COMPLETED STATUS
+========================================================= */
+
+.daily-task-card.completed
+.daily-task-status{
+
+    background:#17331e;
+
+    border-color:#2d7040;
+
+}
+
+
+.daily-task-card.completed
+.daily-task-status span{
+
+    background:#22c55e;
+
+    box-shadow:
+        0 0 0 3px rgba(34,197,94,.08);
+
+    animation:none;
+
+}
+
+
+/* =========================================================
+   COMPLETED DESCRIPTION
+========================================================= */
+
+.daily-task-card.completed
+.daily-task-description{
+
+    background:#142019;
+
+    border-color:#285637;
+
+}
+
+
+.daily-task-card.completed
+.daily-task-description svg{
+
+    color:#4ade80;
+
+}
+
+
+/* =========================================================
+   COMPLETED TIME
+========================================================= */
+
+.daily-task-card.completed
+.daily-task-time{
+
+    background:#17241a;
+
+    border-color:#2c5e38;
+
+}
+
+
+.daily-task-card.completed
+.daily-time-item svg{
+
+    color:#4ade80;
+
+}
+
+
+.daily-task-card.completed
+.daily-time-item strong{
+
+    color:#86efac;
+
+}
+
+
+.daily-task-card.completed
+.daily-time-divider{
+
+    background:#2c5e38;
+
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+========================================================= */
+
+@media(max-width:1100px){
+
+    #taskList{
+
+        grid-template-columns:
+            repeat(2, minmax(220px,1fr));
+
+    }
+
+}
+
+
+@media(max-width:650px){
+
+    #taskList{
+
+        grid-template-columns:
+            repeat(2, minmax(150px,1fr));
+
+        gap:10px;
+
+    }
+
+    .daily-task-card{
+
+        padding:11px;
+
+    }
+
+    .daily-task-card-logo{
+
+        width:32px;
+        height:32px;
+
+    }
+
+    .daily-task-card-title{
+
+        font-size:11px;
+
+        max-width:100px;
+
+    }
+
+    .daily-task-status{
+
+        width:27px;
+        height:27px;
+
+    }
+
+}
+
+
+@media(max-width:420px){
+
+    #taskList{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .daily-task-card{
+
+        aspect-ratio:auto;
+
+        min-height:190px;
+
+    }
+
+}
+
+
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.daily-task-card{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:1 / 1;
+
+    min-width:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#20242a;
+
+    border:1px solid #343a43;
+
+    border-radius:14px;
+
+    padding:15px;
+
+    overflow:hidden;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+
+/* =========================================================
+   REMOVE TOP BLUE LINE
+========================================================= */
+
+.daily-task-card::before{
+
+    display:none !important;
+
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.daily-task-card:hover{
+
+    transform:translateY(-2px);
+
+    border-color:#4b5563;
+
+    background:#242930;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.22);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.daily-task-card{
+    position:relative;
+    width:100%;
+    height:245px;
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+
+    background:#20242a;
+    border:1px solid #343a43;
+    border-radius:14px;
+
+    padding:12px;
+
+    overflow:hidden;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.daily-task-card{
+    position:relative;
+
+    width:100%;
+    height:225px;
+    min-width:0;
+
+    display:flex;
+    flex-direction:column;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    padding:13px;
+
+    overflow:hidden;
+
+    /* حالت برجسته */
+    box-shadow:
+        7px 7px 16px rgba(0,0,0,.32),
+        -4px -4px 12px rgba(255,255,255,.025);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+
+/* Hover */
+
+.daily-task-card:hover{
+
+    transform:translateY(-2px);
+
+    background:var(--surface-hover);
+
+    box-shadow:
+        9px 9px 20px rgba(0,0,0,.36),
+        -4px -4px 12px rgba(255,255,255,.03);
+}
+
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.daily-task-description{
+
+    background:#15181c;
+
+    border:1px solid #252a31;
+
+    border-radius:10px;
+
+    box-shadow:
+        inset 2px 2px 5px rgba(0,0,0,.28),
+        inset -2px -2px 5px rgba(255,255,255,.025);
+
+    color:var(--text-secondary);
+}
+
+
+/* =========================
+   TIME BOX
+========================= */
+
+.daily-task-time{
+
+    background:#1d2025;
+
+    border:1px solid #2b3038;
+
+    border-radius:10px;
+
+    box-shadow:
+        inset 2px 2px 5px rgba(0,0,0,.25),
+        inset -2px -2px 5px rgba(255,255,255,.025);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.daily-task-card-logo{
+
+    background:#20242a;
+
+    border:1px solid #30353d;
+
+    color:var(--accent);
+
+    box-shadow:
+        3px 3px 7px rgba(0,0,0,.25),
+        -2px -2px 5px rgba(255,255,255,.025);
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.daily-task-status{
+
+    background:#20242a;
+
+    border:1px solid #30353d;
+
+    box-shadow:
+        3px 3px 7px rgba(0,0,0,.25),
+        -2px -2px 5px rgba(255,255,255,.025);
+}
+
+
+/* =========================
+   CHECK / DELETE
+========================= */
+
+.daily-task-check,
+.daily-task-delete{
+
+    background:#20242a;
+
+    border:1px solid #30353d;
+
+    box-shadow:
+        3px 3px 7px rgba(0,0,0,.25),
+        -2px -2px 5px rgba(255,255,255,.025);
+}
+
+
+/* کلیک / حالت فشرده */
+
+.daily-task-check:active,
+.daily-task-delete:active,
+.daily-task-status:active{
+
+    box-shadow:
+        inset 2px 2px 5px rgba(0,0,0,.3),
+        inset -2px -2px 5px rgba(255,255,255,.025);
+
+    transform:translateY(1px);
+}
+
+
+/* =========================
+   COMPLETED
+========================= */
+
+.daily-task-card.completed{
+
+    background:#1c2a21;
+
+    border-color:#285238;
+
+    box-shadow:
+        7px 7px 16px rgba(0,0,0,.30),
+        -4px -4px 12px rgba(255,255,255,.025);
+}
+
+
+/* باکس‌های داخل حالت انجام‌شده */
+
+.daily-task-card.completed .daily-task-description{
+    background:#17221b;
+    border-color:#274333;
+}
+
+.daily-task-card.completed .daily-task-time{
+    background:#1d2921;
+    border-color:#31553c;
+}
+
+.daily-task-card.completed .daily-task-card-logo,
+.daily-task-card.completed .daily-task-status,
+.daily-task-card.completed .daily-task-check,
+.daily-task-card.completed .daily-task-delete{
+    background:#203127;
+    border-color:#315b3d;
+}
+
+.daily-task-card{
+    width:300px;
+    min-width:300px;
+}
+
+
+/* =========================
+   INNER BOXES
+========================= */
+
+.daily-task-description,
+.daily-task-time{
+
+    width:280px;
+    max-width:280px;
+
+    margin-left:auto;
+    margin-right:auto;
+
+    box-sizing:border-box;
+}
+
+
+.daily-time-item{
+    display:flex !important;
+
+    flex-direction:row !important;
+
+    align-items:center !important;
+    justify-content:center !important;
+
+    gap:6px;
+
+    width:100%;
+}
+
+
+/* div داخلی که شروع و ساعت داخلشه */
+
+.daily-time-item > div{
+    display:flex !important;
+
+    flex-direction:row !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    gap:6px;
+}
+
+
+/* نوشته شروع */
+
+.daily-time-item small{
+    display:inline-block !important;
+
+    margin:0 !important;
+
+    font-size:11px;
+
+    color:var(--text-secondary);
+
+    white-space:nowrap;
+}
+
+
+/* ساعت */
+
+.daily-time-item strong{
+    display:inline-block !important;
+
+    margin:0 !important;
+
+    font-size:15px;
+
+    color:var(--text);
+
+    direction:ltr;
+
+    white-space:nowrap;
+}
+
+
+.empty-task{
+    width:100%;
+    min-height:300px;
+
+    display:flex !important;
+    flex-direction:column;
+
+    align-items:center !important;
+    justify-content:center !important;
+
+    text-align:center;
+
+    margin:0 !important;
+    padding:20px;
+
+    box-sizing:border-box;
+
+    grid-column:1 / -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.empty-task > svg,
+.empty-task > i{
+    width:52px;
+    height:52px;
+
+    /* color:var(--accent); */
+
+    margin-bottom:0px;
+
+    animation:
+        emptyIconFloat 2.5s ease-in-out infinite,
+        emptyIconPulse 2.5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 6px 12px rgba(59,130,246,.20));
+}
+
+
+/* حرکت شناور */
+
+@keyframes emptyIconFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+
+/* نور ملایم */
+
+@keyframes emptyIconPulse{
+
+    0%,100%{
+        opacity:.75;
+    }
+
+    50%{
+        opacity:1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.empty-task{
+    width:100%;
+    min-height:220px;
+
+    display:flex !important;
+    flex-direction:column;
+
+    align-items:center !important;
+    justify-content:center !important;
+
+    text-align:center;
+
+    margin:0 !important;
+    padding:10px;
+
+    box-sizing:border-box;
+
+    grid-column:1 / -1;
+}
+
+
+/* آیکن */
+
+.empty-task > svg,
+.empty-task > i{
+
+    width:42px;
+    height:42px;
+
+    /* color:var(--accent); */
+
+    margin:0 0 15px 0;
+
+    animation:
+        emptyIconFloat 2.5s ease-in-out infinite,
+        emptyIconPulse 2.5s ease-in-out infinite;
+
+    filter:
+        drop-shadow(0 5px 10px rgba(59,130,246,.18));
+}
+
+
+/* عنوان */
+
+.empty-task h4{
+
+    margin:0 0 15px 0;
+
+    font-size:14px;
+    line-height:1.5;
+
+    /* color:var(--text); */
+}
+
+
+/* توضیحات */
+
+.empty-task p{
+
+    margin:0;
+
+    font-size:11px;
+    line-height:1.6;
+
+    color:var(--text-secondary);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.daily-task-header{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+
+/* باکس تعداد کار */
+
+.task-counter{
+    position:absolute;
+
+    left:52px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    display:flex;
+    align-items:center;
+    gap:5px;
+
+    height:34px;
+
+    padding:0 10px;
+
+    background:var(--surface);
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    box-shadow:
+        3px 3px 8px rgba(0,0,0,.22),
+        -2px -2px 6px rgba(255,255,255,.02);
+}
+
+
+/* عدد */
+
+.task-counter strong{
+    font-size:14px;
+    font-weight:700;
+
+    color:var(--accent);
+}
+
+
+/* نوشته کار */
+
+.task-counter span{
+    font-size:11px;
+    color:var(--text-secondary);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   AI ASSISTANT
+===================================================== */
+
+.ai-assistant{
+    position:fixed;
+    left:24px;
+    bottom:24px;
+
+    width:90px;
+    height:120px;
+
+    z-index:9999;
+
+    pointer-events:none;
+}
+
+/* ===============================
+   NEST
+=============================== */
+
+.ai-nest{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:82px;
+    height:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#191c21;
+    border:1px solid #292e36;
+
+    border-radius:14px 14px 18px 18px;
+
+    box-shadow:
+        5px 5px 12px rgba(0,0,0,.35),
+        -3px -3px 8px rgba(255,255,255,.025);
+
+    color:#6b7280;
+
+    pointer-events:auto;
+
+    z-index:1;
+}
+
+.ai-nest svg{
+    width:15px;
+    height:15px;
+}
+
+
+/* ===============================
+   CHARACTER
+=============================== */
+
+.ai-character{
+    position:absolute;
+
+    left:50%;
+    bottom:22px;
+
+    width:68px;
+    height:68px;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    pointer-events:auto;
+
+    z-index:2;
+
+    animation:
+        aiIdle 3s ease-in-out infinite;
+}
+
+.ai-character img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    display:block;
+
+    user-select:none;
+    -webkit-user-drag:none;
+
+    filter:
+        drop-shadow(0 7px 12px rgba(0,0,0,.35));
+}
+
+
+/* ===============================
+   IDLE ANIMATION
+=============================== */
+
+@keyframes aiIdle{
+
+    0%,
+    100%{
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(-5px)
+            rotate(-2deg);
+    }
+
+}
+
+
+/* ===============================
+   MESSAGE
+=============================== */
+
+.ai-message{
+    position:absolute;
+
+    left:75px;
+    bottom:55px;
+
+    width:240px;
+
+    padding:12px 14px;
+
+    background:#191c21;
+
+    border:1px solid #292e36;
+
+    border-radius:14px;
+
+    box-shadow:
+        6px 6px 16px rgba(0,0,0,.35),
+        -3px -3px 8px rgba(255,255,255,.025);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:
+        translateY(8px)
+        scale(.96);
+
+    transform-origin:bottom left;
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+
+    pointer-events:none;
+
+    direction:rtl;
+
+    z-index:3;
+}
+
+.ai-message-text{
+    color:var(--text);
+
+    font-size:13px;
+    line-height:1.8;
+
+    text-align:right;
+}
+
+
+/* ===============================
+   MESSAGE OPEN
+=============================== */
+
+.ai-assistant.show-message
+.ai-message{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* ===============================
+   MOBILE
+=============================== */
+
+@media(max-width:600px){
+
+    .ai-assistant{
+        left:14px;
+        bottom:14px;
+
+        transform:scale(.9);
+        transform-origin:bottom left;
+    }
+
+    .ai-message{
+        left:70px;
+        width:210px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   AI CHAT PANEL
+===================================================== */
+
+.ai-chat-panel{
+    position:fixed;
+
+    left:24px;
+    bottom:24px;
+
+    width:360px;
+    height:520px;
+
+    display:flex;
+    flex-direction:column;
+
+    background:#191c21;
+
+    border:1px solid #292e36;
+    border-radius:18px;
+
+    box-shadow:
+        12px 12px 30px rgba(0,0,0,.45),
+        -4px -4px 12px rgba(255,255,255,.025);
+
+    overflow:hidden;
+
+    direction:rtl;
+
+    z-index:10000;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:
+        translateY(20px)
+        scale(.96);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+}
+
+
+/* OPEN */
+
+.ai-chat-panel.open{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.ai-chat-header{
+
+    height:68px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 14px;
+
+    background:#1d2025;
+
+    border-bottom:1px solid #292e36;
+}
+
+
+.ai-chat-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.ai-chat-avatar{
+
+    width:42px;
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#20242a;
+
+    border:1px solid #30353d;
+
+    border-radius:12px;
+
+    overflow:hidden;
+}
+
+
+.ai-chat-avatar img{
+
+    width:34px;
+    height:34px;
+
+    object-fit:contain;
+}
+
+
+.ai-chat-title strong{
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:14px;
+
+    margin-bottom:3px;
+}
+
+
+.ai-chat-title span{
+
+    display:block;
+
+    color:var(--text-secondary);
+
+    font-size:10px;
+}
+
+
+/* CLOSE */
+
+.ai-chat-close{
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #30353d;
+
+    border-radius:10px;
+
+    background:#20242a;
+
+    color:var(--text-secondary);
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.ai-chat-close:hover{
+
+    color:#fff;
+
+    background:#292e36;
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.ai-chat-messages{
+
+    flex:1;
+
+    min-height:0;
+
+    overflow-y:auto;
+
+    padding:16px 13px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+}
+
+
+.ai-chat-message{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:7px;
+
+    max-width:90%;
+}
+
+
+.ai-chat-message.assistant{
+
+    align-self:flex-start;
+}
+
+
+.ai-chat-small-avatar{
+
+    width:28px;
+    height:28px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#20242a;
+
+    border:1px solid #30353d;
+
+    border-radius:9px;
+
+    overflow:hidden;
+}
+
+
+.ai-chat-small-avatar img{
+
+    width:23px;
+    height:23px;
+
+    object-fit:contain;
+}
+
+
+.ai-chat-bubble{
+
+    padding:9px 12px;
+
+    border-radius:12px;
+
+    background:#20242a;
+
+    border:1px solid #30353d;
+
+    color:var(--text);
+
+    font-size:12px;
+
+    line-height:1.8;
+
+    text-align:right;
+
+    box-shadow:
+        3px 3px 8px rgba(0,0,0,.2);
+}
+
+
+/* USER */
+
+.ai-chat-message.user{
+
+    align-self:flex-end;
+}
+
+
+.ai-chat-message.user .ai-chat-bubble{
+
+    background:#172554;
+
+    border-color:#1e40af;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.ai-chat-input-area{
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:8px;
+
+    padding:10px;
+
+    background:#1d2025;
+
+    border-top:1px solid #292e36;
+}
+
+
+.ai-chat-input-area textarea{
+
+    flex:1;
+
+    min-width:0;
+
+    height:42px;
+
+    max-height:100px;
+
+    resize:none;
+
+    padding:11px 12px;
+
+    background:#15181c;
+
+    color:var(--text);
+
+    border:1px solid #292e36;
+
+    border-radius:11px;
+
+    outline:none;
+
+    font-family:inherit;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+
+.ai-chat-input-area textarea:focus{
+
+    border-color:var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,.08);
+}
+
+
+.ai-chat-send{
+
+    width:42px;
+    height:42px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:0;
+
+    border-radius:11px;
+
+    background:var(--accent);
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.ai-chat-send:hover{
+
+    filter:brightness(1.08);
+
+    transform:translateY(-1px);
+}
+
+
+.ai-chat-send svg{
+
+    width:17px;
+    height:17px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .ai-chat-panel{
+
+        left:10px;
+        right:10px;
+
+        bottom:10px;
+
+        width:auto;
+
+        height:min(560px, calc(100vh - 20px));
+
+        border-radius:16px;
+    }
+
+}
+/* =====================================================
+   AI CHAT OPEN STATE
+===================================================== */
+
+.ai-assistant:has(+ .ai-chat-panel.open)
+.ai-character{
+    opacity:0;
+    pointer-events:none;
+}
+
+
+
+/* =====================================================
+   NEW AI CHAT HEADER / FOOTER FLOATING STYLE
+===================================================== */
+
+/* هدر به صورت باکس شناور داخل پنل */
+
+.ai-chat-header{
+    margin:10px 10px 0 10px;
+    height:58px;
+
+    padding:0 10px;
+
+    border:1px solid #292e36;
+    border-radius:14px;
+
+    background:#20242a;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.18);
+
+    animation:aiHeaderFloat 4s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.ai-chat-footer{
+    flex-shrink:0;
+
+    margin:0 10px 10px 10px;
+
+    padding:8px;
+
+    border:1px solid #292e36;
+    border-radius:14px;
+
+    background:#20242a;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,.18);
+
+    animation:aiFooterFloat 4s ease-in-out infinite;
+}
+
+
+/* =====================================================
+   INPUT WRAPPER
+===================================================== */
+
+.ai-chat-input-wrapper{
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    width:100%;
+
+    direction:rtl;
+}
+
+
+/* =====================================================
+   INPUT AVATAR
+===================================================== */
+
+.ai-chat-input-avatar{
+
+    position:absolute;
+
+    right:8px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:9px;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:2;
+}
+
+
+.ai-chat-input-avatar img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+}
+
+
+/* =====================================================
+   TEXTAREA NEW STYLE
+===================================================== */
+
+.ai-chat-input-wrapper textarea{
+
+    width:100%;
+
+    min-height:42px;
+    height:42px;
+
+    max-height:100px;
+
+    resize:none;
+
+    padding:11px 48px 11px 48px;
+
+    background:#15181c;
+
+    color:var(--text);
+
+    border:1px solid #292e36;
+
+    border-radius:11px;
+
+    outline:none;
+
+    font-family:inherit;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    direction:rtl;
+    text-align:right;
+
+    box-sizing:border-box;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.ai-chat-input-wrapper textarea:focus{
+
+    border-color:var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,.08);
+}
+
+
+/* =====================================================
+   SEND BUTTON INSIDE INPUT
+===================================================== */
+
+.ai-chat-input-wrapper .ai-chat-send{
+
+    position:absolute;
+
+    left:6px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:32px;
+    height:32px;
+
+    border-radius:9px;
+
+    z-index:3;
+}
+
+
+.ai-chat-input-wrapper .ai-chat-send:hover{
+
+    transform:
+        translateY(-50%)
+        translateY(-1px);
+
+}
+
+
+/* =====================================================
+   HIDE SCROLLBAR
+===================================================== */
+
+.ai-chat-messages{
+
+    scrollbar-width:none;
+    -ms-overflow-style:none;
+}
+
+
+.ai-chat-messages::-webkit-scrollbar{
+
+    display:none;
+    width:0;
+    height:0;
+}
+
+
+/* =====================================================
+   FLOATING ANIMATION
+===================================================== */
+
+@keyframes aiHeaderFloat{
+
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-2px);
+    }
+
+}
+
+
+@keyframes aiFooterFloat{
+
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(2px);
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .ai-chat-header{
+
+        margin:8px 8px 0 8px;
+
+        height:56px;
+
+        border-radius:13px;
+    }
+
+
+    .ai-chat-footer{
+
+        margin:0 8px 8px 8px;
+
+        padding:7px;
+
+        border-radius:13px;
+    }
+
+
+    .ai-chat-messages{
+
+        padding:14px 10px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    .ai-chat-header,
+    .ai-chat-footer{
+
+        animation:none;
+    }
+
+}
+
+
+/* =====================================================
+   SEND BUTTON - RIGHT SIDE
+===================================================== */
+
+.ai-chat-input-wrapper .ai-chat-send{
+
+    left:auto;
+    right:6px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+}
+
+
+.ai-chat-input-wrapper .ai-chat-send:hover{
+
+    transform:
+        translateY(-50%)
+        translateY(-1px);
+}
+
+
+/* =====================================================
+   INPUT SPACE FOR RIGHT SEND BUTTON
+===================================================== */
+
+.ai-chat-input-wrapper textarea{
+
+    padding-right:48px;
+    padding-left:12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ai-message{
+
+    position:absolute;
+
+    right:0;
+    bottom:calc(100% + 14px);
+
+    width:270px;
+    max-width:calc(100vw - 30px);
+
+    padding:12px 14px;
+
+    background:rgba(25,28,33,.96);
+
+    border:1px solid #30353d;
+
+    border-radius:16px;
+
+    box-shadow:
+        0 14px 35px rgba(0,0,0,.38),
+        0 5px 15px rgba(0,0,0,.18);
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    direction:rtl;
+    text-align:right;
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:
+        translateY(10px)
+        scale(.92);
+
+    transform-origin:bottom right;
+
+    transition:
+        opacity .28s ease,
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        visibility .28s ease;
+
+    z-index:10002;
+
+    pointer-events:none;
+}
+
+
+.ai-message.show{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events:auto;
+}
+
+
+.ai-message::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:24px;
+    bottom:-7px;
+
+    width:13px;
+    height:13px;
+
+    background:#191c21;
+
+    border-right:1px solid #30353d;
+    border-bottom:1px solid #30353d;
+
+    transform:rotate(45deg);
+}
+
+
+.ai-message-text{
+
+    color:var(--text);
+
+    font-size:12px;
+
+    line-height:1.9;
+
+    text-align:right;
+
+    word-break:break-word;
+
+    min-height:20px;
+}
+
+
+.ai-message-text.typing::after{
+
+    content:"";
+
+    display:inline-block;
+
+    width:2px;
+    height:13px;
+
+    margin-right:3px;
+
+    vertical-align:-2px;
+
+    background:var(--accent);
+
+    border-radius:2px;
+
+    animation:
+        aiTypingCursor .75s infinite;
+}
+
+
+@keyframes aiTypingCursor{
+
+    0%,
+    45%{
+        opacity:1;
+    }
+
+    46%,
+    100%{
+        opacity:0;
+    }
+
+}
+
+
+.ai-character{
+
+    position:relative;
+
+    z-index:10001;
+
+    transition:
+        transform .25s ease;
+}
+
+
+.ai-assistant.message-active
+.ai-character{
+
+    animation:
+        aiAssistantTalking 2.2s ease-in-out infinite;
+}
+
+
+@keyframes aiAssistantTalking{
+
+    0%,
+    100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-3px);
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .ai-message{
+
+        right:0;
+
+        width:250px;
+
+        bottom:calc(100% + 12px);
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ai-assistant{
+    position:fixed !important;
+
+    left:24px !important;
+    bottom:24px !important;
+
+    width:90px !important;
+    height:120px !important;
+
+    z-index:9999;
+
+    pointer-events:none;
+}
+
+
+/* CHARACTER */
+
+.ai-assistant .ai-character{
+
+    position:absolute !important;
+
+    left:50% !important;
+    bottom:22px !important;
+
+    width:68px !important;
+    height:68px !important;
+
+    transform:
+        translateX(-50%)
+        translateY(0) !important;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    pointer-events:auto;
+
+    z-index:2;
+
+    animation:
+        aiIdle 3s ease-in-out infinite;
+}
+
+
+/* MESSAGE */
+
+.ai-assistant .ai-message{
+
+    position:absolute !important;
+
+    left:75px !important;
+    right:auto !important;
+
+    bottom:55px !important;
+
+    width:240px !important;
+    max-width:calc(100vw - 130px);
+
+    padding:12px 14px;
+
+    box-sizing:border-box;
+
+    background:rgba(25,28,33,.96);
+
+    border:1px solid #30353d;
+
+    border-radius:16px;
+
+    box-shadow:
+        0 14px 35px rgba(0,0,0,.38),
+        0 5px 15px rgba(0,0,0,.18);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:
+        translateY(8px)
+        scale(.94);
+
+    transform-origin:bottom left;
+
+    transition:
+        opacity .28s ease,
+        transform .35s cubic-bezier(.2,.8,.2,1),
+        visibility .28s ease;
+
+    pointer-events:none;
+
+    direction:rtl;
+
+    z-index:3;
+}
+
+
+/* OPEN */
+
+.ai-assistant .ai-message.show{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events:auto;
+}
+
+
+/* MESSAGE TEXT */
+
+.ai-assistant .ai-message-text{
+
+    color:var(--text);
+
+    font-size:12px;
+
+    line-height:1.9;
+
+    text-align:right;
+
+    word-break:break-word;
+
+    min-height:20px;
+}
+
+
+/* MESSAGE ARROW */
+
+.ai-assistant .ai-message::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:22px;
+    right:auto;
+
+    bottom:-7px;
+
+    width:13px;
+    height:13px;
+
+    background:#191c21;
+
+    border-right:0;
+    border-bottom:1px solid #30353d;
+    border-left:1px solid #30353d;
+
+    transform:rotate(-45deg);
+}
+
+
+/* TALKING */
+
+.ai-assistant.message-active .ai-character{
+
+    animation:
+        aiTalking 2.2s ease-in-out infinite;
+}
+
+
+@keyframes aiTalking{
+
+    0%,
+    100%{
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(-4px);
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .ai-assistant{
+
+        left:14px !important;
+        bottom:14px !important;
+
+        width:90px !important;
+        height:120px !important;
+
+        transform:none !important;
+    }
+
+
+    .ai-assistant .ai-message{
+
+        left:70px !important;
+        right:auto !important;
+
+        bottom:55px !important;
+
+        width:210px !important;
+
+        max-width:calc(100vw - 95px);
+    }
+
+}

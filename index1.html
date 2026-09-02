@@ -184,11 +184,9 @@
 </div>
 
 
-        <button class="icon-btn">
-
-            <i data-lucide="settings"></i>
-
-        </button>
+<button class="icon-btn" id="settingsBtn">
+    <i data-lucide="settings"></i>
+</button>
 
 
 
@@ -444,6 +442,347 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========================= 
+        DAILY TASK MANAGER 
+========================= -->
+
+
+<section class="daily-task-section" id="dailyTaskSection">
+
+
+
+    <!-- HEADER -->
+
+    <div class="daily-task-header" id="dailyTaskHeader">
+
+
+        <div class="daily-title-box">
+
+
+            <div class="daily-icon">
+
+                <i data-lucide="calendar-check"></i>
+
+            </div>
+
+
+
+            <div class="daily-title">
+
+
+                <h3 id="dailyTitle">
+                    برنامه امروز
+                </h3>
+
+
+                <p>
+                    مدیریت و پیگیری کارهای روزانه
+                </p>
+
+
+            </div>
+
+
+
+            <div class="task-counter" id="taskCounterBox">
+
+
+                <strong id="taskCount">
+                    0
+                </strong>
+
+
+                <span>
+                    کار
+                </span>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+        <button
+        class="icon-btn add-task"
+        id="addTaskBtn">
+
+            <i data-lucide="plus"></i>
+
+        </button>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- MAIN GRID -->
+
+
+    <div class="daily-grid" id="dailyGrid">
+
+
+
+
+
+
+        <!-- TODAY STATUS -->
+
+
+        <div class="today-card" id="todayCard">
+
+
+
+            <div class="today-item">
+
+
+                <div class="today-icon">
+
+                    <i data-lucide="clock"></i>
+
+                </div>
+
+
+
+                <div>
+
+
+                    <span>
+                        ساعت فعلی
+                    </span>
+
+
+                    <strong id="liveClock">
+                        00:00:00
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="today-item">
+
+
+                <div class="today-icon">
+
+                    <i data-lucide="calendar"></i>
+
+                </div>
+
+
+
+                <div>
+
+
+                    <span>
+                        تاریخ
+                    </span>
+
+
+                    <strong id="todayDate">
+                        -
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="today-item">
+
+
+                <div class="today-icon">
+
+                    <i data-lucide="sun"></i>
+
+                </div>
+
+
+
+                <div>
+
+
+                    <span>
+                        روز
+                    </span>
+
+
+                    <strong id="todayDay">
+                        -
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!-- TASK LIST -->
+
+
+        <div class="task-list-card" id="taskListCard">
+
+
+
+            <div id="taskList">
+
+
+
+
+
+                <div class="empty-task" id="emptyTask">
+
+
+                    <i data-lucide="clipboard-list"></i>
+
+
+                    <h4 style="margin-top: 10px;">
+                        هنوز کاری ثبت نشده
+                    </h4>
+
+
+                    <p style="margin-top: 0px;">
+                        برای ساخت برنامه امروز روی + کلیک کنید
+                    </p>
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</section>
 
 
 
@@ -2500,8 +2839,1230 @@ data-icon="network">
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ==========================================
+        DAILY TASK ADD MODAL
+========================================== -->
+
+<div class="daily-task-modal" id="dailyTaskModal">
+
+
+    <div class="daily-task-modal-card" id="dailyTaskModalCard">
+
+
+        <!-- HEADER -->
+
+        <div class="daily-task-modal-header">
+
+
+            <div class="daily-task-modal-title">
+
+                <i data-lucide="plus-circle"></i>
+
+                <h3>
+                    افزودن کار جدید
+                </h3>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="daily-task-modal-close"
+                id="dailyTaskModalClose">
+
+                <i data-lucide="x"></i>
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+
+        <div
+            class="daily-task-modal-content"
+            id="dailyTaskModalContent">
+
+
+            <!-- TITLE -->
+
+            <label for="dailyTaskTitle">
+                عنوان کار
+            </label>
+
+            <input
+                id="dailyTaskTitle"
+                type="text"
+                placeholder="مثلاً مطالعه فصل ۵ زیست">
+
+
+
+            <!-- TIME -->
+
+            <div class="daily-task-modal-row">
+
+
+                <div>
+
+                    <label for="dailyTaskStartTime">
+                        ساعت شروع
+                    </label>
+
+                    <input
+                        id="dailyTaskStartTime"
+                        type="time">
+
+                </div>
+
+
+
+                <div>
+
+                    <label for="dailyTaskEndTime">
+                        ساعت پایان
+                    </label>
+
+                    <input
+                        id="dailyTaskEndTime"
+                        type="time">
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- DESCRIPTION -->
+
+            <label for="dailyTaskDescription">
+                توضیحات
+            </label>
+
+            <textarea
+                id="dailyTaskDescription"
+                placeholder="توضیحات کار..."></textarea>
+
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <div class="daily-task-modal-footer">
+
+
+            <button
+                type="button"
+                class="daily-task-cancel-btn"
+                id="dailyTaskCancel">
+
+                لغو
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="daily-task-save-btn"
+                id="dailyTaskSave">
+
+                <i data-lucide="check"></i>
+
+                ذخیره
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========================================================
+     SETTINGS MODAL
+========================================================= -->
+
+<div class="settings-modal" id="settingsModal">
+
+    <div class="settings-overlay" id="settingsOverlay"></div>
+
+    <div class="settings-panel">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+
+        <div class="settings-header">
+
+            <div class="settings-header-glow"></div>
+
+            <div class="settings-header-content">
+
+                <div class="settings-header-icon">
+                    <i data-lucide="settings"></i>
+                </div>
+
+                <div class="settings-header-text">
+
+                    <h2>تنظیمات</h2>
+
+                    <span>
+                        شخصی‌سازی تجربه و دستیار هوشمند
+                    </span>
+
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                class="settings-close"
+                id="settingsClose"
+            >
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             BODY
+        ========================== -->
+
+        <div class="settings-body">
+
+
+            <!-- =========================
+                 RIGHT MENU
+            ========================== -->
+
+            <aside class="settings-menu">
+
+                <button
+                    type="button"
+                    class="settings-menu-item active"
+                    data-settings-section="assistant"
+                >
+
+                    <span class="settings-menu-icon">
+                        <i data-lucide="bot"></i>
+                    </span>
+
+                    <span class="settings-menu-text">
+
+                        <strong>
+                            دستیار هوشمند
+                        </strong>
+
+                        <small>
+                            دسترسی و رفتار
+                        </small>
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="settings-menu-item"
+                    data-settings-section="account"
+                >
+
+                    <span class="settings-menu-icon">
+                        <i data-lucide="user-round"></i>
+                    </span>
+
+                    <span class="settings-menu-text">
+
+                        <strong>
+                            حساب کاربری
+                        </strong>
+
+                        <small>
+                            اطلاعات حساب
+                        </small>
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="settings-menu-item"
+                    data-settings-section="appearance"
+                >
+
+                    <span class="settings-menu-icon">
+                        <i data-lucide="palette"></i>
+                    </span>
+
+                    <span class="settings-menu-text">
+
+                        <strong>
+                            ظاهر
+                        </strong>
+
+                        <small>
+                            نمایش و رابط کاربری
+                        </small>
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="settings-menu-item"
+                    data-settings-section="notifications"
+                >
+
+                    <span class="settings-menu-icon">
+                        <i data-lucide="bell"></i>
+                    </span>
+
+                    <span class="settings-menu-text">
+
+                        <strong>
+                            اعلان‌ها
+                        </strong>
+
+                        <small>
+                            یادآوری‌ها
+                        </small>
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="settings-menu-item"
+                    data-settings-section="general"
+                >
+
+                    <span class="settings-menu-icon">
+                        <i data-lucide="sliders-horizontal"></i>
+                    </span>
+
+                    <span class="settings-menu-text">
+
+                        <strong>
+                            عمومی
+                        </strong>
+
+                        <small>
+                            تنظیمات کلی
+                        </small>
+
+                    </span>
+
+                </button>
+
+            </aside>
+
+
+            <!-- =========================
+                 CONTENT
+            ========================== -->
+
+            <main class="settings-content">
+
+
+                <!-- =========================
+                     AI ASSISTANT
+                ========================== -->
+
+                <section
+                    class="settings-section active"
+                    id="settings-section-assistant"
+                >
+
+                    <div class="settings-section-title">
+
+                        <div>
+
+                            <span>
+                                دستیار هوشمند
+                            </span>
+
+                            <h3>
+                                کنترل دسترسی دستیار
+                            </h3>
+
+                            <p>
+                                مشخص کن دستیار هوشمند به چه اطلاعاتی
+                                دسترسی داشته باشد.
+                            </p>
+
+                        </div>
+
+                        <div class="settings-section-big-icon">
+                            <i data-lucide="bot"></i>
+                        </div>
+
+                    </div>
+
+
+                    <!-- AI ENABLE -->
+
+                    <div class="settings-card">
+
+                        <div class="settings-card-info">
+
+                            <div class="settings-card-icon">
+                                <i data-lucide="power"></i>
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    فعال بودن دستیار
+                                </strong>
+
+                                <p>
+                                    دستیار هوشمند می‌تواند در سایت
+                                    همراهت باشد.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                                id="aiEnabledSwitch"
+                                checked
+                            >
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- ACCESS LEVEL -->
+
+                    <div class="settings-block">
+
+                        <div class="settings-block-header">
+
+                            <div>
+
+                                <strong>
+                                    سطح دسترسی
+                                </strong>
+
+                                <p>
+                                    میزان اطلاعاتی که دستیار می‌تواند
+                                    مشاهده کند.
+                                </p>
+
+                            </div>
+
+                            <i data-lucide="shield-check"></i>
+
+                        </div>
+
+
+                        <div class="settings-access-list">
+
+
+                            <label class="settings-access-option">
+
+                                <input
+                                    type="radio"
+                                    name="aiAccessLevel"
+                                    value="limited"
+                                >
+
+                                <span class="settings-radio"></span>
+
+                                <span>
+
+                                    <strong>
+                                        محدود
+                                    </strong>
+
+                                    <small>
+                                        فقط پاسخ‌گویی عمومی
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="settings-access-option">
+
+                                <input
+                                    type="radio"
+                                    name="aiAccessLevel"
+                                    value="study"
+                                    checked
+                                >
+
+                                <span class="settings-radio"></span>
+
+                                <span>
+
+                                    <strong>
+                                        مطالعه
+                                    </strong>
+
+                                    <small>
+                                        دسترسی به برنامه‌های مطالعاتی
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="settings-access-option">
+
+                                <input
+                                    type="radio"
+                                    name="aiAccessLevel"
+                                    value="analysis"
+                                >
+
+                                <span class="settings-radio"></span>
+
+                                <span>
+
+                                    <strong>
+                                        تحلیل
+                                    </strong>
+
+                                    <small>
+                                        برنامه + عملکرد و آمار
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+
+                            <label class="settings-access-option">
+
+                                <input
+                                    type="radio"
+                                    name="aiAccessLevel"
+                                    value="full"
+                                >
+
+                                <span class="settings-radio"></span>
+
+                                <span>
+
+                                    <strong>
+                                        کامل
+                                    </strong>
+
+                                    <small>
+                                        دسترسی کامل طبق مجوزهای فعال
+                                    </small>
+
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DATA ACCESS -->
+
+                    <div class="settings-block">
+
+                        <div class="settings-block-header">
+
+                            <div>
+
+                                <strong>
+                                    اطلاعات قابل دسترسی
+                                </strong>
+
+                                <p>
+                                    مشخص کن چه اطلاعاتی در اختیار AI باشد.
+                                </p>
+
+                            </div>
+
+                            <i data-lucide="database"></i>
+
+                        </div>
+
+
+                        <div class="settings-permission-list">
+
+
+                            <div class="settings-permission">
+
+                                <div class="settings-permission-info">
+
+                                    <span class="settings-permission-icon">
+                                        <i data-lucide="user"></i>
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            اطلاعات پروفایل
+                                        </strong>
+
+                                        <small>
+                                            نام، رشته، دانشگاه و اطلاعات عمومی
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="aiProfileSwitch"
+                                        checked
+                                    >
+
+                                    <span></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="settings-permission">
+
+                                <div class="settings-permission-info">
+
+                                    <span class="settings-permission-icon">
+                                        <i data-lucide="book-open"></i>
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            برنامه‌های مطالعاتی
+                                        </strong>
+
+                                        <small>
+                                            برنامه‌های ثبت‌شده و وضعیت آن‌ها
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="aiStudyPlansSwitch"
+                                        checked
+                                    >
+
+                                    <span></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="settings-permission">
+
+                                <div class="settings-permission-info">
+
+                                    <span class="settings-permission-icon">
+                                        <i data-lucide="chart-no-axes-combined"></i>
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            عملکرد و آمار
+                                        </strong>
+
+                                        <small>
+                                            نتایج آزمون و آمار مطالعه
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="aiPerformanceSwitch"
+                                    >
+
+                                    <span></span>
+
+                                </label>
+
+                            </div>
+
+
+                            <div class="settings-permission">
+
+                                <div class="settings-permission-info">
+
+                                    <span class="settings-permission-icon">
+                                        <i data-lucide="zap"></i>
+                                    </span>
+
+                                    <div>
+
+                                        <strong>
+                                            اجازه انجام عملیات
+                                        </strong>
+
+                                        <small>
+                                            ایجاد، ویرایش و حذف برنامه‌ها
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+
+                                <label class="settings-switch">
+
+                                    <input
+                                        type="checkbox"
+                                        id="aiActionsSwitch"
+                                    >
+
+                                    <span></span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     PLACEHOLDER SECTIONS
+                ========================== -->
+
+                <section
+                    class="settings-section"
+                    id="settings-section-account"
+                >
+
+                    <div class="settings-empty">
+
+                        <i data-lucide="user-round"></i>
+
+                        <h3>
+                            حساب کاربری
+                        </h3>
+
+                        <p>
+                            تنظیمات حساب کاربری در این بخش قرار می‌گیرد.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="settings-section"
+                    id="settings-section-appearance"
+                >
+
+                    <div class="settings-empty">
+
+                        <i data-lucide="palette"></i>
+
+                        <h3>
+                            ظاهر
+                        </h3>
+
+                        <p>
+                            تنظیمات ظاهر برنامه در این بخش قرار می‌گیرد.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="settings-section"
+                    id="settings-section-notifications"
+                >
+
+                    <div class="settings-empty">
+
+                        <i data-lucide="bell"></i>
+
+                        <h3>
+                            اعلان‌ها
+                        </h3>
+
+                        <p>
+                            تنظیمات اعلان‌ها در این بخش قرار می‌گیرد.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <section
+                    class="settings-section"
+                    id="settings-section-general"
+                >
+
+                    <div class="settings-empty">
+
+                        <i data-lucide="sliders-horizontal"></i>
+
+                        <h3>
+                            عمومی
+                        </h3>
+
+                        <p>
+                            تنظیمات عمومی در این بخش قرار می‌گیرد.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+            </main>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+    <!-- تمام بخش‌های داشبوردت -->
+    
+   
+
+    <!-- ==============================
+         AI ASSISTANT
+    ============================== -->
+
+    <div class="ai-assistant" id="aiAssistant">
+
+        <div class="ai-message" id="aiMessage">
+            <div class="ai-message-text" id="aiMessageText"></div>
+        </div>
+
+        <div class="ai-character" id="aiCharacter">
+
+            <img
+                src="./01/e8ea2b32-26cb-45ed-94b3-2518bf447e50.png"
+                alt="دستیار هوشمند">
+
+        </div>
+
+        <div class="ai-nest" id="aiNest">
+            <i data-lucide="home"></i>
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+     AI CHAT PANEL
+============================== -->
+<div class="ai-chat-panel" id="aiChatPanel">
+
+
+<!-- ==============================
+     AI CHAT HEADER
+============================== -->
+
+<div class="ai-chat-header">
+
+    <div class="ai-chat-title">
+
+        <div class="ai-chat-avatar">
+
+            <img
+                src="./01/e8ea2b32-26cb-45ed-94b3-2518bf447e50.png"
+                alt="دستیار">
+
+        </div>
+
+        <div class="ai-chat-title-text">
+
+            <strong>دستیار هوشمند</strong>
+
+            <span>همراه مطالعه تو</span>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="ai-chat-close"
+        id="aiChatClose">
+
+        <i data-lucide="x"></i>
+
+    </button>
+
+</div>
+
+
+<!-- ==============================
+     CHAT MESSAGES
+============================== -->
+
+<div
+    class="ai-chat-messages"
+    id="aiChatMessages">
+
+    <div class="ai-chat-message assistant">
+
+        <div class="ai-chat-small-avatar">
+
+            <img
+                src="./01/e8ea2b32-26cb-45ed-94b3-2518bf447e50.png"
+                alt="AI">
+
+        </div>
+
+        <div class="ai-chat-bubble">
+
+            سلام 👋
+            <br>
+            من دستیار هوشمندت هستم.
+            چطور می‌تونم کمکت کنم؟
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==============================
+     CHAT FOOTER
+============================== -->
+
+<div class="ai-chat-footer">
+
+    <div class="ai-chat-input-wrapper">
+
+
+        <!-- جای عکس PNG دستیار -->
+
+        <div class="ai-chat-input-avatar">
+
+            <img
+                src=""
+                alt="دستیار">
+
+        </div>
+
+
+        <!-- Input -->
+
+        <textarea
+            id="aiChatInput"
+            rows="1"
+            placeholder="پیامت رو بنویس..."></textarea>
+
+
+        <!-- Send Button -->
+
+<button 
+    type="button" 
+    id="aiChatSend" 
+    class="ai-chat-send">
+
+    <img
+        src="./01/d23f70af-6a30-4f7b-993d-1cfac3346844.png"
+        alt="ارسال">
+
+</button>
+
+
+
+
+    </div>
+
+</div>
+
+
+</div>
+
+    <!-- اسکریپت‌های سایت -->
+    <!-- <script src="config.js"></script>
+    <script src="1.js"></script> -->
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="./config.js"></script>
 
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+
+const addBtn = document.getElementById("addTaskBtn");
+
+const modal = document.getElementById("taskModal");
+
+const closeBtn = document.getElementById("closeTaskModal");
+
+
+console.log("ADD:",addBtn);
+console.log("MODAL:",modal);
+console.log("CLOSE:",closeBtn);
+
+
+
+if(!addBtn || !modal){
+    console.log("ELEMENT NOT FOUND");
+    return;
+}
+
+
+
+// OPEN
+
+addBtn.addEventListener("click",()=>{
+
+    console.log("PLUS CLICKED");
+
+    modal.style.display="flex";
+
+});
+
+
+
+
+// CLOSE
+
+closeBtn.addEventListener("click",()=>{
+
+    modal.style.display="none";
+
+});
+
+
+
+});
+
+</script>
 
 
 
@@ -3472,7 +5033,7 @@ sections.forEach((section,index)=>{
 if ("serviceWorker" in navigator) {
 
 navigator.serviceWorker.register(
-"/KonkorApp/service-worker.js"
+"./service-worker.js"
 )
 .then(()=>{
 console.log("PWA Ready");
@@ -3480,7 +5041,78 @@ console.log("PWA Ready");
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- فعال کردن آیکون ها -->
 <script src="https://unpkg.com/lucide@latest"></script>

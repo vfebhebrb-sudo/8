@@ -1102,11 +1102,11 @@
 
 .task-time {
 
-    width: 100%;
+    width: 50PX;
 
     margin-top: 5px;
 
-    direction: rtl;
+    /* direction: rtl; */
 
     text-align: right;
 

@@ -1563,7 +1563,39 @@ async function createTaskCard(){
     );
 
 
+// ======================================================
+// SMART ASSISTANT — PLAN CREATED
+// ======================================================
 
+if(typeof window.assistantEvent === "function"){
+
+    window.assistantEvent(
+        "PLAN_CREATED",
+        {
+            planId:
+                savedPlan._id,
+
+            subject:
+                savedPlan.subject,
+
+            subjectName:
+                savedPlan.subjectName,
+
+            title:
+                savedPlan.title,
+
+            duration:
+                savedPlan.duration,
+
+            day:
+                savedPlan.day,
+
+            note:
+                savedPlan.note || ""
+        }
+    );
+
+}
 
 
     // ================= CREATE CARD =================
@@ -5481,3 +5513,5489 @@ cancelDeleteBtn.addEventListener(
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================
+// DAILY TASK MANAGER
+// مستقل از سایر بخش های پنل
+// ============================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ========================================================
+    // ELEMENTS
+    // ========================================================
+
+    const addTaskBtn =
+        document.getElementById("addTaskBtn");
+
+    const taskModal =
+        document.getElementById("dailyTaskModal");
+
+    const modalCard =
+        document.getElementById("dailyTaskModalCard");
+
+    const closeModalBtn =
+        document.getElementById("dailyTaskModalClose");
+
+    const cancelBtn =
+        document.getElementById("dailyTaskCancel");
+
+    const saveBtn =
+        document.getElementById("dailyTaskSave");
+
+    const taskTitleInput =
+        document.getElementById("dailyTaskTitle");
+
+    const startTimeInput =
+        document.getElementById("dailyTaskStartTime");
+
+    const endTimeInput =
+        document.getElementById("dailyTaskEndTime");
+
+    const descriptionInput =
+        document.getElementById("dailyTaskDescription");
+
+    const taskList =
+        document.getElementById("taskList");
+
+    const taskCount =
+        document.getElementById("taskCount");
+
+    const liveClock =
+        document.getElementById("liveClock");
+
+    const todayDate =
+        document.getElementById("todayDate");
+
+    const todayDay =
+        document.getElementById("todayDay");
+
+
+    // ========================================================
+    // CHECK ELEMENTS
+    // ========================================================
+
+    if (
+        !addTaskBtn ||
+        !taskModal ||
+        !closeModalBtn ||
+        !cancelBtn ||
+        !saveBtn ||
+        !taskTitleInput ||
+        !startTimeInput ||
+        !endTimeInput ||
+        !descriptionInput ||
+        !taskList ||
+        !taskCount ||
+        !liveClock ||
+        !todayDate ||
+        !todayDay
+    ) {
+
+        console.error(
+            "❌ DAILY TASK MANAGER: بعضی از عناصر HTML پیدا نشدند."
+        );
+
+        return;
+
+    }
+
+
+    // ========================================================
+    // DATE KEY
+    // برای هر روز یک فضای ذخیره سازی جدا
+    // ========================================================
+
+    function getTodayKey() {
+
+        const now = new Date();
+
+        return now.toLocaleDateString(
+            "fa-IR-u-nu-latn"
+        );
+
+    }
+
+
+    // ========================================================
+    // STORAGE KEY
+    // ========================================================
+
+    function getStorageKey() {
+
+        return "dailyTasks_" + getTodayKey();
+
+    }
+
+
+    // ========================================================
+    // LOAD TASKS
+    // ========================================================
+
+    let tasks = loadTasks();
+
+
+    function loadTasks() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    getStorageKey()
+                );
+
+            if (!saved) {
+
+                return [];
+
+            }
+
+            const parsed =
+                JSON.parse(saved);
+
+            return Array.isArray(parsed)
+                ? parsed
+                : [];
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "❌ خطا در خواندن کارها:",
+                error
+            );
+
+            return [];
+
+        }
+
+    }
+
+
+    // ========================================================
+    // SAVE TASKS
+    // ========================================================
+
+    function saveTasks() {
+
+        try {
+
+            localStorage.setItem(
+                getStorageKey(),
+                JSON.stringify(tasks)
+            );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "❌ خطا در ذخیره کارها:",
+                error
+            );
+
+        }
+
+    }
+
+
+    // ========================================================
+    // OPEN MODAL
+    // ========================================================
+
+    function openModal() {
+
+        taskModal.style.display = "flex";
+
+        document.body.style.overflow = "hidden";
+
+        setTimeout(() => {
+
+            taskTitleInput.focus();
+
+        }, 100);
+
+    }
+
+
+    // ========================================================
+    // CLOSE MODAL
+    // ========================================================
+
+    function closeModal() {
+
+        taskModal.style.display = "none";
+
+        document.body.style.overflow = "";
+
+        clearForm();
+
+    }
+
+
+    // ========================================================
+    // CLEAR FORM
+    // ========================================================
+
+    function clearForm() {
+
+        taskTitleInput.value = "";
+
+        startTimeInput.value = "";
+
+        endTimeInput.value = "";
+
+        descriptionInput.value = "";
+
+    }
+
+
+    // ========================================================
+    // OPEN
+    // ========================================================
+
+    addTaskBtn.addEventListener(
+        "click",
+        openModal
+    );
+
+
+    // ========================================================
+    // CLOSE BUTTON
+    // ========================================================
+
+    closeModalBtn.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    // ========================================================
+    // CANCEL
+    // ========================================================
+
+    cancelBtn.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    // ========================================================
+    // CLICK OUTSIDE MODAL
+    // ========================================================
+
+    taskModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === taskModal
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    // ========================================================
+    // ESCAPE
+    // ========================================================
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape" &&
+                taskModal.style.display === "flex"
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    // ========================================================
+    // SAVE NEW TASK
+    // ========================================================
+
+    saveBtn.addEventListener(
+        "click",
+        saveNewTask
+    );
+
+
+    function saveNewTask() {
+
+        const title =
+            taskTitleInput.value.trim();
+
+        const start =
+            startTimeInput.value;
+
+        const end =
+            endTimeInput.value;
+
+        const description =
+            descriptionInput.value.trim();
+
+
+        // --------------------------------
+        // TITLE VALIDATION
+        // --------------------------------
+
+        if (!title) {
+
+            alert(
+                "لطفاً عنوان کار را وارد کنید."
+            );
+
+            taskTitleInput.focus();
+
+            return;
+
+        }
+
+
+        // --------------------------------
+        // TIME VALIDATION
+        // --------------------------------
+
+        if (
+            start &&
+            end &&
+            end <= start
+        ) {
+
+            alert(
+                "ساعت پایان باید بعد از ساعت شروع باشد."
+            );
+
+            endTimeInput.focus();
+
+            return;
+
+        }
+
+
+        // --------------------------------
+        // CREATE TASK
+        // --------------------------------
+
+        const newTask = {
+
+            id: Date.now(),
+
+            title: title,
+
+            start: start || "",
+
+            end: end || "",
+
+            description: description,
+
+            done: false,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        // --------------------------------
+        // ADD
+        // --------------------------------
+
+        tasks.push(newTask);
+
+
+        // --------------------------------
+        // SORT
+        // --------------------------------
+
+        sortTasks();
+
+
+        // --------------------------------
+        // SAVE
+        // --------------------------------
+
+        saveTasks();
+
+
+        // --------------------------------
+        // RENDER
+        // --------------------------------
+
+        renderTasks();
+
+
+        // --------------------------------
+        // CLOSE
+        // --------------------------------
+
+        closeModal();
+
+    }
+
+
+    // ========================================================
+    // SORT TASKS
+    // ========================================================
+
+    function sortTasks() {
+
+        tasks.sort(
+            (a, b) => {
+
+                if (!a.start && !b.start) {
+
+                    return 0;
+
+                }
+
+                if (!a.start) {
+
+                    return 1;
+
+                }
+
+                if (!b.start) {
+
+                    return -1;
+
+                }
+
+                return a.start.localeCompare(
+                    b.start
+                );
+
+            }
+        );
+
+    }
+
+function renderTasks() {
+
+    taskList.innerHTML = "";
+
+    taskCount.textContent = tasks.length;
+
+
+    // ========================================================
+    // EMPTY
+    // ========================================================
+
+    if (tasks.length === 0) {
+
+        const empty = document.createElement("div");
+
+        empty.className = "empty-task";
+
+        empty.innerHTML = `
+            <i data-lucide="clipboard-list"></i>
+
+            <h4>
+                هنوز کاری ثبت نشده
+            </h4>
+
+            <p>
+                برای ساخت برنامه امروز روی + کلیک کنید
+            </p>
+        `;
+
+        taskList.appendChild(empty);
+
+        refreshIcons();
+
+        return;
+    }
+
+
+    // ========================================================
+    // CREATE CARDS
+    // ========================================================
+
+    tasks.forEach((task, index) => {
+
+
+        // ====================================================
+        // CARD
+        // ====================================================
+
+        const card =
+            document.createElement("article");
+
+        card.className = "daily-task-card";
+
+        card.dataset.taskId = task.id;
+
+
+        if (task.done) {
+
+            card.classList.add("completed");
+
+        }
+
+
+        // ====================================================
+        // HEADER
+        // ====================================================
+
+        const header =
+            document.createElement("div");
+
+        header.className =
+            "daily-task-card-header";
+
+
+        // ----------------------------------------------------
+        // BRAND
+        // ----------------------------------------------------
+
+        const brand =
+            document.createElement("div");
+
+        brand.className =
+            "daily-task-card-brand";
+
+
+        // LOGO
+
+        const logo =
+            document.createElement("div");
+
+        logo.className =
+            "daily-task-card-logo";
+
+        logo.innerHTML = `
+            <i data-lucide="calendar-check"></i>
+        `;
+
+
+        // TITLE BOX
+
+        const titleBox =
+            document.createElement("div");
+
+        titleBox.className =
+            "daily-task-card-title-box";
+
+
+        const number =
+            document.createElement("span");
+
+        number.className =
+            "daily-task-card-number";
+
+        number.textContent =
+            String(index + 1).padStart(2, "0");
+
+
+        const title =
+            document.createElement("h4");
+
+        title.className =
+            "daily-task-card-title";
+
+        title.textContent =
+            task.title;
+
+
+        titleBox.appendChild(number);
+
+        titleBox.appendChild(title);
+
+
+        brand.appendChild(logo);
+
+        brand.appendChild(titleBox);
+
+
+        // ----------------------------------------------------
+        // STATUS BUTTON
+        // ----------------------------------------------------
+
+        const statusBtn =
+            document.createElement("button");
+
+        statusBtn.type = "button";
+
+        statusBtn.className =
+            "daily-task-status";
+
+
+        statusBtn.title =
+            task.done
+                ? "این کار انجام شده"
+                : "این کار انجام نشده";
+
+
+        statusBtn.innerHTML = `
+            <span></span>
+        `;
+
+
+        // ====================================================
+        // HEADER
+        // ====================================================
+
+        header.appendChild(brand);
+
+        header.appendChild(statusBtn);
+
+
+        // ====================================================
+        // BODY
+        // ====================================================
+
+        const body =
+            document.createElement("div");
+
+        body.className =
+            "daily-task-card-body";
+
+
+        // ----------------------------------------------------
+        // DESCRIPTION BOX
+        // ----------------------------------------------------
+
+        const descriptionBox =
+            document.createElement("div");
+
+        descriptionBox.className =
+            "daily-task-description";
+
+
+        if (task.description) {
+
+            descriptionBox.innerHTML = `
+
+                <i data-lucide="file-text"></i>
+
+                <span></span>
+
+            `;
+
+            descriptionBox
+                .querySelector("span")
+                .textContent =
+                task.description;
+
+        }
+
+        else {
+
+            descriptionBox.innerHTML = `
+
+                <i data-lucide="file-text"></i>
+
+                <span>
+                    بدون توضیحات
+                </span>
+
+            `;
+
+        }
+
+
+        // ----------------------------------------------------
+        // TIME
+        // ----------------------------------------------------
+
+        const timeBox =
+            document.createElement("div");
+
+        timeBox.className =
+            "daily-task-time";
+
+
+        timeBox.innerHTML = `
+
+            <div class="daily-time-item">
+
+                <i data-lucide="play"></i>
+
+                <div>
+
+                    <small>
+                        شروع
+                    </small>
+
+                    <strong>
+                        ${task.start || "--:--"}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="daily-time-divider"></div>
+
+
+            <div class="daily-time-item">
+
+                <i data-lucide="square"></i>
+
+                <div>
+
+                    <small>
+                        پایان
+                    </small>
+
+                    <strong>
+                        ${task.end || "--:--"}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        body.appendChild(
+            descriptionBox
+        );
+
+        body.appendChild(
+            timeBox
+        );
+
+
+        // ====================================================
+        // FOOTER
+        // ====================================================
+
+        const footer =
+            document.createElement("div");
+
+        footer.className =
+            "daily-task-card-footer";
+
+
+        // ----------------------------------------------------
+        // CHECK
+        // ----------------------------------------------------
+
+        const checkBtn =
+            document.createElement("button");
+
+        checkBtn.type = "button";
+
+        checkBtn.className =
+            "daily-task-check";
+
+
+        checkBtn.title =
+            task.done
+                ? "علامت‌گذاری به عنوان انجام نشده"
+                : "انجام کار";
+
+
+        checkBtn.innerHTML =
+            task.done
+
+            ? `<i data-lucide="check"></i>`
+
+            : `<i data-lucide="check"></i>`;
+
+
+        checkBtn.addEventListener(
+            "click",
+            () => {
+
+                toggleTask(task.id);
+
+            }
+        );
+
+
+        // ----------------------------------------------------
+        // DELETE
+        // ----------------------------------------------------
+
+        const deleteBtn =
+            document.createElement("button");
+
+        deleteBtn.type = "button";
+
+        deleteBtn.className =
+            "daily-task-delete";
+
+
+        deleteBtn.title =
+            "حذف کار";
+
+
+        deleteBtn.innerHTML = `
+            <i data-lucide="trash-2"></i>
+        `;
+
+
+        deleteBtn.addEventListener(
+            "click",
+            () => {
+
+                deleteTask(task.id);
+
+            }
+        );
+
+
+        // ====================================================
+        // FOOTER
+        // ====================================================
+
+        footer.appendChild(
+            checkBtn
+        );
+
+        footer.appendChild(
+            deleteBtn
+        );
+
+
+        // ====================================================
+        // CARD
+        // ====================================================
+
+        card.appendChild(
+            header
+        );
+
+        card.appendChild(
+            body
+        );
+
+        card.appendChild(
+            footer
+        );
+
+
+        taskList.appendChild(
+            card
+        );
+
+    });
+
+
+    // ========================================================
+    // ICONS
+    // ========================================================
+
+    refreshIcons();
+
+}    // ========================================================
+    // TOGGLE TASK
+    // ========================================================
+
+    function toggleTask(id) {
+
+        tasks =
+            tasks.map(
+                (task) => {
+
+                    if (
+                        task.id === id
+                    ) {
+
+                        return {
+                            ...task,
+                            done: !task.done
+                        };
+
+                    }
+
+                    return task;
+
+                }
+            );
+
+
+        saveTasks();
+
+        renderTasks();
+
+    }
+
+
+    // ========================================================
+    // DELETE TASK
+    // ========================================================
+
+    function deleteTask(id) {
+
+        const task =
+            tasks.find(
+                item =>
+                    item.id === id
+            );
+
+
+        if (!task) {
+
+            return;
+
+        }
+
+
+        const confirmed =
+            confirm(
+                `آیا کار «${task.title}» حذف شود؟`
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        tasks =
+            tasks.filter(
+                item =>
+                    item.id !== id
+            );
+
+
+        saveTasks();
+
+        renderTasks();
+
+    }
+
+
+    // ========================================================
+    // LIVE CLOCK
+    // ========================================================
+
+    function updateClock() {
+
+        const now =
+            new Date();
+
+
+        liveClock.textContent =
+            now.toLocaleTimeString(
+                "fa-IR",
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                }
+            );
+
+    }
+
+
+    updateClock();
+
+    setInterval(
+        updateClock,
+        1000
+    );
+
+
+    // ========================================================
+    // TODAY DATE
+    // ========================================================
+
+    function updateTodayInfo() {
+
+        const now =
+            new Date();
+
+
+        todayDate.textContent =
+            now.toLocaleDateString(
+                "fa-IR"
+            );
+
+
+        todayDay.textContent =
+            now.toLocaleDateString(
+                "fa-IR",
+                {
+                    weekday: "long"
+                }
+            );
+
+    }
+
+
+    updateTodayInfo();
+
+
+    // ========================================================
+    // REMOVE OLD TASKS
+    // ========================================================
+
+    function clearOldTasks() {
+
+        const todayKey =
+            getStorageKey();
+
+
+        const keys =
+            Object.keys(
+                localStorage
+            );
+
+
+        keys.forEach(
+            (key) => {
+
+                if (
+                    key.startsWith(
+                        "dailyTasks_"
+                    ) &&
+                    key !== todayKey
+                ) {
+
+                    localStorage.removeItem(
+                        key
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    clearOldTasks();
+
+
+    // ========================================================
+    // DETECT NEW DAY
+    // ========================================================
+
+    let currentDay =
+        getTodayKey();
+
+
+    setInterval(
+        () => {
+
+            const newDay =
+                getTodayKey();
+
+
+            if (
+                newDay !== currentDay
+            ) {
+
+                currentDay =
+                    newDay;
+
+
+                tasks =
+                    loadTasks();
+
+
+                clearOldTasks();
+
+                updateTodayInfo();
+
+                renderTasks();
+
+            }
+
+        },
+        30000
+    );
+
+
+    // ========================================================
+    // LUCIDE
+    // ========================================================
+
+    function refreshIcons() {
+
+        if (
+            window.lucide
+        ) {
+
+            lucide.createIcons();
+
+        }
+
+    }
+
+
+    // ========================================================
+    // INITIAL RENDER
+    // ========================================================
+
+    sortTasks();
+
+    renderTasks();
+
+    refreshIcons();
+
+
+    console.log(
+        "✅ Daily Task Manager Ready"
+    );
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ======================================================
+// ⚙️ SETTINGS MODAL
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const settingsBtn =
+            document.getElementById(
+                "settingsBtn"
+            );
+
+        const settingsModal =
+            document.getElementById(
+                "settingsModal"
+            );
+
+        const settingsClose =
+            document.getElementById(
+                "settingsClose"
+            );
+
+        const settingsOverlay =
+            document.getElementById(
+                "settingsOverlay"
+            );
+
+
+        if (
+            !settingsBtn ||
+            !settingsModal
+        ) {
+
+            console.error(
+                "❌ Settings elements پیدا نشدند."
+            );
+
+            return;
+
+        }
+
+
+        // ==================================================
+        // OPEN
+        // ==================================================
+
+        function openSettings(){
+
+            settingsModal.classList.add(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "hidden";
+
+            if(window.lucide){
+
+                lucide.createIcons();
+
+            }
+
+        }
+
+
+        // ==================================================
+        // CLOSE
+        // ==================================================
+
+        function closeSettings(){
+
+            settingsModal.classList.remove(
+                "active"
+            );
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        settingsBtn.addEventListener(
+            "click",
+            openSettings
+        );
+
+
+        if(settingsClose){
+
+            settingsClose.addEventListener(
+                "click",
+                closeSettings
+            );
+
+        }
+
+
+        if(settingsOverlay){
+
+            settingsOverlay.addEventListener(
+                "click",
+                closeSettings
+            );
+
+        }
+
+
+        // ==================================================
+        // ESC
+        // ==================================================
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if(
+                    event.key === "Escape" &&
+                    settingsModal.classList.contains(
+                        "active"
+                    )
+                ){
+
+                    closeSettings();
+
+                }
+
+            }
+        );
+
+
+        // ==================================================
+        // SETTINGS MENU
+        // ==================================================
+
+        const menuItems =
+            document.querySelectorAll(
+                ".settings-menu-item"
+            );
+
+        const sections =
+            document.querySelectorAll(
+                ".settings-section"
+            );
+
+
+        menuItems.forEach(
+            item => {
+
+                item.addEventListener(
+                    "click",
+                    () => {
+
+                        const target =
+                            item.dataset
+                                .settingsSection;
+
+
+                        menuItems.forEach(
+                            menu => {
+
+                                menu.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        sections.forEach(
+                            section => {
+
+                                section.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        item.classList.add(
+                            "active"
+                        );
+
+
+                        const targetSection =
+                            document.getElementById(
+                                `settings-section-${target}`
+                            );
+
+
+                        if(targetSection){
+
+                            targetSection.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        // ==================================================
+        // ICONS
+        // ==================================================
+
+        if(window.lucide){
+
+            lucide.createIcons();
+
+        }
+
+    }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================================
+// SMART ASSISTANT SETTINGS — DATABASE SYNC
+// =====================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+
+        const settingsModal =
+            document.getElementById(
+                "settingsModal"
+            );
+
+
+        const settingsBtn =
+            document.getElementById(
+                "settingsBtn"
+            );
+
+
+        if(
+            !settingsModal ||
+            !settingsBtn
+        ){
+
+            console.error(
+                "❌ SETTINGS ELEMENTS NOT FOUND"
+            );
+
+            return;
+
+        }
+
+
+        // =================================================
+        // GET CURRENT USER
+        // =================================================
+
+        function getCurrentUser(){
+
+            try{
+
+                const savedUser =
+                    localStorage.getItem(
+                        "currentUser"
+                    );
+
+                if(!savedUser){
+
+                    return null;
+
+                }
+
+                return JSON.parse(
+                    savedUser
+                );
+
+            }
+            catch(error){
+
+                console.error(
+                    "❌ CURRENT USER ERROR:",
+                    error
+                );
+
+                return null;
+
+            }
+
+        }
+
+
+        // =================================================
+        // GET PHONE
+        // =================================================
+
+        function getUserPhone(){
+
+            const user =
+                getCurrentUser();
+
+            return user?.phone || null;
+
+        }
+
+
+        // =================================================
+        // LOAD SETTINGS
+        // =================================================
+
+        async function loadAISettings(){
+
+            try{
+
+                const phone =
+                    getUserPhone();
+
+
+                if(!phone){
+
+                    console.error(
+                        "❌ شماره کاربر پیدا نشد."
+                    );
+
+                    return;
+
+                }
+
+
+                console.log(
+                    "⚙️ Loading AI settings..."
+                );
+
+
+                const response =
+                    await fetch(
+
+                        `${API_URL}/smart-assistant/settings/${phone}`
+
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "⚙️ AI SETTINGS:",
+                    data
+                );
+
+
+                if(
+                    !response.ok ||
+                    !data.success
+                ){
+
+                    console.error(
+                        "❌ دریافت تنظیمات ناموفق بود:",
+                        data
+                    );
+
+                    return;
+
+                }
+
+
+                applyAISettings(
+                    data.settings
+                );
+
+            }
+            catch(error){
+
+                console.error(
+                    "❌ LOAD AI SETTINGS ERROR:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        // =================================================
+        // APPLY SETTINGS TO UI
+        // =================================================
+
+        function applyAISettings(
+            settings
+        ){
+
+            if(!settings){
+
+                return;
+
+            }
+
+
+            const enabled =
+                document.getElementById(
+                    "aiEnabledSwitch"
+                );
+
+
+            const profile =
+                document.getElementById(
+                    "aiProfileSwitch"
+                );
+
+
+            const studyPlans =
+                document.getElementById(
+                    "aiStudyPlansSwitch"
+                );
+
+
+            const performance =
+                document.getElementById(
+                    "aiPerformanceSwitch"
+                );
+
+
+            const actions =
+                document.getElementById(
+                    "aiActionsSwitch"
+                );
+
+
+            if(enabled){
+
+                enabled.checked =
+                    settings.enabled === true;
+
+            }
+
+
+            if(profile){
+
+                profile.checked =
+                    settings.profile === true;
+
+            }
+
+
+            if(studyPlans){
+
+                studyPlans.checked =
+                    settings.studyPlans === true;
+
+            }
+
+
+            if(performance){
+
+                performance.checked =
+                    settings.performance === true;
+
+            }
+
+
+            if(actions){
+
+                actions.checked =
+                    settings.actions === true;
+
+            }
+
+
+            const accessLevel =
+                settings.accessLevel ||
+                "study";
+
+
+            const accessRadio =
+                document.querySelector(
+                    `input[name="aiAccessLevel"][value="${accessLevel}"]`
+                );
+
+
+            if(accessRadio){
+
+                accessRadio.checked =
+                    true;
+
+            }
+
+        }
+
+
+        // =================================================
+        // SAVE SETTINGS
+        // =================================================
+
+        async function saveAISettings(){
+
+            try{
+
+                const phone =
+                    getUserPhone();
+
+
+                if(!phone){
+
+                    console.error(
+                        "❌ شماره کاربر پیدا نشد."
+                    );
+
+                    return;
+
+                }
+
+
+                const enabled =
+                    document.getElementById(
+                        "aiEnabledSwitch"
+                    );
+
+
+                const profile =
+                    document.getElementById(
+                        "aiProfileSwitch"
+                    );
+
+
+                const studyPlans =
+                    document.getElementById(
+                        "aiStudyPlansSwitch"
+                    );
+
+
+                const performance =
+                    document.getElementById(
+                        "aiPerformanceSwitch"
+                    );
+
+
+                const actions =
+                    document.getElementById(
+                        "aiActionsSwitch"
+                    );
+
+
+                const selectedAccess =
+                    document.querySelector(
+                        'input[name="aiAccessLevel"]:checked'
+                    );
+
+
+                const settings = {
+
+                    enabled:
+                        enabled?.checked === true,
+
+                    accessLevel:
+                        selectedAccess?.value ||
+                        "study",
+
+                    profile:
+                        profile?.checked === true,
+
+                    studyPlans:
+                        studyPlans?.checked === true,
+
+                    performance:
+                        performance?.checked === true,
+
+                    actions:
+                        actions?.checked === true
+
+                };
+
+
+                console.log(
+                    "💾 Saving AI settings:",
+                    settings
+                );
+
+
+                const response =
+                    await fetch(
+
+                        `${API_URL}/smart-assistant/settings/${phone}`,
+
+                        {
+
+                            method: "PUT",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    settings
+                                )
+
+                        }
+
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "💾 SAVE RESPONSE:",
+                    data
+                );
+
+
+                if(
+                    !response.ok ||
+                    !data.success
+                ){
+
+                    console.error(
+                        "❌ ذخیره تنظیمات ناموفق بود:",
+                        data
+                    );
+
+                    return;
+
+                }
+
+
+                // مقدار واقعی برگشتی سرور
+                applyAISettings(
+                    data.settings
+                );
+
+
+                console.log(
+                    "✅ AI SETTINGS SAVED"
+                );
+
+            }
+            catch(error){
+
+                console.error(
+                    "❌ SAVE AI SETTINGS ERROR:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        // =================================================
+        // OPEN MODAL → LOAD FROM DATABASE
+        // =================================================
+
+        settingsBtn.addEventListener(
+            "click",
+            async () => {
+
+                settingsModal.classList.add(
+                    "active"
+                );
+
+                document.body.style.overflow =
+                    "hidden";
+
+
+                await loadAISettings();
+
+            }
+        );
+
+
+        // =================================================
+        // SWITCHES
+        // =================================================
+
+        const settingInputs =
+            settingsModal.querySelectorAll(
+                'input[type="checkbox"], input[name="aiAccessLevel"]'
+            );
+
+
+        settingInputs.forEach(
+            input => {
+
+                input.addEventListener(
+                    "change",
+                    async () => {
+
+                        await saveAISettings();
+
+                    }
+                );
+
+            }
+        );
+
+
+    }
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================================
+// AI ASSISTANT — BASIC BEHAVIOR
+// =====================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const aiAssistant =
+        document.getElementById("aiAssistant");
+
+    const aiCharacter =
+        document.getElementById("aiCharacter");
+
+    const aiMessage =
+        document.getElementById("aiMessage");
+
+    const aiMessageText =
+        document.getElementById("aiMessageText");
+
+    if (
+        !aiAssistant ||
+        !aiCharacter ||
+        !aiMessage ||
+        !aiMessageText
+    ) {
+
+        console.error(
+            "❌ AI Assistant: عناصر دستیار پیدا نشدند."
+        );
+
+        return;
+    }
+
+
+    // =================================================
+    // TYPE MESSAGE
+    // =================================================
+
+    let typingTimer = null;
+
+    function typeMessage(message){
+
+        clearInterval(typingTimer);
+
+        aiMessageText.textContent = "";
+
+        let index = 0;
+
+        typingTimer = setInterval(() => {
+
+            if(index >= message.length){
+
+                clearInterval(typingTimer);
+
+                return;
+            }
+
+            aiMessageText.textContent +=
+                message[index];
+
+            index++;
+
+        },35);
+    }
+
+
+    // =================================================
+    // OPEN MESSAGE
+    // =================================================
+
+    function showAssistantMessage(){
+
+        aiAssistant.classList.add(
+            "show-message"
+        );
+
+        typeMessage(
+            "سلام 👋 من دستیار هوشمندت هستم. هر وقت به کمک نیاز داشتی، من اینجام."
+        );
+    }
+
+
+    // =================================================
+    // CLOSE MESSAGE
+    // =================================================
+
+    function hideAssistantMessage(){
+
+        aiAssistant.classList.remove(
+            "show-message"
+        );
+
+        clearInterval(typingTimer);
+
+        aiMessageText.textContent = "";
+    }
+
+
+    // =================================================
+    // CLICK
+    // =================================================
+
+    aiCharacter.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                aiAssistant.classList.contains(
+                    "show-message"
+                );
+
+            if(isOpen){
+
+                hideAssistantMessage();
+
+            }else{
+
+                showAssistantMessage();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "🤖 AI Assistant Ready"
+    );
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================================
+// 🤖 SMART ASSISTANT — MAIN DASHBOARD
+// =====================================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const smartAssistant =
+        document.getElementById("aiAssistant");
+
+    const smartAssistantCharacter =
+        document.getElementById("aiCharacter");
+
+    const smartAssistantPanel =
+        document.getElementById("aiChatPanel");
+
+    const smartAssistantClose =
+        document.getElementById("aiChatClose");
+
+    const smartAssistantInput =
+        document.getElementById("aiChatInput");
+
+    const smartAssistantSend =
+        document.getElementById("aiChatSend");
+
+    const smartAssistantMessages =
+        document.getElementById("aiChatMessages");
+
+
+    // =================================================
+    // CHECK
+    // =================================================
+
+    if (
+        !smartAssistant ||
+        !smartAssistantCharacter ||
+        !smartAssistantPanel ||
+        !smartAssistantClose ||
+        !smartAssistantInput ||
+        !smartAssistantSend ||
+        !smartAssistantMessages
+    ) {
+
+        console.error(
+            "❌ Smart Assistant: عناصر پیدا نشدند."
+        );
+
+        return;
+
+    }
+
+
+    // =================================================
+    // STATE
+    // =================================================
+
+    let smartAssistantSending = false;
+
+    let smartAssistantHistoryLoading = false;
+
+    let smartAssistantHistoryLoaded = false;
+
+
+    // =================================================
+    // GET CURRENT USER PHONE
+    // =================================================
+
+    function getSmartAssistantPhone(){
+
+        try{
+
+            const savedUser =
+                localStorage.getItem(
+                    "currentUser"
+                );
+
+
+            if(!savedUser){
+
+                return null;
+
+            }
+
+
+            const user =
+                JSON.parse(
+                    savedUser
+                );
+
+
+            return user?.phone || null;
+
+        }
+
+        catch(error){
+
+            console.error(
+                "❌ SMART ASSISTANT USER ERROR:",
+                error
+            );
+
+            return null;
+
+        }
+
+    }
+
+
+    // =================================================
+    // OPEN CHAT
+    // =================================================
+
+    async function openSmartAssistantChat(){
+
+        smartAssistantPanel.classList.add(
+            "open"
+        );
+
+
+        smartAssistant.classList.remove(
+            "show-message"
+        );
+
+
+        // ---------------------------------------------
+        // LOAD HISTORY
+        // ---------------------------------------------
+
+        await loadSmartAssistantHistory();
+
+
+        setTimeout(() => {
+
+            smartAssistantInput.focus();
+
+        }, 250);
+
+
+        smartAssistantScroll();
+
+    }
+
+
+    // =================================================
+    // CLOSE CHAT
+    // =================================================
+
+    function closeSmartAssistantChat(){
+
+        smartAssistantPanel.classList.remove(
+            "open"
+        );
+
+
+        smartAssistantInput.value = "";
+
+    }
+
+
+    // =================================================
+    // CHARACTER CLICK
+    // =================================================
+
+    smartAssistantCharacter.addEventListener(
+        "click",
+        openSmartAssistantChat
+    );
+
+
+    // =================================================
+    // CLOSE BUTTON
+    // =================================================
+
+    smartAssistantClose.addEventListener(
+        "click",
+        closeSmartAssistantChat
+    );
+
+
+    // =================================================
+    // ADD USER MESSAGE
+    // =================================================
+
+    function addSmartAssistantUserMessage(
+        text
+    ){
+
+        if(
+            !text ||
+            !String(text).trim()
+        ){
+
+            return;
+
+        }
+
+
+        const message =
+            document.createElement(
+                "div"
+            );
+
+
+        message.className =
+            "ai-chat-message user";
+
+
+        const bubble =
+            document.createElement(
+                "div"
+            );
+
+
+        bubble.className =
+            "ai-chat-bubble";
+
+
+        bubble.textContent =
+            text;
+
+
+        message.appendChild(
+            bubble
+        );
+
+
+        smartAssistantMessages.appendChild(
+            message
+        );
+
+
+        smartAssistantScroll();
+
+    }
+
+
+    // =================================================
+    // SHOW TYPING
+    // =================================================
+
+    function showSmartAssistantTyping(){
+
+        const message =
+            document.createElement(
+                "div"
+            );
+
+
+        message.className =
+            "ai-chat-message assistant";
+
+
+        message.innerHTML = `
+
+            <div class="ai-chat-small-avatar">
+
+                <img
+                    src="images/ai-assistant.png"
+                    alt="AI"
+                >
+
+            </div>
+
+            <div class="ai-chat-bubble">
+
+                <div class="ai-chat-typing">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        smartAssistantMessages.appendChild(
+            message
+        );
+
+
+        smartAssistantScroll();
+
+
+        return message;
+
+    }
+
+
+    // =================================================
+    // ADD AI MESSAGE
+    // =================================================
+
+    function addSmartAssistantMessage(
+        text,
+        typeEffect = true
+    ){
+
+        if(
+            !text ||
+            !String(text).trim()
+        ){
+
+            return;
+
+        }
+
+
+        text =
+            String(text);
+
+
+        const message =
+            document.createElement(
+                "div"
+            );
+
+
+        message.className =
+            "ai-chat-message assistant";
+
+
+        message.innerHTML = `
+
+            <div class="ai-chat-small-avatar">
+
+                <img
+                    src="./01/e8ea2b32-26cb-45ed-94b3-2518bf447e50.png"
+                    alt="AI"
+                >
+
+            </div>
+
+            <div class="ai-chat-bubble"></div>
+
+        `;
+
+
+        const bubble =
+            message.querySelector(
+                ".ai-chat-bubble"
+            );
+
+
+        smartAssistantMessages.appendChild(
+            message
+        );
+
+
+        // ---------------------------------------------
+        // HISTORY MESSAGE
+        // ---------------------------------------------
+
+        if(!typeEffect){
+
+            bubble.textContent =
+                text;
+
+            smartAssistantScroll();
+
+            return;
+
+        }
+
+
+        // ---------------------------------------------
+        // TYPE EFFECT
+        // ---------------------------------------------
+
+        let index = 0;
+
+
+        const timer =
+            setInterval(() => {
+
+                if(
+                    index >= text.length
+                ){
+
+                    clearInterval(
+                        timer
+                    );
+
+                    return;
+
+                }
+
+
+                bubble.textContent +=
+                    text[index];
+
+
+                index++;
+
+
+                smartAssistantScroll();
+
+            }, 20);
+
+    }
+
+
+    // =================================================
+    // LOAD SMART ASSISTANT HISTORY
+    // =================================================
+
+    async function loadSmartAssistantHistory(){
+
+        // ---------------------------------------------
+        // جلوگیری از درخواست همزمان
+        // ---------------------------------------------
+
+        if(
+            smartAssistantHistoryLoading
+        ){
+
+            return;
+
+        }
+
+
+        smartAssistantHistoryLoading =
+            true;
+
+
+        try{
+
+            // -----------------------------------------
+            // GET PHONE
+            // -----------------------------------------
+
+            const phone =
+                getSmartAssistantPhone();
+
+
+            if(!phone){
+
+                console.warn(
+                    "⚠️ Smart Assistant history: شماره کاربر پیدا نشد."
+                );
+
+                return;
+
+            }
+
+
+            console.log(
+                "🧠 Loading Smart Assistant history..."
+            );
+
+
+            // -----------------------------------------
+            // REQUEST
+            // -----------------------------------------
+
+            const response =
+                await fetch(
+
+                    `${API_URL}/smart-assistant/history/${encodeURIComponent(phone)}`,
+
+                    {
+
+                        method:
+                            "GET",
+
+                        headers:{
+
+                            "Content-Type":
+                                "application/json"
+
+                        }
+
+                    }
+
+                );
+
+
+            // -----------------------------------------
+            // RESPONSE
+            // -----------------------------------------
+
+            const data =
+                await response.json();
+
+
+            console.log(
+                "🧠 SMART ASSISTANT HISTORY:",
+                data
+            );
+
+
+            // -----------------------------------------
+            // CHECK RESPONSE
+            // -----------------------------------------
+
+            if(
+                !response.ok ||
+                !data.success
+            ){
+
+                console.error(
+                    "❌ Smart Assistant history error:",
+                    data
+                );
+
+                return;
+
+            }
+
+
+            const messages =
+                Array.isArray(
+                    data.messages
+                )
+                    ? data.messages
+                    : [];
+
+
+            // -----------------------------------------
+            // CLEAR CURRENT CHAT
+            // -----------------------------------------
+
+            smartAssistantMessages.innerHTML =
+                "";
+
+
+            // -----------------------------------------
+            // BUILD HISTORY
+            // -----------------------------------------
+
+            messages.forEach(
+                (message) => {
+
+                    if(
+                        !message ||
+                        !message.content
+                    ){
+
+                        return;
+
+                    }
+
+
+                    const role =
+                        message.role;
+
+
+                    // -------------------------------
+                    // USER
+                    // -------------------------------
+
+                    if(
+                        role === "user"
+                    ){
+
+                        addSmartAssistantUserMessage(
+                            message.content
+                        );
+
+                    }
+
+
+                    // -------------------------------
+                    // ASSISTANT
+                    // -------------------------------
+
+                    else if(
+                        role === "assistant"
+                    ){
+
+                        addSmartAssistantMessage(
+                            message.content,
+                            false
+                        );
+
+                    }
+
+                }
+            );
+
+
+            // -----------------------------------------
+            // STATE
+            // -----------------------------------------
+
+            smartAssistantHistoryLoaded =
+                true;
+
+
+            smartAssistantScroll();
+
+
+            console.log(
+                "✅ Smart Assistant history loaded:",
+                messages.length,
+                "messages"
+            );
+
+        }
+
+        catch(error){
+
+            console.error(
+                "❌ LOAD SMART ASSISTANT HISTORY ERROR:",
+                error
+            );
+
+        }
+
+        finally{
+
+            smartAssistantHistoryLoading =
+                false;
+
+        }
+
+    }
+
+
+    // =================================================
+    // NEW SMART ASSISTANT API
+    // =================================================
+
+    async function requestSmartAssistant(
+        text
+    ){
+
+        try{
+
+            // -----------------------------------------
+            // GET CURRENT USER
+            // -----------------------------------------
+
+            const phone =
+                getSmartAssistantPhone();
+
+
+            // -----------------------------------------
+            // CHECK USER
+            // -----------------------------------------
+
+            if(!phone){
+
+                console.error(
+                    "❌ SMART ASSISTANT: شماره کاربر پیدا نشد"
+                );
+
+
+                return {
+
+                    ok:
+                        false,
+
+                    data:{
+
+                        message:
+                            "کاربر شناسایی نشد."
+
+                    }
+
+                };
+
+            }
+
+
+            console.log(
+                "👤 SMART ASSISTANT USER:",
+                phone
+            );
+
+
+            // -----------------------------------------
+            // SEND REQUEST
+            // -----------------------------------------
+
+            const response =
+                await fetch(
+
+                    `${API_URL}/smart-assistant/message`,
+
+                    {
+
+                        method:
+                            "POST",
+
+                        headers:{
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                message:
+                                    text,
+
+                                phone:
+                                    phone
+
+                            })
+
+                    }
+
+                );
+
+
+            // -----------------------------------------
+            // RESPONSE
+            // -----------------------------------------
+
+            const data =
+                await response.json();
+
+
+            console.log(
+                "🤖 SMART ASSISTANT RESPONSE:",
+                data
+            );
+
+
+            return {
+
+                ok:
+                    response.ok,
+
+                data:
+                    data
+
+            };
+
+        }
+
+
+        catch(error){
+
+            console.error(
+                "❌ SMART ASSISTANT REQUEST ERROR:",
+                error
+            );
+
+
+            return {
+
+                ok:
+                    false,
+
+                data:
+                    null
+
+            };
+
+        }
+
+    }
+
+
+    // =================================================
+    // SEND MESSAGE
+    // =================================================
+
+    async function sendSmartAssistantMessage(){
+
+        const text =
+            smartAssistantInput.value.trim();
+
+
+        if(!text){
+
+            return;
+
+        }
+
+
+        // ---------------------------------------------
+        // جلوگیری از ارسال چند درخواست همزمان
+        // ---------------------------------------------
+
+        if(smartAssistantSending){
+
+            return;
+
+        }
+
+
+        smartAssistantSending =
+            true;
+
+
+        smartAssistantSend.disabled =
+            true;
+
+
+        // ---------------------------------------------
+        // USER MESSAGE
+        // ---------------------------------------------
+
+        addSmartAssistantUserMessage(
+            text
+        );
+
+
+        smartAssistantInput.value =
+            "";
+
+
+        smartAssistantInput.focus();
+
+
+        // ---------------------------------------------
+        // TYPING
+        // ---------------------------------------------
+
+        const loading =
+            showSmartAssistantTyping();
+
+
+        try{
+
+            // -----------------------------------------
+            // REQUEST
+            // -----------------------------------------
+
+            const result =
+                await requestSmartAssistant(
+                    text
+                );
+
+
+            // -----------------------------------------
+            // REMOVE TYPING
+            // -----------------------------------------
+
+            if(loading){
+
+                loading.remove();
+
+            }
+
+
+            // -----------------------------------------
+            // ERROR
+            // -----------------------------------------
+
+            if(
+                !result ||
+                !result.ok
+            ){
+
+                addSmartAssistantMessage(
+
+                    "متأسفم 😕 فعلاً نتونستم به هوش مصنوعی وصل بشم."
+
+                );
+
+                return;
+
+            }
+
+
+            // -----------------------------------------
+            // RESPONSE
+            // -----------------------------------------
+
+            const reply =
+                result.data?.reply ||
+                "پاسخی از دستیار دریافت نشد.";
+
+
+            addSmartAssistantMessage(
+                reply
+            );
+
+        }
+
+        catch(error){
+
+            console.error(
+                "❌ SMART ASSISTANT ERROR:",
+                error
+            );
+
+
+            if(loading){
+
+                loading.remove();
+
+            }
+
+
+            addSmartAssistantMessage(
+
+                "یک خطای غیرمنتظره رخ داد 😕"
+
+            );
+
+        }
+
+        finally{
+
+            smartAssistantSending =
+                false;
+
+
+            smartAssistantSend.disabled =
+                false;
+
+        }
+
+    }
+
+
+    // =================================================
+    // SEND BUTTON
+    // =================================================
+
+    smartAssistantSend.addEventListener(
+        "click",
+        sendSmartAssistantMessage
+    );
+
+
+    // =================================================
+    // ENTER
+    // =================================================
+
+    smartAssistantInput.addEventListener(
+        "keydown",
+        (event) => {
+
+            if(
+                event.key === "Enter" &&
+                !event.shiftKey
+            ){
+
+                event.preventDefault();
+
+
+                sendSmartAssistantMessage();
+
+            }
+
+        }
+    );
+
+
+    // =================================================
+    // SCROLL
+    // =================================================
+
+    function smartAssistantScroll(){
+
+        smartAssistantMessages.scrollTop =
+            smartAssistantMessages.scrollHeight;
+
+    }
+
+
+    // =================================================
+    // ESC
+    // =================================================
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if(
+                event.key === "Escape" &&
+                smartAssistantPanel.classList.contains(
+                    "open"
+                )
+            ){
+
+                closeSmartAssistantChat();
+
+            }
+
+        }
+    );
+
+
+    // =================================================
+    // READY
+    // =================================================
+
+    console.log(
+        "🤖 Smart Assistant connected"
+    );
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================================
+// 🔄 LIVE SYNC ENGINE
+// =====================================================
+// هدف:
+// - همگام‌سازی برنامه‌های هفتگی با سرور
+// - بدون Refresh صفحه
+// - فقط اعمال تغییرات واقعی
+// - Sync هر 1 ثانیه
+// - Sync فوری بعد از تغییرات
+// - جلوگیری از درخواست‌های همزمان
+// =====================================================
+
+(function(){
+
+    "use strict";
+
+
+    // =================================================
+    // CONFIG
+    // =================================================
+
+    const LIVE_SYNC_INTERVAL = 1000;
+
+
+    // =================================================
+    // STATE
+    // =================================================
+
+    let liveSyncTimer = null;
+
+    let liveSyncRunning = false;
+
+    let liveSyncStarted = false;
+
+    let lastServerPlans = new Map();
+
+    let firstSyncCompleted = false;
+
+
+    // =================================================
+    // GET CURRENT USER
+    // =================================================
+
+    function getLiveSyncUser(){
+
+        try{
+
+            const savedUser =
+                localStorage.getItem(
+                    "currentUser"
+                );
+
+            if(!savedUser){
+
+                return null;
+
+            }
+
+            return JSON.parse(
+                savedUser
+            );
+
+        }
+        catch(error){
+
+            console.error(
+                "❌ LIVE SYNC USER ERROR:",
+                error
+            );
+
+            return null;
+
+        }
+
+    }
+
+
+    // =================================================
+    // GET PHONE
+    // =================================================
+
+    function getLiveSyncPhone(){
+
+        const user =
+            getLiveSyncUser();
+
+        return user?.phone || null;
+
+    }
+
+
+    // =================================================
+    // CREATE PLAN SIGNATURE
+    // =================================================
+    // برای تشخیص اینکه یک برنامه واقعاً تغییر کرده
+    // =================================================
+
+    function getPlanSignature(plan){
+
+        if(!plan){
+
+            return "";
+
+        }
+
+        return JSON.stringify({
+
+            _id:
+                plan._id || "",
+
+            phone:
+                plan.phone || "",
+
+            day:
+                plan.day || "",
+
+            subject:
+                plan.subject || "",
+
+            subjectName:
+                plan.subjectName || "",
+
+            icon:
+                plan.icon || "",
+
+            color:
+                plan.color || "",
+
+            title:
+                plan.title || "",
+
+            note:
+                plan.note || "",
+
+            duration:
+                plan.duration ?? "",
+
+            completed:
+                plan.completed === true
+
+        });
+
+    }
+
+
+    // =================================================
+    // GET CURRENT DOM PLAN CARDS
+    // =================================================
+
+    function getCurrentPlanCards(){
+
+        const cards =
+            document.querySelectorAll(
+                ".task-card"
+            );
+
+        const map =
+            new Map();
+
+
+        cards.forEach(
+            card => {
+
+                const id =
+                    card.dataset.id;
+
+
+                if(id){
+
+                    map.set(
+                        String(id),
+                        card
+                    );
+
+                }
+
+            }
+        );
+
+
+        return map;
+
+    }
+
+
+    // =================================================
+    // FIND PLAN CARD
+    // =================================================
+
+    function findPlanCard(planId){
+
+        if(!planId){
+
+            return null;
+
+        }
+
+        const cards =
+            document.querySelectorAll(
+                ".task-card"
+            );
+
+
+        for(
+            const card of cards
+        ){
+
+            if(
+                String(card.dataset.id) ===
+                String(planId)
+            ){
+
+                return card;
+
+            }
+
+        }
+
+
+        return null;
+
+    }
+
+
+    // =================================================
+    // UPDATE EXISTING CARD
+    // =================================================
+
+    function updatePlanCard(
+        card,
+        plan
+    ){
+
+        if(
+            !card ||
+            !plan
+        ){
+
+            return false;
+
+        }
+
+
+        const oldDay =
+            card.dataset.day;
+
+
+        const newDay =
+            plan.day || oldDay;
+
+
+        // ---------------------------------------------
+        // UPDATE DATASET
+        // ---------------------------------------------
+
+        card.dataset.id =
+            plan._id || card.dataset.id;
+
+        card.dataset.subject =
+            plan.subject || "";
+
+        card.dataset.subjectName =
+            plan.subjectName || "";
+
+        card.dataset.icon =
+            plan.icon || "book-open";
+
+        card.dataset.color =
+            plan.color || "#6366f1";
+
+        card.dataset.day =
+            newDay;
+
+        card.dataset.duration =
+            plan.duration ?? "";
+
+        card.dataset.topic =
+            plan.title || "";
+
+        card.dataset.note =
+            plan.note || "";
+
+        card.dataset.completed =
+            plan.completed === true
+                ? "true"
+                : "false";
+
+
+        // ---------------------------------------------
+        // COMPLETED
+        // ---------------------------------------------
+
+        if(
+            plan.completed === true
+        ){
+
+            card.classList.add(
+                "completed"
+            );
+
+        }
+        else{
+
+            card.classList.remove(
+                "completed"
+            );
+
+        }
+
+
+        // ---------------------------------------------
+        // UPDATE CONTENT
+        // ---------------------------------------------
+
+        const subjectNameElement =
+            card.querySelector(
+                ".task-subject-name"
+            );
+
+
+        if(subjectNameElement){
+
+            subjectNameElement.textContent =
+                plan.subjectName || "بدون نام";
+
+        }
+
+
+        const topicElement =
+            card.querySelector(
+                ".task-topic"
+            );
+
+
+        if(topicElement){
+
+            topicElement.textContent =
+                plan.title || "-";
+
+        }
+
+
+        const timeElement =
+            card.querySelector(
+                ".task-time"
+            );
+
+
+        if(timeElement){
+
+            if(
+                plan.completed === true
+            ){
+
+                timeElement.innerHTML =
+                    `
+                    <i data-lucide="check"></i>
+                    انجام شده
+                    `;
+
+            }
+            else{
+
+                timeElement.textContent =
+                    `${plan.duration ?? "-"} مطالعه`;
+
+            }
+
+        }
+
+
+        // ---------------------------------------------
+        // UPDATE SUBJECT ICON
+        // ---------------------------------------------
+
+        const iconElement =
+            card.querySelector(
+                "[data-lucide]"
+            );
+
+
+        if(iconElement){
+
+            iconElement.setAttribute(
+                "data-lucide",
+                plan.icon || "book-open"
+            );
+
+        }
+
+
+        // ---------------------------------------------
+        // MOVE CARD IF DAY CHANGED
+        // ---------------------------------------------
+
+        if(
+            oldDay !== newDay
+        ){
+
+            const newContainer =
+                document.querySelector(
+                    `.day-tasks[data-tasks="${newDay}"]`
+                );
+
+
+            if(newContainer){
+
+                newContainer.appendChild(
+                    card
+                );
+
+            }
+
+        }
+
+
+        // ---------------------------------------------
+        // REFRESH ICONS
+        // ---------------------------------------------
+
+        if(
+            window.lucide
+        ){
+
+            lucide.createIcons();
+
+        }
+
+
+        return true;
+
+    }
+
+
+    // =================================================
+    // ADD NEW PLAN CARD
+    // =================================================
+
+    function addPlanCard(
+        plan
+    ){
+
+        if(!plan){
+
+            return false;
+
+        }
+
+
+        const existingCard =
+            findPlanCard(
+                plan._id
+            );
+
+
+        if(existingCard){
+
+            return updatePlanCard(
+                existingCard,
+                plan
+            );
+
+        }
+
+
+        // از تابع اصلی خود سایت استفاده می‌کنیم
+        // تا ظاهر کارت دقیقاً مثل کارت‌های فعلی باشد.
+
+        if(
+            typeof renderTaskFromDatabase ===
+            "function"
+        ){
+
+            renderTaskFromDatabase(
+                plan
+            );
+
+
+            const newCard =
+                findPlanCard(
+                    plan._id
+                );
+
+
+            if(newCard){
+
+                updatePlanCard(
+                    newCard,
+                    plan
+                );
+
+            }
+
+
+            return true;
+
+        }
+
+
+        console.warn(
+            "⚠️ renderTaskFromDatabase پیدا نشد."
+        );
+
+
+        return false;
+
+    }
+
+
+    // =================================================
+    // REMOVE PLAN CARD
+    // =================================================
+
+    function removePlanCard(
+        planId
+    ){
+
+        const card =
+            findPlanCard(
+                planId
+            );
+
+
+        if(!card){
+
+            return false;
+
+        }
+
+
+        // اگر کارت در حال مطالعه است،
+        // reference را پاک نکنیم مگر واقعاً حذف شده باشد.
+
+        if(
+            typeof currentStudyingTaskCard !==
+            "undefined" &&
+            currentStudyingTaskCard === card
+        ){
+
+            try{
+
+                currentStudyingTaskCard =
+                    null;
+
+            }
+            catch(error){
+
+                console.warn(
+                    "⚠️ Could not clear current studying card."
+                );
+
+            }
+
+        }
+
+
+        card.remove();
+
+
+        return true;
+
+    }
+
+
+    // =================================================
+    // APPLY SERVER PLANS
+    // =================================================
+
+    function applyServerPlans(
+        plans
+    ){
+
+        if(
+            !Array.isArray(plans)
+        ){
+
+            return false;
+
+        }
+
+
+        let changed =
+            false;
+
+
+        const serverMap =
+            new Map();
+
+
+        // ---------------------------------------------
+        // BUILD SERVER MAP
+        // ---------------------------------------------
+
+        plans.forEach(
+            plan => {
+
+                if(!plan?._id){
+
+                    return;
+
+                }
+
+
+                const id =
+                    String(
+                        plan._id
+                    );
+
+
+                serverMap.set(
+                    id,
+                    plan
+                );
+
+            }
+        );
+
+
+        const currentDomCards =
+            getCurrentPlanCards();
+
+
+        // ---------------------------------------------
+        // ADD / UPDATE
+        // ---------------------------------------------
+
+        serverMap.forEach(
+            (
+                plan,
+                id
+            ) => {
+
+                const oldPlan =
+                    lastServerPlans.get(
+                        id
+                    );
+
+
+                const oldSignature =
+                    oldPlan
+                        ? getPlanSignature(
+                            oldPlan
+                        )
+                        : null;
+
+
+                const newSignature =
+                    getPlanSignature(
+                        plan
+                    );
+
+
+                const domCard =
+                    currentDomCards.get(
+                        id
+                    );
+
+
+                // برنامه جدید
+                if(
+                    !oldPlan
+                ){
+
+                    if(
+                        addPlanCard(
+                            plan
+                        )
+                    ){
+
+                        changed =
+                            true;
+
+                    }
+
+                    return;
+
+                }
+
+
+                // برنامه تغییر کرده
+                if(
+                    oldSignature !==
+                    newSignature
+                ){
+
+                    if(
+                        domCard
+                    ){
+
+                        if(
+                            updatePlanCard(
+                                domCard,
+                                plan
+                            )
+                        ){
+
+                            changed =
+                                true;
+
+                        }
+
+                    }
+                    else{
+
+                        if(
+                            addPlanCard(
+                                plan
+                            )
+                        ){
+
+                            changed =
+                                true;
+
+                        }
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        // ---------------------------------------------
+        // REMOVE
+        // ---------------------------------------------
+
+        lastServerPlans.forEach(
+            (
+                oldPlan,
+                id
+            ) => {
+
+                if(
+                    !serverMap.has(
+                        id
+                    )
+                ){
+
+                    if(
+                        removePlanCard(
+                            id
+                        )
+                    ){
+
+                        changed =
+                            true;
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        // ---------------------------------------------
+        // SAVE NEW CACHE
+        // ---------------------------------------------
+
+        lastServerPlans =
+            serverMap;
+
+
+        // ---------------------------------------------
+        // REFRESH LESSONS ONLY IF NEEDED
+        // ---------------------------------------------
+
+        if(
+            changed &&
+            typeof refreshLessonsSection ===
+            "function"
+        ){
+
+            refreshLessonsSection();
+
+        }
+
+
+        return changed;
+
+    }
+
+
+    // =================================================
+    // FETCH PLANS
+    // =================================================
+
+    async function fetchLivePlans(){
+
+        const phone =
+            getLiveSyncPhone();
+
+
+        if(!phone){
+
+            return null;
+
+        }
+
+
+        if(
+            typeof API_URL ===
+            "undefined"
+        ){
+
+            console.error(
+                "❌ API_URL برای Live Sync پیدا نشد."
+            );
+
+            return null;
+
+        }
+
+
+        try{
+
+            const response =
+                await fetch(
+
+                    `${API_URL}/plans/${phone}`,
+
+                    {
+                        method:
+                            "GET",
+
+                        cache:
+                            "no-store",
+
+                        headers:{
+                            "Cache-Control":
+                                "no-cache"
+                        }
+
+                    }
+
+                );
+
+
+            if(
+                !response.ok
+            ){
+
+                throw new Error(
+                    `HTTP ${response.status}`
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            if(
+                !data ||
+                data.success !== true
+            ){
+
+                throw new Error(
+                    data?.message ||
+                    "دریافت برنامه‌ها ناموفق بود."
+                );
+
+            }
+
+
+            return Array.isArray(
+                data.plans
+            )
+                ? data.plans
+                : [];
+
+        }
+        catch(error){
+
+            // اینجا عمداً Toast نمی‌زنیم
+            // چون در حالت قطعی اینترنت نباید هر ثانیه Toast نمایش داده شود.
+
+            console.warn(
+                "⚠️ LIVE SYNC FETCH:",
+                error.message
+            );
+
+
+            return null;
+
+        }
+
+    }
+
+
+    // =================================================
+    // MAIN SYNC
+    // =================================================
+
+    async function liveSync(){
+
+        // اگر قبلاً Sync در حال اجراست
+        // درخواست جدید ایجاد نکن.
+
+        if(
+            liveSyncRunning
+        ){
+
+            return;
+
+        }
+
+
+        // اگر اینترنت قطع است
+        // درخواست بی‌دلیل نفرست.
+
+        if(
+            navigator.onLine === false
+        ){
+
+            return;
+
+        }
+
+
+        liveSyncRunning =
+            true;
+
+
+        try{
+
+            const plans =
+                await fetchLivePlans();
+
+
+            if(
+                plans === null
+            ){
+
+                return;
+
+            }
+
+
+            const changed =
+                applyServerPlans(
+                    plans
+                );
+
+
+            if(
+                changed
+            ){
+
+                console.log(
+                    "🔄 LIVE SYNC: تغییرات اعمال شد."
+                );
+
+            }
+
+
+            if(
+                !firstSyncCompleted
+            ){
+
+                firstSyncCompleted =
+                    true;
+
+
+                console.log(
+                    "🟢 LIVE SYNC: اتصال اولیه انجام شد."
+                );
+
+            }
+
+        }
+        catch(error){
+
+            console.error(
+                "❌ LIVE SYNC ERROR:",
+                error
+            );
+
+        }
+        finally{
+
+            liveSyncRunning =
+                false;
+
+        }
+
+    }
+
+
+    // =================================================
+    // FORCE SYNC
+    // =================================================
+    // این تابع برای بعد از:
+    // ADD
+    // EDIT
+    // DELETE
+    // SMART ASSISTANT
+    // استفاده می‌شود.
+    // =================================================
+
+    async function forceLiveSync(){
+
+        console.log(
+            "⚡ LIVE SYNC: فورس سینک..."
+        );
+
+
+        await liveSync();
+
+    }
+
+
+    // =================================================
+    // START
+    // =================================================
+
+    function startLiveSync(){
+
+        if(
+            liveSyncStarted
+        ){
+
+            return;
+
+        }
+
+
+        liveSyncStarted =
+            true;
+
+
+        console.log(
+            "🟢 LIVE SYNC ENGINE STARTED"
+        );
+
+
+        // Sync اولیه
+        liveSync();
+
+
+        // Sync هر 1 ثانیه
+        liveSyncTimer =
+            setInterval(
+                () => {
+
+                    liveSync();
+
+                },
+                LIVE_SYNC_INTERVAL
+            );
+
+    }
+
+
+    // =================================================
+    // STOP
+    // =================================================
+
+    function stopLiveSync(){
+
+        if(
+            liveSyncTimer
+        ){
+
+            clearInterval(
+                liveSyncTimer
+            );
+
+            liveSyncTimer =
+                null;
+
+        }
+
+
+        liveSyncStarted =
+            false;
+
+
+        console.log(
+            "🔴 LIVE SYNC ENGINE STOPPED"
+        );
+
+    }
+
+
+    // =================================================
+    // ONLINE
+    // =================================================
+
+    window.addEventListener(
+        "online",
+        () => {
+
+            console.log(
+                "🌐 اینترنت وصل شد → LIVE SYNC"
+            );
+
+
+            forceLiveSync();
+
+        }
+    );
+
+
+    // =================================================
+    // OFFLINE
+    // =================================================
+
+    window.addEventListener(
+        "offline",
+        () => {
+
+            console.log(
+                "🔴 اینترنت قطع شد."
+            );
+
+        }
+    );
+
+
+    // =================================================
+    // GLOBAL API
+    // =================================================
+    // برای استفاده از قسمت‌های دیگر 1.js
+    // =================================================
+
+    window.liveSyncNow =
+        forceLiveSync;
+
+    window.startLiveSync =
+        startLiveSync;
+
+    window.stopLiveSync =
+        stopLiveSync;
+
+
+    // =================================================
+    // START AFTER DOM READY
+    // =================================================
+
+    if(
+        document.readyState ===
+        "loading"
+    ){
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                startLiveSync();
+
+            },
+            {
+                once:true
+            }
+        );
+
+    }
+    else{
+
+        startLiveSync();
+
+    }
+
+
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    const aiAssistant =
+        document.getElementById("aiAssistant");
+
+    const aiMessage =
+        document.getElementById("aiMessage");
+
+    const aiMessageText =
+        document.getElementById("aiMessageText");
+
+
+    console.log("AI ELEMENTS:",{
+        aiAssistant,
+        aiMessage,
+        aiMessageText
+    });
+
+
+    if(
+        !aiAssistant ||
+        !aiMessage ||
+        !aiMessageText
+    ){
+
+        console.error(
+            "SMART ASSISTANT ELEMENTS NOT FOUND"
+        );
+
+        return;
+    }
+
+
+    let typingTimer = null;
+
+    let hideTimer = null;
+
+
+    function getCurrentUser(){
+
+        try{
+
+            const savedUser =
+                localStorage.getItem(
+                    "currentUser"
+                );
+
+
+            if(!savedUser){
+                return null;
+            }
+
+
+            return JSON.parse(
+                savedUser
+            );
+
+        }
+        catch(error){
+
+            console.warn(
+                "⚠️ ASSISTANT USER ERROR:",
+                error
+            );
+
+            return null;
+
+        }
+
+    }
+
+
+    function hideSmartAssistantMessage(){
+
+        clearTimeout(
+            typingTimer
+        );
+
+        clearTimeout(
+            hideTimer
+        );
+
+
+        aiMessage.classList.remove(
+            "show"
+        );
+
+
+        aiAssistant.classList.remove(
+            "message-active"
+        );
+
+    }
+
+
+    function showSmartAssistantMessage(
+        message,
+        duration = 8000,
+        saveMessage = false
+    ){
+
+        clearTimeout(
+            typingTimer
+        );
+
+        clearTimeout(
+            hideTimer
+        );
+
+
+        if(!message){
+            return;
+        }
+
+
+        aiMessageText.textContent =
+            "";
+
+
+        aiMessage.classList.add(
+            "show"
+        );
+
+
+        aiAssistant.classList.add(
+            "message-active"
+        );
+
+
+        let index = 0;
+
+
+        function typeText(){
+
+            if(index >= message.length){
+
+                if(saveMessage){
+
+                    saveAssistantMessage(
+                        message
+                    );
+
+                }
+
+
+                hideTimer =
+                    setTimeout(
+                        hideSmartAssistantMessage,
+                        duration
+                    );
+
+
+                return;
+            }
+
+
+            aiMessageText.textContent +=
+                message[index];
+
+
+            index++;
+
+
+            typingTimer =
+                setTimeout(
+                    typeText,
+                    35
+                );
+
+        }
+
+
+        typeText();
+
+    }
+
+
+    async function saveAssistantMessage(
+        message
+    ){
+
+        try{
+
+            const user =
+                getCurrentUser();
+
+
+            const phone =
+                user?.phone;
+
+
+            if(!phone){
+                return;
+            }
+
+
+            if(
+                typeof API_URL ===
+                "undefined"
+            ){
+
+                console.error(
+                    "❌ API_URL پیدا نشد."
+                );
+
+                return;
+
+            }
+
+
+            const response =
+                await fetch(
+                    `${API_URL}/smart-assistant/proactive`,
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:JSON.stringify({
+                            phone:phone,
+                            message:message
+                        })
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            if(!response.ok){
+
+                throw new Error(
+                    result?.message ||
+                    `HTTP ${response.status}`
+                );
+
+            }
+
+
+            console.log(
+                "💾 SMART ASSISTANT MESSAGE SAVED"
+            );
+
+        }
+        catch(error){
+
+            console.warn(
+                "⚠️ SMART ASSISTANT SAVE ERROR:",
+                error
+            );
+
+        }
+
+    }
+
+
+    window.showSmartAssistantMessage =
+        showSmartAssistantMessage;
+
+
+    window.hideSmartAssistantMessage =
+        hideSmartAssistantMessage;
+
+
+    window.saveAssistantMessage =
+        saveAssistantMessage;
+
+
+    console.log(
+        "🤖 SMART ASSISTANT UI READY"
+    );
+
+});
+
+
+
+(function(){
+
+    "use strict";
+
+
+    const assistantEvents = [];
+
+    const MAX_EVENTS = 30;
+
+
+    function getCurrentUser(){
+
+        try{
+
+            const savedUser =
+                localStorage.getItem(
+                    "currentUser"
+                );
+
+
+            if(!savedUser){
+                return null;
+            }
+
+
+            return JSON.parse(
+                savedUser
+            );
+
+        }
+        catch(error){
+
+            console.warn(
+                "⚠️ ASSISTANT USER ERROR:",
+                error
+            );
+
+            return null;
+
+        }
+
+    }
+
+
+    function assistantEvent(
+        type,
+        data = {}
+    ){
+
+        const event = {
+
+            type:type,
+
+            data:data,
+
+            time:
+                new Date()
+                    .toISOString(),
+
+            phone:
+                getCurrentUser()?.phone ||
+                null
+
+        };
+
+
+        assistantEvents.push(
+            event
+        );
+
+
+        if(
+            assistantEvents.length >
+            MAX_EVENTS
+        ){
+
+            assistantEvents.shift();
+
+        }
+
+
+        console.log(
+            "🤖 ASSISTANT EVENT:",
+            event
+        );
+
+
+        processAssistantEvent(
+            event
+        );
+
+    }
+
+
+    function getAssistantEvents(){
+
+        return [
+            ...assistantEvents
+        ];
+
+    }
+
+
+    function processAssistantEvent(
+        event
+    ){
+
+        if(!event){
+            return;
+        }
+
+
+        switch(
+            event.type
+        ){
+
+            case "PLAN_CREATED":
+
+                console.log(
+                    "📚 برنامه جدید ایجاد شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "PLAN_UPDATED":
+
+                console.log(
+                    "✏️ برنامه ویرایش شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "PLAN_DELETED":
+
+                console.log(
+                    "🗑️ برنامه حذف شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "PLAN_COMPLETED":
+
+                console.log(
+                    "✅ برنامه تکمیل شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "STUDY_STARTED":
+
+                console.log(
+                    "▶️ مطالعه شروع شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "STUDY_PAUSED":
+
+                console.log(
+                    "⏸️ مطالعه متوقف شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "STUDY_FINISHED":
+
+                console.log(
+                    "⏱️ مطالعه تمام شد:",
+                    event.data
+                );
+
+                break;
+
+
+            default:
+
+                console.log(
+                    "ℹ️ رویداد دستیار:",
+                    event.type
+                );
+
+        }
+
+    }
+
+
+    window.assistantEvent =
+        assistantEvent;
+
+
+    window.getAssistantEvents =
+        getAssistantEvents;
+
+
+})();
+
+
+(function(){
+
+    "use strict";
+
+
+    const assistantEvents = [];
+
+    const MAX_EVENTS = 30;
+
+
+    let eventRequestRunning = false;
+
+
+    function getCurrentUser(){
+
+        try{
+
+            const savedUser =
+                localStorage.getItem(
+                    "currentUser"
+                );
+
+
+            if(!savedUser){
+                return null;
+            }
+
+
+            return JSON.parse(
+                savedUser
+            );
+
+        }
+        catch(error){
+
+            console.warn(
+                "⚠️ ASSISTANT USER ERROR:",
+                error
+            );
+
+            return null;
+
+        }
+
+    }
+
+
+    async function triggerSmartAssistantProactive(
+        event
+    ){
+
+        if(!event){
+            return;
+        }
+
+
+        if(eventRequestRunning){
+
+            console.log(
+                "⏳ SMART ASSISTANT EVENT REQUEST ALREADY RUNNING"
+            );
+
+            return;
+
+        }
+
+
+        const user =
+            getCurrentUser();
+
+
+        const phone =
+            user?.phone;
+
+
+        if(!phone){
+
+            console.warn(
+                "⚠️ SMART ASSISTANT EVENT: USER PHONE NOT FOUND"
+            );
+
+            return;
+
+        }
+
+
+        if(
+            typeof API_URL ===
+            "undefined"
+        ){
+
+            console.error(
+                "❌ API_URL برای Smart Assistant پیدا نشد."
+            );
+
+            return;
+
+        }
+
+
+        try{
+
+            eventRequestRunning =
+                true;
+
+
+            console.log(
+                "🚀 SMART ASSISTANT EVENT → BACKEND:",
+                event.type
+            );
+
+
+            const response =
+                await fetch(
+
+                    `${API_URL}/smart-assistant/proactive/check`,
+
+                    {
+
+                        method:
+                            "POST",
+
+                        headers:{
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                phone:
+                                    phone,
+
+                                event:
+                                    event.type,
+
+                                eventData:
+                                    event.data || {}
+
+                            })
+
+                    }
+
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if(!response.ok){
+
+                throw new Error(
+
+                    data?.message ||
+                    `HTTP ${response.status}`
+
+                );
+
+            }
+
+
+            console.log(
+                "🤖 EVENT PROACTIVE RESULT:",
+                data
+            );
+
+
+            if(
+                data.success === true &&
+                data.shouldSpeak === true &&
+                data.message
+            ){
+
+                if(
+                    typeof window.showSmartAssistantMessage ===
+                    "function"
+                ){
+
+                    window.showSmartAssistantMessage(
+
+                        data.message,
+
+                        8000,
+
+                        false
+
+                    );
+
+                }
+
+            }
+
+        }
+        catch(error){
+
+            console.warn(
+                "⚠️ SMART ASSISTANT EVENT ERROR:",
+                error
+            );
+
+        }
+        finally{
+
+            eventRequestRunning =
+                false;
+
+        }
+
+    }
+
+
+    function assistantEvent(
+        type,
+        data = {}
+    ){
+
+        if(
+            !type ||
+            typeof type !== "string"
+        ){
+
+            console.warn(
+                "⚠️ SMART ASSISTANT EVENT TYPE INVALID"
+            );
+
+            return;
+
+        }
+
+
+        const event = {
+
+            type:
+                type,
+
+            data:
+                data,
+
+            time:
+                new Date()
+                    .toISOString(),
+
+            phone:
+                getCurrentUser()?.phone ||
+                null
+
+        };
+
+
+        assistantEvents.push(
+            event
+        );
+
+
+        if(
+            assistantEvents.length >
+            MAX_EVENTS
+        ){
+
+            assistantEvents.shift();
+
+        }
+
+
+        console.log(
+            "🤖 ASSISTANT EVENT:",
+            event
+        );
+
+
+        processAssistantEvent(
+            event
+        );
+
+
+        triggerSmartAssistantProactive(
+            event
+        );
+
+    }
+
+
+    function getAssistantEvents(){
+
+        return [
+            ...assistantEvents
+        ];
+
+    }
+
+
+    function processAssistantEvent(
+        event
+    ){
+
+        if(!event){
+            return;
+        }
+
+
+        switch(
+            event.type
+        ){
+
+            case "PLAN_CREATED":
+
+                console.log(
+                    "📚 برنامه جدید ایجاد شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "PLAN_UPDATED":
+
+                console.log(
+                    "✏️ برنامه ویرایش شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "PLAN_DELETED":
+
+                console.log(
+                    "🗑️ برنامه حذف شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "PLAN_COMPLETED":
+
+                console.log(
+                    "✅ برنامه تکمیل شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "STUDY_STARTED":
+
+                console.log(
+                    "▶️ مطالعه شروع شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "STUDY_PAUSED":
+
+                console.log(
+                    "⏸️ مطالعه متوقف شد:",
+                    event.data
+                );
+
+                break;
+
+
+            case "STUDY_FINISHED":
+
+                console.log(
+                    "⏱️ مطالعه تمام شد:",
+                    event.data
+                );
+
+                break;
+
+
+            default:
+
+                console.log(
+                    "ℹ️ رویداد دستیار:",
+                    event.type
+                );
+
+        }
+
+    }
+
+
+    window.assistantEvent =
+        assistantEvent;
+
+
+    window.getAssistantEvents =
+        getAssistantEvents;
+
+
+    window.triggerSmartAssistantProactive =
+        triggerSmartAssistantProactive;
+
+
+})();
